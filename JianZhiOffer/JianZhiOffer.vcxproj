@@ -82,7 +82,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="mirrorbt.cpp" />
+    <ClCompile Include="二叉树的镜像.cpp" />
+    <ClCompile Include="链表中环的入口节点.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
