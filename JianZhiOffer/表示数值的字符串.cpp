@@ -10,7 +10,7 @@
 
 class Solution {
 public:
-	bool isNumeric(char* s)
+	bool isNumeric(char *s)
 	{
 		bool point = false, hasE = false, seeNum = false;
 		int i = 0;
@@ -35,7 +35,7 @@ public:
 			}
 			else if (s[i] == '-' || s[i] == '+')
 			{
-				if (i != first && s[i - 1] != 'E'&s[i - 1] != 'e') return false;
+				if (i != first && s[i - 1] != 'E' && s[i - 1] != 'e') return false;
 			}
 			else if (s[i] == ' ')
 			{
