@@ -9,22 +9,22 @@
 
 */
 
-class Solution
-{
+class Solution {
 public:
 	int FindGreatestSumOfSubArray(vector<int> array)
 	{
-		if (array.empty()) return 0;
-		int maxnum = array[0];
-		int temp = maxnum;
+		if (array.empty())
+			return 0;
+		int sum = 0;
+		int maxsum = INT_MIN;
 		int len = array.size();
-		for (int i = 1; i < len; ++i)
+		for (int i = 0; i < len; ++i)
 		{
-			temp += array[i];
-			maxnum = max(maxnum, temp);
-			if (temp<0)
-				temp = 0;
+			sum += array[i];
+			maxsum = max(maxsum, sum);
+			if (sum < 0)
+				sum = 0;
 		}
-		return maxnum;
+		return maxsum;
 	}
 };
