@@ -8,7 +8,7 @@
 
 */
 
-//基于快速划分的方法
+//基于快速划分的方法，时间复杂度平均可以达到O(n)
 class Solution1 {
 public:
 	int MoreThanHalfNum_Solution(vector<int> numbers)
@@ -21,9 +21,15 @@ public:
 		while (index != middle)
 		{
 			if (index > middle)
-				index = partition(numbers, start, index - 1);
+			{
+				end = index - 1;
+				index = partition(numbers, start, end);
+			}
 			else
-				index = partition(numbers, index + 1, end);
+			{
+				start = index + 1;
+				index = partition(numbers, start, end);
+			}
 		}
 		int res = numbers[index];
 		if (check(numbers, res))
@@ -65,8 +71,8 @@ public:
 	{
 		int times = 0;
 		for (int i = 0; i < numbers.size(); ++i)
-		if (numbers[i] == num)
-			++times;
+			if (numbers[i] == num)
+				++times;
 		if (times * 2 <= numbers.size())
 			return false;
 		else

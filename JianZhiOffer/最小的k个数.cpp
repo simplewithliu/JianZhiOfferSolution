@@ -12,8 +12,8 @@ public:
 	vector<int> GetLeastNumbers_Solution(vector<int> input, int k)
 	{
 		int len = input.size();
-		if (k <= 0) return{};
-		if (k > len) return{};
+		if (k <= 0) return {};
+		if (k > len) return {};
 		if (k == len) return input;
 		int start = 0, end = len - 1;
 		int index = partition(input, start, end);
