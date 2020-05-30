@@ -29,9 +29,6 @@
     <ClCompile Include="二叉树的镜像.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="二维数组中的查找.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="替换空格.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -207,6 +204,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="03.数组中重复的数字.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="04.二维数组中的查找.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
