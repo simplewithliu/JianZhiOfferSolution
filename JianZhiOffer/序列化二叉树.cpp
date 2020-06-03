@@ -6,17 +6,6 @@
 
 */
 
-
-struct TreeNode 
-{
-	int val;
-	struct TreeNode *left;
-	struct TreeNode *right;
-	TreeNode(int x) :
-		val(x), left(NULL), right(NULL) {}
-};
-
-
 //用先序遍历实现。
 class Solution {
 public:

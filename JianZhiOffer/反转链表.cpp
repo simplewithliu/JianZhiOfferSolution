@@ -7,14 +7,6 @@
 */
 
 
-struct ListNode{
-	int val;
-	struct ListNode *next;
-	ListNode(int x) :
-		val(x), next(NULL) {}
-};
-
-
 //移动三个指针
 class Solution1 {
 public:

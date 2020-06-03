@@ -7,13 +7,6 @@
 
 */
 
-struct ListNode {
-	int val;
-	struct ListNode *next;
-	ListNode(int x) :
-		val(x), next(NULL) {}
-};
-
 //µü´ú·½·¨
 class Solution1 {
 public:

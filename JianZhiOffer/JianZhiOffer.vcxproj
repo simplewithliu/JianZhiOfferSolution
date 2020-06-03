@@ -97,7 +97,7 @@
     <ClCompile Include="04.二维数组中的查找.cpp" />
     <ClCompile Include="二进制中1的个数.cpp" />
     <ClCompile Include="从上往下打印二叉树.cpp" />
-    <ClCompile Include="从尾到头打印链表.cpp" />
+    <ClCompile Include="06.从尾到头打印链表.cpp" />
     <ClCompile Include="删除链表中重复的节点.cpp" />
     <ClCompile Include="包含min函数的栈.cpp" />
     <ClCompile Include="反转链表.cpp" />
@@ -121,7 +121,7 @@
     <ClCompile Include="03.数组中重复的数字.cpp" />
     <ClCompile Include="斐波那契数列.cpp" />
     <ClCompile Include="旋转数组的最小数字.cpp" />
-    <ClCompile Include="替换空格.cpp" />
+    <ClCompile Include="05.替换空格.cpp" />
     <ClCompile Include="最小的k个数.cpp" />
     <ClCompile Include="最长不含重复字符的子字符串.cpp" />
     <ClCompile Include="机器人的运动范围.cpp" />
@@ -140,7 +140,7 @@
     <ClCompile Include="调整数组顺序使奇数位于偶数前面.cpp" />
     <ClCompile Include="跳台阶.cpp" />
     <ClCompile Include="连续子数组的最大和.cpp" />
-    <ClCompile Include="重建二叉树.cpp" />
+    <ClCompile Include="07.重建二叉树.cpp" />
     <ClCompile Include="链表中倒数第k个节点.cpp" />
     <ClCompile Include="链表中环的入口节点.cpp" />
     <ClCompile Include="顺时针打印矩阵.cpp" />

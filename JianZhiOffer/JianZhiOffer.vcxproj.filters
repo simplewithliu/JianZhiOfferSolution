@@ -29,15 +29,6 @@
     <ClCompile Include="二叉树的镜像.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="替换空格.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="从尾到头打印链表.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="重建二叉树.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="二叉树中序遍历的下一个节点.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -207,6 +198,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="04.二维数组中的查找.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="05.替换空格.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="06.从尾到头打印链表.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="07.重建二叉树.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
