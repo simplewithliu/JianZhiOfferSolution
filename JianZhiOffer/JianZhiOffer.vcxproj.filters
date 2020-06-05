@@ -32,19 +32,10 @@
     <ClCompile Include="二叉树中序遍历的下一个节点.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="用两个栈实现队列.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="斐波那契数列.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="跳台阶.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="矩形覆盖.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="旋转数组的最小数字.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="机器人的运动范围.cpp">
@@ -207,6 +198,18 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="07.重建二叉树.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="09.用两个栈实现队列.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="10.1斐波那契数列.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="10.2青蛙跳台阶问题.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="11.旋转数组的最小数字.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="1-n整数中1出现的次数.cpp" />
+    <ClCompile Include="10.2青蛙跳台阶问题.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="不用加减乘除做加法.cpp" />
     <ClCompile Include="丑数.cpp" />
@@ -119,8 +120,8 @@
     <ClCompile Include="数组中只出现一次的两个数字.cpp" />
     <ClCompile Include="数组中的逆序对.cpp" />
     <ClCompile Include="03.数组中重复的数字.cpp" />
-    <ClCompile Include="斐波那契数列.cpp" />
-    <ClCompile Include="旋转数组的最小数字.cpp" />
+    <ClCompile Include="10.1斐波那契数列.cpp" />
+    <ClCompile Include="11.旋转数组的最小数字.cpp" />
     <ClCompile Include="05.替换空格.cpp" />
     <ClCompile Include="最小的k个数.cpp" />
     <ClCompile Include="最长不含重复字符的子字符串.cpp" />
@@ -131,7 +132,7 @@
     <ClCompile Include="正则表达式的匹配.cpp" />
     <ClCompile Include="求1+2+3+...+n.cpp" />
     <ClCompile Include="滑动窗口的最大值.cpp" />
-    <ClCompile Include="用两个栈实现队列.cpp" />
+    <ClCompile Include="09.用两个栈实现队列.cpp" />
     <ClCompile Include="矩形覆盖.cpp" />
     <ClCompile Include="矩阵中的路径.cpp" />
     <ClCompile Include="第一个只出现一次的字符.cpp" />
