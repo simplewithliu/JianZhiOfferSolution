@@ -38,12 +38,6 @@
     <ClCompile Include="矩形覆盖.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="机器人的运动范围.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="矩阵中的路径.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="二进制中1的个数.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -210,6 +204,18 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="11.旋转数组的最小数字.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="12.矩阵中的路径.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="13.机器人的运动范围.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="14.1剪绳子.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="14.2.剪绳子2.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
