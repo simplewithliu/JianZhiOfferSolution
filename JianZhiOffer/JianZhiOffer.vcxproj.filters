@@ -38,12 +38,6 @@
     <ClCompile Include="矩形覆盖.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="二进制中1的个数.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="数值的整数次方.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="删除链表中重复的节点.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -216,6 +210,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="14.2.剪绳子2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="15.二进制中1的个数.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="16.数值的整数次方.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

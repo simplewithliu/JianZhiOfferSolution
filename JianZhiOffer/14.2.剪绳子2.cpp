@@ -22,7 +22,7 @@
 
 */
 
-//快速幂求余
+//快速幂求余、大数问题
 class Solution {
 public:
 	long long quickpow(int x, int a)
