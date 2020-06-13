@@ -41,9 +41,6 @@
     <ClCompile Include="删除链表中重复的节点.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="正则表达式的匹配.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="表示数值的字符串.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -216,6 +213,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="16.数值的整数次方.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="17.打印从1到最大的n位数.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="18.删除链表的节点.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="19.正则表达式的匹配.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

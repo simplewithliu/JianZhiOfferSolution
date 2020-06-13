@@ -85,6 +85,8 @@
     <ClCompile Include="10.2青蛙跳台阶问题.cpp" />
     <ClCompile Include="14.1剪绳子.cpp" />
     <ClCompile Include="14.2.剪绳子2.cpp" />
+    <ClCompile Include="17.打印从1到最大的n位数.cpp" />
+    <ClCompile Include="18.删除链表的节点.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="不用加减乘除做加法.cpp" />
     <ClCompile Include="丑数.cpp" />
@@ -131,7 +133,7 @@
     <ClCompile Include="构建乘积数组.cpp" />
     <ClCompile Include="栈的压入弹出序列.cpp" />
     <ClCompile Include="树的子结构.cpp" />
-    <ClCompile Include="正则表达式的匹配.cpp" />
+    <ClCompile Include="19.正则表达式的匹配.cpp" />
     <ClCompile Include="求1+2+3+...+n.cpp" />
     <ClCompile Include="滑动窗口的最大值.cpp" />
     <ClCompile Include="09.用两个栈实现队列.cpp" />
