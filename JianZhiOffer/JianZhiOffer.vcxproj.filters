@@ -26,9 +26,6 @@
     <ClCompile Include="链表中环的入口节点.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="二叉树的镜像.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="二叉树中序遍历的下一个节点.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -39,39 +36,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="删除链表中重复的节点.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="表示数值的字符串.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="调整数组顺序使奇数位于偶数前面.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="链表中倒数第k个节点.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="反转链表.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="合并两个排序的链表.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="树的子结构.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="对称的二叉树.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="顺时针打印矩阵.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="包含min函数的栈.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="栈的压入弹出序列.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="从上往下打印二叉树.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="二叉搜索树的后序遍历.cpp">
@@ -206,9 +170,6 @@
     <ClCompile Include="14.1剪绳子.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="14.2.剪绳子2.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="15.二进制中1的个数.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -222,6 +183,51 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="19.正则表达式的匹配.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="20.表示数值的字符串.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="21.调整数组顺序使奇数位于偶数前面.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="22.链表中倒数第k个节点.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="24.反转链表.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="25.合并两个排序的链表.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="26.树的子结构.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="27.二叉树的镜像.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="28.对称的二叉树.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="29.顺时针打印矩阵.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="30.包含min函数的栈.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="31.栈的压入弹出序列.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="32.1从上往下打印二叉树.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="14.2剪绳子2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="32.2从上到下打印二叉树 II.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="32.3从上到下打印二叉树 III.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

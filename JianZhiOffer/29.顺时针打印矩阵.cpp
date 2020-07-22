@@ -1,26 +1,39 @@
-#include "header.h"
+ï»¿#include "header.h"
 
 /*
 
-ÊäÈëÒ»¸ö¾ØÕó£¬°´ÕÕ´ÓÍâÏòÀïÒÔË³Ê±ÕëµÄË³ĞòÒÀ´Î´òÓ¡³öÃ¿Ò»¸öÊı×Ö£¬
-ÀıÈç£¬Èç¹ûÊäÈëÈçÏÂ4 X 4¾ØÕó£º 
+è¾“å…¥ä¸€ä¸ªçŸ©é˜µï¼ŒæŒ‰ç…§ä»å¤–å‘é‡Œä»¥é¡ºæ—¶é’ˆçš„é¡ºåºä¾æ¬¡æ‰“å°å‡ºæ¯ä¸€ä¸ªæ•°å­—ï¼Œä¾‹å¦‚ï¼Œå¦‚æœè¾“å…¥å¦‚ä¸‹4 X 4çŸ©é˜µï¼š 
 	1  2  3  4 
 	5  6  7  8 
 	9  10 11 12 
 	13 14 15 16 
-ÔòÒÀ´Î´òÓ¡³öÊı×Ö1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10.
+åˆ™ä¾æ¬¡æ‰“å°å‡ºæ•°å­—1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10.
+
+ç¤ºä¾‹ 1ï¼š
+è¾“å…¥ï¼šmatrix = [[1,2,3],[4,5,6],[7,8,9]]
+è¾“å‡ºï¼š[1,2,3,6,9,8,7,4,5]
+
+ç¤ºä¾‹ 2ï¼š
+è¾“å…¥ï¼šmatrix =Â [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+è¾“å‡ºï¼š[1,2,3,4,8,12,11,10,9,5,6,7]
+
+é™åˆ¶ï¼š
+0 <= matrix.length <= 100
+0 <= matrix[i].lengthÂ <= 100
+
+æ³¨æ„ï¼šæœ¬é¢˜ä¸ä¸»ç«™ 54 é¢˜ç›¸åŒï¼šhttps://leetcode-cn.com/problems/spiral-matrix/
 
 */
 
 class Solution {
 public:
-	vector<int> printMatrix(vector<vector<int> > matrix)
+	vector<int> spiralOrder(vector<vector<int>> &matrix) 
 	{
 		if (matrix.empty() || matrix[0].empty()) return{};
 		vector<int> res;
 		int rows = matrix.size(), cols = matrix[0].size();
 		int startRow = 0, endRow = rows - 1, startCol = 0, endCol = cols - 1;
-		while (startRow <= endRow&&startCol <= endCol)
+		while (startRow <= endRow && startCol <= endCol)
 		{
 			for (int i = startCol; i <= endCol; ++i)
 			{
@@ -32,9 +45,7 @@ public:
 				res.push_back(matrix[i][endCol]);
 			}
 			--endCol;
-
-			if (startRow > endRow || startCol>endCol) break;
-
+			if (startRow > endRow || startCol > endCol) break;
 			for (int i = endCol; i >= startCol; --i)
 			{
 				res.push_back(matrix[endRow][i]);
