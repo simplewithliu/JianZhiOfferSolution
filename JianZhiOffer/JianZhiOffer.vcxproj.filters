@@ -38,36 +38,6 @@
     <ClCompile Include="删除链表中重复的节点.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="二叉搜索树的后序遍历.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="二叉树中和为某一值的路径.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="复杂链表的复制.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="二叉搜索树与双向链表.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="序列化二叉树.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="字符串的排列.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="数组中出现次数超过一半的数字.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="最小的k个数.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="数据流中的中位数.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="连续子数组的最大和.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="1-n整数中1出现的次数.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -228,6 +198,36 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="32.3从上到下打印二叉树 III.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="33.二叉搜索树的后序遍历.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="34.二叉树中和为某一值的路径.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="35.复杂链表的复制.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="36.二叉搜索树与双向链表.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="37.序列化二叉树.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="38.字符串的排列.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="39.数组中出现次数超过一半的数字.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="40.最小的k个数.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="41.数据流中的中位数.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="42.连续子数组的最大和.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
