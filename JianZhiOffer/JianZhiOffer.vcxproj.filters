@@ -23,87 +23,6 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="链表中环的入口节点.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="二叉树中序遍历的下一个节点.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="跳台阶.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="矩形覆盖.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="删除链表中重复的节点.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="1-n整数中1出现的次数.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="把数组排成最小的数.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="最长不含重复字符的子字符串.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="丑数.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="第一个只出现一次的字符.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="数组中的逆序对.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="两个链表的第一个公共节点.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="数字在排序数组中出现的次数.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="二叉搜索树的第k个节点.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="二叉树的深度.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="平衡二叉树.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="数组中只出现一次的两个数字.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="和为s的两个数字.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="和为s的连续正数序列.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="翻转单词顺序列.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="左旋转字符串.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="滑动窗口的最大值.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="圆圈中最后剩下的数字.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="求1+2+3+...+n.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="不用加减乘除做加法.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="构建乘积数组.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="二叉树中两个节点最低公共祖先.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="03.数组中重复的数字.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -191,9 +110,6 @@
     <ClCompile Include="32.1从上往下打印二叉树.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="14.2剪绳子2.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="32.2从上到下打印二叉树 II.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -228,6 +144,120 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="42.连续子数组的最大和.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="44.数字序列中某一位的数字.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="45.把数组排成最小的数.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="46.把数字翻译成字符串.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="47.礼物的最大价值.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="48.最长不含重复字符的子字符串.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="49.丑数.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="50.第一个只出现一次的字符.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="51.数组中的逆序对.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="52.两个链表的第一个公共节点.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="53.1在排序数组中查找数字.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="54.二叉搜索树的第k大节点.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="55.1二叉树的深度.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="55.2平衡二叉树.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="56.1数组中数字出现的次数.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="56.2数组中数字出现的次数 II.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="57.1和为s的两个数字.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="57.2和为s的连续正数序列.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="58.1翻转单词顺序.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="58.2左旋转字符串.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="59.1滑动窗口的最大值.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="59.2队列的最大值.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="61.扑克牌中的顺子.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="60.n个骰子的点数.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="62.圆圈中最后剩下的数字.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="63.股票的最大利润.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="64.求1+2+3+...+n.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="65.不用加减乘除做加法.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="66.构建乘积数组.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="67.把字符串转换成整数.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="68.2二叉树的最近公共祖先.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="69.二叉树中序遍历的下一个节点.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="70.矩形覆盖.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="71.链表中环的入口节点.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="72.删除链表中重复的节点.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="14.2剪绳子 II.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="68.1二叉搜索树的最近公共祖先.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="53.2找出0～n-1中缺失的数字.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="43.统计1 ~ n整数中1出现的次数.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
