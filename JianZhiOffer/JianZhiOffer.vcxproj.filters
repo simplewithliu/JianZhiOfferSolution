@@ -260,7 +260,22 @@
     <ClCompile Include="43.统计1 ~ n整数中1出现的次数.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="II_001.整数除法.cpp">
+    <ClCompile Include="II 002.二进制加法.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 001.整数除法.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 003.前n个数字二进制中1的个数.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 007.数组中和为0的三个数.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 008.和大于等于target的最短子数组.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 009.乘积小于K的子数组.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

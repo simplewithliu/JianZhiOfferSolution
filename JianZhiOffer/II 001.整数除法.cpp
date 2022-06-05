@@ -40,7 +40,7 @@ public:
 		if (a == INT_MIN) {
 			if (b == -1) return INT_MAX;
 			else if (b == 1) return INT_MIN;
-			else return b & 1 == 1 ? divide(a + 1, b) : divide(a / 2, b / 2);
+			else return (b & 1) == 1 ? divide(a + 1, b) : divide(a / 2, b / 2);
 		} else if (b == INT_MIN) {
 			return 0;
 		}
