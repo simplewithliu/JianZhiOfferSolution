@@ -387,7 +387,7 @@ Recursion can be a powerful tool
 
 ```
 
-**make -C XXX M=XX**
+**驱动模块编译 make -C XXX M=XX**
 ```
 
 在外部编译kernel模块的一种方式，首先通过-C进入到源代码树编译kernel源代码，然后返回到M变量指定目录中，也就是模块所在目录，编译当前模块
