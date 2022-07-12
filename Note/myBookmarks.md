@@ -84,15 +84,13 @@ The chipset is like the spinal cord that connects all the other components toget
 
 https://stackoverflow.com/questions/21848340/interrupts-execution-context
 ```
+
 发生中断时，CPU会切换上下文执行中断处理程序，而中断处理程序并不属于某个线程，只是内核中的某个方法，执行于中断上下文中。
 
 发生上下文切换时，首先会保存当前执行的上下文任务，由current标记，等待中断返回时，会出现一个调度点，此时判断current是否需要调度。
 
-(https://zhuanlan.zhihu.com/p/163728119)
-
-(https://www.cnblogs.com/wuchanming/p/4756756.html)
-
 ```
+
 
 
 **中断抢占问题**
@@ -106,6 +104,23 @@ https://cs.stackexchange.com/questions/29846/can-an-interrupt-handler-be-preempt
 https://stackoverflow.com/questions/11779397/what-happens-to-preempted-interrupt-handler
 
 https://docs.microsoft.com/zh-cn/windows-hardware/drivers/kernel/always-preemptible-and-always-interruptible
+
+
+
+**内核调度**
+
+https://zhuanlan.zhihu.com/p/163728119
+
+https://www.cnblogs.com/jack204/archive/2012/03/26/2417678.html
+
+
+**中断上下文禁止调度**
+
+https://www.cnblogs.com/wuchanming/p/4756756.html
+
+http://bbs.chinaunix.net/thread-1618430-1-1.html
+
+http://www.wowotech.net/process_management/schedule-in-interrupt.html
 
 
 
@@ -286,9 +301,11 @@ https://www.cnblogs.com/wangkeqin/p/12382639.html
 
 ### 3 Linux系统问题分析与调试
 
+
 **系统分析和微调指南**
 
 https://documentation.suse.com/zh-cn/sled/15-SP2/single-html/SLED-tuning/index.html
+
 
 **Linux内核模块的编译和静态库的使用**
 
@@ -299,9 +316,11 @@ http://m.blog.chinaunix.net/uid-26246153-id-3536347.html
 
 https://askubuntu.com/questions/173248/where-is-the-bootloader-stored-in-rom-ram-or-elsewhere
 
+
 **库搜索路径**
 
 https://blog.51cto.com/u_15127658/4690108
+
 
 **ls使用通配符**
 
@@ -333,6 +352,20 @@ https://www.cnblogs.com/clblacksmith/p/8378434.html
 	https://stackoverflow.com/questions/2356168/force-gcc-to-notify-about-undefined-references-in-shared-libraries
 	
 	https://stackoverflow.com/questions/31371867/what-is-the-g-flag-that-permits-undefined-references-in-shared-libraries
+
+
+**GDB初步**
+
+https://www.cnblogs.com/dongc/p/9690754.html
+
+https://blog.csdn.net/blade2001/article/details/46563805
+
+* Android gdb
+  
+	https://blog.csdn.net/cigogo/article/details/82655837
+
+	https://blog.csdn.net/tkwxty/article/details/104027151
+
 
 
 
@@ -390,7 +423,7 @@ Recursion can be a powerful tool
 **驱动模块编译 make -C XXX M=XX**
 ```
 
-在外部编译kernel模块的一种方式，首先通过-C进入到源代码树编译kernel源代码，然后返回到M变量指定目录中，也就是模块所在目录，编译当前模块
+在外部编译kernel模块的一种方式，首先通过-C进入到源代码树编译kernel源代码，然后返回到M变量指定目录中，也就是模块所在目录，使用Kbuild编译当前模块
 
 ```
 
@@ -469,7 +502,7 @@ CPU 寄存器——>内存控制器——>内存
 
 我们知道进程空间映射成页，内核可以把高于4G的内存分页映射到4G的进程地址空间
 
-所以内存控制器的总线宽度必顺大于32位才能访问超过4G的内存
+所以内存控制器的总线宽度必大于32位才能访问超过4G的内存
 
 ```
 
@@ -541,6 +574,19 @@ Linux 内核之上运行任何图形用户界面 (GUI) 包和适当的应用程�
 
 https://www.zhihu.com/question/33414159
 
+https://www.cnblogs.com/aaronLinux/p/6661987.html
+
+
+**平台设备驱动**
+
+
+https://blog.csdn.net/a568713197/article/details/89642396
+
+https://doc.embedfire.com/linux/stm32mp1/driver/zh/latest/linux_driver/base_platform_driver.html
+
+https://hughesxu.github.io/posts/Linux_device_and_driver_model/
+
+
 
 
 **IO总线概念**
@@ -548,6 +594,24 @@ https://www.zhihu.com/question/33414159
 https://blog.csdn.net/zz2633105/article/details/118641075
 
 
+**设备IO方式**
+
+https://www.cnblogs.com/armlinux/archive/2010/11/26/2396888.html
+
+https://os.51cto.com/article/599356.html
+```
+
+独立编址和统一编址，MMIO可以看作为统一编址
+
+这里设备的地址实际上为物理地址，即CPU真正能访问的物理地址空间，一般取决于地址线位宽
+
+```
+
+**伪文件系统**
+
+https://unix.stackexchange.com/questions/188886/what-is-in-dev-proc-and-sys
+
+https://www.reddit.com/r/linuxquestions/comments/2h0v34/how_does_dev_differ_from_procdevices_in_linux/
 
 
 ## 并发问题
@@ -662,6 +726,41 @@ https://stackoverflow.com/questions/10566328/using-fseek-fwrite-from-multiple-pr
 https://stackoverflow.com/questions/7842511/safe-to-have-multiple-processes-writing-to-the-same-file-at-the-same-time-cent
 
 
+### 4 内存模型与内存屏障
+
+
+**锁的实现需要内存屏障支持**
+
+https://www.hitzhangjie.pro/blog/locks实现背后不为人知的故事
+
+https://stackoverflow.com/questions/50951011/how-does-a-mutex-lock-and-unlock-functions-prevents-cpu-reordering
+
+
+**acquire and release语义**
+
+https://preshing.com/20120930/weak-vs-strong-memory-models/
+> In a sequentially consistent memory model, there is no memory reordering. 
+> It’s as if the entire program execution is reduced to a sequential interleaving of instructions from each thread. 
+> In particular, the result r1 = r2 = 0 from Memory Reordering Caught in the Act becomes impossible.
+```
+一般CPU不会做成顺序一致性，这样开销太大，
+
+但是可以通过full memory fence指令来避免StoreLoad乱序，辅助实现Sequential Consistency
+
+(http://mintomic.github.io/lock-free/memory-fences/)
+
+```
+
+https://preshing.com/20120913/acquire-and-release-semantics/
+
+https://preshing.com/20130922/acquire-and-release-fences/
+> What’s cool is that neither acquire nor release semantics requires the use of a #StoreLoad barrier, 
+> which is often a more expensive memory barrier type.
+```
+
+在某些场景下，不需要顺序一致性，只要保证Synchronizes-With Relationships
+
+```
 
 
 
@@ -939,6 +1038,13 @@ https://app.yinxiang.com/Home.action
 **summary文件夹**
 
 [C:\Users\Administrator\Desktop\summary](C:\Users\Administrator\Desktop\summary)
+
+
+**知乎个人主页**
+
+https://www.zhihu.com/people/tang-mu-shang-wei
+
+
 
 ***
 

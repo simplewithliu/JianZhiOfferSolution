@@ -30,16 +30,17 @@ public:
 		vector<int> m(26, 0);
 		for (auto c : s1) ++m[c - 'a'];
 		int len1 = s1.size(), len2 = s2.size();
-		int start = 0, end = 0;
+		int start = 0, end = 0, counter = len1;
 		while (end < len2) {
-			char c = s2[end];
+			if (m[s2[end] - 'a'] >= 1) --counter;
+			--m[s2[end] - 'a'];
 			++end;
-			--m[c - 'a'];
-			while (start < end && m[c - 'a'] < 0) {
+			while (counter == 0) {
+				if (end - start == len1) return true;
+				if (m[s2[start] - 'a'] == 0) ++counter;
 				++m[s2[start] - 'a'];
 				++start;
 			}
-			if (end - start == len1) return true;
 		}
 		return false;
 	}
