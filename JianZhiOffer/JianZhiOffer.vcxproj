@@ -112,6 +112,9 @@
     <ClCompile Include="II 010.和为k的子数组.cpp" />
     <ClCompile Include="II 014.字符串中的变位词.cpp" />
     <ClCompile Include="II 015.字符串中的所有变位词.cpp" />
+    <ClCompile Include="II 016.不含重复字符的最长子字符串.cpp" />
+    <ClCompile Include="II 021.删除链表的倒数第n个结点.cpp" />
+    <ClCompile Include="II 022.链表中环的入口节点.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="65.不用加减乘除做加法.cpp" />
     <ClCompile Include="49.丑数.cpp" />

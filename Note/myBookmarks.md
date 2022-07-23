@@ -57,9 +57,8 @@ https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/arch
 	https://richardweiyang-2.gitbook.io/kernel-exploring/00-memory_a_bottom_up_view
 
 
-### 2  硬件层
 
-**CPU指令与芯片**
+**CPU指令与芯片组**
 
 https://zhuanlan.zhihu.com/p/19893066
 
@@ -79,6 +78,12 @@ The chipset is like the spinal cord that connects all the other components toget
 (https://quqi.com/516996/7532)
 
 ```
+
+
+
+### 2  中断与调度
+
+
 
 **中断处理程序上下文**
 
@@ -105,6 +110,24 @@ https://stackoverflow.com/questions/11779397/what-happens-to-preempted-interrupt
 
 https://docs.microsoft.com/zh-cn/windows-hardware/drivers/kernel/always-preemptible-and-always-interruptible
 
+http://www.wowotech.net/irq_subsystem/soft-irq.html
+```
+
+softirq同时在Processor A和B上运行的时候，中断分发给processor A
+
+processor A上的handler仍然会raise softirq，但是并不会调度该softirq。
+
+也就是说，softirq在一个CPU上是串行执行的。
+
+为了性能，同一类型的softirq有可能在不同的CPU上并发执行，softirq的回调函数的时候要考虑重入，考虑并发，要引入同步机制。
+
+为何tasklet性能不如softirq呢？
+
+如果一个tasklet在processor A上被调度执行，那么它永远也不会同时在processor B上执行
+
+也就是说，tasklet是串行执行的（注：不同的tasklet还是会并发的），不需要考虑重入的问题。
+
+```
 
 
 **内核调度**
@@ -124,7 +147,115 @@ http://www.wowotech.net/process_management/schedule-in-interrupt.html
 
 
 
-### 3  实时操作系统
+### 3 总线
+
+
+**基本概念**
+
+https://www.cnblogs.com/Ligo-Z/p/13228056.html
+
+https://cs.nju.edu.cn/swang/CompArchOrg_13F/slides/lecture27.pdf
+
+https://enszhou.github.io/cod/courseware/update/Ch7.pdf
+
+https://www.zhihu.com/question/22471643
+```
+总线的位数并不绝对与处理器架构强相关
+
+如果说CPU中跟CPU核直接相连的地址线，那么答案是不一定，32位CPU可以有PAE，用的总线地址线位数多于32位。
+
+64位CPU现在市面上的几乎没有64位的，都是4x位。
+
+如果说系统总线，那就更不是了，x86的QPI总线，不区分地址和数据的，都是串行的。
+```
+
+https://quqi.com/516996/7591
+
+
+**总线的串行和并行**
+
+https://www.zhihu.com/question/27815296
+```
+A 
+
+串行接口为啥比并行接口快？是因为串口的特性和应用场景，决定了它更加适合采用一些提高单根信道速率的设计方法，这些方法用在并口上并不合适。
+
+B
+
+1 金属信号线之间的串扰非常厉害，噪声难以避免（来自于外界的干扰和自身对外界的干扰即EMI）。
+
+2 多比特传输的信号对齐变得异常艰难。
+
+3 由于走线数量的增加，对系统工程师非常不友好，加之芯片pin脚的数量本就十分宝贵，版级布线的难度急剧增加。
+
+前两个原因导致了严重的信号完整性问题，传输效率变得极其低下，从而又导致了数据完整性的问题。
+
+就在这时，差分电路的优点体现出来了。
+
+C
+
+其实对于芯片而言（从芯片设计角度出发），是喜欢并口而不喜欢串口的。
+
+因为芯片的电路更适合并行处理数据而非串行。
+
+串行提速要提升工作频率，频率提升的天花板又比晶体管规模提升的天花板要低太多。
+
+
+(https://m.mydrivers.com/newsview.aspx?id=30361)
+
+(http://tech.sina.com.cn/h/2005-06-24/1157645181.shtml)
+
+```
+
+https://www.jianshu.com/p/65281e71753f
+```
+
+在具体传输时，按顺序传送一个数据的所有二进制位的脉冲信号，每次一位
+
+被传送的数据在发送部件中必须进行并行数据到串行数据的转换，这个过程称为拆卸
+
+而在接收部件中则需要将串行数据转换成并行数据，这个过程称为装配。
+
+```
+
+https://tldp.org/HOWTO/Serial-HOWTO-4.html
+```
+
+The serial port is much more than just a connector. 
+
+It converts the data from parallel to serial and changes the electrical representation of the data. 
+
+Inside the computer, data bits flow in parallel (using many wires at the same time). 
+
+Serial flow is a stream of bits over a single wire (such as on the transmit or receive pin of the serial connector). 
+
+For the serial port to create such a flow, it must convert data from parallel (inside the computer) to serial on the transmit pin (and conversely).
+
+```
+
+https://learn.sparkfun.com/tutorials/i2c/all
+```
+
+10-bit Addresses
+
+In a 10-bit addressing system, two frames are required to transmit the peripheral address. 
+
+The first frame will consist of the code b11110xyz 
+
+where 'x' is the MSB of the peripheral address, y is bit 8 of the peripheral address, and z is the read/write bit as described above. 
+
+The first frame's ACK bit will be asserted by all peripherals which match the first two bits of the address.
+
+串行总线会在一根线上传输数据、地址等，所以必须进行正确的转换。
+(https://quqi.com/516996/7592)
+
+```
+
+
+
+
+
+### 4  实时操作系统
 
 **FreeRTOS**
 
@@ -237,6 +368,35 @@ Difference between vm.dirty_ratio and vm.dirty_background_ratio
 
 ```
 
+
+**元数据同步写的问题**
+
+```
+
+《操作系统概念》 11.7.1 一致性检查 章节中提到避免数据不一致采用元数据同步写
+
+```
+> In contrast, the loss of a directory entry on an indexed allocation system can be disastrous, 
+> because the data blocks have no knowledge of one another. 
+> For this reason, some UNIX file systems cache directory entries for reads, 
+> but any write that results in space allocation, or other metadata changes, is done synchronously, 
+> before the corresponding data blocks are written. 
+
+https://www.complang.tuwien.ac.at/anton/sync-metadata-updates.html
+
+https://ir.nctu.edu.tw/bitstream/11536/1025/1/A1996VH07500005.pdf
+```
+
+上述 2 个链接提出，可以使用异步写元数据提高文件的IO性能
+
+(https://quqi.com/516996/7593)
+
+```
+
+
+
+
+
 ### 2  Linux主线内核代码知识
 
 https://www.zhihu.com/question/423732603
@@ -315,6 +475,15 @@ http://m.blog.chinaunix.net/uid-26246153-id-3536347.html
 **初识boot**
 
 https://askubuntu.com/questions/173248/where-is-the-bootloader-stored-in-rom-ram-or-elsewhere
+
+https://www.zhihu.com/question/534378582
+```
+
+所以总结来说：硬件在uboot的作用阶段，就必须按照uboot的规则进行驱动，但是后续的Linux系统并不认可这个驱动。
+
+等Linux打跑了uboot（Linux接管cpu运行），硬件必须要重新和Linux系统认识认识，否则怎么能愉快的一起玩耍呢？
+
+```
 
 
 **库搜索路径**
@@ -549,6 +718,8 @@ https://blogs.sw.siemens.com/hyperlynx/2017/09/06/understanding-the-ddr-memory-b
 ### 7 Linux驱动模型
 
 **设备树**
+
+https://nu-ll.github.io/2019/10/13/设备树/
 
 https://z.itpub.net/article/detail/1C40A5E8255891E7A26173B2C28E7D31
 ```
@@ -901,6 +1072,13 @@ https://www.thegeekstuff.com/2010/10/linux-error-codes
 https://stackoverflow.com/questions/26955590/forward-declaration-throws-redefinition-error
 
 https://stackoverflow.com/questions/26240370/why-are-typedef-identifiers-allowed-to-be-declared-multiple-times
+
+
+### 4 C++ 特性讨论
+
+**IO流**
+
+https://www.zhihu.com/question/439348190
 
 
 ***

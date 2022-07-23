@@ -290,5 +290,14 @@
     <ClCompile Include="II 015.字符串中的所有变位词.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 022.链表中环的入口节点.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 021.删除链表的倒数第n个结点.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 016.不含重复字符的最长子字符串.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
