@@ -299,5 +299,17 @@
     <ClCompile Include="II 016.不含重复字符的最长子字符串.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 023.两个链表的第一个重合节点.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 024.反转链表.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 025.链表中的两数相加.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 074.合并区间.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

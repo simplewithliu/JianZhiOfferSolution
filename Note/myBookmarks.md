@@ -251,8 +251,11 @@ The first frame's ACK bit will be asserted by all peripherals which match the fi
 
 ```
 
+**总线地址与IOMMU**
 
+https://blog.csdn.net/zyboy2000/article/details/52003160
 
+https://www.owalle.com/2021/11/01/iommu-code/
 
 
 ### 4  实时操作系统
@@ -458,42 +461,12 @@ https://www.cnblogs.com/wangkeqin/p/12382639.html
 
 
 
-
 ### 3 Linux系统问题分析与调试
 
 
 **系统分析和微调指南**
 
 https://documentation.suse.com/zh-cn/sled/15-SP2/single-html/SLED-tuning/index.html
-
-
-**Linux内核模块的编译和静态库的使用**
-
-http://m.blog.chinaunix.net/uid-26246153-id-3536347.html
-
-
-**初识boot**
-
-https://askubuntu.com/questions/173248/where-is-the-bootloader-stored-in-rom-ram-or-elsewhere
-
-https://www.zhihu.com/question/534378582
-```
-
-所以总结来说：硬件在uboot的作用阶段，就必须按照uboot的规则进行驱动，但是后续的Linux系统并不认可这个驱动。
-
-等Linux打跑了uboot（Linux接管cpu运行），硬件必须要重新和Linux系统认识认识，否则怎么能愉快的一起玩耍呢？
-
-```
-
-
-**库搜索路径**
-
-https://blog.51cto.com/u_15127658/4690108
-
-
-**ls使用通配符**
-
-https://superuser.com/questions/1416177/run-ls-recursively-with-wildcards
 
 
 **堆栈打印**
@@ -561,6 +534,8 @@ https://zhuanlan.zhihu.com/p/55214097
 **系统调用定义宏 SYSCALL_DEFINEx 的分析**
 
 https://blog.csdn.net/weixin_42992444/article/details/108571515
+
+
 
 
 ### 5 Linux编译问题
@@ -728,6 +703,14 @@ Linux引入设备树主要是为了精简特定于某型号硬件主板的代码
 
 ```
 
+https://docs.zephyrproject.org/latest/build/dts/intro.html
+
+http://www.wilson-blog.cn/post/2022/06/07/zephyr.dtree.html
+```
+
+上述 2 个链接，对于phandle有详细描述
+
+```
 
 **驱动模型概念**
 
@@ -783,6 +766,83 @@ https://os.51cto.com/article/599356.html
 https://unix.stackexchange.com/questions/188886/what-is-in-dev-proc-and-sys
 
 https://www.reddit.com/r/linuxquestions/comments/2h0v34/how_does_dev_differ_from_procdevices_in_linux/
+
+
+
+
+### 8 Linux系统特性与机制
+
+**初识boot**
+
+https://askubuntu.com/questions/173248/where-is-the-bootloader-stored-in-rom-ram-or-elsewhere
+
+https://www.zhihu.com/question/534378582
+```
+
+所以总结来说：硬件在uboot的作用阶段，就必须按照uboot的规则进行驱动，但是后续的Linux系统并不认可这个驱动。
+
+等Linux打跑了uboot（Linux接管cpu运行），硬件必须要重新和Linux系统认识认识，否则怎么能愉快的一起玩耍呢？
+
+```
+
+**Linux内核模块的编译和静态库的使用**
+
+http://m.blog.chinaunix.net/uid-26246153-id-3536347.html
+
+
+**ls使用通配符**
+
+https://superuser.com/questions/1416177/run-ls-recursively-with-wildcards
+
+
+**库搜索路径**
+
+https://blog.51cto.com/u_15127658/4690108
+
+
+**Linux信号机制**
+
+https://blog.csdn.net/orangeboyye/article/details/125596135
+
+https://kernel.meizu.com/linux-signal.html
+
+https://blog.csdn.net/wangquan1992/article/details/108511628
+
+https://shunlqing.github.io/inbox/signal.html
+```
+
+信号机制常被称为“软件中断”，但是信号和中断其实没有联系。信号是在软件层面对中断机制的一种模拟。
+
+```
+
+https://www.oreilly.com/library/view/linux-device-drivers/0596005903/ch06.html
+```
+
+如果存在信号，会如何影响驱动程序？
+
+To this end, the driver returns -ERESTARTSYS to the caller; 
+
+this value is used internally by the virtual filesystem (VFS) layer,
+
+which either restarts the system call or returns -EINTR to user space. 
+
+```
+
+**32位平台的64位除法运算**
+
+https://stackoverflow.com/questions/68063150/warning-aeabi-uldivmod-undefined-symbol-in-opendla-ko
+
+https://stackoverflow.com/questions/45099231/why-does-linux-kernel-use-do-div-instead-of
+```
+
+上述 2 个链接提示了kernel中的实现
+
+```
+https://www.cnblogs.com/AANA/p/16373834.html
+
+https://stackoverflow.com/questions/42559378/division-operation-with-64-bits-on-32-bits-embedded-system
+
+
 
 
 ## 并发问题
@@ -1006,6 +1066,25 @@ https://balalals.cn/archives/android中是系统应用和非系统应用区别
 
 ```
 
+### 6 调试方法
+
+**kernel log**
+
+https://segmentfault.com/a/1190000038276523
+```
+
+kernel log可以使用两种方法实时打印
+
+1 
+
+2  
+
+```
+
+**adb 命令**
+
+https://zhuanlan.zhihu.com/p/161324514
+
 
 ***
 
@@ -1205,22 +1284,28 @@ https://www.ithome.com/0/583/749.htm
 
 ## 其他资料位置
 
-**印象笔记**
-
-https://app.yinxiang.com/Home.action
+### 1 知识点标记
 
 **Chrome书签栏**
 
 [chrome://bookmarks/](chrome://bookmarks/)
 
-**summary文件夹**
+**印象笔记**
 
-[C:\Users\Administrator\Desktop\summary](C:\Users\Administrator\Desktop\summary)
+https://app.yinxiang.com/Home.action
 
 
 **知乎个人主页**
 
 https://www.zhihu.com/people/tang-mu-shang-wei
+
+
+### 2 专题总结
+
+**summary文件夹**
+
+[C:\Users\Administrator\Desktop\summary](C:\Users\Administrator\Desktop\summary)
+
 
 
 
