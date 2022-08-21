@@ -593,6 +593,22 @@ builds up each intermediate object, and links all the intermediate objects into 
 Kernel document Documentation/kbuild/makefiles.txt describes all aspects of these makefiles.
 ```
 
+https://www.linuxjournal.com/content/kbuild-linux-kernel-build-system
+```
+
+Once you have your .config file, you are ready to compile your kernel and its modules. 
+
+When you execute a compile target to compile the kernel or the modules, it first executes a binary that reads all the Kconfig files and .config:
+
+$ scripts/kconfig/conf Kconfig
+
+This binary updates (or creates) a C header file with the values you chose for all the configuration symbols. 
+
+This file is include/generated/autoconf.h, and every gcc compile instruction includes it, so the symbols can be used in any source file in the kernel.
+
+The file is composed of thousands of #define macros that describe the state for each symbol.
+```
+
 https://www.makelinux.net/ldd3/chp-2-sect-4.shtml
 
 
@@ -1030,8 +1046,8 @@ https://stackoverflow.com/questions/44744804/how-can-you-use-a-mutex-between-c-s
 https://stackoverflow.com/questions/42968311/aar-support-in-android-mk-dependencies-are-not-picked-up-by-aosp-build
 
 https://stackoverflow.com/questions/70565929/jni-not-added-even-though-it-is-in-aar-file-in-aosp
-https://stackoverflow.com/questions/70454506/loadlibrary-fails-when-added-aar-library-to-system-service
 
+https://stackoverflow.com/questions/70454506/loadlibrary-fails-when-added-aar-library-to-system-service
 ```
 
 If you look at AOSP apps with native code, you won't find the .so files inside aars or apks, 
@@ -1075,15 +1091,43 @@ https://segmentfault.com/a/1190000038276523
 
 kernel log可以使用两种方法实时打印
 
-1 
+1 adb shell logcat -b kernel > DeskTop （可以输出进程号和线程号）
 
-2  
+2 adb shell dmesg -n 8
+  adb shell dmesg -T -w > DeskTop （标准格式）
 
 ```
 
 **adb 命令**
 
 https://zhuanlan.zhihu.com/p/161324514
+
+
+### 7 JNI使用总结
+
+https://blog.csdn.net/qq_20404903/article/details/80662352
+
+https://doc.yonyoucloud.com/doc/wiki/project/jni-ndk-developer-guide/recommend.html
+
+https://www.ibm.com/docs/zh/sdk-java-technology/8?topic=collector-overview-jni-object-references
+
+* isCopy
+  
+	https://stackoverflow.com/questions/30992989/is-iscopy-field-always-necessary-in-android
+
+	https://stackoverflow.com/questions/54597057/in-jni-function-when-i-change-an-array-in-place-that-was-passed-from-java-code-t
+
+	https://www.ibm.com/docs/zh/sdk-java-technology/7?topic=cp-using-iscopy-flag-1
+
+	https://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/functions.html
+
+* native层使用Assets
+
+	https://stackoverflow.com/questions/10941802/cant-access-aassetmanager-in-native-code-passed-from-java-in-wallpaperservice
+
+	https://stackoverflow.com/questions/10409125/android-read-text-file-from-asset-folder-using-c-ndk
+
+	https://stackoverflow.com/questions/4779955/android-assets-c-jni/
 
 
 ***
@@ -1158,6 +1202,13 @@ https://stackoverflow.com/questions/26240370/why-are-typedef-identifiers-allowed
 **IO流**
 
 https://www.zhihu.com/question/439348190
+
+
+**可变参数宏**
+
+https://blog.csdn.net/lijian2017/article/details/104836447
+
+https://wenfh2020.com/2017/10/28/cpp-log-format/
 
 
 ***
@@ -1307,7 +1358,14 @@ https://www.zhihu.com/people/tang-mu-shang-wei
 [C:\Users\Administrator\Desktop\summary](C:\Users\Administrator\Desktop\summary)
 
 
+**OneNote笔记**
 
+Steve的笔记本/技术追求
+
+<div align=center>
+	<img src="images/xxx.jpg" />
+</div>
+<div align=center>图 1 xxx</div>
 
 ***
 

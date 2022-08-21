@@ -311,5 +311,11 @@
     <ClCompile Include="II 074.合并区间.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 030.插入、删除和随机访问都是 O(1) 的容器.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 031.最近最少使用缓存.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
