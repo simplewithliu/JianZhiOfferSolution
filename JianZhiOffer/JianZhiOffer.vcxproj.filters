@@ -317,5 +317,11 @@
     <ClCompile Include="II 031.最近最少使用缓存.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 032.有效的变位词.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 026.重排链表.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

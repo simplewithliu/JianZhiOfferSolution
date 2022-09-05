@@ -57,6 +57,24 @@ https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/arch
 	https://richardweiyang-2.gitbook.io/kernel-exploring/00-memory_a_bottom_up_view
 
 
+**UMA统一内存访问架构**
+```
+
+可以理解大多数手机SOC都做成了UMA架构，而PC端目前并没有完全流行。
+
+```
+https://www.zhihu.com/question/430936274
+
+https://www.zhihu.com/question/430135674
+
+https://www.zhihu.com/question/505504333
+
+https://www.eet-china.com/news/202108190817.html
+
+https://www.eet-china.com/news/202109080900.html
+
+
+### 2 CPU相关概念理解
 
 **CPU指令与芯片组**
 
@@ -79,6 +97,29 @@ The chipset is like the spinal cord that connects all the other components toget
 
 ```
 
+**CPU空闲时的状态**
+
+https://zhuanlan.zhihu.com/p/50367649
+
+https://linux.cn/article-9303-1.html
+
+https://kernel.meizu.com/cpuidle.html
+
+
+**单片机main函数**
+
+https://zhuanlan.zhihu.com/p/459189574
+
+https://electronics.stackexchange.com/questions/30830/what-happens-when-an-embedded-program-finishes
+```
+
+为什么指令地址 + 2，可参考：
+
+https://www.macsen.xyz/2021/12/24/第四章-指令系统第二节/
+
+```
+
+https://linux.cn/article-9095-1.html
 
 
 ### 2  中断与调度
@@ -546,6 +587,8 @@ https://segmentfault.com/a/1190000016176722
 
 https://jianshu.com/p/2536321c4e53
 
+https://blog.csdn.net/gzxb1995/article/details/102615262
+
 **recursive make 与 non recursive make**
 ```
 两种组织大型项目的编译文件的方式，递归形式的Makefile还是通过类似include方式生成单一的Makefile
@@ -650,6 +693,19 @@ https://stackoverflow.com/questions/1745975/load-multiple-copies-of-a-shared-lib
 **逻辑地址和物理地址以及寻址空间概念**
 
 https://www.zhihu.com/question/382484336
+
+https://liaoph.com/motherboard-and-memory-map/
+```
+
+当内存地址被用于为显卡和 PCI 设备保留时，会有更大的空隙。
+
+这就是为什么 32 位的操作系统无法使用 4G 的 RAM。
+
+Linux 中 /proc/iomem 文件列出了这些地址映射范围。
+
+```
+
+https://www.zhihu.com/question/265736936
 
 https://groups.google.com/g/shlug/c/nixMYtbbdZ0
 ```
@@ -782,6 +838,25 @@ https://os.51cto.com/article/599356.html
 https://unix.stackexchange.com/questions/188886/what-is-in-dev-proc-and-sys
 
 https://www.reddit.com/r/linuxquestions/comments/2h0v34/how_does_dev_differ_from_procdevices_in_linux/
+
+
+**framebuffer驱动与DRM驱动框架**
+
+https://doc.embedfire.com/linux/stm32mp1/driver/zh/latest/linux_driver/framework_drm.html
+
+https://www.jianshu.com/p/f315b68bc73c
+
+https://stackoverflow.com/questions/38893679/is-a-linux-framebuffer-driver-a-video-card-driver
+
+https://unix.stackexchange.com/questions/312851/what-is-the-difference-between-linux-framebuffer-and-gpus-memory
+
+https://community.khronos.org/t/how-much-video-memory-is-used-by-framebuffer/46963
+
+https://groups.google.com/g/icvideo/c/2iHQV4xTNgs
+
+https://www.zhihu.com/question/29250067
+
+https://www.zhihu.com/question/30635966
 
 
 
@@ -1103,6 +1178,15 @@ kernel log可以使用两种方法实时打印
 https://zhuanlan.zhihu.com/p/161324514
 
 
+**trace dump机制**
+
+https://www.jianshu.com/p/6b5f8c9abd31
+
+https://www.jianshu.com/p/f2713f371589
+
+https://issuetracker.google.com/issues/236790598
+
+
 ### 7 JNI使用总结
 
 https://blog.csdn.net/qq_20404903/article/details/80662352
@@ -1363,9 +1447,9 @@ https://www.zhihu.com/people/tang-mu-shang-wei
 Steve的笔记本/技术追求
 
 <div align=center>
-	<img src="images/xxx.jpg" />
+	<img src="images/XXX.jpg" />
 </div>
-<div align=center>图 1 xxx</div>
+<div align=center>图 1 XXX</div>
 
 ***
 
