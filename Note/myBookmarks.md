@@ -122,7 +122,7 @@ https://www.macsen.xyz/2021/12/24/第四章-指令系统第二节/
 https://linux.cn/article-9095-1.html
 
 
-### 2  中断与调度
+### 3 中断与调度
 
 
 
@@ -188,7 +188,7 @@ http://www.wowotech.net/process_management/schedule-in-interrupt.html
 
 
 
-### 3 总线
+### 4 总线
 
 
 **基本概念**
@@ -212,6 +212,12 @@ https://www.zhihu.com/question/22471643
 
 https://quqi.com/516996/7591
 
+https://www.zhihu.com/question/29383757
+```
+
+为什么要选片，怎样选片
+
+```
 
 **总线的串行和并行**
 
@@ -298,8 +304,128 @@ https://blog.csdn.net/zyboy2000/article/details/52003160
 
 https://www.owalle.com/2021/11/01/iommu-code/
 
+https://blog.csdn.net/lg2lh/article/details/8041029
+```
 
-### 4  实时操作系统
+理解总线地址可以站在设备的视角来看
+
+CPU视角上是物理地址，设备视角就是总线地址
+
+```
+
+
+### 5 DMA
+
+**first-party DMA 总线主控**
+
+https://stackoverflow.com/questions/57009233/what-are-the-most-common-busmaster-operations-and-how-are-they-better-than-regu
+
+https://stackoverflow.com/questions/48659470/why-driver-need-to-map-dma-buffers-when-dma-engine-is-in-device
+
+https://www.rigacci.org/docs/biblio/online/ide_modes/modes_DMA.htm
+
+https://scientific-solutions.com/products/faq/ssi_faq_dma_busmastering.shtml
+
+https://www.sciencedirect.com/topics/engineering/bus-master
+
+**DMA API for first-party DMA**
+
+https://stackoverflow.com/questions/66203274/what-instruction-does-linux-use-to-direct-intel-cpu-to-setup-a-dma-transfer
+
+https://stackoverflow.com/questions/64717372/what-kernel-flags-and-pcie-setting-needed-for-bus-mastering
+
+https://stackoverflow.com/questions/8273568/dma-transfer-to-a-slave-pci-device-in-linux
+
+http://www.tweak3d.net/articles/howbusmaster/3.shtml
+
+https://www.esp32.com/viewtopic.php?t=20245
+```
+
+This is because the ESP32 has it inside each peripheral, 
+
+in the same way as bus mastering on PCI/PCIE does not need a separate DMA controller.
+
+```
+
+https://electronics.stackexchange.com/questions/448349/bus-mastering-vs-bus-arbitration
+
+
+**PCI 总线主控**
+
+http://bbs3.driverdevelop.com/read.php?tid=47779
+
+https://stackoverflow.com/questions/27470885/how-does-dma-work-with-pci-express-devices
+
+https://superuser.com/questions/988136/do-modern-motherboards-allow-a-pci-e-device-to-access-ram-without-involving-the
+
+https://www.ni.com/knowledgebase/8C011426DA96F46D86256F01003E6144
+
+https://books.google.co.jp/books?id=xS2ISRHJqVIC&redir_esc=y&hl=zh-CN
+```
+
+搜索PCI DMA，有简单介绍
+
+```
+
+**PCI设备能否使用系统DMA**
+```
+
+这里的结论是原则是可以的，但是不推荐或者取决于硬件芯片架构的具体设计
+
+```
+
+
+https://community.osr.com/discussion/132833
+
+https://d1.amobbs.com/bbs_upload782111/files_39/ourdev_634262EB839K.pdf
+```
+
+讨论了一种从模式传输，使用PCI主机主板的DMA控制器
+(https://quqi.com/516996/7596)
+
+```
+
+https://stackoverflow.com/questions/56955937/linux-pcie-dma-driver
+```
+
+@0andriy Comment评论可以参考
+
+```
+
+**有讨论认为系统central DMA有必要**
+
+https://www.embedded.com/built-in-dma-engines-unleash-power-of-pci-express-switches/
+
+https://patents.google.com/patent/EP0628914A1/en
+```
+Most devices which attach directly to the PCI bus are generally high performance 32-bit bus master devices which have their own built-in DMA control logic. 
+
+Such bus master devices need not rely on a system-provided DMA controller, 
+
+thereby permitting the device to initiate a DMA transfer by itself instead of relying on the system DMA controller to initiate data transfers. 
+
+A DMA slave device is typically lower performance, less expensive and requires the assistance of a system DMA controller to perform a DMA transfer.
+
+(https://quqi.com/516996/7599 , https://quqi.com/516996/7597)
+
+```
+
+https://stackoverflow.com/questions/28068525/explaination-of-arm-especifically-mobile-peripherals-addressing-and-bus-archit
+
+
+
+**DMA技术的拓展讨论**
+
+https://developer.nvidia.com/zh-cn/blog/gpudirect-storage/
+
+https://docs.nvidia.com/cuda/gpudirect-rdma/index.html
+
+https://lwn.net/Articles/767281/
+
+
+
+
+### 6 实时操作系统
 
 **FreeRTOS**
 

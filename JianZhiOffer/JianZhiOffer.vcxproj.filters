@@ -323,5 +323,11 @@
     <ClCompile Include="II 026.重排链表.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 027.回文链表.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 028.展平多级双向链表.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
