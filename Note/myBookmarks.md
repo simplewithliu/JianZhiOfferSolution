@@ -313,6 +313,19 @@ CPU视角上是物理地址，设备视角就是总线地址
 
 ```
 
+**IO接口**
+
+https://books.google.com.hk/books?id=hyVW6BNNtwQC
+```
+
+9.1.2 IO系统的组成
+
+简要介绍了IO接口的一些功能
+
+```
+
+https://blog.csdn.net/weixin_43715360/article/details/120636553
+
 
 ### 5 DMA
 
@@ -327,6 +340,7 @@ https://www.rigacci.org/docs/biblio/online/ide_modes/modes_DMA.htm
 https://scientific-solutions.com/products/faq/ssi_faq_dma_busmastering.shtml
 
 https://www.sciencedirect.com/topics/engineering/bus-master
+
 
 **DMA API for first-party DMA**
 
@@ -360,10 +374,18 @@ https://superuser.com/questions/988136/do-modern-motherboards-allow-a-pci-e-devi
 
 https://www.ni.com/knowledgebase/8C011426DA96F46D86256F01003E6144
 
-https://books.google.co.jp/books?id=xS2ISRHJqVIC&redir_esc=y&hl=zh-CN
+https://books.google.com.hk/books?id=xS2ISRHJqVIC
 ```
 
 搜索PCI DMA，有简单介绍
+
+```
+https://books.google.com.hk/books?id=Ki7zs-Ex2d0C
+```
+
+6.B.3. Bus Master
+
+简要介绍总线主控DMA的优势
 
 ```
 
@@ -411,8 +433,22 @@ A DMA slave device is typically lower performance, less expensive and requires t
 ```
 
 https://stackoverflow.com/questions/28068525/explaination-of-arm-especifically-mobile-peripherals-addressing-and-bus-archit
+```
 
+ One process that I'm interested in right now is the work with a dma controller. 
+ 
+ I've wrote an new question about it so it won't be just a little comment here snice it might help a lot of other people to understand important processes.
 
+```
+
+https://books.google.com.hk/books?id=QFe5BQAAQBAJ
+```
+
+2.2 Direct Memory Access (Page 23)
+
+简要对比了first-party与third-party DMA
+
+```
 
 **DMA技术的拓展讨论**
 
