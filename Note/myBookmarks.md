@@ -219,6 +219,13 @@ https://www.zhihu.com/question/29383757
 
 ```
 
+https://vga.zol.com.cn/646/6461752_all.html
+```
+
+细数主板上曾出现过的插槽
+
+```
+
 **总线的串行和并行**
 
 https://www.zhihu.com/question/27815296
@@ -325,6 +332,8 @@ https://books.google.com.hk/books?id=hyVW6BNNtwQC
 ```
 
 https://blog.csdn.net/weixin_43715360/article/details/120636553
+
+
 
 
 ### 5 DMA
@@ -452,6 +461,8 @@ https://books.google.com.hk/books?id=QFe5BQAAQBAJ
 
 **DMA技术的拓展讨论**
 
+https://cwshu.github.io/arm_virt_notes/notes/dma/DMA.html
+
 https://developer.nvidia.com/zh-cn/blog/gpudirect-storage/
 
 https://docs.nvidia.com/cuda/gpudirect-rdma/index.html
@@ -459,9 +470,7 @@ https://docs.nvidia.com/cuda/gpudirect-rdma/index.html
 https://lwn.net/Articles/767281/
 
 
-
-
-### 6 实时操作系统
+### 7 实时操作系统
 
 **FreeRTOS**
 
@@ -928,6 +937,13 @@ https://blogs.sw.siemens.com/hyperlynx/2017/09/06/understanding-the-ddr-memory-b
 
 **设备树**
 
+https://quqi.com/516996/7602
+```
+
+设备树入门教程
+
+```
+
 https://nu-ll.github.io/2019/10/13/设备树/
 
 https://z.itpub.net/article/detail/1C40A5E8255891E7A26173B2C28E7D31
@@ -945,6 +961,15 @@ http://www.wilson-blog.cn/post/2022/06/07/zephyr.dtree.html
 上述 2 个链接，对于phandle有详细描述
 
 ```
+
+https://www.cnblogs.com/downey-blog/p/10486568.html
+```
+
+device_node转换成platform_device
+
+```
+
+
 
 **驱动模型概念**
 
@@ -981,6 +1006,15 @@ https://hughesxu.github.io/posts/Linux_device_and_driver_model/
 
 https://blog.csdn.net/zz2633105/article/details/118641075
 
+https://fangkaipeng.com/?p=1439
+
+https://quqi.com/516996/7600
+```
+
+ARM Cortex Core Microcontrollers Architecture
+
+```
+
 
 **设备IO方式**
 
@@ -992,6 +1026,13 @@ https://os.51cto.com/article/599356.html
 独立编址和统一编址，MMIO可以看作为统一编址
 
 这里设备的地址实际上为物理地址，即CPU真正能访问的物理地址空间，一般取决于地址线位宽
+
+```
+
+https://houwanfei.github.io/2020/07/18/操作系统-10-输入输出/
+```
+
+内存映射I/O 优点和缺点
 
 ```
 
@@ -1021,6 +1062,20 @@ https://www.zhihu.com/question/29250067
 https://www.zhihu.com/question/30635966
 
 
+**了解GPIO**
+
+https://blog.csdn.net/qq_42384937/article/details/82970224
+
+https://www.eet-china.com/mp/a33048.html
+
+https://learn.microsoft.com/zh-cn/windows/uwp/devices-sensors/enable-usermode-access
+```
+
+运行时引脚复用
+
+```
+
+https://electronics.stackexchange.com/questions/97085/gpio-pcie-programing
 
 
 ### 8 Linux系统特性与机制
@@ -1575,6 +1630,10 @@ https://www.v2ex.com/t/823927
 **美国大学研究：经常使用谷歌搜索引擎的用户，对自己的智商更“谜之自信”**
 
 https://www.ithome.com/0/583/749.htm
+
+**网络博主的技术总结**
+
+https://dreamgoing.github.io/
 
 
 
