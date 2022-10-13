@@ -470,6 +470,36 @@ https://docs.nvidia.com/cuda/gpudirect-rdma/index.html
 https://lwn.net/Articles/767281/
 
 
+### 6 中断控制器总结
+
+**中断概述与硬件组成**
+
+https://chasinglulu.github.io/2019/07/07/中断「interrupt」/
+
+https://blog.csdn.net/zhoutaopower/article/details/90613988
+
+https://blog.csdn.net/mmphhh/article/details/117351998
+
+https://zhuanlan.zhihu.com/p/399239928
+
+
+**了解gpio中断级联**
+
+
+https://blog.csdn.net/weixin_43898067/article/details/117632295
+
+https://www.cnblogs.com/muzihuan/p/5223839.html
+
+https://blog.csdn.net/thisway_diy/article/details/116493986
+
+https://blog.51cto.com/u_15069485/4324959
+
+https://www.zynqnotes.com/pl-ps-interrupt-2
+
+
+
+
+
 ### 7 实时操作系统
 
 **FreeRTOS**
@@ -856,6 +886,7 @@ This feature is very important for language subroutine libraries, which are shar
 ```
 
 https://stackoverflow.com/questions/42426986/does-dlopen-create-multiple-library-instances
+
 https://stackoverflow.com/questions/1745975/load-multiple-copies-of-a-shared-library
 
 
@@ -962,12 +993,25 @@ http://www.wilson-blog.cn/post/2022/06/07/zephyr.dtree.html
 
 ```
 
+https://opengrok.net/xref/linux-6.0/drivers/phy/samsung/phy-exynos5250-sata.c
+```
+
+针对设备树中使用phandle引用的理解，其多用于硬件上的关联性
+
+即该硬件功能的实现需要另一个硬件参与，上述文件举例了在驱动中体现
+
+一个platform_driver的实现关联了一个i2c_client
+
+```
+
 https://www.cnblogs.com/downey-blog/p/10486568.html
 ```
 
 device_node转换成platform_device
 
 ```
+
+http://news.eeworld.com.cn/mp/rrgeek/a131415.jspx
 
 
 
@@ -1012,6 +1056,13 @@ https://quqi.com/516996/7600
 ```
 
 ARM Cortex Core Microcontrollers Architecture
+
+```
+
+https://www.cnblogs.com/chengqi521/p/7126758.html
+```
+
+burst传输基本概念
 
 ```
 
@@ -1064,9 +1115,22 @@ https://www.zhihu.com/question/30635966
 
 **了解GPIO**
 
+https://wiki.t-firefly.com/zh_CN/Core-3588J/usage_gpio.html
+```
+
+硬件电路细节
+(https://www.elecfans.com/d/1884243.html)
+
+上拉电阻、下拉电阻概念补充 
+(https://www.cnblogs.com/lulipro/p/7675167.html)
+
+```
+
+https://zhuanlan.zhihu.com/p/67412073
+
 https://blog.csdn.net/qq_42384937/article/details/82970224
 
-https://www.eet-china.com/mp/a33048.html
+https://www.51cto.com/article/709066.html
 
 https://learn.microsoft.com/zh-cn/windows/uwp/devices-sensors/enable-usermode-access
 ```
@@ -1074,6 +1138,8 @@ https://learn.microsoft.com/zh-cn/windows/uwp/devices-sensors/enable-usermode-ac
 运行时引脚复用
 
 ```
+
+https://www.eet-china.com/mp/a33048.html
 
 https://electronics.stackexchange.com/questions/97085/gpio-pcie-programing
 
@@ -1150,6 +1216,14 @@ https://www.cnblogs.com/AANA/p/16373834.html
 
 https://stackoverflow.com/questions/42559378/division-operation-with-64-bits-on-32-bits-embedded-system
 
+
+**关于动态链接器 ld.so**
+
+https://unix.stackexchange.com/questions/448937/is-ld-so-an-executable
+
+https://stackoverflow.com/questions/44224327/loading-the-dynamic-linker
+
+https://stackoverflow.com/questions/37026193/how-is-ld-linux-so-itself-linked-and-loaded
 
 
 
