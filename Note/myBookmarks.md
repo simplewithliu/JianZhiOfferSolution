@@ -1124,11 +1124,24 @@ https://wiki.t-firefly.com/zh_CN/Core-3588J/usage_gpio.html
 上拉电阻、下拉电阻概念补充 
 (https://www.cnblogs.com/lulipro/p/7675167.html)
 
+这个是文字的锅，跟上拉没有关系，这个电阻就是保护作用，
+IO口输出高电平的时候，这个电阻用来保护负载，防止烧毁负载，IO口输出低电平的时候，用来保护IC，防止IC烧毁
+(https://zhuanlan.zhihu.com/p/84538293)
+
 ```
 
 https://zhuanlan.zhihu.com/p/67412073
 
 https://blog.csdn.net/qq_42384937/article/details/82970224
+```
+
+引脚控制
+(https://elinux.org/images/b/b6/Pin_Control_Subsystem_Overview.pdf)
+
+(https://imgtec.eetrend.com/sites/imgtec.eetrend.com/files/201403/forum/1763-3052-di12zhangioduankou.pdf)
+(https://quqi.com/516996/7603)
+
+```
 
 https://www.51cto.com/article/709066.html
 

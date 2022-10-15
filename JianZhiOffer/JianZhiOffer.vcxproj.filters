@@ -344,5 +344,11 @@
     <ClCompile Include="II 041.滑动窗口的平均值.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 042.最近请求次数.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 043.往完全二叉树添加节点.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

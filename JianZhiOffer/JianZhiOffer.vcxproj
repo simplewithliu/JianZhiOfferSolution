@@ -126,6 +126,8 @@
     <ClCompile Include="II 031.最近最少使用缓存.cpp" />
     <ClCompile Include="II 032.有效的变位词.cpp" />
     <ClCompile Include="II 041.滑动窗口的平均值.cpp" />
+    <ClCompile Include="II 042.最近请求次数.cpp" />
+    <ClCompile Include="II 043.往完全二叉树添加节点.cpp" />
     <ClCompile Include="II 044.二叉树每层的最大值.cpp" />
     <ClCompile Include="II 045.二叉树最底层最左边的值.cpp" />
     <ClCompile Include="II 074.合并区间.cpp" />
