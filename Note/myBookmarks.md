@@ -43,6 +43,14 @@ https://snappyjack.github.io/articles/2020-01/Windows核心编程入门笔记
 
 ```
 
+
+https://www.zhihu.com/question/326205733
+```
+
+单片机芯片时序图究竟怎么看？
+
+```
+
 **Linux BSP层实现**
 
 https://www.zhihu.com/question/21381796
@@ -320,7 +328,31 @@ CPU视角上是物理地址，设备视角就是总线地址
 
 ```
 
-**IO接口**
+https://juejin.cn/post/6844904112652288014
+
+http://www.lujun.org.cn/?p=775
+```
+
+上述 2 个网址的关键点
+
+1 某个模块分配的地址比实际用到的要大出很多，
+
+原因是SOC芯片设计时为了简化地址译码电路。
+
+2 另外unic提供了lookat工具可以直接访问spi的从设备PMIC的寄存器地址，实际上是lookat驱动程序内作了转换，
+
+最终还是通过spi接口来访问的。
+
+3 关于unic的AlwaysOn（aon）的spi从设备PMIC的编址设计，其设置在了cpu本身不用的寻址空间内，也就是spi主控的保留空间。
+
+个人的理解是，虽然不能直接访问，但是可以作为单独的地址，与其他设备地址容易区分开，反映了一种层次的关系，也方便开发与调试，
+
+也是一种很不错的设计。
+
+```
+
+
+**IO接口设备电路**
 
 https://books.google.com.hk/books?id=hyVW6BNNtwQC
 ```
@@ -542,6 +574,13 @@ Hence the long pause.
 
 ```
 
+https://stackoverflow.com/questions/6345020/what-is-the-difference-between-buffer-and-cache-memory-in-linux
+```
+
+What is the difference between buffer and cache memory in Linux?
+
+```
+
 https://tldp.org/LDP/tlk/mm/memory.html
 
 
@@ -632,7 +671,7 @@ https://www.complang.tuwien.ac.at/anton/sync-metadata-updates.html
 https://ir.nctu.edu.tw/bitstream/11536/1025/1/A1996VH07500005.pdf
 ```
 
-上述 2 个链接提出，可以使用异步写元数据提高文件的IO性能
+上述 2 个网址提出，可以使用异步写元数据提高文件的IO性能
 
 (https://quqi.com/516996/7593)
 
@@ -789,6 +828,22 @@ https://segmentfault.com/a/1190000016176722
 https://jianshu.com/p/2536321c4e53
 
 https://blog.csdn.net/gzxb1995/article/details/102615262
+
+
+
+**gcc编译选项**
+
+* gcc哪些编译情况下需要用-l指定链接库路径
+  
+	https://www.zhihu.com/question/27416153
+
+* gcc -mcpu option
+  
+	https://community.arm.com/arm-community-blogs/b/tools-software-ides-blog/posts/compiler-flags-across-architectures-march-mtune-and-mcpu
+
+	https://github.com/foss-for-synopsys-dwc-arc-processors/toolchain/wiki/Understanding-GCC-mcpu-option
+
+
 
 **recursive make 与 non recursive make**
 ```
@@ -961,6 +1016,14 @@ it always uses a dedicated memory bus
 https://blogs.sw.siemens.com/hyperlynx/2017/09/06/understanding-the-ddr-memory-bus/
 
 
+https://www.zhihu.com/question/36397999/answer/67615103
+```
+
+关于内存地址和显存地址，现在的显存动不动就2G了，分配给显存的地址段是不是和8086已经不一样了？
+
+```
+
+
 ***
 
 
@@ -989,7 +1052,7 @@ https://docs.zephyrproject.org/latest/build/dts/intro.html
 http://www.wilson-blog.cn/post/2022/06/07/zephyr.dtree.html
 ```
 
-上述 2 个链接，对于phandle有详细描述
+上述 2 个网址，对于phandle有详细描述
 
 ```
 
@@ -1004,14 +1067,25 @@ https://opengrok.net/xref/linux-6.0/drivers/phy/samsung/phy-exynos5250-sata.c
 
 ```
 
+https://www.cnblogs.com/schips/p/linux_driver_dts_the_format_of_dtb.html
+
 https://www.cnblogs.com/downey-blog/p/10486568.html
 ```
 
-device_node转换成platform_device
+上述 2 个网址 device_node转换成platform_device
 
 ```
 
 http://news.eeworld.com.cn/mp/rrgeek/a131415.jspx
+
+https://www.cnblogs.com/pengdonglin137/p/5248114.html
+```
+
+基于tiny4412的Linux内核移植 -- 设备树的展开 
+
+作者: 彭东林
+
+```
 
 
 
@@ -1087,11 +1161,55 @@ https://houwanfei.github.io/2020/07/18/操作系统-10-输入输出/
 
 ```
 
+https://docs.oracle.com/cd/E19253-01/819-7057/hwovr-25/index.html
+
+
 **伪文件系统**
 
-https://unix.stackexchange.com/questions/188886/what-is-in-dev-proc-and-sys
+https://zhuanlan.zhihu.com/p/205166823
+```
+
+proc_ops接口
+
+```
 
 https://www.reddit.com/r/linuxquestions/comments/2h0v34/how_does_dev_differ_from_procdevices_in_linux/
+
+https://stackoverflow.com/questions/3245219/when-to-use-proc-and-when-dev
+
+https://unix.stackexchange.com/questions/188886/what-is-in-dev-proc-and-sys
+```
+
+上述 3 个网址 对比 /dev 与 /proc
+
+```
+
+
+https://stackoverflow.com/questions/36119547/registering-linux-device-file-operations-vs-device-attribute
+
+https://unix.stackexchange.com/questions/454863/when-to-use-dev-and-sys-for-userspace-kernel-communication
+
+https://unix.stackexchange.com/questions/715801/what-populates-the-sys-and-dev-directories
+```
+
+上述 3 个网址 对比 /dev 与 /sys
+
+```
+
+
+https://unix.stackexchange.com/questions/249631/how-is-the-data-in-proc-gathered-and-how-reliable-is-it
+
+https://unix.stackexchange.com/questions/504844/proc-in-kernel-modules
+
+https://unix.stackexchange.com/questions/4884/what-is-the-difference-between-procfs-and-sysfs
+
+
+```
+
+上述 3 个网址 对比 /proc 与 /sys
+
+```
+
 
 
 **framebuffer驱动与DRM驱动框架**
@@ -1114,6 +1232,14 @@ https://www.zhihu.com/question/30635966
 
 
 **了解GPIO**
+
+* 开漏/开集输出原理
+	https://zhuanlan.zhihu.com/p/41942876
+	http://www.aschip.com/info-detail.php?InfoId=35
+	https://blog.csdn.net/Naiva/article/details/90045788
+
+
+
 
 https://wiki.t-firefly.com/zh_CN/Core-3588J/usage_gpio.html
 ```
@@ -1222,7 +1348,7 @@ https://stackoverflow.com/questions/68063150/warning-aeabi-uldivmod-undefined-sy
 https://stackoverflow.com/questions/45099231/why-does-linux-kernel-use-do-div-instead-of
 ```
 
-上述 2 个链接提示了kernel中的实现
+上述 2 个网址，提示了kernel中的实现
 
 ```
 https://www.cnblogs.com/AANA/p/16373834.html
@@ -1237,6 +1363,13 @@ https://unix.stackexchange.com/questions/448937/is-ld-so-an-executable
 https://stackoverflow.com/questions/44224327/loading-the-dynamic-linker
 
 https://stackoverflow.com/questions/37026193/how-is-ld-linux-so-itself-linked-and-loaded
+
+
+**标准库的链接**
+
+https://senlinzhan.github.io/2017/03/20/动态库/
+
+http://c.biancheng.net/view/2382.html
 
 
 

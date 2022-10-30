@@ -350,5 +350,14 @@
     <ClCompile Include="II 043.往完全二叉树添加节点.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 033.变位词组.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 034.外星语言是否排序.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 035.最小时间差.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
