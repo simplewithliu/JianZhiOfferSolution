@@ -1210,6 +1210,114 @@ https://unix.stackexchange.com/questions/4884/what-is-the-difference-between-pro
 
 ```
 
+* udev规则与devtmpfs
+
+	https://stackoverflow.com/questions/65932709/how-are-device-nodes-created-in-embedded-linux-without-udev
+
+	https://lfs.xry111.site/zh_CN/development/chapter09/udev.html
+	```
+
+	内核通过 devtmpfs 直接创建设备文件，任何希望注册设备节点的驱动程序都要通过 devtmpfs (经过驱动程序核心) 实现。
+	
+	当一个 devtmpfs 实例被挂载到 /dev 时，设备节点将被以固定的名称、访问权限和所有者首次创建。
+
+	很快，内核会向 udevd 发送一个 uevent。根据 /etc/udev/rules.d，/usr/lib/udev/rules.d，以及 /run/udev/rules.d 目录中文件指定的规则，
+	
+	udevd 将为设备节点创建额外的符号链接，修改其访问权限，所有者，或属组，或者修改该对象的 udevd 数据库条目 (名称)。
+
+	```
+
+	https://blog.csdn.net/lickylin/article/details/101922106
+
+	https://blog.csdn.net/zdy0_2004/article/details/51686283
+	```
+
+	上述 2 个网址主要讲解了devtmpfs
+
+	```
+
+	https://blog.csdn.net/u014674293/article/details/121627305
+
+	https://github.com/leaveye/blogging/blob/master/content/writing-udev-rules.md
+	```
+
+	上述 2 个网址主要讲解 udev 的配置规则
+
+	```
+
+* udev 知识点精要
+
+	https://unix.stackexchange.com/questions/161674/are-there-alternatives-to-using-udev
+
+	https://www.binss.me/blog/sysfs-udev-and-Linux-Unified-Device-Model/
+	```
+
+	sysfs、udev和它们背后的Linux统一设备模型
+
+	```
+
+	https://github.com/microcai/gentoo-handbook/blob/master/fs.tex
+	```
+
+	由于udev启动的时候需要解析数千个rules文件，遍历数万个/sys文件，所以启动速度非常慢。大约需要数秒的事件才能完成udev的启动。
+	
+	而/dev如此重要，他必须是init启动的第一个程序。这就大大延迟了开机速度。
+
+	所以新捣鼓了一个 devtmpfs 文件系统，结合了devfs和tmpfs的文件系统。这样udev的启动可以被延迟到需要的时候，udev就算不启动，也有devtmpfs提供的设备文件。
+	
+	udev启动后也只需要修改而不是重新创建，所以加快了系统的启动速度。udev在新版本中已经要求内核必须有devtmpfs支持了。所以编译内核的时候，千万别把devtmpfs选项去掉哦~。
+
+	由于udev对开机过程来说是个非常重要的程序，所以现如今已经和systemd合并。udev是systemd的一部分了。
+
+	```
+
+* /dev 目录知识精要
+
+	https://unix.stackexchange.com/a/715810
+	```
+
+	Linux操作系统在/dev目录中创建设备节点，早期/dev目录是挂载的磁盘文件系统，用户可以手动的通过mknod创建设备节点，或者通过启动脚本预先将已知的设备节点创建好。
+
+	但是后来增加了热插拔设备的需求，这样静态的创建设备节点显然不适应热插拔的情况。
+
+	为了动态的管理设备节点，Linux引入了udev和sysfs，通过udev来处理内核上报的各类热插拔等事件，同时将/dev挂载到tmpfs文件系统上，以提高设备节点的增删效率。
+
+	但是udev同样存在开机启动的效率问题，内核又开发了devtmpfs文件系统挂载到/dev目录中，在内核中创建设备节点，udev只负责管理。
+
+	```	
+
+	https://unix.stackexchange.com/questions/454863/when-to-use-dev-and-sys-for-userspace-kernel-communication
+
+	http://velep.com/archives/334.html
+
+	https://unix.stackexchange.com/questions/18239/understanding-dev-and-its-subdirs-and-files
+
+	https://unix.stackexchange.com/questions/280390/why-is-dev-a-subdirectory-of-the-root
+	
+	https://unix.stackexchange.com/questions/552483/understanding-dev-folder-in-linux-android
+
+
+* ALSA的配置与udev (/dev/snd/*)
+
+	http://wiki.dreamrunner.org/public_html/Embedded-System/FilesystemOverview.html
+	```
+
+	The “sysinit” line tells init to run the /etc/init.d/rcS script to set up the system.
+
+	A simple etc/init.d/rcS file could assume file systems existed in the kernel and would simply mount the mount points as needed. 
+	
+	A more complicated one would test for the existence of file systems and if found, mount them; if not found, find ways to still get the system booted.
+
+	The author has taken the etc/init.d/rcS and mdev.conf files from the V2.6.22.18-OMAP3 release for a simple example. 
+	
+	The rcS script will test for the existence of file systems and mount them accordingly.
+
+	```
+	
+	https://bootlin.com/doc/legacy/audio/embedded_linux_audio.pdf
+
+	https://alsa.opensrc.org/Udev
+
 
 
 **framebuffer驱动与DRM驱动框架**
@@ -1281,6 +1389,7 @@ https://learn.microsoft.com/zh-cn/windows/uwp/devices-sensors/enable-usermode-ac
 https://www.eet-china.com/mp/a33048.html
 
 https://electronics.stackexchange.com/questions/97085/gpio-pcie-programing
+
 
 
 ### 8 Linux系统特性与机制
@@ -1521,6 +1630,28 @@ https://preshing.com/20130922/acquire-and-release-fences/
 
 ```
 
+
+### 5 互斥锁的实现
+
+
+**锁释放与线程唤醒**
+```
+
+一般的实现：当某个锁释放后，内核会通知等待锁的线程队列中的第一个线程进入到就绪态等待调用，
+
+但是是否会调用取决于调度器，也许更高的优先级线程会先被调用后抢锁。
+
+```
+
+https://stackoverflow.com/questions/4953478/how-does-mutex-or-semaphore-wake-up-processes
+
+https://stackoverflow.com/questions/42428049/will-a-thread-waiting-on-a-mutex-get-the-ownership-immediately-after-mutex-unlo
+
+https://stackoverflow.com/questions/14947191/what-is-the-pthread-mutex-lock-wake-order-with-multiple-threads-waiting
+
+https://stackoverflow.com/questions/40873469/how-does-pthread-mutex-unlock-work-and-do-threads-come-up-at-the-same-time
+
+https://www.zhihu.com/question/283318421/answer/431232214
 
 
 ***

@@ -359,5 +359,11 @@
     <ClCompile Include="II 035.最小时间差.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 046.二叉树的右侧视图.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 047.二叉树剪枝.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
