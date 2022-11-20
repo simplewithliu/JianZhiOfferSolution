@@ -81,6 +81,8 @@ https://www.eet-china.com/news/202108190817.html
 
 https://www.eet-china.com/news/202109080900.html
 
+https://zhuanlan.zhihu.com/p/22197994
+
 
 ### 2 CPU相关概念理解
 
@@ -1024,6 +1026,29 @@ https://www.zhihu.com/question/36397999/answer/67615103
 ```
 
 
+**page fault与segmentation fault**
+
+https://leetcode.com/discuss/interview-question/operating-system/125109
+
+https://stackoverflow.com/questions/6950549/segmentation-fault-vs-page-fault
+```
+
+When you say "page fault", your description is only covering "valid" page faults. 
+
+Both start with a page-fault hardware exception, and if the OS determines that the process didn't have that page mapped, 
+
+then it's invalid and delivers a SIGSEGV. 
+
+But if it is valid, the page-fault handler can queue up I/O (hard page fault) or do copy-on-write or whatever lazy memory allocation (soft page fault)
+
+```
+
+https://segmentfault.com/q/1010000000253786
+
+https://stackoverflow.com/questions/38506726/can-a-process-read-write-at-any-address-from-its-virtual-memory
+
+https://stackoverflow.com/questions/22981919/why-we-getting-segmentation-fault-instead-of-page-fault
+
 ***
 
 
@@ -1320,6 +1345,56 @@ https://unix.stackexchange.com/questions/4884/what-is-the-difference-between-pro
 
 
 
+**显卡与显存**
+
+https://www.st.com/resource/zh/application_note/an4861-lcdtft-display-controller-ltdc-on-stm32-mcus-stmicroelectronics.pdf
+```
+
+显卡最早期也就是显示适配器，只是用来显示图像的，其中的显存也基本上指帧缓存，也就是用来显示一帧图像的
+
+显存可以直接位于内存中，如上述网址中介绍，LCD控制器在内存中取帧数据到FIFO中用于VGA刷屏
+
+但一般追求高性能的设备，会将显存集成到显示卡中，这样显卡在处理数据时不会受限于系统内存的访问带来的延迟。
+（https://www.spo-comm.de/en/blog/know-how/integrated-vs-dedicated-graphics-card-features-differences-etc.）
+
+上述网址归档：(https://quqi.com/516996/7604)
+
+了解FMC：(https://www.jianshu.com/p/62d1ef042d0c)
+
+```
+
+https://blog.csdn.net/weixin_40009664/article/details/91360349
+```
+
+依照刷新率的速度，每刷一次显示数据都需要从内存中读取数据输出给LCD显示。
+
+在这个情况下帧率跟刷新率就应该一样的了，即只要改变LCD控制器所指向内存范围内的内容，就可以刷新率的速度（帧率）输出。
+
+当然这个内存关系非常密切，如果内存速度（总线频率）跟不上，而LCD配置的刷新率太快，也就是出现了内存带宽不够的现象，导致显示闪或者抖动的现象（特别是下半屏）。
+
+```
+
+https://community.nxp.com/t5/i-MX-Processors-Knowledge-Base/Memory-Management-on-i-MX6-Android/ta-p/1102563
+```
+When i.MX Android is running, the DDR memory will be used by the following components:
+
+1 Linux Kernel reserved space
+
+2 Normal zone space managed by kernel’s MM (high memory zone is also included) 
+
+3 Reserved memory for GPU drivers
+
+4 Reserved space for framebuffer BG triple buffers
+
+```
+
+https://www.quora.com/What-is-the-difference-between-Linux-framebuffer-and-GPUs-memory
+
+https://zhuanlan.zhihu.com/p/60504398
+
+https://developer.huawei.com/consumer/cn/forum/topic/0202325573372840117
+
+
 **framebuffer驱动与DRM驱动框架**
 
 https://doc.embedfire.com/linux/stm32mp1/driver/zh/latest/linux_driver/framework_drm.html
@@ -1449,6 +1524,17 @@ this value is used internally by the virtual filesystem (VFS) layer,
 which either restarts the system call or returns -EINTR to user space. 
 
 ```
+
+https://zhuanlan.zhihu.com/p/454795322
+```
+
+Linux的进程信号处理过程
+
+```
+
+https://blog.51cto.com/u_15703183/5463647
+
+
 
 **32位平台的64位除法运算**
 
@@ -1627,6 +1713,30 @@ https://preshing.com/20130922/acquire-and-release-fences/
 ```
 
 在某些场景下，不需要顺序一致性，只要保证Synchronizes-With Relationships
+
+```
+
+**as-if语义**
+
+https://stackoverflow.com/questions/15027925/is-the-execution-of-java-code-within-a-single-thread-guaranteed-to-be-sequential
+
+https://stackoverflow.com/questions/72480399/does-compiler-need-to-care-about-other-threads-during-optimizations
+
+
+**信号量与条件变量**
+
+https://dengzuoheng.github.io/cpp-concurency-pattern-3-semaphore
+
+https://stackoverflow.com/questions/3710017/how-to-write-your-own-condition-variable-using-atomic-primitives
+
+https://www.reploop.org/blog/2020/02/introduction-to-thread-synchronization.html
+```
+
+1 互斥锁只能被加锁的线程解锁，但是信号量可以被任意线程释放。如果你仅仅需要一个锁机制的话，这会导致困惑和微妙的问题；
+
+2 信号量是用来编排线程的信号机制，但是互斥锁是保护共享资源的锁机制。
+
+你不应改使用信号量来保护共享资源，也不应该将互斥锁用于信号机制：这样你的意图对你和你的代码读者会更明确。
 
 ```
 
@@ -1861,6 +1971,74 @@ https://www.zhihu.com/question/439348190
 https://blog.csdn.net/lijian2017/article/details/104836447
 
 https://wenfh2020.com/2017/10/28/cpp-log-format/
+
+
+### 5 异常处理机制
+
+
+**什么是异常安全**
+
+https://stackoverflow.com/questions/9665433/which-kind-of-code-is-considered-exception-safe
+```
+
+Exception Safety is not about handling exceptions, 
+
+it is about guaranteeing a number of properties about the program even in the presence of exceptions.
+
+```
+
+https://stackoverflow.com/questions/1853243/do-you-really-write-exception-safe-code
+```
+
+Writing exception-safe code in C++ is not so much about using lots of try { } catch { } blocks. 
+
+It's about documenting what kind of guarantees your code provides.
+
+```
+
+https://stackoverflow.com/questions/65271783/exception-safety-strong-guarantee-vs-basic-guarantee
+
+https://groups.google.com/g/pongba/c/MmvVdvfjeGM
+
+https://learn.microsoft.com/zh-cn/cpp/cpp/how-to-design-for-exception-safety?view=msvc-170
+```
+
+在 try 语句和 throw 语句之间调用的函数无需了解与所引发异常有关的任何信息。 
+
+但是，这些函数必须进行设计，以便它们在异常可能从下向上传播时“意外地”超出范围，而这样做不会留下部分创建的对象、泄漏的内存或处于不稳定状态的数据结构。
+
+```
+
+https://www.zhihu.com/question/485379072/answer/2117378154
+```
+
+异常安全不是说出了异常之后catch住这就叫安全了，它还需要保证出现异常时：
+
+1 申请的资源被正确地释放了；
+
+2 执行到一半的逻辑能够完全回滚，或者至少回滚到一个安全点，不对程序的后续执行产生副作用；
+
+```
+
+
+**何时需要异常处理**
+
+https://www.zhihu.com/question/548087328/answer/2659324777
+
+https://www.zhihu.com/question/418933312/answer/1448939381
+
+https://www.zhihu.com/question/423653914/answer/1502182187
+
+
+**异常与错误码**
+
+https://zhuanlan.zhihu.com/p/142296984
+
+https://sg-first.gitbooks.io/frankhb-talk-c-c-/content/cpp-exceptions.html
+
+https://techsingular.net/2012/11/15/programming-in-lua（二）－-异常与错误码/
+
+
 
 
 ***

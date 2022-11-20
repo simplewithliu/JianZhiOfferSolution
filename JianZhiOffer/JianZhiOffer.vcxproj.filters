@@ -365,5 +365,11 @@
     <ClCompile Include="II 047.二叉树剪枝.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 048.序列化与反序列化二叉树.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 049.从根节点到叶节点的路径数字之和.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
