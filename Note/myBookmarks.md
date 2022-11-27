@@ -372,6 +372,10 @@ https://blog.csdn.net/weixin_43715360/article/details/120636553
 
 ### 5 DMA
 
+**认识DMA**
+
+https://hackaday.com/2021/03/31/direct-memory-access-data-transfer-without-micro-management/
+
 **first-party DMA 总线主控**
 
 https://stackoverflow.com/questions/57009233/what-are-the-most-common-busmaster-operations-and-how-are-they-better-than-regu
@@ -1345,23 +1349,29 @@ https://unix.stackexchange.com/questions/4884/what-is-the-difference-between-pro
 
 
 
-**显卡与显存**
+**显卡与显存** 
+
 
 https://www.st.com/resource/zh/application_note/an4861-lcdtft-display-controller-ltdc-on-stm32-mcus-stmicroelectronics.pdf
+
+https://www.st.com/resource/en/application_note/an4861-lcdtft-display-controller-ltdc-on-stm32-mcus-stmicroelectronics.pdf
 ```
 
 显卡最早期也就是显示适配器，只是用来显示图像的，其中的显存也基本上指帧缓存，也就是用来显示一帧图像的
 
-显存可以直接位于内存中，如上述网址中介绍，LCD控制器在内存中取帧数据到FIFO中用于VGA刷屏
+显存可以直接位于系统内存的固定区域中，如上述网址中介绍，LCD控制器在内存中取帧数据到FIFO中用于VGA刷屏
 
-但一般追求高性能的设备，会将显存集成到显示卡中，这样显卡在处理数据时不会受限于系统内存的访问带来的延迟。
+但一般追求高性能的设备，会将显存集成到显示卡中，这样显卡在处理数据时不会受限于系统内存的访问带来的延迟
 （https://www.spo-comm.de/en/blog/know-how/integrated-vs-dedicated-graphics-card-features-differences-etc.）
 
-上述网址归档：(https://quqi.com/516996/7604)
 
-了解FMC：(https://www.jianshu.com/p/62d1ef042d0c)
+
+上述网址归档：(https://quqi.com/516996/7604) (https://quqi.com/516996/7607)
+
+了解FMC：(https://www.jianshu.com/p/62d1ef042d0c) (https://quqi.com/516996/7610)
 
 ```
+
 
 https://blog.csdn.net/weixin_40009664/article/details/91360349
 ```
@@ -1373,6 +1383,85 @@ https://blog.csdn.net/weixin_40009664/article/details/91360349
 当然这个内存关系非常密切，如果内存速度（总线频率）跟不上，而LCD配置的刷新率太快，也就是出现了内存带宽不够的现象，导致显示闪或者抖动的现象（特别是下半屏）。
 
 ```
+
+
+https://blog.csdn.net/huan447882949/article/details/80523108
+>
+> 很多人可能都会问驱动LCD的数据应该放在什么地方，是怎么被搬运过去的。
+>
+> 其实很简单，S3C2410的LCD控制模块自带了DMA控制器，我们只要在SDRAM里面开一块空间，然后设定要DMA的起始地址(LCDSADDR1寄存器)和结束地址LCDSADDR2）就OK了。
+>
+> 实际上，应该说大部分的带有LCD控制器的MCU，都是采用类似的方式
+>
+```
+
+对于soc片上LCD控制器为了保证刷屏性能，一般都会配置内置DMA，负责与RAM交换数据
+
+```
+
+
+https://community.nxp.com/t5/LPC-Microcontrollers/lcd-framebuffer-bus-techinal-question/m-p/515785
+```
+
+性能优化方案讨论
+
+```
+
+
+https://d1.amobbs.com/bbs_upload782111/files_17/ourdev_468849.doc  
+
+> 在这个系统中，SDRAM Controller处的冲突是影响整个系统性能的关键。
+>
+> 以SDRAM时钟频率为100MHz计算，16bit位宽的SDRAM其数据总带宽为200MByte/s，640*480*2Bytes*60Hz的TFT LCD要占用36MByte/s左右的带宽，
+>
+> 这对于还要处理其他任务的处理器来说是很大的影响。
+>
+> 解决的办法是另外增加一块SDRAM，专门用作Frame buffer，这样就可以有效减少对系统总线带宽的占用。
+```
+
+这里介绍使用外部RAM的LCD控制器
+
+增加一块独立的SDRAM应该理解为LCD控制器增加内存控制器，单独访问SDRAM，减少与系统DRAM的争用。
+
+归档：(https://quqi.com/516996/7605)
+
+```
+
+
+https://www.ti.com/lit/an/spma082/spma082.pdf
+```
+
+As the display resolution increases, the more frame buffer is needed. 
+
+A 480 x 272 display with 16-bit color depth would require 261KB of frame buffer. 
+
+As expected, the TM4C129 internal SRAM is not sufficient in this scenario.
+
+In this case, an external memory dedicated for the frame buffer and accessed through the EPI interface is required.
+
+归档：(https://quqi.com/516996/7608)
+
+```
+
+https://www.cnblogs.com/locean/p/5110371.html
+
+https://www.intechopen.com/chapters/80636
+```
+
+上述 2 个网址 LCD控制器设计的内容介绍
+
+```
+
+
+https://www.isy.liu.se/en/edu/kurs/TSTE12/laboration/TSTE12_Lab2_200912.pdf
+
+https://www.edaboard.com/threads/vga-controller-and-accessing-external-sram.266866/
+```
+
+上述 2 个网址介绍了使用外部RAM的VGA控制器
+
+```
+
 
 https://community.nxp.com/t5/i-MX-Processors-Knowledge-Base/Memory-Management-on-i-MX6-Android/ta-p/1102563
 ```
@@ -1388,11 +1477,30 @@ When i.MX Android is running, the DDR memory will be used by the following compo
 
 ```
 
+
 https://www.quora.com/What-is-the-difference-between-Linux-framebuffer-and-GPUs-memory
 
 https://zhuanlan.zhihu.com/p/60504398
 
 https://developer.huawei.com/consumer/cn/forum/topic/0202325573372840117
+
+
+
+
+**显示器显示原理**
+
+https://www.ifanr.com/1422341
+```
+
+了解CRT
+
+```
+
+https://electronics.stackexchange.com/questions/523972/are-all-pixels-addressed-simultaneously-in-one-frame
+
+https://superuser.com/questions/1193999/do-monitors-not-atomically-instantaneously-refresh-their-pixels
+
+
 
 
 **framebuffer驱动与DRM驱动框架**

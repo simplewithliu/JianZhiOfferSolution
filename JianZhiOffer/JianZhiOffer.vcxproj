@@ -137,6 +137,7 @@
     <ClCompile Include="II 047.二叉树剪枝.cpp" />
     <ClCompile Include="II 048.序列化与反序列化二叉树.cpp" />
     <ClCompile Include="II 049.从根节点到叶节点的路径数字之和.cpp" />
+    <ClCompile Include="II 050.向下的路径节点之和.cpp" />
     <ClCompile Include="II 074.合并区间.cpp" />
     <ClCompile Include="II 075.数组相对排序.cpp" />
     <ClCompile Include="main.cpp" />

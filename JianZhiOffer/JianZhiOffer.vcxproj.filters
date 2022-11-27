@@ -371,5 +371,8 @@
     <ClCompile Include="II 049.从根节点到叶节点的路径数字之和.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 050.向下的路径节点之和.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
