@@ -374,5 +374,11 @@
     <ClCompile Include="II 050.向下的路径节点之和.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 051.节点之和最大的路径.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 052.展平二叉搜索树.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

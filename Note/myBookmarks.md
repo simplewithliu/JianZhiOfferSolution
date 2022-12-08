@@ -330,6 +330,49 @@ CPU视角上是物理地址，设备视角就是总线地址
 
 ```
 
+https://blog.csdn.net/u014379540/article/details/52502470
+```
+
+大部分程序操作都是处理器作为主设备，根据指令来发出地址，读写数据，这时总线地址 == 物理地址。
+
+有一种情况下不是处理器做主设备，DMA controller操作RAM是不需要经过处理器的，DMA controller是主设备，但是因为DMA controller也是挂接在系统总线上，也就是处理器的地址空间中。
+
+所以这时DMA controller发出的地址也是物理地址。
+
+有一种特殊情况下，总线地址与物理地址不同，就是PCI总线。
+
+
+```
+
+https://zhuanlan.zhihu.com/p/463199854
+```
+
+外设（PCIe EP）通过DMA访问内存时，发出的地址就是DMA地址。
+
+结合上面的描述我们可以知道，当设备使用了IOMMU/SMMU时，DMA地址是IO虚拟地址IOVA。
+
+当未使用IOMMU/SMMU时，DMA地址是物理地址PA。
+
+```
+
+http://www.wowotech.net/memory_management/DMA-Mapping-api.html
+
+https://adtxl.com/index.php/archives/315.html
+
+http://bbs.chinaunix.net/thread-2072818-1-1.html
+```
+
+context entry中有一个指针指向I/O页表
+
+当设备发起DMA操作时，IOMMU会根据该页表把设备的虚拟DMA地址转换成该设备可以访问内存区域的地址。
+
+所以只要为设备建一张I/O页表，就可以使设备只能访问规定的内存区域了。
+
+当然，也可以把该页表当成跳板，让只能寻址32bit地址空间的设备访问到64bit地址空间中去。
+
+```
+
+
 https://juejin.cn/post/6844904112652288014
 
 http://www.lujun.org.cn/?p=775
@@ -379,6 +422,10 @@ https://hackaday.com/2021/03/31/direct-memory-access-data-transfer-without-micro
 **first-party DMA 总线主控**
 
 https://stackoverflow.com/questions/57009233/what-are-the-most-common-busmaster-operations-and-how-are-they-better-than-regu
+
+<div align=center>
+	<img src="images/third-party and first-party DMA.jpg" />
+</div>
 
 https://stackoverflow.com/questions/48659470/why-driver-need-to-map-dma-buffers-when-dma-engine-is-in-device
 
@@ -748,6 +795,8 @@ https://www.cnblogs.com/wangkeqin/p/12382639.html
 
 
 
+
+
 ### 3 Linux系统问题分析与调试
 
 
@@ -797,7 +846,28 @@ https://blog.csdn.net/blade2001/article/details/46563805
 
 
 
+**Linux内核符号表**
 
+https://mairacanal.github.io/kernel-symbol-table-compilation-more/
+
+https://www.linux.com/training-tutorials/kernel-newbie-corner-kernel-symbols-whats-available-your-module-what-isnt/
+
+http://kerneltravel.net/blog/2020/syscall_ljr_1/
+
+https://zhuanlan.zhihu.com/p/462914789
+
+https://docs.kernel.org/kbuild/modules.html
+```
+
+During a kernel build, a file named Module.symvers will be generated. 
+
+Module.symvers contains all exported symbols from the kernel and compiled modules. 
+
+For each symbol, the corresponding CRC value is also stored.
+
+个人理解：最终会被一起编译到内核符号表
+
+```
 
 
 ### 4 Linux系统调用知识点
@@ -809,6 +879,22 @@ http://blog.chinaunix.net/uid-28362602-id-3424404.html
 https://zhuanlan.zhihu.com/p/55264897
 
 https://gityuan.com/2016/05/21/syscall
+
+https://arthurchiao.art/blog/system-call-definitive-guide-zh/
+```
+
+4.2.3 内核空间：syscall入口
+
+```
+
+https://man7.org/linux/man-pages/man2/syscall.2.html
+
+https://man7.org/linux/man-pages/man2/_syscall.2.html
+```
+
+上述 2 个网址是调研系统调用返回错误码形式时查的man手册
+
+```
 
 
 **流程分析**
@@ -1053,7 +1139,43 @@ https://stackoverflow.com/questions/38506726/can-a-process-read-write-at-any-add
 
 https://stackoverflow.com/questions/22981919/why-we-getting-segmentation-fault-instead-of-page-fault
 
-***
+
+
+**kernel内存分配机制**
+
+http://aandds.com/blog/linux-physical-memory-mgmt.html
+```
+
+内核把“物理页”作为内存管理的基本单位。
+
+尽管处理器的最小可寻址单位通常为字（甚至字节），但是内存管理单元（MMU，管理内存并把虚拟地址转换为物理地址的硬件）通常以页为单位进行处理。
+
+正因为如此，MMU 以页（page）大小为单位来管理系统中的页表（这也是页表名的来由）。
+
+```
+
+https://blog.csdn.net/chijiandao3197/article/details/100930630
+```
+
+根据上面分析，graphic通过get_free_pages()向kernel的buddy系统申请连续内存，经过一段时间，buddy系统产生了大量碎片
+
+graphic无法获取连续的物理内存，因此通过vmalloc想从buddy系统申请不连续的内存
+
+不幸的是vmalloc的虚拟地址空间耗尽，尽管这是还有大量物理内存，vmalloc申请失败
+
+```
+
+https://stackoverflow.com/questions/27985428/map-several-pages-as-large-region-into-process-memory-space
+
+https://biscuitos.github.io/blog/MMU-Linux4x-VMALLOC/
+
+https://www.cnblogs.com/byeyear/p/3215287.html
+```
+
+kmap和vmalloc在应用上的最大区别在于，kmap往往应用于“空间分配”与“地址映射”可以分开的场合
+
+```
+
 
 
 ### 7 Linux驱动模型
@@ -1676,6 +1798,8 @@ http://c.biancheng.net/view/2382.html
 
 
 
+
+
 ## 并发问题
 
 
@@ -2079,6 +2203,11 @@ https://www.zhihu.com/question/439348190
 https://blog.csdn.net/lijian2017/article/details/104836447
 
 https://wenfh2020.com/2017/10/28/cpp-log-format/
+
+
+**const &绑定函数返回的临时值**
+
+https://stackoverflow.com/questions/37649236/why-not-always-assign-return-values-to-const-reference
 
 
 ### 5 异常处理机制
