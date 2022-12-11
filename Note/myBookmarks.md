@@ -373,6 +373,45 @@ context entry中有一个指针指向I/O页表
 ```
 
 
+https://quqi.com/516996/7612
+
+https://events.static.linuxfound.org/sites/events/files/slides/main.pdf
+```
+
+上述 2 个网址介绍了 DMA API and IOMMU API
+
+```
+
+* IOMMU 与 DMA 相关联的图片
+
+
+	<div align=center>
+	<img src="images/iommu and dma 1.png" />
+	</div>
+	<div align=center><b>图 1</b></div>
+
+
+	
+	<div align=center>
+	<img src="images/iommu and dma 2.png" />
+	</div>
+	<div align=center><b>图 2</b></div>
+
+	
+	<div align=center>
+	<img src="images/iommu and dma 3.png" />
+	</div>
+	<div align=center><b>图 3 来源：</b>https://quqi.com/516996/7613</div>
+
+
+
+	<div align=center>
+	<img src="images/iommu and dma 4.png" />
+	</div>
+	<div align=center><b>图 4</b></div>
+	
+
+
 https://juejin.cn/post/6844904112652288014
 
 http://www.lujun.org.cn/?p=775
@@ -1176,6 +1215,40 @@ kmap和vmalloc在应用上的最大区别在于，kmap往往应用于“空间�
 
 ```
 
+* 伙伴系统
+	```
+
+	伙伴系统存在MAX_ORDER限制，默认最大支持分配4MB连续内存。
+	
+	在32位上内核在固定映射区一次可访问就是4MB，而且32位的内核虚拟地址也很有限，所以伙伴系统默认设置最大4MB是比较合理的。
+
+	到了64位这个数值可以相应增加，但是大部分Linux设备都是嵌入式设备或普通个人计算机，内存一般不会太大，系统长时间运行后，伙伴系统的碎片问题会比较严重，
+	所以分配连续的4MB也不一定能成功，另外考虑可移植性，一般不需要修改这个值。
+
+	但是如果有特殊用途的设备，比如在64位的服务器系统上，一般带有大量内存，可以适当增加这个值。可参考 《用“芯”探核》 中伙伴系统的介绍
+
+	How to request continuous physical memory in Linux ? 介绍了一种伙伴系统的碎片问题。
+	(https://feichashao.com/continuous_physical_memory/)
+
+	```
+
+	https://www.byteisland.com/linux-内核-buddy-系统/
+
+	https://normal.zone/blog/2020-12-11-linux-1gb-thp-1/
+
+	https://lwn.net/Articles/865611/
+
+	https://zhuanlan.zhihu.com/p/220068494
+
+* CMA
+	https://xie.infoq.cn/article/02bdff58ff0c3e34ca7fe8eb5
+
+	https://liujunming.top/2019/08/31/CMA/
+
+	https://blog.csdn.net/Rong_Toa/article/details/109558234
+
+	https://community.nxp.com/t5/i-MX-Processors-Knowledge-Base/How-to-get-rid-of-CMA/ta-p/1123287
+
 
 
 ### 7 Linux驱动模型
@@ -1797,7 +1870,7 @@ https://senlinzhan.github.io/2017/03/20/动态库/
 http://c.biancheng.net/view/2382.html
 
 
-
+***
 
 
 ## 并发问题
