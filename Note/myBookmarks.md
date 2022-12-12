@@ -1240,14 +1240,44 @@ kmap和vmalloc在应用上的最大区别在于，kmap往往应用于“空间�
 
 	https://zhuanlan.zhihu.com/p/220068494
 
+
 * CMA
+
 	https://xie.infoq.cn/article/02bdff58ff0c3e34ca7fe8eb5
+	```
+
+	(https://lwn.net/Articles/486301/)
+
+	(https://lwn.net/Articles/753167/)
+
+	```
+	
+	https://lwn.net/Articles/447405/
+	```
+
+	Any device which can only do DMA to a physically contiguous area requires (in the absence of an I/O memory management unit) a physically contiguous buffer to work with.
+
+	This requirement is often a sign of relatively low-end (stupid) hardware; one could hope that such hardware would become scarce over time.
+
+	What we are seeing, though, are devices which have managed to gain capabilities while retaining the contiguous DMA requirement.
+
+	For example, there are video capture engines which can grab full high-definition data, perform a number of transformations on it, 
+	
+	but still need a contiguous buffer for the result. 
+
+	关于 分散/聚集 DMA：
+	(https://xie.infoq.cn/article/b3b83c6e5d54ca306320aa919)
+
+	```
 
 	https://liujunming.top/2019/08/31/CMA/
+
+	http://www.wowotech.net/memory_management/cma.html
 
 	https://blog.csdn.net/Rong_Toa/article/details/109558234
 
 	https://community.nxp.com/t5/i-MX-Processors-Knowledge-Base/How-to-get-rid-of-CMA/ta-p/1123287
+
 
 
 
@@ -2132,6 +2162,8 @@ https://stackoverflow.com/questions/19868138/what-is-the-difference-between-syst
 https://wrlus.com/android-security/system-apps-and-cve-2020-0391/
 
 https://wrlus.com/android-security/android-app-protect/
+
+https://pierrchen.blogspot.com/2016/09/an-walk-through-of-android-uidgid-based.html
 
 https://balalals.cn/archives/android中是系统应用和非系统应用区别
 ```

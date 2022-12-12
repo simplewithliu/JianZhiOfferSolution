@@ -380,5 +380,8 @@
     <ClCompile Include="II 052.展平二叉搜索树.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 053.二叉搜索树中的中序后继.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
