@@ -141,6 +141,10 @@
     <ClCompile Include="II 051.节点之和最大的路径.cpp" />
     <ClCompile Include="II 052.展平二叉搜索树.cpp" />
     <ClCompile Include="II 053.二叉搜索树中的中序后继.cpp" />
+    <ClCompile Include="II 054.所有大于等于节点的值之和.cpp" />
+    <ClCompile Include="II 055.二叉搜索树迭代器.cpp" />
+    <ClCompile Include="II 056.二叉搜索树中两个节点之和.cpp" />
+    <ClCompile Include="II 057.值和下标之差都在给定的范围内.cpp" />
     <ClCompile Include="II 074.合并区间.cpp" />
     <ClCompile Include="II 075.数组相对排序.cpp" />
     <ClCompile Include="main.cpp" />

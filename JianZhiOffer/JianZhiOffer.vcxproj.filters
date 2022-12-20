@@ -383,5 +383,17 @@
     <ClCompile Include="II 053.二叉搜索树中的中序后继.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 054.所有大于等于节点的值之和.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 055.二叉搜索树迭代器.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 056.二叉搜索树中两个节点之和.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 057.值和下标之差都在给定的范围内.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

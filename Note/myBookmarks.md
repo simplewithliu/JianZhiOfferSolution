@@ -574,6 +574,15 @@ https://stackoverflow.com/questions/28068525/explaination-of-arm-especifically-m
 
 ```
 
+
+http://archive.lwn.net:8080/linux-kernel/75d578c2-a98c-d1ef-1633-6dc5dc3b0913@ti.com/
+```
+
+PCI Controller 中提供 DMA，使用 DMAEngine API 的的讨论
+
+```
+
+
 https://books.google.com.hk/books?id=QFe5BQAAQBAJ
 ```
 
@@ -769,7 +778,13 @@ https://ir.nctu.edu.tw/bitstream/11536/1025/1/A1996VH07500005.pdf
 
 ```
 
+**磁盘读写**
 
+https://stackoverflow.com/questions/51006070/file-system-block-size-vs-disk-block-size
+
+https://superuser.com/questions/976271/ssd-block-sizing
+
+https://www.zhihu.com/question/26028619
 
 
 
@@ -843,6 +858,10 @@ https://www.cnblogs.com/wangkeqin/p/12382639.html
 
 https://documentation.suse.com/zh-cn/sled/15-SP2/single-html/SLED-tuning/index.html
 
+https://www.opsdash.com/blog/cpu-usage-linux.html
+
+https://haydenjames.io/what-is-iowait-and-linux-performance/
+
 
 **堆栈打印**
 
@@ -907,6 +926,11 @@ For each symbol, the corresponding CRC value is also stored.
 个人理解：最终会被一起编译到内核符号表
 
 ```
+
+
+
+
+
 
 
 ### 4 Linux系统调用知识点
@@ -2104,7 +2128,7 @@ https://www.zhihu.com/question/283318421/answer/431232214
 ## Android
 
 
-### 1  存储知识
+### 1 存储知识
 
 
 **storage/emulated/0**
@@ -2172,6 +2196,11 @@ https://balalals.cn/archives/android中是系统应用和非系统应用区别
 
 ```
 
+**intent机制**
+
+https://stackoverflow.com/questions/54538924/does-setting-the-package-name-make-an-implicit-intent-explicit
+
+
 ### 6 调试方法
 
 **kernel log**
@@ -2202,6 +2231,11 @@ https://www.jianshu.com/p/f2713f371589
 https://issuetracker.google.com/issues/236790598
 
 
+**性能问题log分析**
+
+https://stackoverflow.com/questions/57132218/openglrenderer-davey
+
+
 ### 7 JNI使用总结
 
 https://blog.csdn.net/qq_20404903/article/details/80662352
@@ -2227,6 +2261,9 @@ https://www.ibm.com/docs/zh/sdk-java-technology/8?topic=collector-overview-jni-o
 	https://stackoverflow.com/questions/10409125/android-read-text-file-from-asset-folder-using-c-ndk
 
 	https://stackoverflow.com/questions/4779955/android-assets-c-jni/
+
+
+
 
 
 ***
@@ -2453,6 +2490,17 @@ https://stackoverflow.com/questions/48055414/cmake-copy-header-file-to-output-di
 https://stackoverflow.com/questions/26037954/cmake-target-link-libraries-interface-dependencies
 
 https://cmake.org/pipermail/cmake/2016-May/063400.html
+
+https://stackoverflow.com/questions/60605281/do-cmake-namespaces-actually-mean-anything
+```
+
+使用预置库
+
+Using target names containing :: in a target_link_libraries(…) call 
+
+will ensure that CMake resolves this only to so-called IMPORTED targets that are found via find_package(…). 
+
+```
 
 ### 4  make install 命令
 
