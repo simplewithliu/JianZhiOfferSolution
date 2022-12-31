@@ -1770,6 +1770,53 @@ https://www.zhihu.com/question/29250067
 
 https://www.zhihu.com/question/30635966
 
+* plane
+
+	https://blog.csdn.net/qq_30599505/article/details/126206374
+
+	https://embear.ch/blog/drm-framebuffer
+
+	https://blog.csdn.net/qq_38350702/article/details/114265983
+	```
+
+	上述 3 个网址介绍了DRM框架中plane的概念。
+
+	plane不是硬件模块，而是包含了从CRTC获取了buffer的内存对象。
+
+	持有framebuffer的plane称为primary plane。
+	
+	每个CRTC必须有一个primary plane，因为它是CRTC视频模式数据的来源，比如像素大小、像素格式、刷新率等。
+
+	如果display controller支持硬件cursor overlays，则CRTC可能还具有与其关联的cursor plane。
+
+	```
+
+* CRTC
+
+	https://blog.csdn.net/weixin_43824344/article/details/118313846
+	```
+
+	阴极管的上下文，简单来说是显示输出的上下文，对显示buffer进行扫描，并产生时序信号的硬件模块，通常指Display Controller，
+
+	CRTC对内（输入）连接framebuffer的地址，对外（输出）连接Encoder，
+	
+	扫描了framebuffer的内容之后，再叠加planes的内容，最后传递给Encoder。
+
+	```
+
+	https://blog.csdn.net/weixin_29014939/article/details/117013522
+	```
+
+	显卡主要是由三类设备组成：
+
+	Processing logic 指的是神秘的 GPU 模块，
+	
+	Display controller 指的是 LCDC 控制器，
+	
+	Hardware video acceleration 指的就是具体的显示接口 HDMI、eDP、...
+
+	```
+
 
 **了解GPIO**
 
@@ -2593,115 +2640,3 @@ Steve的笔记本/技术追求
 
 ***
 
-***
-
-
-
-
-
-
-
-
-
-
-## 其他 Archived
-
-
-
-**1 Linux系统调度**
-
-jianshu.com/p/d1de1f293e3b
-
-**2 CPU指令周期、CPU周期与时钟周期**
-
-zhuanlan.zhihu.com/p/90829922
-
-**3 初始化VS**
-
-开始 -> 所有程序 -> Microsoft Visual Studio -> Visual Studio Tools -> VS X86本机工具命令提示
-
-在弹出的命令行对话框中，cd .. ，退到上一级目录，然后cd Common7/IDE，进入目录后输入：devenv.exe/resetuserdata
-
-**4 关于BMP文件与图像存储**
-
-blog.csdn.net/qq_31094099/article/details/80286201
-
-cnblogs.com/dasusu/p/9789389.html
-
-**5 关系型数据库与文件系统**
-
-softwareengineering.stackexchange.com/questions/190482
-
-**6 类模板友元**
-
-cnblogs.com/sarahzhang0104/p/5769994.html
-
-**7 UDP丢包原因总结**
-
-jianshu.com/p/7f4700a5e970
-
-### Java部分
-
-**1 Java中的volatile**
-
-cnblogs.com/dolphin0520/p/3920373.html
-
-blog.csdn.net/Hellowenpan/article/details/103202898
-
-**2 Java子线程中的异常**
-
-cnblogs.com/charlesblc/p/6175617.html
-
-zhuanlan.zhihu.com/p/136571068
-
-blog.csdn.net/kincym/article/details/78341100
-
-**3 哈希表模质数**
-
-blog.csdn.net/largecub233/article/details/71210210
-
-**4 Java类的加载**
-
-cnblogs.com/jimxz/p/3974939.html
-
-blog.csdn.net/weixin_36344031/article/details/82533800
-
-iteye.com/blog/nickfover-2145212
-
-infoworld.com/article/3040564
-
-**5 泛型类中的反射**
-
-zhuanlan.zhihu.com/p/69132741
-
-blogjava.net/calvin/archive/2009/12/10/43830.html
-
-stackoverflow.com/questions/8655921
-
-### Android部分
-
-**1 使用Intent传递对象**
-
-blog.csdn.net/weixin_37418246/article/details/80739882
-
-**2 ContentProvider启动流程分析**
-
-jianshu.com/p/b23e47cbe581
-
-blog.csdn.net/itachi85/article/details/72618688
-
-jianshu.com/p/74014e1b18b0
-
-**3 Android中PagerSlidingTabStrib自定义导航栏**
-
-jianshu.com/p/ccb4ced85165
-
-**4 BroadcastReceiver广播接收者**
-
-blog.csdn.net/lfdfhl/article/details/39190069
-
-**5 Android targetSdkVersion原理**
-
-race604.com/android-targetsdkversion/
-
-***

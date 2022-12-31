@@ -105,6 +105,7 @@
     <ClCompile Include="II 002.二进制加法.cpp" />
     <ClCompile Include="II 001.整数除法.cpp" />
     <ClCompile Include="II 003.前n个数字二进制中1的个数.cpp" />
+    <ClCompile Include="II 005.单词长度的最大乘积.cpp" />
     <ClCompile Include="II 007.数组中和为0的三个数.cpp" />
     <ClCompile Include="II 008.和大于等于target的最短子数组.cpp" />
     <ClCompile Include="II 009.乘积小于K的子数组.cpp" />
@@ -145,6 +146,7 @@
     <ClCompile Include="II 055.二叉搜索树迭代器.cpp" />
     <ClCompile Include="II 056.二叉搜索树中两个节点之和.cpp" />
     <ClCompile Include="II 057.值和下标之差都在给定的范围内.cpp" />
+    <ClCompile Include="II 058.日程表.cpp" />
     <ClCompile Include="II 074.合并区间.cpp" />
     <ClCompile Include="II 075.数组相对排序.cpp" />
     <ClCompile Include="main.cpp" />

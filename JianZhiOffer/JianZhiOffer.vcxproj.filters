@@ -395,5 +395,11 @@
     <ClCompile Include="II 057.值和下标之差都在给定的范围内.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 005.单词长度的最大乘积.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 058.日程表.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
