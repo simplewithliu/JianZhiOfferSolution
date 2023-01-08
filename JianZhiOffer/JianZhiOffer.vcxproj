@@ -106,6 +106,7 @@
     <ClCompile Include="II 001.整数除法.cpp" />
     <ClCompile Include="II 003.前n个数字二进制中1的个数.cpp" />
     <ClCompile Include="II 005.单词长度的最大乘积.cpp" />
+    <ClCompile Include="II 006.排序数组中两个数字之和.cpp" />
     <ClCompile Include="II 007.数组中和为0的三个数.cpp" />
     <ClCompile Include="II 008.和大于等于target的最短子数组.cpp" />
     <ClCompile Include="II 009.乘积小于K的子数组.cpp" />
@@ -149,6 +150,9 @@
     <ClCompile Include="II 058.日程表.cpp" />
     <ClCompile Include="II 074.合并区间.cpp" />
     <ClCompile Include="II 075.数组相对排序.cpp" />
+    <ClCompile Include="II 076.数组中的第k大的数字.cpp" />
+    <ClCompile Include="II 077.链表排序.cpp" />
+    <ClCompile Include="II 078.合并排序链表.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="65.不用加减乘除做加法.cpp" />
     <ClCompile Include="49.丑数.cpp" />

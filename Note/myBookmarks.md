@@ -603,6 +603,30 @@ https://docs.nvidia.com/cuda/gpudirect-rdma/index.html
 https://lwn.net/Articles/767281/
 
 
+**DMA mapping API区别于DMA engine API**
+
+https://stackoverflow.com/questions/13720474/dma-engine-api-vs-dma-api
+```
+
+@sawdust comment
+
+```
+
+https://stackoverflow.com/questions/35219926/how-to-do-a-single-dma-transaction-in-kernel
+
+https://elinux.org/images/3/32/Pinchart--mastering_the_dma_and_iommu_apis.pdf
+```
+
+DMA (mapping) != DMA (engine)
+
+The topic we will focus on is how to manage system memory used for DMA.
+
+This presentation will not discuss the DMA engine API, 
+
+nor will it address how to control DMA operations from a device point of view.
+
+```
+
 ### 6 中断控制器总结
 
 **中断概述与硬件组成**
@@ -671,7 +695,6 @@ Of course, a filesystem also has to preserve write order, so when it starts writ
 Hence the long pause.
 
 (https://patents.justia.com/patent/11068414)
-
 
 ```
 
@@ -1749,7 +1772,7 @@ https://electronics.stackexchange.com/questions/523972/are-all-pixels-addressed-
 
 https://superuser.com/questions/1193999/do-monitors-not-atomically-instantaneously-refresh-their-pixels
 
-
+https://focuslcds.com/mipi-display-serial-interface-dsi/
 
 
 **framebuffer驱动与DRM驱动框架**
@@ -2639,4 +2662,5 @@ Steve的笔记本/技术追求
 <div align=center>图 1 XXX</div>
 
 ***
+
 

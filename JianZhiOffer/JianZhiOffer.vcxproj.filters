@@ -401,5 +401,17 @@
     <ClCompile Include="II 058.日程表.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 006.排序数组中两个数字之和.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 076.数组中的第k大的数字.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 077.链表排序.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 078.合并排序链表.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
