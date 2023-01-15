@@ -153,6 +153,7 @@
     <ClCompile Include="II 076.数组中的第k大的数字.cpp" />
     <ClCompile Include="II 077.链表排序.cpp" />
     <ClCompile Include="II 078.合并排序链表.cpp" />
+    <ClCompile Include="II 091.粉刷房子.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="65.不用加减乘除做加法.cpp" />
     <ClCompile Include="49.丑数.cpp" />
@@ -212,6 +213,7 @@
     <ClCompile Include="22.链表中倒数第k个节点.cpp" />
     <ClCompile Include="71.链表中环的入口节点.cpp" />
     <ClCompile Include="29.顺时针打印矩阵.cpp" />
+    <ClCompile Include="II 088.爬楼梯的最少成本.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

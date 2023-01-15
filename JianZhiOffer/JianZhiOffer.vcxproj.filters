@@ -413,5 +413,11 @@
     <ClCompile Include="II 078.合并排序链表.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 088.爬楼梯的最少成本.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 091.粉刷房子.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

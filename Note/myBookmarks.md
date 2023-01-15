@@ -633,6 +633,26 @@ nor will it address how to control DMA operations from a device point of view.
 
 https://chasinglulu.github.io/2019/07/07/中断「interrupt」/
 
+https://chasinglulu.github.io/2019/07/16/中断延迟处理机制「interrupt-delay-processing」/
+```
+
+如果在当前CPU所属的__softirq_pending字段中特定softirq对应的bit位未置位，那么该函数就会将其对应bit位置1，以表示至少有一个该softirq是待处理的。
+
+```
+
+https://blog.gmem.cc/linux-kernel-study-note-vol2
+```
+
+每个注册的软中断，都会占据上述数组的一个元素，因此最多可能有32个软中断。
+
+在2.6版本的内核，有9个元素已经被占用。 
+
+一个软中断不会抢占另外一个，实际上，只有中断处理程序才能抢占软中断。
+
+但是其它软中断（包括同类型的）可以在别的处理器上运行。
+
+```
+
 https://blog.csdn.net/zhoutaopower/article/details/90613988
 
 https://blog.csdn.net/mmphhh/article/details/117351998
@@ -1844,8 +1864,11 @@ https://www.zhihu.com/question/30635966
 **了解GPIO**
 
 * 开漏/开集输出原理
+
 	https://zhuanlan.zhihu.com/p/41942876
+	
 	http://www.aschip.com/info-detail.php?InfoId=35
+	
 	https://blog.csdn.net/Naiva/article/details/90045788
 
 
