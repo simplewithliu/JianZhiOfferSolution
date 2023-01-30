@@ -154,6 +154,9 @@
     <ClCompile Include="II 077.链表排序.cpp" />
     <ClCompile Include="II 078.合并排序链表.cpp" />
     <ClCompile Include="II 091.粉刷房子.cpp" />
+    <ClCompile Include="II 092.翻转字符.cpp" />
+    <ClCompile Include="II 093.最长斐波那契数列.cpp" />
+    <ClCompile Include="II 094.最少回文分割.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="65.不用加减乘除做加法.cpp" />
     <ClCompile Include="49.丑数.cpp" />

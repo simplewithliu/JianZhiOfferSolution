@@ -419,5 +419,14 @@
     <ClCompile Include="II 091.粉刷房子.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 092.翻转字符.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 093.最长斐波那契数列.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 094.最少回文分割.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
