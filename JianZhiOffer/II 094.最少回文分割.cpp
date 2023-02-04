@@ -55,3 +55,27 @@ private:
 		return memo[end] = minNum;
 	}
 };
+
+// 自底而上的动态规划
+class Solution2 {
+public:
+	int minCut(string s) {
+		int len = s.size();
+		vector<vector<char>> isPal(len, vector<char>(len, false));
+		for (int palLen = 1; palLen <= len; ++palLen) {
+			for (int i = 0; i <= len - palLen; ++i) {
+				int j = i + palLen - 1;
+				isPal[i][j] = (s[i] == s[j] && (palLen < 3 || isPal[i + 1][j - 1]));
+			}
+		}
+		vector<int> dp(len + 1, -1);
+		for (int i = 0; i < len; ++i) {
+			int minNum = INT_MAX;
+			for (int j = 0; j <= i; ++j) {
+				if (isPal[j][i]) minNum = min(minNum, dp[j] + 1);
+			}
+			dp[i + 1] = minNum;
+		}
+		return dp[len];
+	}
+};

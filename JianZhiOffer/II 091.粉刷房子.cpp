@@ -44,8 +44,7 @@ private:
 		if (i < 0) return 0;
 		if (memo[i][color] != 0) return memo[i][color];
 		memo[i][color] = min(helper(costs, i - 1, (color + 1) % 3, memo),
-			                 helper(costs, i - 1, (color + 2) % 3, memo)) +
-			             costs[i][color];
+			                 helper(costs, i - 1, (color + 2) % 3, memo)) + costs[i][color];
 		return memo[i][color];
 	}
 };

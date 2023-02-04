@@ -42,16 +42,39 @@ public:
 				ans = max(ans, solve(arr, j, i, memo, mp));
 			}
 		}
-		return ans < 3 ? 0 : ans;
+		return ans;
 	}
 
 private:
 	int solve(vector<int> &arr, int j, int i, vector<vector<int>> &memo,
 		unordered_map<int, int> &mp) {
-		int k = arr[i] - arr[j];
-		if (!mp.count(k) || mp[k] >= j) return 0;
+		int key = arr[i] - arr[j];
+		if (!mp.count(key) || mp[key] >= j) return 0;
 		if (memo[j][i] != -1) return memo[j][i];
-		return memo[j][i] = max(1 + solve(arr, mp[k], j, memo, mp), 3);
+		return memo[j][i] = max(1 + solve(arr, mp[key], j, memo, mp), 3);
+	}
+};
+
+// 自底而上的动态规划
+class Solution2 {
+public:
+	int lenLongestFibSubseq(vector<int> &arr) {
+		unordered_map<int, int> indices;
+		int len = arr.size();
+		for (int i = 0; i < len; ++i)
+			indices[arr[i]] = i;
+		vector<vector<int>> dp(len, vector<int>(len, 0));
+		int ans = 0;
+		for (int i = 0; i < len; ++i) {
+			for (int j = i - 1; j > 0; --j) {
+				int key = arr[i] - arr[j];
+				if (indices.count(key) && indices[key] < j) {
+					dp[j][i] = max(dp[indices[key]][j] + 1, 3);
+				}
+				ans = max(ans, dp[j][i]);
+			}
+		}
+		return ans;
 	}
 };
 

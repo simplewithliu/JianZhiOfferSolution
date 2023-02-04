@@ -47,13 +47,29 @@ private:
 		if (memo[idx][c - '0'] != -1) return memo[idx][c - '0'];
 		if (c == '0') {
 			return memo[idx][c - '0'] = helper(s, idx - 1, '0', memo) + (s[idx - 1] == '1');
-		}
-		else {
+		} else {
 			return memo[idx][c - '0'] = min(helper(s, idx - 1, '0', memo),
-				helper(s, idx - 1, '1', memo)) + (s[idx - 1] == '0');
+				                            helper(s, idx - 1, '1', memo)) + (s[idx - 1] == '0');
 		}
 	}
 };
+
+// 自底而上的动态规划
+class Solution2 {
+public:
+	int minFlipsMonoIncr(string s) {
+		int len = s.size();
+		vector<vector<int>> dp(len, vector<int>(2, 0));
+		dp[0][0] = s[0] == '1' ? 1 : 0;
+		dp[0][1] = s[0] == '0' ? 1 : 0;
+		for (int i = 1; i < len; ++i) {
+			dp[i][0] = dp[i - 1][0] + (s[i] == '1' ? 1 : 0);
+			dp[i][1] = min(dp[i - 1][0], dp[i - 1][1]) + (s[i] == '0' ? 1 : 0);
+		}
+		return min(dp[len - 1][0], dp[len - 1][1]);
+	}
+};
+
 // https://leetcode.cn/problems/flip-string-to-monotone-increasing/solutions/1592230/jiang-zi-fu-chuan-fan-zhuan-dao-dan-diao-stjd 
 // @author 力扣官方题解
 
