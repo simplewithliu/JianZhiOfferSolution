@@ -1347,6 +1347,31 @@ kmap和vmalloc在应用上的最大区别在于，kmap往往应用于“空间�
 
 
 
+**页表项的构成**
+
+https://chyyuu.gitbooks.io/simple_os_book/content/zh/chapter-3/x86_pages_hardware.html
+```
+
+在80x86中的的页表项结构定义如下所示
+
+```
+
+https://learningos.github.io/rcore_step_by_step_webdoc/docs/页表简介.html
+```
+
+我们再来看一次 riscv32 中 页表项/页目录项 的结构：
+
+```
+
+https://www.cnblogs.com/vinozly/p/5703215.html
+```
+
+x86中的页表结构和页表项格式
+
+```
+
+
+
 
 ### 7 Linux驱动模型
 
@@ -1886,6 +1911,7 @@ https://wiki.t-firefly.com/zh_CN/Core-3588J/usage_gpio.html
 这个是文字的锅，跟上拉没有关系，这个电阻就是保护作用，
 IO口输出高电平的时候，这个电阻用来保护负载，防止烧毁负载，IO口输出低电平的时候，用来保护IC，防止IC烧毁
 (https://zhuanlan.zhihu.com/p/84538293)
+(https://www.zhihu.com/question/23167435/answer/167825884) 评论区可参考 
 
 ```
 
@@ -2120,7 +2146,11 @@ The Linux Programming Interface
 > 
 > Atomicity is essential to the successful completion of some operations. In particular, it allows us to avoid race conditions (sometimes known as race hazards). A race condition is a situation where the result produced by two processes (or threads) operating on shared resources depends in an unexpected way on the relative order in which the processes gain access to the CPU(s).
 ```
-实际上这里的意思应该是保护系统调用本身这个过程，参考《操作系统概念》 5.1.3 抢占调度。
+
+这里应该理解为对于用户层来说，系统调用应保证是线程安全的，具体实现上是内核开发者的职责。
+
+另外系统调用本身这个过程也应该保护，参考《操作系统概念》 5.1.3 抢占调度。
+
 ```
 
 https://www.zhihu.com/question/20906432
