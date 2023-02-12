@@ -1267,7 +1267,7 @@ https://blog.csdn.net/chijiandao3197/article/details/100930630
 
 graphic无法获取连续的物理内存，因此通过vmalloc想从buddy系统申请不连续的内存
 
-不幸的是vmalloc的虚拟地址空间耗尽，尽管这是还有大量物理内存，vmalloc申请失败
+不幸的是vmalloc的虚拟地址空间耗尽，尽管这时还有大量物理内存，vmalloc申请失败
 
 ```
 
@@ -1279,6 +1279,16 @@ https://www.cnblogs.com/byeyear/p/3215287.html
 ```
 
 kmap和vmalloc在应用上的最大区别在于，kmap往往应用于“空间分配”与“地址映射”可以分开的场合
+
+```
+
+
+https://stackoverflow.com/questions/116343/what-is-the-difference-between-vmalloc-and-kmalloc
+
+https://stackoverflow.com/questions/40890861/why-is-kmalloc-more-efficient-than-vmalloc
+```
+
+上述 2 个网址描述了 kmalloc 和 vmalloc 的一些特点
 
 ```
 
@@ -1370,7 +1380,116 @@ x86中的页表结构和页表项格式
 
 ```
 
+**内核页表线性映射**
 
+
+https://stackoverflow.com/questions/37570127/what-happened-when-kfree-function-called
+```
+
+kfree后由于线性映射总时可以访问对应的物理地址，但是访问后是未定义的，kfree可能会作某些处理
+
+(https://th0ar.gitbooks.io/xv6-chinese/content/content/chapter2.html)
+
+函数 kfree 首先将被释放内存的每一字节设为 1
+
+这使得访问已被释放内存的代码所读到的不是原有数据，而是垃圾数据；这样做能让这种错误的代码尽早崩溃
+
+```
+
+https://www.cnblogs.com/beixiaobei/p/10507340.html
+```
+
+vfree 释放后会修改页表，因为其不是线性映射的，所以会修改页表项
+
+进程要vfree释放这个区域，其实修改的还是内核页表，会把addr对应的pte页表项设置为0，其它的都不做改变；
+
+那么当进程试图访问一个已经被释放区间的地址addr时候，由于它和内核对于addr的pmd项是一样的，
+
+所以会继续去访问内核页表关于addr的pte页表，最后发现pte页表项为0，又触发了缺页异常。
+
+线性映射是固定的映射：(https://zhuanlan.zhihu.com/p/69329911)
+
+```
+
+https://stackoverflow.com/questions/4535379/do-kernel-pages-get-swapped-out
+
+https://stackoverflow.com/questions/8345300/can-vmalloc-pages-be-swapping-pages
+
+
+* 线性映射初始化
+
+	https://stackoverflow.com/questions/53060537/is-it-possible-that-the-page-table-is-larger-than-the-physical-memory-if-so-whe
+	```
+
+	On a typical CPU with a MMU that supports paging, only a small fraction of the physical addresses that exist address either RAM or MMIO. 
+
+	The rest of the physical address spaced is unused. 
+
+	Typically you would get some sort of exception if you did map those physical addresses not addressing a device to virtual addresses and then try to access them.
+
+	Thus in practice the practical size of a page table is constrained by the amount of RAM and MMIO space that can be addressed. 
+
+	If you have small amounts of RAM you don't need a massive page table described in the example. Most of the entries would be invalid.
+
+	```
+
+	https://zhuanlan.zhihu.com/p/573925459
+	```
+
+	从上面流程图可以看到页表映射最终都是调用__create_pgd_mapping函数实现
+
+	下面分析下__create_pgd_mapping会逐级建立映射关系，同时会进行权限的控制
+
+	可以看到建立页表就是填充页表描述符, 本质是填充物理页帧号和权限控制位这两部分内容，最后是通过调用set_pte()填充到对应的页表中
+
+	```
+
+	https://francescoquaglia.github.io/TEACHING/PMMC/SLIDES/kernel-level-memory-management.pdf
+	```
+
+	Clearly, we have plenty of room in virtual addressing for directly mapping all the available RAM into kernel pages on most common chipsets
+	
+	This is the typical approach taken by Linux, where we directly map all the RAM memory
+
+	```
+
+	https://www.cnblogs.com/liuhailong0112/p/14465697.html
+	```
+
+	前面的[3]和[4]遍历内核中所有memblock感知到的物理内存，并为这些物理内存建立了虚实映射，映射到虚拟地址空间的线性区域。
+	
+	这个虚实映射的线性关系为：paddr = vaddr + ( PAGE_OFFSET - PHYS_OFFSET)。 这里的(PAGE_OFFSET - PHYS_OFFSET)就是虚地址与物理地址线性映射的偏移。
+
+	也就是说在arm64架构中，系统MMU完成初始化后就可以通过这个线性关系将一个线性区域的虚拟地址转换为物理地址(但是并非所有的虚拟地址对应着有效的物理地址)，
+	
+	也可以在知道物理地址的情况下将物理地址转换为线性区域虚拟地址供CPU进行访问(理论上linux可探测到的物理内存都可以找到一个合法的线性区域虚拟地址)。
+
+	```
+
+	https://unix.stackexchange.com/questions/513170/does-the-kernel-address-region-in-user-page-tables-need-to-be-updated-in-an-64-b
+
+	https://www.cnblogs.com/Random-Boy/p/13915175.html
+	```
+
+	多级页表的按需映射，是页表的基本功能，只是用来节省页表占用内存空间，
+	
+	而内核的线性映射和这个多级页表的按需映射，其实是两回事，大家需要区别对待。
+
+	这里可以理解为只有可用的物理内存按照多级页表的方式建立起线性映射
+
+	```
+
+
+* 页表项属性
+
+	https://stackoverflow.com/questions/26837356/what-is-meant-by-invalid-page-table-entry
+
+	https://cs.stackexchange.com/questions/80215/why-do-we-need-the-valid-invalid-bit-in-a-page-table
+	```
+
+	有效-无效位主要是起到保护作用和换页标记作用
+
+	```
 
 
 ### 7 Linux驱动模型
@@ -1508,6 +1627,59 @@ https://houwanfei.github.io/2020/07/18/操作系统-10-输入输出/
 ```
 
 https://docs.oracle.com/cd/E19253-01/819-7057/hwovr-25/index.html
+```
+
+PCI 地址域包含三种不同的地址空间： 配置、内存以及 I/O 空间
+
+```
+
+https://stackoverflow.com/questions/59113831/what-is-the-benefit-of-calling-ioread-functions-when-using-memory-mapped-io
+```
+
+In fact they do more than that, 
+
+handling endianness (They also handle endianness, accessing device memory as little-endian. Or ioread32be for big-endian) 
+
+and some compile-time reordering memory-barrier semantics that Linux chooses to include in these functions. 
+
+And even a runtime barrier after reads, because of DMA.
+
+(https://www.cnblogs.com/dylanin1999/p/16583285.html)
+
+使用 IO API 的方式主要并不是同步考虑
+
+对于arm来说，单条汇编指令都是原子的，多核smp也是，因为有总线仲裁所以cpu可以单独占用总线直到指令结束
+
+```
+
+https://docs.kernel.org/driver-api/device-io.html
+```
+
+On most architectures it is a regular pointer that points to a virtual memory address and can be offset or dereferenced,
+
+but in portable code, it must only be passed from and to functions that explicitly operated on an __iomem token, 
+ 
+in particular the ioremap() and readl()/writel() functions.
+
+While on most architectures, ioremap() creates a page table entry for an uncached virtual address pointing to the physical MMIO address, 
+
+some architectures require special instructions for MMIO.
+
+```
+
+https://breezetemple.github.io/2019/01/30/mmap-and-malloc/
+```
+
+在 kernel 里使用 ioremap 分配出来的一段 memory 不经过 cache 并且物理地址是连续的，
+
+而 user space 里使用 malloc 分配出来的 memory 则没有以上保证，我看不出来在 MMU enable 的情况下物理地址是否连续对 memory 的读写效率有什么影响，
+
+所以问题应该在是否经过 cache 这里，我也不是很确定。
+
+感觉不是 ioremap 的问题，因为我用 get_free_pages 申请内核管理的一段连续内存再 mmap 给应用，情况也是一样。 
+
+```
+
 
 
 **伪文件系统**
@@ -1813,6 +1985,13 @@ https://www.ifanr.com/1422341
 
 ```
 
+https://blog.csdn.net/xishuang_gongzi/article/details/54287219
+```
+
+正常的TFT一行的显示周期是 前消隐 + 实际点输出 + 后消隐
+
+```
+
 https://electronics.stackexchange.com/questions/523972/are-all-pixels-addressed-simultaneously-in-one-frame
 
 https://superuser.com/questions/1193999/do-monitors-not-atomically-instantaneously-refresh-their-pixels
@@ -1851,11 +2030,24 @@ https://www.zhihu.com/question/30635966
 
 	plane不是硬件模块，而是包含了从CRTC获取了buffer的内存对象。
 
-	持有framebuffer的plane称为primary plane。
+	持有framebuffer的plane称为primary plane。（其他的plane也可以说内容来自framebuffer）
 	
 	每个CRTC必须有一个primary plane，因为它是CRTC视频模式数据的来源，比如像素大小、像素格式、刷新率等。
 
 	如果display controller支持硬件cursor overlays，则CRTC可能还具有与其关联的cursor plane。
+
+	```
+
+	https://xilinx.github.io/kria-apps-docs/kv260/2022.1/build/html/docs/nlp-smartvision/docs/sw_arch_platform_nlp.html
+	```
+
+	A plane represents an image source that can be blended with or overlayed on top of a CRTC frame buffer during the scan-out process. 
+	
+	Planes are associated with a frame buffer to optionally crop a portion of the image memory (source) and scale it to a destination size. 
+	
+	The DP Tx display pipeline does not support cropping or scaling, 
+	
+	therefore both video and graphics plane dimensions have to match the CRTC mode (i.e., the resolution set on the display). 
 
 	```
 
@@ -1884,6 +2076,17 @@ https://www.zhihu.com/question/30635966
 	Hardware video acceleration 指的就是具体的显示接口 HDMI、eDP、...
 
 	```
+
+	https://zhuanlan.zhihu.com/p/421532503
+
+	https://juejin.cn/post/7132777622487957517
+	```
+
+	上述 2 个网址介绍了一些DPU合成的知识
+
+	```
+
+
 
 
 **了解GPIO**
@@ -2050,6 +2253,26 @@ http://c.biancheng.net/view/2382.html
 
 
 ### 1  volatile关键字的知识
+
+
+**谈谈 C/C++ 中的volatile**
+
+https://liam.page/2018/01/18/volatile-in-C-and-Cpp/
+
+
+
+**volatile与缓存一致性**
+
+https://blog.csdn.net/weixin_42417004/article/details/117118027
+```
+
+注意，此时CPU是使用LDR访存指令来访问内存，但是仍然没有得到正确的内存数据。
+
+即使使用volatile关键字也无济于事，因为volatile是在指令级上影响C语言到汇编语言的关键字，
+
+但是CPU在访问内存时，仍然需要经过cache的缓冲。
+
+```
 
 
 **volatile与内存屏障总结**
@@ -2247,6 +2470,57 @@ https://www.zhihu.com/question/283318421/answer/431232214
 
 
 ***
+
+
+### 6 缓存一致性
+
+
+**Cache与DMA一致性问题**
+
+https://zhuanlan.zhihu.com/p/109919756
+
+https://pebblebay.com/a-guide-to-using-direct-memory-access-in-embedded-systems-part-two/
+```
+
+Some system hardware designs include a mechanism called bus snooping or cache snooping; 
+
+the snooping hardware notices when an external DMA transfer refers to main memory using an address that matches data in the cache, 
+
+and either flushes/invalidates the cache entry or “redirects” the transfer 
+
+so that the DMA transfers the correct data and the state of the cache entry is updated accordingly.  
+
+In systems with snooping, DMA drivers don’t have to worry about cache coherency.
+
+When the hardware doesn’t have snooping, DMA-based device drivers usually use one of two techniques to avoid cache coherency problems. 
+
+(https://pebblebay.com/direct-memory-access-embedded-systems/)
+
+```
+
+https://mp.weixin.qq.com/s/H0aAs3Osvl8uugj4NfRbmA
+```
+
+这些API把底层的硬件差异封装掉了，如果硬件不支持CPU和设备的cache同步的话，延时还是比较大的。
+
+那么，对于底层硬件而言，更好的实现方式，应该仍然是硬件帮我们来搞定。
+
+比如我们需要修改总线协议，延伸红线的触角：
+
+当设备访问RAM的时候，可以去snoop CPU的cache
+
+(https://zhuanlan.zhihu.com/p/508439396)
+
+第一种方案是使用硬件cache一致性的方案，需要SOC中CCI这种IP的支持
+
+(https://blog.csdn.net/wll1228/article/details/117650015)
+
+上面说的是常规DMA，有些SoC可以用硬件做CPU和外设的cache coherence，例如在SoC中集成了叫做"Cache Coherent interconnect"的硬件
+
+```
+
+
+
 
 ## Android
 

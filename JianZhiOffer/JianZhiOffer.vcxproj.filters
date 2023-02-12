@@ -428,5 +428,11 @@
     <ClCompile Include="II 094.最少回文分割.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="095.最长公共子序列.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="096.字符串交织.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
