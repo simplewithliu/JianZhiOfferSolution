@@ -81,8 +81,8 @@
     <ClInclude Include="header.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="095.最长公共子序列.cpp" />
-    <ClCompile Include="096.字符串交织.cpp" />
+    <ClCompile Include="II 095.最长公共子序列.cpp" />
+    <ClCompile Include="II 096.字符串交织.cpp" />
     <ClCompile Include="43.统计1 ~ n整数中1出现的次数.cpp" />
     <ClCompile Include="10.2青蛙跳台阶问题.cpp" />
     <ClCompile Include="14.1剪绳子.cpp" />
@@ -159,6 +159,7 @@
     <ClCompile Include="II 092.翻转字符.cpp" />
     <ClCompile Include="II 093.最长斐波那契数列.cpp" />
     <ClCompile Include="II 094.最少回文分割.cpp" />
+    <ClCompile Include="II 097.子序列的数目.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="65.不用加减乘除做加法.cpp" />
     <ClCompile Include="49.丑数.cpp" />

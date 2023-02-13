@@ -1680,6 +1680,12 @@ https://breezetemple.github.io/2019/01/30/mmap-and-malloc/
 
 ```
 
+* mmap
+
+	https://stackoverflow.com/questions/45972/mmap-vs-reading-blocks
+
+	https://csstormq.github.io/blog/计算机系统篇之虚拟内存（4）：再探%20mmap
+
 
 
 **伪文件系统**
