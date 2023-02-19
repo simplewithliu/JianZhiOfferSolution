@@ -686,6 +686,32 @@ https://www.zhihu.com/question/402744770
 https://stackoverflow.com/questions/29293518/interfacing-peripheral-drivers-with-rtos
 
 
+**硬实时概念**
+
+https://www.zhihu.com/question/558428484/answer/2712013485
+```
+
+当然，实时性本质上是一个系统工程，操作系统只能尽可能的提供帮助，而不能控制用户程序的行为。
+
+因此，对于一个实时系统来说，应用程序的设计才是最关键的。
+
+```
+
+
+**Linux实时补丁**
+
+https://hebinglong.github.io/2018/08/15/Linux操作系统实时性分析/
+```
+
+这种方法存在的问题是：很难百分之百保证，在任何情况下，GPOS程序代码绝不会阻碍RTOS的实时行为。
+
+也就是说，通过修改Linux内核，难以保证实时进程的执行不会遭到非实时进程所进行的不可预测活动的干扰。
+
+```
+
+
+https://www.zhihu.com/question/28925221/answer/90870825
+
 
 ***
 
@@ -2361,6 +2387,8 @@ https://stackoverflow.com/questions/5297813/cross-process-synchronization-in-jav
 
 https://bbs.csdn.net/topics/391942429
 
+
+
 ### 3 多进程间读写同一个文件
 
 https://www.jianshu.com/p/b5a731940ff9
@@ -2450,6 +2478,14 @@ https://www.reploop.org/blog/2020/02/introduction-to-thread-synchronization.html
 你不应改使用信号量来保护共享资源，也不应该将互斥锁用于信号机制：这样你的意图对你和你的代码读者会更明确。
 
 ```
+
+
+**lock free**
+
+https://www.zhihu.com/question/295904223/answer/514363565
+
+https://www.zhihu.com/question/577529159/answer/2892615304
+
 
 
 ### 5 互斥锁的实现
@@ -2580,7 +2616,10 @@ https://kernel.meizu.com/
 
 https://elinux.org/Android_Portal
 
+
+
 ### 5 权限问题
+
 
 **特权应用权限问题**
 
@@ -2599,9 +2638,18 @@ https://balalals.cn/archives/android中是系统应用和非系统应用区别
 
 ```
 
+
 **intent机制**
 
 https://stackoverflow.com/questions/54538924/does-setting-the-package-name-make-an-implicit-intent-explicit
+
+
+
+**签名**
+
+https://tinylab.org/android-signature/
+
+https://blog.csdn.net/tkwxty/article/details/109892763
 
 
 ### 6 调试方法
