@@ -1883,8 +1883,7 @@ https://www.st.com/resource/en/application_note/an4861-lcdtft-display-controller
 显存可以直接位于系统内存的固定区域中，如上述网址中介绍，LCD控制器在内存中取帧数据到FIFO中用于VGA刷屏
 
 但一般追求高性能的设备，会将显存集成到显示卡中，这样显卡在处理数据时不会受限于系统内存的访问带来的延迟
-（https://www.spo-comm.de/en/blog/know-how/integrated-vs-dedicated-graphics-card-features-differences-etc.）
-
+(https://www.spo-comm.de/en/blog/know-how/integrated-vs-dedicated-graphics-card-features-differences-etc.)
 
 
 上述网址归档：(https://quqi.com/516996/7604) (https://quqi.com/516996/7607)
@@ -2278,6 +2277,10 @@ https://senlinzhan.github.io/2017/03/20/动态库/
 http://c.biancheng.net/view/2382.html
 
 
+**进程阻塞后操作系统的工作**
+
+https://www.zhihu.com/question/492983429
+
 ***
 
 
@@ -2486,7 +2489,37 @@ https://www.zhihu.com/question/295904223/answer/514363565
 
 https://www.zhihu.com/question/577529159/answer/2892615304
 
+https://www.zhihu.com/question/53303879/answer/142089019
 
+https://zhuanlan.zhihu.com/p/386422612
+```
+
+RCU 是一种非阻塞同步的例子
+
+(https://www.cs.yale.edu/homes/aspnes/pinewiki/ObstructionFreedom.html)
+
+While there exist lock-free implementation with this property, 
+
+there is a particularly simple implementation using CAS that is only obstruction-free.
+
+```
+
+https://en.wikipedia.org/wiki/Read-copy-update
+```
+
+RCU is perhaps the most common non-blocking algorithm for a shared data structure. 
+
+RCU is completely wait-free for any number of readers. 
+
+Single-writer implementations RCU are also lock-free for the writer.
+
+Some multi-writer implementations of RCU are lock-free.
+
+Other multi-writer implementations of RCU serialize writers with a lock.
+
+(https://hackmd.io/@sysprog/linux-rcu)
+
+```
 
 ### 5 互斥锁的实现
 
@@ -2509,6 +2542,31 @@ https://stackoverflow.com/questions/14947191/what-is-the-pthread-mutex-lock-wake
 https://stackoverflow.com/questions/40873469/how-does-pthread-mutex-unlock-work-and-do-threads-come-up-at-the-same-time
 
 https://www.zhihu.com/question/283318421/answer/431232214
+
+
+**lock prefix 与原子操作**
+
+http://web.mit.edu/rhel-doc/3/rhel-as-en-3/i386-prefixes.html
+```
+
+The bus lock prefix lock inhibits interrupts during execution of the instruction it precedes. 
+
+(This is only valid with certain instructions; see a 80386 manual for details).
+
+```
+
+https://stackoverflow.com/questions/55180452/interrupting-an-assembly-instruction-while-it-is-operating
+
+https://stackoverflow.com/questions/27837731/is-x86-cmpxchg-atomic-if-so-why-does-it-need-lock
+```
+
+On a single-CPU system, cmpxchg is atomic with respect to other threads, or any other code running on the same CPU core. 
+
+(But not to "system" observers like a memory-mapped I/O device, or a device doing DMA reads of normal memory, 
+
+so lock cmpxchg was relevant even on uniprocessor CPU designs).
+
+```
 
 
 ***

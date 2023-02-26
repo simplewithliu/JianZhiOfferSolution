@@ -160,6 +160,11 @@
     <ClCompile Include="II 093.最长斐波那契数列.cpp" />
     <ClCompile Include="II 094.最少回文分割.cpp" />
     <ClCompile Include="II 097.子序列的数目.cpp" />
+    <ClCompile Include="II 098.路径的数目.cpp" />
+    <ClCompile Include="II 099.最小路径之和.cpp" />
+    <ClCompile Include="II 100.三角形中最小路径之和.cpp" />
+    <ClCompile Include="II 101.分割等和子集.cpp" />
+    <ClCompile Include="II 102.加减的目标值.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="65.不用加减乘除做加法.cpp" />
     <ClCompile Include="49.丑数.cpp" />

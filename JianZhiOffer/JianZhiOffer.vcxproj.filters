@@ -437,5 +437,20 @@
     <ClCompile Include="II 097.子序列的数目.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 098.路径的数目.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 099.最小路径之和.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 100.三角形中最小路径之和.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 101.分割等和子集.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 102.加减的目标值.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
