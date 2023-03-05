@@ -132,6 +132,63 @@ https://www.macsen.xyz/2021/12/24/第四章-指令系统第二节/
 https://linux.cn/article-9095-1.html
 
 
+**多核通信**
+
+https://blog.csdn.net/YEYUANGEN/article/details/86622753
+```
+
+对memory的使用，非易失的存储空间比如NAND、NOR Flash，基本也是由ARM访问，DSP的算法代码作为ARM端OS文件系统的一个文件存在，通过应用程序进行DSP程序的下载和DSP芯片的控制。
+
+外部RAM空间即DDR存储区，是ARM和DSP共享存在的，但是在系统设计的时候，需要把ARM和DSP使用的内存严格物理地址分开，以及预留出一部分用来交互的内存空间。
+
+```
+
+https://juejin.cn/post/7035822881493745694
+```
+
+需要说明一点，CPU 和 DSP 之间一般会使用 IPCM（核间通信模块）实现对一段 ddr 地址空间的共享。
+
+但是 DSP 直接访问这段 ddr 的延迟是远大于访问 dram 的延迟，所以对于算子执行过程中需要频繁访问的 ddr 数据，
+
+一般是先使用 dma 将其搬运到 dram 上，算子执行结束后，计算的输出再通过 dma 搬回到 ddr。
+
+```
+
+https://www.st.com/resource/en/product_training/STM32MP1-System-Graphics_Processing_Unit_GPU.pdf
+```
+
+The GPU has only one global interrupt. 
+
+This interrupt is used by the low level drivers for graphic API implementation.
+
+```
+
+**可编程DSP与ASIC**
+
+https://blog.csdn.net/qyf__123/article/details/100167293
+```
+
+那你可能又要问了，那为什么我们干脆不要用 ASIC 了，全都用 FPGA 不就好了么？
+
+你要知道，其实 FPGA 一样有缺点，那就是它的硬件上有点儿 “浪费”。
+
+```
+
+https://www.zhihu.com/question/348712213
+```
+
+澄清软解和硬解的概念
+
+(https://www.zhihu.com/question/61180565/answer/598520764) 评论区可参考
+
+https://quqi.com/516996/7625
+
+```
+
+
+
+
+
 ### 3 中断与调度
 
 
@@ -629,6 +686,7 @@ nor will it address how to control DMA operations from a device point of view.
 
 ### 6 中断控制器总结
 
+
 **中断概述与硬件组成**
 
 https://chasinglulu.github.io/2019/07/07/中断「interrupt」/
@@ -653,11 +711,21 @@ https://blog.gmem.cc/linux-kernel-study-note-vol2
 
 ```
 
+https://www.zhihu.com/question/545744966/answer/2597497794
+```
+
+而是在取指周期中，电路的输入中发现中断线的输入中有电平，计算结果就是切换PC，然后这个时钟周期就从执行指令变成执行中断的计算要求了。
+
+中断行为就会插入到整个执行流中了。
+
+```
+
 https://blog.csdn.net/zhoutaopower/article/details/90613988
 
 https://blog.csdn.net/mmphhh/article/details/117351998
 
 https://zhuanlan.zhihu.com/p/399239928
+
 
 
 **了解gpio中断级联**
@@ -712,6 +780,13 @@ https://hebinglong.github.io/2018/08/15/Linux操作系统实时性分析/
 
 https://www.zhihu.com/question/28925221/answer/90870825
 
+
+https://cloud.tencent.com/developer/article/1894161
+```
+
+注：原文没找到，第一大段中的软实时补丁可能是笔误，应该是硬实时
+
+```
 
 ***
 
@@ -995,10 +1070,6 @@ For each symbol, the corresponding CRC value is also stored.
 个人理解：最终会被一起编译到内核符号表
 
 ```
-
-
-
-
 
 
 
@@ -1484,7 +1555,7 @@ https://stackoverflow.com/questions/8345300/can-vmalloc-pages-be-swapping-pages
 
 	前面的[3]和[4]遍历内核中所有memblock感知到的物理内存，并为这些物理内存建立了虚实映射，映射到虚拟地址空间的线性区域。
 	
-	这个虚实映射的线性关系为：paddr = vaddr + ( PAGE_OFFSET - PHYS_OFFSET)。 这里的(PAGE_OFFSET - PHYS_OFFSET)就是虚地址与物理地址线性映射的偏移。
+	这个虚实映射的线性关系为：paddr = vaddr + (PAGE_OFFSET - PHYS_OFFSET)。 这里的(PAGE_OFFSET - PHYS_OFFSET)就是虚地址与物理地址线性映射的偏移。
 
 	也就是说在arm64架构中，系统MMU完成初始化后就可以通过这个线性关系将一个线性区域的虚拟地址转换为物理地址(但是并非所有的虚拟地址对应着有效的物理地址)，
 	
@@ -1493,6 +1564,7 @@ https://stackoverflow.com/questions/8345300/can-vmalloc-pages-be-swapping-pages
 	```
 
 	https://unix.stackexchange.com/questions/513170/does-the-kernel-address-region-in-user-page-tables-need-to-be-updated-in-an-64-b
+
 
 	https://www.cnblogs.com/Random-Boy/p/13915175.html
 	```
@@ -2521,6 +2593,16 @@ Other multi-writer implementations of RCU serialize writers with a lock.
 
 ```
 
+https://www.v2ex.com/t/766626
+```
+
+无锁的定义和锁倒是没有直接联系，只要求当任意线程在任意时刻卡死时（但是不能死光）
+
+起码剩下的线程中至少还有一个能继续跑（无等待就是剩下没死的线程都能继续跑）
+
+```
+
+
 ### 5 互斥锁的实现
 
 
@@ -2664,7 +2746,32 @@ but find them inside system libs folders
 
 ```
 
-### 4  源码分析
+**关于Android.bp中的required属性**
+```
+
+native库分为.a静态库和.so动态库，编译时分别使用static_libs和shared_libs添加依赖，这两者都是编译时依赖，
+
+其中静态库直接打包进原始文件中，动态库编译为独立的so模块位于某个可查找路径中。
+
+编译时依赖有一个特点，某个源文件必须知道它所依赖模块的符号以使用它，这就必须引入头文件，同时编译时会对so库进行链接。
+
+但是对于so库的使用还有一种方式就是运行时动态加载，编译时不需要头文件，通过系统库提供的某种方法解析出库中的符号来使用，比较典型的就是jni库。
+
+我们引用jni库从来不会在java文件中包含c的头文件，所以使用的是jvm提供的loadlibray方法动态加载，解析作为jni的so库符号提供给java使用，这种情况下依赖jni的so库模块使用required依赖就可以了。
+
+```
+
+**关于Android.bp中的aidl_interface**
+
+https://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libaaudio/src/Android.bp
+```
+
+注：一个使用示例 name: "aaudio-aidl",
+
+```
+
+
+### 4 源码分析
 
 **魅族内核团队**
 
@@ -2744,6 +2851,17 @@ https://issuetracker.google.com/issues/236790598
 
 https://stackoverflow.com/questions/57132218/openglrenderer-davey
 
+
+https://developer.android.com/studio/profile/cpu-profiler
+```
+
+使用 CPU 性能剖析器检查 CPU 活动
+
+跟踪Java方法调用堆栈选择 ：Sample Java Methods
+
+跟踪native方法调用堆栈选择：Sample C/C++ Functions
+
+```
 
 ### 7 JNI使用总结
 
@@ -2937,14 +3055,18 @@ https://techsingular.net/2012/11/15/programming-in-lua（二）－-异常与错�
 ### 1  概览
 
 **cmake使用指南**
+
 https://www.zhihu.com/column/c_200294809
 
 **官方教程**
+
 https://cmake.org/cmake/help/latest/guide/tutorial/
 
 **优秀个人教程**
+
 https://www.wilson-blog.cn/post/2021/02/12/cmake.html
 
+https://ukabuer.me/blog/more-modern-cmake/
 
 ### 2  CMake安装
 

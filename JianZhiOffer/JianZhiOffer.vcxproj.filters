@@ -452,5 +452,8 @@
     <ClCompile Include="II 102.加减的目标值.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 105.岛屿的最大面积.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
