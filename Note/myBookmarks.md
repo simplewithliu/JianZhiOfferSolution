@@ -1746,7 +1746,12 @@ And even a runtime barrier after reads, because of DMA.
 
 使用 IO API 的方式主要并不是同步考虑
 
-对于arm来说，单条汇编指令都是原子的，多核smp也是，因为有总线仲裁所以cpu可以单独占用总线直到指令结束
+对于arm来说，单条访存汇编指令都是原子的，多核smp也是，因为有总线仲裁所以cpu可以单独占用总线直到指令结束
+
+(https://wudaijun.com/2018/02/go-sync-map-implement/)
+(https://docs.google.com/presentation/d/1JkOUQ07nr0WQ8SKqcWA5D3M0v1gUdAwgNBbUcMhhGis/htmlpresent)
+
+补充：原子的访存指令
 
 ```
 
@@ -2208,16 +2213,16 @@ https://www.zhihu.com/question/30635966
 https://wiki.t-firefly.com/zh_CN/Core-3588J/usage_gpio.html
 ```
 
-硬件电路细节
 (https://www.elecfans.com/d/1884243.html)
+硬件电路细节
 
-上拉电阻、下拉电阻概念补充 
 (https://www.cnblogs.com/lulipro/p/7675167.html)
+上拉电阻、下拉电阻概念补充 
 
+(https://www.zhihu.com/question/23167435/answer/167825884) 评论区可参考 
+(https://zhuanlan.zhihu.com/p/84538293)
 这个是文字的锅，跟上拉没有关系，这个电阻就是保护作用，
 IO口输出高电平的时候，这个电阻用来保护负载，防止烧毁负载，IO口输出低电平的时候，用来保护IC，防止IC烧毁
-(https://zhuanlan.zhihu.com/p/84538293)
-(https://www.zhihu.com/question/23167435/answer/167825884) 评论区可参考 
 
 ```
 
@@ -2650,6 +2655,11 @@ so lock cmpxchg was relevant even on uniprocessor CPU designs).
 
 ```
 
+**spin_lock使用场景**
+
+https://blog.csdn.net/bob_fly1984/article/details/38042763
+
+
 
 ***
 
@@ -2769,6 +2779,34 @@ https://cs.android.com/android/platform/superproject/+/master:frameworks/av/medi
 注：一个使用示例 name: "aaudio-aidl",
 
 ```
+
+**JVM类共享**
+
+https://stackoverflow.com/questions/13496307/can-multiple-jvm-processes-share-memory-for-common-classes
+```
+
+At this time and with the Oracle VM, this isn't possible.
+
+IBM JDK has a jvm parameter to achieve this
+
+```
+
+https://stackoverflow.com/questions/13939516/share-classes-between-jvms
+
+https://juejin.cn/post/6844903897958449166
+```
+
+Dalvik 拥有预加载—共享机制，不同应用之间在运行时可以共享相同的类，拥有更高的效率
+
+而 JVM 不存在这种共享机制，不同的程序，打包后的程序都是彼此独立的，
+
+即使包中使用了同样的类，运行时也是单独加载和运行的，无法进行共享
+
+(https://www.zhihu.com/question/20207106)
+
+```
+https://www.zhihu.com/question/43690819
+
 
 
 ### 4 源码分析
@@ -2979,6 +3017,7 @@ https://wenfh2020.com/2017/10/28/cpp-log-format/
 https://stackoverflow.com/questions/37649236/why-not-always-assign-return-values-to-const-reference
 
 
+
 ### 5 异常处理机制
 
 
@@ -3044,6 +3083,27 @@ https://sg-first.gitbooks.io/frankhb-talk-c-c-/content/cpp-exceptions.html
 
 https://techsingular.net/2012/11/15/programming-in-lua（二）－-异常与错误码/
 
+
+### 6 编译器行为
+
+
+**内存地址对齐**
+
+https://www.cnblogs.com/kn-zheng/p/17074479.html
+```
+
+编译器自身帮我们保证，会给它分配一个对齐的地址
+
+```
+
+https://blogs.oracle.com/solaris/post/where-does-misaligned-data-come-from
+
+https://stackoverflow.com/questions/55867320/is-the-address-of-malloc-size-t-3-aligned-for-any-type
+```
+
+上述 2 个网址介绍了 fundamental alignment，并不是所有情况下都保证内存对齐
+
+```
 
 
 

@@ -166,6 +166,7 @@
     <ClCompile Include="II 101.分割等和子集.cpp" />
     <ClCompile Include="II 102.加减的目标值.cpp" />
     <ClCompile Include="II 105.岛屿的最大面积.cpp" />
+    <ClCompile Include="II 106.二分图.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="65.不用加减乘除做加法.cpp" />
     <ClCompile Include="49.丑数.cpp" />
