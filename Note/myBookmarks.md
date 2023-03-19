@@ -84,6 +84,13 @@ https://www.eet-china.com/news/202109080900.html
 https://zhuanlan.zhihu.com/p/22197994
 
 
+https://www.zhihu.com/question/430677975/answer/2308439064
+```
+
+参考@Young Geng的评论：现在 x86 平台基本不用 UMA 的原因无非就是两点
+
+```
+
 ### 2 CPU相关概念理解
 
 **CPU指令与芯片组**
@@ -1439,8 +1446,18 @@ https://stackoverflow.com/questions/40890861/why-is-kmalloc-more-efficient-than-
 	
 	but still need a contiguous buffer for the result. 
 
-	关于 分散/聚集 DMA：
+	
 	(https://xie.infoq.cn/article/b3b83c6e5d54ca306320aa919)
+
+	通过支持聚集操作的网络接口，待传输的数据不必占用主存的连续空间，
+
+	网卡的 DMA 引擎也可以将分布在不同位置的数据集中到一个数据传输中。
+
+	(https://www.cnblogs.com/jliuxin/p/14129414.html)
+
+	因此从软件层面来说, DMA核心层必须提供scatter-gather的能力
+	
+	如果DMA控制器本身支持scatter-gather操作, 那就直接配置控制器即可; 如果控制器不支持, 我们就只有用软件模拟了
 
 	```
 
@@ -1511,6 +1528,24 @@ vfree 释放后会修改页表，因为其不是线性映射的，所以会修�
 https://stackoverflow.com/questions/4535379/do-kernel-pages-get-swapped-out
 
 https://stackoverflow.com/questions/8345300/can-vmalloc-pages-be-swapping-pages
+
+* 内核页表与进程页表
+  
+	https://www.zhihu.com/question/24916947
+	```
+
+	arm32上内核页表会复制一份到进程页表
+
+	内核页表修改时，这种情况下其他进程陷入内核时可能产生缺页
+
+	```
+
+	https://www.tiehichi.site/2021/11/15/ARMv7进程页表/
+	```
+
+	arm64使用了两个页表基地址寄存器，不再需要复制
+
+	```
 
 
 * 线性映射初始化
@@ -1588,6 +1623,9 @@ https://stackoverflow.com/questions/8345300/can-vmalloc-pages-be-swapping-pages
 	有效-无效位主要是起到保护作用和换页标记作用
 
 	```
+
+
+
 
 
 ### 7 Linux驱动模型
@@ -2071,6 +2109,8 @@ When i.MX Android is running, the DDR memory will be used by the following compo
 3 Reserved memory for GPU drivers
 
 4 Reserved space for framebuffer BG triple buffers
+
+(https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841683/Linux+Reserved+Memory)
 
 ```
 
@@ -2725,11 +2765,18 @@ https://mp.weixin.qq.com/s/H0aAs3Osvl8uugj4NfRbmA
 https://android.stackexchange.com/questions/205430/what-is-storage-emulated-0
 
 
+**FDE与FBE**
+
+https://new.qq.com/omn/20200205/20200205A0BZF400.html
+
+
+
 ### 2 IPC问题
 
 **跨进程数据共享与文件描述符**
 
 https://source.android.com/devices/architecture/hidl-cpp/types#handle
+
 
 **跨进程通信java与native进程同步**
 
@@ -2740,7 +2787,9 @@ https://stackoverflow.com/questions/15771763/can-java-and-c-c-applications-share
 https://stackoverflow.com/questions/44744804/how-can-you-use-a-mutex-between-c-sharp-and-java-processes
 
 
+
 ### 3 编译问题
+
 
 **AOSP平台如何使用aar库**
 
@@ -2780,6 +2829,24 @@ https://cs.android.com/android/platform/superproject/+/master:frameworks/av/medi
 
 ```
 
+**Android Studio 2021 查看CMake信息**
+
+* CMake编译log输出
+```
+    
+D:\_DeskTopStorage\AndroidStudioProjects\CppTest\app\build\intermediates\cxx\Debug\1u3c266n\meta\arm64-v8a\cmake_server_log.txt
+
+```
+
+* CMake参数设置
+``` 
+
+D:\_DeskTopStorage\AndroidStudioProjects\CppTest\app\.cxx\Debug\1u3c266n\armeabi-v7a\metadata_generation_command.txt
+
+```
+
+
+
 **JVM类共享**
 
 https://stackoverflow.com/questions/13496307/can-multiple-jvm-processes-share-memory-for-common-classes
@@ -2815,10 +2882,21 @@ https://www.zhihu.com/question/43690819
 
 https://kernel.meizu.com/
 
+
 **eLinux Android**
 
 https://elinux.org/Android_Portal
 
+https://www.infoq.cn/article/akthyldshhvho*ea0m1f
+```
+
+他表示，Android 内核起初是一个来自主线的长期稳定（LTS）版本；
+
+这些版本结合 Android 核心的专有代码构成了Android公共内核版本。
+
+供应商选择一个公共内核，然后添加更多的树外代码，从而创建一个特定于片上系统（SoC ）的内核，并提供给设备制造商。
+
+```
 
 
 ### 5 权限问题
@@ -2853,6 +2931,7 @@ https://stackoverflow.com/questions/54538924/does-setting-the-package-name-make-
 https://tinylab.org/android-signature/
 
 https://blog.csdn.net/tkwxty/article/details/109892763
+
 
 
 ### 6 调试方法
@@ -2901,6 +2980,19 @@ https://developer.android.com/studio/profile/cpu-profiler
 
 ```
 
+**simpleperf火焰图**
+```
+
+ums512_1h10:/system/bin #./simpleperf record -p 564 -g -e task-clock --duration 10 --trace-offcpu
+
+将生成的perf.data文件pull到某个路径下，在该路径下使用python执行NDK工具中的report_html.py
+
+```
+
+https://blog.crazytaxii.com/posts/flame_graphs/
+
+
+
 ### 7 JNI使用总结
 
 https://blog.csdn.net/qq_20404903/article/details/80662352
@@ -2929,6 +3021,33 @@ https://www.ibm.com/docs/zh/sdk-java-technology/8?topic=collector-overview-jni-o
 
 
 
+### 8 Android 内存分析
+
+**Android ION**
+
+https://lwn.net/Articles/480055/
+
+https://lwn.net/Articles/792733/
+
+https://toutiao.io/posts/omeo2u/preview
+```
+
+Android ION作为一种内存管理框架被DMA-BUF取代
+
+```
+
+https://www.jianshu.com/p/5fe57566691f
+```
+
+ashmem在设计层面上和ion十分相似，也是先通过ashmem访问获取对应匿名内存文件的fd，最后所有的访问都是在这段内存文件上处理。
+
+但是有一点是ashmem怎么也无法比的，那就是ion实际上是生成DMA直接访问内存。
+
+原本ashmem的方式需要从GPU访问到CPU再到内存中的地址，但是在这里就变成了GPU直接访问修改DMA，CPU也能直接修改DMA。
+
+其次就是那就是ion很好的处理了不同内核模块，进程之间共享内存的问题。
+
+```
 
 
 ***
@@ -3245,6 +3364,8 @@ https://www.ithome.com/0/583/749.htm
 
 https://dreamgoing.github.io/
 
+
+***
 
 
 
