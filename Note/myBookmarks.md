@@ -522,6 +522,7 @@ https://blog.csdn.net/weixin_43715360/article/details/120636553
 
 https://hackaday.com/2021/03/31/direct-memory-access-data-transfer-without-micro-management/
 
+
 **first-party DMA 总线主控**
 
 https://stackoverflow.com/questions/57009233/what-are-the-most-common-busmaster-operations-and-how-are-they-better-than-regu
@@ -537,6 +538,7 @@ https://www.rigacci.org/docs/biblio/online/ide_modes/modes_DMA.htm
 https://scientific-solutions.com/products/faq/ssi_faq_dma_busmastering.shtml
 
 https://www.sciencedirect.com/topics/engineering/bus-master
+
 
 
 **DMA API for first-party DMA**
@@ -559,6 +561,7 @@ in the same way as bus mastering on PCI/PCIE does not need a separate DMA contro
 ```
 
 https://electronics.stackexchange.com/questions/448349/bus-mastering-vs-bus-arbitration
+
 
 
 **PCI 总线主控**
@@ -857,6 +860,20 @@ In defence of swap: common misconceptions
 翻译：(https://farseerfc.me/zhs/in-defence-of-swap.html)
 
 ```
+
+
+https://learn.microsoft.com/zh-cn/windows-hardware/test/wpt/memory-footprint-optimization
+```
+
+Sharable pages:Pages that one or more processes can use.
+
+Examples include code pages within executable images (.dll, .exe, and .cpl) or data file pages (.txt, .doc, etc.).
+
+注：kswapd运行时，在Page Cache中，可共享页写回到文件，而私有页写回到交换分区。
+
+```
+
+
 * vmstat swap
 
 	https://www.0xffffff.org/2019/07/17/42-linux-memory-monitor/
@@ -2024,7 +2041,7 @@ https://blog.csdn.net/huan447882949/article/details/80523108
 >
 > 很多人可能都会问驱动LCD的数据应该放在什么地方，是怎么被搬运过去的。
 >
-> 其实很简单，S3C2410的LCD控制模块自带了DMA控制器，我们只要在SDRAM里面开一块空间，然后设定要DMA的起始地址(LCDSADDR1寄存器)和结束地址LCDSADDR2）就OK了。
+> 其实很简单，S3C2410的LCD控制模块自带了DMA控制器，我们只要在SDRAM里面开一块空间，然后设定要DMA的起始地址(LCDSADDR1寄存器)和结束地址(LCDSADDR2)就OK了。
 >
 > 实际上，应该说大部分的带有LCD控制器的MCU，都是采用类似的方式
 >
@@ -2360,6 +2377,42 @@ Linux的进程信号处理过程
 ```
 
 https://blog.51cto.com/u_15703183/5463647
+
+
+https://stackoverflow.com/questions/53850202/signal-handler-and-multithreading
+```
+
+If you resend the signal, the signal is momentarily blocked until the signal handler ends the execution.
+
+In fact as explained here, blocked signals are set to pending, but not queued.
+
+信号处理的基本机制，可以结合 CSAPP 8.5 理解
+
+```
+
+https://stackoverflow.com/questions/15651964/linux-can-a-signal-handler-excution-be-preempted
+
+https://stackoverflow.com/questions/6128547/is-execution-of-signal-handler-un-preemptible-in-linux
+```
+
+上述 2 个网址介绍了信号处理函数的可抢占性，信号处理函数与其他用户空间函数特性相似
+
+```
+
+
+https://devarea.com/linux-handling-signals-in-a-multithreaded-application
+
+https://stackoverflow.com/questions/27965761/where-does-signal-handler-executed
+
+https://stackoverflow.com/questions/22005719/which-thread-handles-the-signal
+```
+
+上述 3 个网址介绍了信号处理函数执行时的所在线程
+
+According to POSIX.1, a process-directed signal (sent using kill(2), for example) should be handled by a single, arbitrarily selected thread within the process.
+
+```
+
 
 
 
@@ -2732,6 +2785,8 @@ When the hardware doesn’t have snooping, DMA-based device drivers usually use 
 
 https://mp.weixin.qq.com/s/H0aAs3Osvl8uugj4NfRbmA
 ```
+
+《宋宝华：深入理解cache对写好代码至关重要》
 
 这些API把底层的硬件差异封装掉了，如果硬件不支持CPU和设备的cache同步的话，延时还是比较大的。
 
