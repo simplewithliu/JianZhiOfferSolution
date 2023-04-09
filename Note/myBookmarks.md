@@ -1123,6 +1123,15 @@ https://man7.org/linux/man-pages/man2/_syscall.2.html
 
 ```
 
+https://stackoverflow.com/a/51837677/14035857
+```
+
+If you're looking for syscall number in Linux system, take a look at w3challs
+
+查询系统调用号
+
+```
+
 
 **流程分析**
 
@@ -1130,10 +1139,31 @@ https://zhuanlan.zhihu.com/p/361328552
 
 https://zhuanlan.zhihu.com/p/55214097
 
+https://dumphex.github.io/2020/03/01/syscall/
+```
+
+以arm64下的mmap系统调用为例
+
+```
+
 
 **系统调用定义宏 SYSCALL_DEFINEx 的分析**
 
 https://blog.csdn.net/weixin_42992444/article/details/108571515
+
+
+**Android bionic的系统调用实现**
+```
+
+Android bionic的libc库没有直接定义系统调用的具体实现
+
+而是通过gensyscalls.py脚本读取SYSCALLS.TXT文件生成
+
+```
+
+https://blog.csdn.net/qq_22613757/article/details/89852771
+
+https://blog.csdn.net/lijie2664989/article/details/107826733
 
 
 
@@ -1410,6 +1440,15 @@ https://stackoverflow.com/questions/40890861/why-is-kmalloc-more-efficient-than-
 ```
 
 上述 2 个网址描述了 kmalloc 和 vmalloc 的一些特点
+
+```
+
+https://stackoverflow.com/questions/27091182/can-allocation-by-kmalloc-gfp-kernel-be-failed
+```
+
+kmalloc (GFP_KERNEL) cannot wait forever unless you add the optional flag __GFP_NOFAIL. 
+
+Note that this one is deprecated on the recent kernel.
 
 ```
 
@@ -1725,13 +1764,24 @@ https://www.zhihu.com/question/33414159
 
 https://www.cnblogs.com/aaronLinux/p/6661987.html
 
+https://zhuanlan.zhihu.com/p/577974561
+```
+
+linux 内核字符驱动char_dev源码分析
+
+#总结：cdev结构不一定是与子设备号一一对应的，一个cdev可以有多个子设备号，子设备号的管理取决于驱动程序的实现
+
+```
+
 
 **平台设备驱动**
 
 
-https://blog.csdn.net/a568713197/article/details/89642396
+http://www.wowotech.net/device_model/platform_device.html
 
 https://doc.embedfire.com/linux/stm32mp1/driver/zh/latest/linux_driver/base_platform_driver.html
+
+https://blog.csdn.net/a568713197/article/details/89642396
 
 https://hughesxu.github.io/posts/Linux_device_and_driver_model/
 
@@ -2482,7 +2532,21 @@ https://blog.csdn.net/weixin_42417004/article/details/117118027
 
 **volatile与内存屏障总结**
 
+
+https://stackoverflow.com/questions/61307639/why-do-we-need-both-read-and-write-barriers
+
 https://zhuanlan.zhihu.com/p/43526907
+```
+
+上述 2 个网址介绍了 x86 中的volatile与内存屏障
+
+代码中仍然使用lfence()与sfence()这两个内存屏障应该也是一种长远的考虑。
+
+按照Interface写代码是最保险的，万一Intel以后出一个采用弱一致模型的CPU，遗留代码出问题就不好了。
+
+目前在X86下面视为编译器屏障即可。
+
+```
 
 * x86 volatile
 
@@ -2552,6 +2616,8 @@ https://zhuanlan.zhihu.com/p/43526907
 
 	```
 
+
+
 ### 2 进程间同步机制
 
 https://zhuanlan.zhihu.com/p/49214500
@@ -2592,14 +2658,28 @@ https://stackoverflow.com/questions/10566328/using-fseek-fwrite-from-multiple-pr
 https://stackoverflow.com/questions/7842511/safe-to-have-multiple-processes-writing-to-the-same-file-at-the-same-time-cent
 
 
+
 ### 4 内存模型与内存屏障
 
 
-**锁的实现需要内存屏障支持**
 
-https://www.hitzhangjie.pro/blog/locks实现背后不为人知的故事
+**多核重排序问题**
 
-https://stackoverflow.com/questions/50951011/how-does-a-mutex-lock-and-unlock-functions-prevents-cpu-reordering
+
+https://stackoverflow.com/questions/71768672/can-cpu-out-of-order-execution-cause-memory-reordering
+
+https://elsonlee.github.io/2020/05/25/reorder-detection/
+
+https://www.zhihu.com/question/296949412/answer/747494794
+```
+
+上述 3 个网址简要说明了多核出现CPU乱序的原因
+
+1. 编译优化
+2. CPU自身优化
+3. store buffer下会导致的看似“重排序”的现象
+
+```
 
 
 **acquire and release语义**
@@ -2627,6 +2707,31 @@ https://preshing.com/20130922/acquire-and-release-fences/
 在某些场景下，不需要顺序一致性，只要保证Synchronizes-With Relationships
 
 ```
+
+
+https://lwn.net/Articles/847481/
+```
+
+Linux kernel有如下定义
+
+LoadLoad屏障：smp_load_acquire(), smp_rmb()
+
+LoadStore屏障：smp_load_acquire(), smp_store_release()
+
+StoreStore屏障：smp_store_release(), smp_wmb()
+
+```
+
+
+
+**锁的实现需要内存屏障支持**
+
+https://www.hitzhangjie.pro/blog/locks实现背后不为人知的故事
+
+https://stackoverflow.com/questions/50951011/how-does-a-mutex-lock-and-unlock-functions-prevents-cpu-reordering
+
+
+
 
 **as-if语义**
 
@@ -3046,6 +3151,49 @@ ums512_1h10:/system/bin #./simpleperf record -p 564 -g -e task-clock --duration 
 
 https://blog.crazytaxii.com/posts/flame_graphs/
 
+
+**使用perfetto**
+
+
+https://developer.android.com/studio/command-line/perfetto
+
+https://perfetto.dev/docs/quickstart/android-tracing
+
+https://blog.csdn.net/lezhang123/article/details/117216140
+```
+
+上述 3 个网址总结使用方法如下：
+
+1. 编写perfetto_config.pbtx
+
+可以使用网页版在线生成相关配置
+
+https://ui.perfetto.dev/#!/record
+
+如下是一个比较常用的：
+
+(https://www.jianshu.com/p/48b822e10453)
+
+注意设置缓冲区大小和最大时长相关联，二者要匹配
+
+2. 将配置文件导入	
+
+adb push C:\Users\peng.lv\Desktop\ylog\perfetto\perfetto_config.pbtx /data/misc/perfetto-configs
+
+3. 抓取perfetto trace
+
+adb shell perfetto --txt -c /data/misc/perfetto-configs/perfetto_config.pbtx -o /data/misc/perfetto-traces/trace.perfetto-trace
+
+4. 导出perfetto trace
+
+adb pull /data/misc/perfetto-traces/trace.perfetto-trace DeskTop/ylog
+
+5. 也可以使用record_android_trace，这是一个python脚本，具体命令可以看其中的代码
+
+python C:\Users\peng.lv\Desktop\ylog\perfetto\record_android_trace -o DeskTop/ylog/trace_file1.perfetto-trace -t 10s -b 32mb sched am ......
+
+
+```
 
 
 ### 7 JNI使用总结

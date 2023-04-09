@@ -1,0 +1,435 @@
+﻿Sept 22 2022
+
+1 unix domain sockets VS internet sockets
+
+https://lists.freebsd.org/pipermail/freebsd-performance/2005-February/001143.html
+
+
+2 System Bus Matrix
+
+https://microchipdeveloper.com/32bit:mx-arch-system-bus-matrix
+
+
+Sept 28 2022
+
+1 信号与信道复用技术
+
+https://iot-book.github.io/2_信号处理基础/S2_模拟信号和数字信号介绍
+
+https://blog.51cto.com/u_14758357/3050713
+
+https://zh-cn.lambdageeks.com/multiplexing-types-tdm-fdm/
+
+
+2 谈一谈接口电路
+
+https://www.jianshu.com/p/9536cd0d4be4
+
+
+
+Oct 10 2022
+
+1 梯度下降法的神经网络容易收敛到局部最优，为什么应用广泛？
+
+张大帅的回答 - 知乎
+https://www.zhihu.com/question/68109802/answer/260019230
+
+
+
+Nov 01 2022
+
+1 check  main thread STATE and stacktrace
+http://elliotth.blogspot.com/2012/08/how-to-read-dalvik-sigquit-output.html
+
+
+
+Nov 27 2022
+
+1 Linux Kernel 内存管理介绍
+
+http://blog.chinaunix.net/uid-29025972-id-5768074.html
+
+https://juejin.cn/post/7153083367670415397
+
+	• 缺页处理
+	https://blog.csdn.net/bin_linux96/article/details/105326880
+	https://ty-chen.github.io/linux-kernel-mmap/
+	
+2 Linux内核虚拟地址空间
+
+https://fanlv.wiki/2021/07/25/linux-mem/
+
+
+
+
+Dec 02 2022
+
+1 Linux内核概览
+
+https://makelinux.github.io/kernel/map/
+
+
+
+
+Dec 07 2022
+
+1 man手册的更新
+
+https://unix.stackexchange.com/questions/432599/man-pages-when-to-put-a-new-system-call-in-section-2-and-when-in-section-3
+
+https://unix.stackexchange.com/questions/266179/do-i-need-to-write-man-pages-for-c-library
+
+
+
+Dec 11 2022
+
+1 ION
+
+https://i.blackhat.com/Asia-22/Friday-Materials/AS-22-Wu-ExplosION-The-Hidden-Mines.pdf
+
+https://blog.csdn.net/qq_40405527/article/details/123578849
+
+https://stackoverflow.com/questions/21174272/need-help-in-understanding-android-memory-allocator
+
+https://elinux.org/Android_Kernel_Features
+```
+ashmem and pmem are very similar. Both are used for sharing memory between processes. 
+ashmem uses virtual memory, whereas pmem uses physically contiguous memory.
+```
+
+2 Flash、RAM、ROM的区别
+
+https://gist.github.com/but0n/d773f855b1641e156f2d2e40ada9dbdc
+
+
+
+Dec 14 2022
+
+1 一些内核的书籍
+
+通过看韦东山的Linux驱动视频可以转行嵌入式底层驱动工程师吗? - Stay Foolish的回答 - 知乎 
+
+https://www.zhihu.com/question/567805075/answer/2784681022
+
+
+2 NDK get pid from package name
+
+https://stackoverflow.com/questions/34072185/ndk-get-pid-from-package-name
+
+
+
+
+Dec 26 2022
+
+1 设备控制器
+
+
+11.2.2 I/O接口及设备控制器
+	I/O接口是处于一组I/O端口和对应的设备控制器之间的一种硬件电路。它起翻译器的作用，即把I/O端口中的值转换成设备所需要的命令和数据。从另一个角度来看，它检测设备状态的变化，并对起状态寄存器作用的I/O端口进行相应地更新。还可以通过一条IRQ线把这种电路连接到可编程中断控制器上，以使它代表相应的设备发出中断请求。
+	
+	有两类类型的接口：
+	
+	专用I/O接口：专门用于一个特定的硬件设备。在一些情况下，设备控制器与这种I/O接口处于同一块卡中，连接到专用I/O接口上的设备可以是内部设备（位于PC机箱内部的设备），也可以是外部设备（位于PC机箱外部的设备）。例如键盘接口、图形接口、磁盘接口、总线鼠标接口及网络接口都属于专用I/O接口。
+	
+	
+	通用I/O接口：用来连接多个不同的硬件设备。连接到通用I/O接口上的设备通常都是外部设备。例如并口、串口、通用串行总线（USB）、PCMCIA接口及SCSI接口都属于通用I/O接口。
+	
+	复杂的设备可能需要一个设备控制器来驱动。控制器具有两方面的作用，一是对从I/O接口接收到的高级命令进行解释，并通过向设备发送适当的电信号序列强制设备执行特定的操作；二是对从设备接收到的电信号进行转换和解释，并通过I/O接口修改状态寄存器的值。
+	磁盘控制器是一种比较典型的设备控制器，它通过I/O接口从微处理器接收诸如“写这个数据块”之类的高级命令，并将其转换成诸如“把磁头定位在正确位置的磁道”上和“把数据写入这个磁道”之类的低级磁盘操作。现在的磁盘控制器相当复杂，因为它们可以把磁盘数据快速保存到内存的缓存区中，还可以根据实际磁盘的几何结构重新安排CPU的高级请求，使其优化。
+ 
+
+https://book.aikaiyuan.com/kernel/11.2.2.htm
+
+
+
+《计算机组成原理》 唐朔飞 P189
+
+可以大概理解设备控制器的概念是从软件上来描述硬件的IO接口部分，也就是与操作系统交互以及受其控制的部分，从而进一步控制外围硬件。
+
+
+
+
+Jan 03 2023
+
+1 神经网络 局部最优问题
+
+https://zhidao.baidu.com/question/361520382448996572.html
+
+https://blog.csdn.net/m0_37957160/article/details/121913311
+
+
+
+
+Jan 04 2023
+
+1 drm框架的专栏
+
+https://blog.csdn.net/weixin_43644245/article/details/120255137
+
+https://blog.csdn.net/weixin_43644245/article/details/122017023
+
+https://xilinx.eetrend.com/content/2019/100043772.html
+```
+在各类SOC上，CRTC+Endode+Connector一般是集成在一个外设模块挂在系统总线上。
+以ARM为例，CRTC/Endoder等需要配置的外设模块，配置接口挂在APB总线，数据接口直接在AHB总线上，实现和Framebuffer的高速通信。
+```
+
+2 MIPI DSI
+
+https://blog.csdn.net/zhoutaopower/article/details/123648751
+
+https://blog.csdn.net/carolven/article/details/119011502
+
+https://blog.csdn.net/caihaitao2000/article/details/80224976
+```
+显示串行接口标准定义了主处理器和外围设备之间的协议，是遵守MIPI联盟移动设备接口的标准。
+DSI标准建立在现有的DPI(显示像素接口)和DBI(显示总线接口)标准上，采用MIPI联盟标准中定义的像素格式和命令集。
+```
+
+https://blog.csdn.net/coldrainbow/article/details/108715583
+```
+A
+
+从整体流程上看到，DBI、DPI都是相应的控制器将数据发给LCD，
+而DSI用的是LTDC产生的数据，LTDC通过内部DBI接口将数据传给SDIHOST，然后才开始下面四层DSI接口协议的处理封包。
+所有说DSI是封装了DBI或DPI。与配置DSI时，一定会配置相应的LTDC。
+
+B
+
+LCD显示需要显示控制器，显示控制器是LCD越来越大，功能越来越多的发展结果。 LCD控制器同LCD驱动器是有着本质区别的。简单来说LCD控制器在嵌入式系统中的功能如同显卡在计算机中所起到的作用。
+LCD控制器负责把显存（可能是内存中的指定域）中的LCD图形数据传输到LCD驱动器（LCD driver）上，并产生必须的LCD控制信号，从而控制和完成图形的显示，翻转，叠加，缩放等一系列复杂的图形显示功能。
+LCD驱动器则只负责把CPU发送的图像数据在LCD显示出来，不会对图像做任何的处理。
+LCD控制器可以兼容各种各样的CPU接口以及各种各样的LCD模块的接口，硬件完成复杂图像显示功能（缩放，翻转，叠加，动态等等）
+```
+
+3 primary plane
+
+https://en.wikipedia.org/wiki/Direct_Rendering_Manager
+```
+The plane that holds the framebuffer is called the primary plane, and each CRTC must have one associated
+```
+
+https://doc.embedfire.com/linux/rk356x/linux_base/zh/latest/linux_app/drm/drm.html
+```
+通常驱动会把framebuffer绑定到 DRM_PLANE_TYPE_PRIMARY 上
+
+```
+
+https://blog.csdn.net/hexiaolong2009/article/details/84934294
+https://quqi.com/516996/7616
+```
+planes的概念
+```
+
+https://blog.csdn.net/Damon_X/article/details/111831210
+```
+参考文档资料
+```
+
+https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841850/Video+Mixer
+
+https://forums.raspberrypi.com/viewtopic.php?t=333320
+
+
+
+Jan 08 2023
+
+1 FIFO的读写
+
+https://tjpuzhanghui.github.io/2020/07/11/SPI驱动分析之SPI Protocol/
+
+
+
+
+Jan 10 2023
+
+1 Android soong build系统介绍
+
+https://www.jianshu.com/p/80013a768a45
+
+2 Android进阶解密
+
+https://wzhengo.github.io/15789733843338.html
+
+
+
+Feb 22 2023
+
+1 DMA发起方式
+
+https://quqi.com/516996/7621
+
+https://quqi.com/516996/7620
+
+https://quqi.com/516996/7619
+
+https://quqi.com/516996/7622
+```
+stm32 DMA 概述
+```
+
+https://www.cnblogs.com/Fireflycjd/p/14364325.html
+https://quqi.com/516996/7624
+```
+mem to mem 传输支持 software trigger
+```
+
+https://core.ac.uk/download/pdf/41359185.pdf
+https://quqi.com/516996/7623
+```
+DMA支持硬件触发和软件触发
+```
+
+
+
+Feb 25 2023
+
+1 lock free
+
+https://stackoverflow.com/questions/14011849/what-is-lock-free-multithreaded-programming
+https://doc.yonyoucloud.com/doc/wiki/project/java-concurrent/non-blocking-algorithms.html
+```
+lock free 像乐观锁，可以降低延迟
+```
+
+
+
+Mar 01 2023
+
+1 芯片手册
+
+https://zhuanlan.zhihu.com/p/608306619
+
+
+2 模拟/数字信号本质
+
+https://www.zhihu.com/question/29244850/answer/107289428
+
+https://www.zhihu.com/question/40421992
+
+
+
+
+Mar 05 2023 
+
+1 Linux内存初始化
+
+https://zhuanlan.zhihu.com/p/488123510
+```
+Linux物理系统内存管理模型
+```
+
+https://blog.csdn.net/jasonactions/article/details/114122304
+```
+内存管理的启动部分
+```
+https://blog.csdn.net/xiaoqiaoq0/article/details/108088787
+
+http://www.wowotech.net/?post=357
+```
+内存初始化代码分析（三）：创建系统内存地址映射
+```
+
+2 内核页表的 section map
+
+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/commit/arch/arm64/mm/mmu.c?id=206a2a73a62d37c8b8f6ddd3180c202b2e7298ab
+
+https://blog.csdn.net/yhb1047818384/article/details/109169979
+
+https://zhuanlan.zhihu.com/p/363856783
+
+https://forums.raspberrypi.com/viewtopic.php?t=227139
+
+
+
+
+Mar 12 2023 
+
+1 KGDB与JTAG的对比
+
+https://www.embedded.com/debugging-the-linux-kernel-with-jtag/
+
+https://quqi.com/516996/7627
+
+https://zhuanlan.zhihu.com/p/562727190
+
+https://www.zhihu.com/question/21199781/answer/51376477
+
+
+
+
+
+Mar 18 2023 
+
+1 补充内核编译的内容
+
+https://yunyanan.github.io/exploring_kbuild/
+```
+顶层makefile通过递归搜索子目录makefile（相当于嵌套make 《跟我一起写makefile》）
+makefile文件名优先推荐，其次是Kbuild
+```
+
+https://zhuanlan.zhihu.com/p/362958145 
+```
+解释了递归进入Makefile.build（黄导的知乎专栏，与兰新宇一样优质）
+```
+
+https://linux.cn/article-6197-1.html
+
+https://richardweiyang-2.gitbook.io/kernel-exploring/00_index/05_rules_for_single_object
+
+
+
+2 内核调试打印与内核模块名
+
+https://github.com/PinoTsao/Makefile/blob/master/01.kbuild_summary.md
+
+https://www.cnblogs.com/pengdonglin137/p/5808373.html
+
+
+
+
+
+Mar 23 2023 
+
+1 可重入函数
+
+https://www.zhihu.com/question/21526405/answer/56823146
+```
+异步可重入函数与线程安全函数等价吗？ - Acjx的回答 - 知乎
+```
+
+
+2 汇编的意义
+
+https://www.zhihu.com/question/26834043/answer/40514515
+```
+写操作系统只能用汇编和 C 语言吗？ - Kevin嘉宏的回答 - 知乎 
+```
+https://www.zhihu.com/question/446836487
+
+https://www.zhihu.com/question/315031511
+
+
+
+
+Apr 07 2023
+
+
+1 聊聊内存模型与内存序
+
+https://www.ccppcoding.com/archives/221
+
+
+2 你所不知道的 C 語言：記憶體管理、對齊及硬體特性
+
+https://hackmd.io/@sysprog/c-memory
+
+3 为什么SSE需要16字节对齐,64位机器一次也就存取8字节，只要8字节对齐不就能保证完美的存取了吗？
+
+https://www.zhihu.com/question/323890604
+
+4 为什么没有普及128位操纵系统的计算机?
+
+https://www.zhihu.com/question/320332089/answer/1466111036
+
