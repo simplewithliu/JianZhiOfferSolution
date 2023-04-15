@@ -188,7 +188,7 @@ https://www.zhihu.com/question/348712213
 
 (https://www.zhihu.com/question/61180565/answer/598520764) 评论区可参考
 
-https://quqi.com/516996/7625
+(https://quqi.com/516996/7625)
 
 ```
 
@@ -1769,7 +1769,7 @@ https://zhuanlan.zhihu.com/p/577974561
 
 linux 内核字符驱动char_dev源码分析
 
-#总结：cdev结构不一定是与子设备号一一对应的，一个cdev可以有多个子设备号，子设备号的管理取决于驱动程序的实现
+cdev结构不一定是与子设备号一一对应的，一个cdev可以有多个子设备号，子设备号的管理取决于驱动程序的实现
 
 ```
 
@@ -2321,14 +2321,19 @@ https://wiki.t-firefly.com/zh_CN/Core-3588J/usage_gpio.html
 ```
 
 (https://www.elecfans.com/d/1884243.html)
+
 硬件电路细节
 
 (https://www.cnblogs.com/lulipro/p/7675167.html)
+
 上拉电阻、下拉电阻概念补充 
 
 (https://www.zhihu.com/question/23167435/answer/167825884) 评论区可参考 
+
 (https://zhuanlan.zhihu.com/p/84538293)
+
 这个是文字的锅，跟上拉没有关系，这个电阻就是保护作用，
+
 IO口输出高电平的时候，这个电阻用来保护负载，防止烧毁负载，IO口输出低电平的时候，用来保护IC，防止IC烧毁
 
 ```
@@ -2338,8 +2343,7 @@ https://zhuanlan.zhihu.com/p/67412073
 https://blog.csdn.net/qq_42384937/article/details/82970224
 ```
 
-引脚控制
-(https://elinux.org/images/b/b6/Pin_Control_Subsystem_Overview.pdf)
+引脚控制：(https://elinux.org/images/b/b6/Pin_Control_Subsystem_Overview.pdf)
 
 (https://imgtec.eetrend.com/sites/imgtec.eetrend.com/files/201403/forum/1763-3052-di12zhangioduankou.pdf)
 (https://quqi.com/516996/7603)
@@ -2507,7 +2511,7 @@ https://www.zhihu.com/question/492983429
 ## 并发问题
 
 
-### 1  volatile关键字的知识
+### 1 volatile关键字的知识
 
 
 **谈谈 C/C++ 中的volatile**
@@ -2685,8 +2689,8 @@ https://www.zhihu.com/question/296949412/answer/747494794
 **acquire and release语义**
 
 https://preshing.com/20120930/weak-vs-strong-memory-models/
-> In a sequentially consistent memory model, there is no memory reordering. 
-> It’s as if the entire program execution is reduced to a sequential interleaving of instructions from each thread. 
+> In a sequentially consistent memory model, there is no memory reordering.
+> It’s as if the entire program execution is reduced to a sequential interleaving of instructions from each thread.
 > In particular, the result r1 = r2 = 0 from Memory Reordering Caught in the Act becomes impossible.
 ```
 一般CPU不会做成顺序一致性，这样开销太大，
@@ -2706,6 +2710,10 @@ https://preshing.com/20130922/acquire-and-release-fences/
 
 在某些场景下，不需要顺序一致性，只要保证Synchronizes-With Relationships
 
+(https://chonghw.github.io/)
+
+preshing并发编程系列文章的翻译
+
 ```
 
 
@@ -2720,7 +2728,15 @@ LoadStore屏障：smp_load_acquire(), smp_store_release()
 
 StoreStore屏障：smp_store_release(), smp_wmb()
 
+(https://www.qemu.org/docs/master/devel/atomics.html)
+Memory barriers control the order of references to shared memory. They come in six kinds:
+Atomic operations other than qatomic_set() and qatomic_read() have either acquire or release semantics 
+
+(https://tinylab.org/memory-ordering-part2/)
+
 ```
+
+
 
 
 
@@ -2912,6 +2928,7 @@ https://mp.weixin.qq.com/s/H0aAs3Osvl8uugj4NfRbmA
 ```
 
 
+***
 
 
 ## Android
@@ -3166,13 +3183,9 @@ https://blog.csdn.net/lezhang123/article/details/117216140
 
 1. 编写perfetto_config.pbtx
 
-可以使用网页版在线生成相关配置
+可以使用网页版在线生成相关配置：(https://ui.perfetto.dev/#!/record)
 
-https://ui.perfetto.dev/#!/record
-
-如下是一个比较常用的：
-
-(https://www.jianshu.com/p/48b822e10453)
+如下是一个比较常用的：(https://www.jianshu.com/p/48b822e10453)
 
 注意设置缓冲区大小和最大时长相关联，二者要匹配
 
