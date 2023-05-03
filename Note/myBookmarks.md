@@ -1030,6 +1030,13 @@ https://www.opsdash.com/blog/cpu-usage-linux.html
 
 https://haydenjames.io/what-is-iowait-and-linux-performance/
 
+https://m.elecfans.com/article/2042951.html
+```
+
+Linux中top命令的计算方式
+
+```
+
 
 **堆栈打印**
 
@@ -1056,6 +1063,8 @@ https://www.cnblogs.com/clblacksmith/p/8378434.html
 	https://stackoverflow.com/questions/2356168/force-gcc-to-notify-about-undefined-references-in-shared-libraries
 	
 	https://stackoverflow.com/questions/31371867/what-is-the-g-flag-that-permits-undefined-references-in-shared-libraries
+
+	https://stackoverflow.com/questions/5555632/can-gcc-not-complain-about-undefined-references
 
 
 **GDB初步**

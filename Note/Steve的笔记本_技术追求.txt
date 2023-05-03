@@ -367,6 +367,8 @@ https://yunyanan.github.io/exploring_kbuild/
 ```
 顶层makefile通过递归搜索子目录makefile（相当于嵌套make 《跟我一起写makefile》）
 makefile文件名优先推荐，其次是Kbuild
+
+《跟我一起写makefile》 : https://seisman.github.io/how-to-write-makefile/index.html
 ```
 
 https://zhuanlan.zhihu.com/p/362958145 
@@ -433,3 +435,73 @@ https://www.zhihu.com/question/323890604
 
 https://www.zhihu.com/question/320332089/answer/1466111036
 
+
+Apr 16 2023
+
+1 USB HUB是否占用USB寻址地址
+
+https://www.zhihu.com/question/504150597/answer/2263109886
+```
+分线器是不是可以让电脑拥有更多的USB插口？ - 萧骁的回答 - 知乎
+```
+
+
+Apr 29 2023
+
+1 关于全局变量线程间的可见性问题
+
+https://stackoverflow.com/questions/859690/do-i-need-a-lock-when-only-a-single-thread-writes-to-a-shared-variable
+
+https://www.zhihu.com/question/31325454/answer/51503609
+```
+评论区：
+不加锁的话就没有同步点，这样的话一个线程写入内存能不能立刻让另一个线程读到这个事情本身从逻辑上说是没什么意义的，因为你没法预知2个线程的逻辑执行顺序，在逻辑上也不会要求写线程写入后读线程一定要立刻读到新的值，因为cpu有cache一致性协议，读线程总能在有限步后读到新的内存值，这种情况下不加锁应该是没问题的
+```
+https://www.zhihu.com/question/31325454/answer/52085494
+
+https://www.zhihu.com/question/31325454/answer/51920170
+```
+评论区：
+这个也要看变量的大小，以及读者如何读取变量。对于 cache line 大小的变量，就是刘然回答的情况3。如果是多个 cache line ，而且写者是 in place 修改，的确是会有问题。这时候可以使用以RCU为代表的 multi version 的更新变量的方法，保证读者读到的旧值也是完整和一致的。或者上锁吧。
+```
+
+
+
+
+May 03 2023
+
+1 用exec函数执行新程序
+
+https://blog.csdn.net/str999_cn/article/details/78693438
+```
+从以上结果看，执行新程序的进程保持了原来进程的进程ID、父进程ID、实际用户ID和实际组ID。同时，调用新的可执行程序后，原有的子进程的映像被替代，不再被执行。
+```
+
+2 Linux博文，内容来源基本是ULK
+
+https://www.halolinux.us/kernel-reference/
+
+
+3 gcc与g++编译器
+
+https://www.zhihu.com/question/20940822
+
+https://zhuanlan.zhihu.com/p/341177816
+
+https://stackoverflow.com/questions/45912291/how-does-gcc-decide-which-libraries-to-implicitly-include
+
+
+4 Bionic 简介
+
+https://blog.csdn.net/weixin_34204057/article/details/91999401
+
+
+5 Why do you have to link the math library in C?
+
+https://stackoverflow.com/questions/1033898/why-do-you-have-to-link-the-math-library-in-c
+
+https://stackoverflow.com/questions/40198922/why-could-c-include-stdio-h-and-invoke-printf-method-which-is-cplatformubu
+
+https://stackoverflow.com/questions/45912291/how-does-gcc-decide-which-libraries-to-implicitly-include
+
+https://jdhao.github.io/2020/12/10/gcc_library_link_issue/
