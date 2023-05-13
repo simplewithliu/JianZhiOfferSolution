@@ -1105,6 +1105,12 @@ For each symbol, the corresponding CRC value is also stored.
 ```
 
 
+**arm64 kernel crash 调试方法**
+
+https://www.zhihu.com/column/c_1049317588999479296
+
+https://blog.csdn.net/WANGYONGZIXUE/article/details/128431816
+
 
 ### 4 Linux系统调用知识点
 
@@ -1450,6 +1456,10 @@ https://stackoverflow.com/questions/40890861/why-is-kmalloc-more-efficient-than-
 
 上述 2 个网址描述了 kmalloc 和 vmalloc 的一些特点
 
+(https://stackoverflow.com/questions/6306192/is-there-a-size-limit-for-kernel-module-in-linux)
+
+早期kernel可能限制了vmalloc大小的分配，由此也限制了module模块大小
+
 ```
 
 https://stackoverflow.com/questions/27091182/can-allocation-by-kmalloc-gfp-kernel-be-failed
@@ -1593,6 +1603,7 @@ vfree 释放后会修改页表，因为其不是线性映射的，所以会修�
 https://stackoverflow.com/questions/4535379/do-kernel-pages-get-swapped-out
 
 https://stackoverflow.com/questions/8345300/can-vmalloc-pages-be-swapping-pages
+
 
 * 内核页表与进程页表
   
@@ -3129,10 +3140,12 @@ https://segmentfault.com/a/1190000038276523
 
 kernel log可以使用两种方法实时打印
 
-1 adb shell logcat -b kernel > DeskTop （可以输出进程号和线程号）
+1 adb shell logcat -b kernel > DeskTop/kernel.log （可以输出进程号和线程号）
 
 2 adb shell dmesg -n 8
-  adb shell dmesg -T -w > DeskTop （标准格式）
+  adb shell dmesg -T -w > DeskTop/kernel.log （标准格式）
+
+注意在代码中打印kernel log时，调用打印方法时要在打印内容的最后添加换行符
 
 ```
 
@@ -3626,7 +3639,7 @@ Steve的笔记本/技术追求
 <div align=center>
 	<img src="images/XXX.jpg" />
 </div>
-<div align=center>图 1 XXX</div>
+<div align=center><b>图 1</b> XXX</div>
 
 ***
 
