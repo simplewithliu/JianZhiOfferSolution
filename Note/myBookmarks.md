@@ -1275,6 +1275,41 @@ The file is composed of thousands of #define macros that describe the state for 
 https://www.makelinux.net/ldd3/chp-2-sect-4.shtml
 
 
+
+**Linux内核编译的流程**
+
+https://yunyanan.github.io/exploring_kbuild/
+```
+
+顶层Makefile通过递归搜索子目录Makefile (相当于嵌套make，参考 跟我一起写Makefile)
+
+文件名写为Makefile优先推荐，其次是Kbuild
+
+跟我一起写Makefile：(https://seisman.github.io/how-to-write-makefile/index.html)
+
+```
+
+https://zhuanlan.zhihu.com/p/362958145 
+```
+
+解释了如何递归进入Makefile.build（黄导的知乎专栏，与兰新宇一样优质）
+
+```
+
+https://linux.cn/article-6197-1.html
+
+https://richardweiyang-2.gitbook.io/kernel-exploring/00_index/05_rules_for_single_object
+
+
+
+**2 内核调试打印与内核模块名**
+
+https://github.com/PinoTsao/Makefile/blob/master/01.kbuild_summary.md
+
+https://www.cnblogs.com/pengdonglin137/p/5808373.html
+
+
+
 ### 6 内存问题
 
 **关于动态加载的理解**
@@ -1415,6 +1450,7 @@ https://stackoverflow.com/questions/22981919/why-we-getting-segmentation-fault-i
 
 **kernel内存分配机制**
 
+
 http://aandds.com/blog/linux-physical-memory-mgmt.html
 ```
 
@@ -1423,6 +1459,10 @@ http://aandds.com/blog/linux-physical-memory-mgmt.html
 尽管处理器的最小可寻址单位通常为字（甚至字节），但是内存管理单元（MMU，管理内存并把虚拟地址转换为物理地址的硬件）通常以页为单位进行处理。
 
 正因为如此，MMU 以页（page）大小为单位来管理系统中的页表（这也是页表名的来由）。
+
+(https://zhuanlan.zhihu.com/p/488123510)
+
+Linux物理系统内存管理模型
 
 ```
 
@@ -1543,6 +1583,27 @@ Note that this one is deprecated on the recent kernel.
 	https://blog.csdn.net/Rong_Toa/article/details/109558234
 
 	https://community.nxp.com/t5/i-MX-Processors-Knowledge-Base/How-to-get-rid-of-CMA/ta-p/1123287
+
+
+
+**Linux kernel 内存初始化**
+
+
+https://blog.csdn.net/xiaoqiaoq0/article/details/108088787
+
+http://www.wowotech.net/?post=357
+> 对系统中所有的memory type的region建立对应的地址映射。
+> 由于reserved type的memory region是memory type的region的真子集，因此reserved memory 的地址映射也就一并建立了。
+```
+
+可以理解为能够被kernel管理的系统物理内存包括常规内存，标记reserved的内存，但不包括标记了no-map的。
+
+常规内存和标记reserved的内存地址都会被正常映射。
+
+(https://blog.csdn.net/jasonactions/article/details/114122304)
+在分析启动代码的时候会有一些关于内存管理初始化相关的内容，在此专门将其提取出来，做一个简单的总结。
+
+```
 
 
 
@@ -1700,6 +1761,17 @@ https://stackoverflow.com/questions/8345300/can-vmalloc-pages-be-swapping-pages
 
 	```
 
+
+**内核页表的 section map**
+
+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/commit/arch/arm64/mm/mmu.c?id=206a2a73a62d37c8b8f6ddd3180c202b2e7298ab
+> We have the capability to map 1GB level 1 blocks when using a 4K granule.
+
+https://zhuanlan.zhihu.com/p/363856783
+
+https://blog.csdn.net/yhb1047818384/article/details/109169979
+
+https://forums.raspberrypi.com/viewtopic.php?t=227139
 
 
 
@@ -3601,6 +3673,11 @@ https://www.ithome.com/0/583/749.htm
 **网络博主的技术总结**
 
 https://dreamgoing.github.io/
+
+
+**霜神的博客**
+
+https://halfrost.com/
 
 
 ***

@@ -293,35 +293,6 @@ https://www.zhihu.com/question/40421992
 
 
 
-### Mar 05 2023 
-
-**1 Linux内存初始化**
-
-https://zhuanlan.zhihu.com/p/488123510
-```
-Linux物理系统内存管理模型
-```
-
-https://blog.csdn.net/jasonactions/article/details/114122304
-```
-内存管理的启动部分
-```
-https://blog.csdn.net/xiaoqiaoq0/article/details/108088787
-
-http://www.wowotech.net/?post=357
-```
-内存初始化代码分析（三）：创建系统内存地址映射
-```
-
-**2 内核页表的 section map**
-
-https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/commit/arch/arm64/mm/mmu.c?id=206a2a73a62d37c8b8f6ddd3180c202b2e7298ab
-
-https://blog.csdn.net/yhb1047818384/article/details/109169979
-
-https://zhuanlan.zhihu.com/p/363856783
-
-https://forums.raspberrypi.com/viewtopic.php?t=227139
 
 
 ### Mar 12 2023 
@@ -336,34 +307,8 @@ https://zhuanlan.zhihu.com/p/562727190
 
 https://www.zhihu.com/question/21199781/answer/51376477
 
-### Mar 18 2023 
-
-**1 补充内核编译的内容**
-
-https://yunyanan.github.io/exploring_kbuild/
-```
-顶层makefile通过递归搜索子目录makefile（相当于嵌套make 《跟我一起写makefile》）
-makefile文件名优先推荐，其次是Kbuild
-
-《跟我一起写makefile》 : https://seisman.github.io/how-to-write-makefile/index.html
-```
-
-https://zhuanlan.zhihu.com/p/362958145 
-```
-解释了递归进入Makefile.build（黄导的知乎专栏，与兰新宇一样优质）
-```
-
-https://linux.cn/article-6197-1.html
-
-https://richardweiyang-2.gitbook.io/kernel-exploring/00_index/05_rules_for_single_object
 
 
-
-**2 内核调试打印与内核模块名**
-
-https://github.com/PinoTsao/Makefile/blob/master/01.kbuild_summary.md
-
-https://www.cnblogs.com/pengdonglin137/p/5808373.html
 
 ### Mar 23 2023 
 
@@ -475,3 +420,20 @@ https://stackoverflow.com/questions/40198922/why-could-c-include-stdio-h-and-inv
 https://stackoverflow.com/questions/45912291/how-does-gcc-decide-which-libraries-to-implicitly-include
 
 https://jdhao.github.io/2020/12/10/gcc_library_link_issue/
+
+
+
+
+### May 20 2023
+
+**1 并发编程示例之原子操作**
+
+https://hackmd.io/@sysprog/concurrency-atomics
+
+http://www.gpfeng.com/?p=451
+
+https://www.brainkart.com/article/Operating-System---Provided-Atomics_9518/
+
+https://randu.org/tutorials/threads/
+
+https://www.parallellabs.com/2011/04/09/pthread-mutex-lock-and-thread-safety/
