@@ -437,3 +437,15 @@ https://www.brainkart.com/article/Operating-System---Provided-Atomics_9518/
 https://randu.org/tutorials/threads/
 
 https://www.parallellabs.com/2011/04/09/pthread-mutex-lock-and-thread-safety/
+
+
+### May 21 2023
+
+**1 MarkDown 插入数学公式**
+
+https://juejin.cn/post/6844903554575155207
+
+
+**2 MIT 6.828 实现操作系统（MIT 6.S081）**
+
+https://www.zhihu.com/column/c_1273723917820215296
