@@ -204,7 +204,7 @@ https://doc.embedfire.com/linux/rk356x/linux_base/zh/latest/linux_app/drm/drm.ht
 ```
 
 https://blog.csdn.net/hexiaolong2009/article/details/84934294
-https://quqi.com/516996/7616
+https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/brezillon-drm-kms.pdf
 ```
 planes的概念
 ```
@@ -243,25 +243,25 @@ https://wzhengo.github.io/15789733843338.html
 
 **1 DMA发起方式**
 
-https://quqi.com/516996/7621
+https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/PIC32系列DMA.pdf
 
-https://quqi.com/516996/7620
+https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/PIC24H DMA.pdf
 
-https://quqi.com/516996/7619
+https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/dsPIC33F DMA.pdf
 
-https://quqi.com/516996/7622
+https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/rm0033-stm32f205xx-stm32f207xx-stm32f215xx-and-stm32f217xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf
 ```
 stm32 DMA 概述
 ```
 
 https://www.cnblogs.com/Fireflycjd/p/14364325.html
-https://quqi.com/516996/7624
+https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/an4031-using-the-stm32f2-stm32f4-and-stm32f7-series-dma-controller-stmicroelectronics.pdf
 ```
 mem to mem 传输支持 software trigger
 ```
 
 https://core.ac.uk/download/pdf/41359185.pdf
-https://quqi.com/516996/7623
+https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/TB3242 DMA.pdf
 ```
 DMA支持硬件触发和软件触发
 ```
@@ -301,7 +301,7 @@ https://www.zhihu.com/question/40421992
 
 https://www.embedded.com/debugging-the-linux-kernel-with-jtag/
 
-https://quqi.com/516996/7627
+https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/ELC19_Serial_kdb_kgdb.pdf
 
 https://zhuanlan.zhihu.com/p/562727190
 
@@ -449,3 +449,64 @@ https://juejin.cn/post/6844903554575155207
 **2 MIT 6.828 实现操作系统（MIT 6.S081）**
 
 https://www.zhihu.com/column/c_1273723917820215296
+
+
+### June 04 2023
+
+**1 神奇，C代码竟然能当成shell脚本一样“直接”执行**
+
+https://zhuanlan.zhihu.com/p/143231248
+
+
+**2 关闭kaslr**
+
+https://zhuanlan.zhihu.com/p/581990743
+
+
+### June 12 2023
+
+**1 C语言中使用Struct的位置本身就可以作为前向声明**
+
+https://stackoverflow.com/questions/9999512/forward-declaration-of-a-struct-in-c
+```
+Basically, you never need to forward declare struct b on its own, 
+
+because it always declares the partial type on the line itself when you use it to perform a pure declaration, so this is redundant code.
+
+The only benefit of this type of forward declaration is it can be used with a typedef. 
+
+In C++, you don't need the typedef because struct and typedefs are in the same identifier namespace, 
+
+so therefore struct b becomes useful because it now declares b, so you will see it in C++.
+
+```
+
+**2 关于硬件发起DMA的情景**
+
+https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/90003242A.pdf
+```
+该问题是可以确认的，具体取决于硬件设计，但是DMA操作一般是既可以硬件发起也可以软件主动发起
+
+DMA transfers can be triggered by software and a variety of CIP trigger signals including clocks, timers outputs, comparators, communication peripherals, as well as CLCs. 
+
+DMA transfers can operate as one-shot transfers or be configured to run continuously until stopped by either software intervention or a hardware CIP-based abort trigger. 
+
+If the transfer is to be initiated by hardware, the DMA peripheral will sit dormant until the hardware trigger is detected. 
+
+If the DMA peripheral is configured for a software trigger, then set the DGO bit in the DMAnCON0 register to initiate the first DMA transfer.
+
+```
+
+* DMA知识点补充内容
+
+	https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/gpdma.pdf
+	
+	https://gaoyichao.com/Xiaotu/?book=stm32&title=直接内存访问DMA
+	
+	https://learn.lianglianglee.com/专栏/深入浅出计算机组成原理/48  DMA：为什么Kafka这么快？.md
+	
+	https://zhuanlan.zhihu.com/p/618143764
+	
+	https://www.huangrongzhen.ink/?p=381
+
+

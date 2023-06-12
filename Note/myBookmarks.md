@@ -110,7 +110,7 @@ For example, a particular chipset will only support certain CPUs and memory type
 
 The chipset is like the spinal cord that connects all the other components together, but just like a fruit salad, you have limited choices of what you can use.
 
-(https://quqi.com/516996/7532)
+(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/motherboard chips.pdf)
 
 ```
 
@@ -188,7 +188,7 @@ https://www.zhihu.com/question/348712213
 
 (https://www.zhihu.com/question/61180565/answer/598520764) 评论区可参考
 
-(https://quqi.com/516996/7625)
+(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/Development of an MP3 player using an MP3 hardware decoder_IJEEE.47.3.8.pdf)
 
 ```
 
@@ -284,7 +284,7 @@ https://www.zhihu.com/question/22471643
 如果说系统总线，那就更不是了，x86的QPI总线，不区分地址和数据的，都是串行的。
 ```
 
-https://quqi.com/516996/7591
+https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/第3章 总线与主板.pdf
 
 https://www.zhihu.com/question/29383757
 ```
@@ -375,7 +375,7 @@ where 'x' is the MSB of the peripheral address, y is bit 8 of the peripheral add
 The first frame's ACK bit will be asserted by all peripherals which match the first two bits of the address.
 
 串行总线会在一根线上传输数据、地址等，所以必须进行正确的转换。
-(https://quqi.com/516996/7592)
+(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/调试嵌入式系统设计中的低速串行总线.pdf)
 
 ```
 
@@ -437,7 +437,7 @@ context entry中有一个指针指向I/O页表
 ```
 
 
-https://quqi.com/516996/7612
+https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/An Introduction to IOMMU Infrastructure in the Linux Kernel.pdf
 
 https://events.static.linuxfound.org/sites/events/files/slides/main.pdf
 ```
@@ -465,7 +465,7 @@ https://events.static.linuxfound.org/sites/events/files/slides/main.pdf
 	<div align=center>
 	<img src="images/iommu and dma 3.png" />
 	</div>
-	<div align=center><b>图 3 来源：</b>https://quqi.com/516996/7613</div>
+	<div align=center><b>图 3 来源：</b>https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/SmartIO Zero-overhead Device Sharing through.pdf</div>
 
 
 
@@ -496,6 +496,13 @@ http://www.lujun.org.cn/?p=775
 个人的理解是，虽然不能直接访问，但是可以作为单独的地址，与其他设备地址容易区分开，反映了一种层次的关系，也方便开发与调试，
 
 也是一种很不错的设计。
+
+(https://www.cnblogs.com/ZanderZhao/p/11488592.html)
+在微机系统中一般有多种外设，在同一种外设中也可能有多台，而一个CPU在同一时间里只能与一台外设交换信息，
+这就要在接口中设置I/O端口地址译码电路对外设进行寻址。
+CPU将I/O设备的端口地址代码送到接口中的地址译码电路，并经译码电路，把地址代码翻译成I/O设备的选择信号。
+一般是把高位地址用于接口芯片选择，低位地址进行芯片内部寄存器的选择，以选定需要与自己交换信息的设备端口，
+只有被选中的设备才能与CPU进行数据交换或通信，没有选中的设备，就不能与CPU交换数据。
 
 ```
 
@@ -566,6 +573,13 @@ https://electronics.stackexchange.com/questions/448349/bus-mastering-vs-bus-arbi
 
 **PCI 总线主控**
 
+http://lambda.hk/linux_kernel/2014/11/28/pci-arch/
+```
+
+PCI的一些基本概念介绍，可参考书籍《PCI Express 体系结构导读》
+
+```
+
 http://bbs3.driverdevelop.com/read.php?tid=47779
 
 https://stackoverflow.com/questions/27470885/how-does-dma-work-with-pci-express-devices
@@ -603,7 +617,7 @@ https://d1.amobbs.com/bbs_upload782111/files_39/ourdev_634262EB839K.pdf
 ```
 
 讨论了一种从模式传输，使用PCI主机主板的DMA控制器
-(https://quqi.com/516996/7596)
+(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/主DMA模式下PCI总线数据传输的DSP实现.pdf)
 
 ```
 
@@ -628,7 +642,9 @@ thereby permitting the device to initiate a DMA transfer by itself instead of re
 
 A DMA slave device is typically lower performance, less expensive and requires the assistance of a system DMA controller to perform a DMA transfer.
 
-(https://quqi.com/516996/7599 , https://quqi.com/516996/7597)
+(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/System direct memory access (DMA) support logic for PCI based computer system.pdf)
+
+(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/Design_Choices_for_FPGA-based_SoCs_slides.pdf)
 
 ```
 
@@ -942,7 +958,7 @@ https://ir.nctu.edu.tw/bitstream/11536/1025/1/A1996VH07500005.pdf
 
 上述 2 个网址提出，可以使用异步写元数据提高文件的IO性能
 
-(https://quqi.com/516996/7593)
+(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/Using Asynchronous Writes on Metadata to Improve File System Performance.pdf)
 
 ```
 
@@ -1006,7 +1022,7 @@ https://opensourceway.community/posts/contribute_to_community/how_to_participate
 
 http://www.static.linuxfound.org/sites/lfcorp/files/How-Participate-Linux-Community_0.pdf
 
-https://quqi.com/516996/7514
+https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/How-Participate-Linux-Community_0.pdf
 
 
 **Linux标准协议**
@@ -1030,10 +1046,19 @@ https://www.opsdash.com/blog/cpu-usage-linux.html
 
 https://haydenjames.io/what-is-iowait-and-linux-performance/
 
-https://m.elecfans.com/article/2042951.html
+https://zhuanlan.zhihu.com/p/541502926
 ```
 
-Linux中top命令的计算方式
+Linux 启动的三个线程都是内核线程，其中1号内核线程会演变为用户空间的init进程
+
+```
+
+https://m.elecfans.com/article/2042951.html
+
+https://mp.weixin.qq.com/s/40KWGKNBoa35s533YGWYIQ
+```
+
+上述 2 个网址 介绍了Linux中top命令的计算方式
 
 ```
 
@@ -1110,6 +1135,24 @@ For each symbol, the corresponding CRC value is also stored.
 https://www.zhihu.com/column/c_1049317588999479296
 
 https://blog.csdn.net/WANGYONGZIXUE/article/details/128431816
+```
+
+(https://www.jianshu.com/p/c0b04e24c2a8)
+
+补充一些arm的汇编指令
+
+```
+
+https://mp.weixin.qq.com/s/VrCplErBecuvpT-5zjmJ7A
+
+http://www.dumpstack.cn/index.php/2022/02/23/395.html
+
+https://www.cnblogs.com/dongxb/p/17364995.html
+```
+
+上述 3 个网址介绍了如何分析crash栈回溯
+
+```
 
 
 ### 4 Linux系统调用知识点
@@ -1661,6 +1704,37 @@ vfree 释放后会修改页表，因为其不是线性映射的，所以会修�
 
 ```
 
+http://happyseeker.github.io/kernel/2018/04/11/tlbflush-&&-vmalloc.html
+```
+
+类似vfree和iounmap这种方法，在释放了分配的虚拟地址后，一般都会将页表清理，从而使虚拟地址无效
+
+在内核中测试时，可能不会立刻出现 Unable to handle kernel paging request at virtual address 的报错，
+
+原因可能是TLB快表的lazy flush，导致TLB存在仍然可用的情况。
+
+另外，注意在kernel中打印地址时，使用 %p 打印的地址不是真实的，经过了hash，
+
+打印真实地址需要使用 %px
+
+
+(https://wwmmyy.github.io/2017/03/06/踩内存问题/)
+
+(https://www.infoq.cn/article/ycu3vcy1agg22szpwsm7)
+
+补充：踩内存问题
+
+```
+
+https://www.cnblogs.com/LoyenWang/p/11965787.html
+
+https://zhuanlan.zhihu.com/p/596739425
+```
+
+上述 2 个网址介绍了vmalloc/vfree的基本流程
+
+```
+
 https://stackoverflow.com/questions/4535379/do-kernel-pages-get-swapped-out
 
 https://stackoverflow.com/questions/8345300/can-vmalloc-pages-be-swapping-pages
@@ -1780,7 +1854,7 @@ https://forums.raspberrypi.com/viewtopic.php?t=227139
 
 **设备树**
 
-https://quqi.com/516996/7602
+https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/Petazzoni-device-tree-dummies_0.pdf
 ```
 
 设备树入门教程
@@ -1848,7 +1922,7 @@ https://www.analog.com/media/cn/analog-dialogue/volume-44/number-1/articles/free
 这种方法允许一个设备驱动程序（例如触摸屏数字化仪 AD7879 的驱动程序）可以不加修改地用在任何运行 Linux 的处理器平台上，
 Linux 内核之上运行任何图形用户界面 (GUI) 包和适当的应用程序。
 
-(https://quqi.com/516996/7590)
+(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/free-and-open-source-software_cn.pdf)
 
 ```
 
@@ -1886,7 +1960,7 @@ https://blog.csdn.net/zz2633105/article/details/118641075
 
 https://fangkaipeng.com/?p=1439
 
-https://quqi.com/516996/7600
+https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/ARM_Cortex_04_System_Control_v05.pdf
 ```
 
 ARM Cortex Core Microcontrollers Architecture
@@ -2160,9 +2234,16 @@ https://www.st.com/resource/en/application_note/an4861-lcdtft-display-controller
 (https://www.spo-comm.de/en/blog/know-how/integrated-vs-dedicated-graphics-card-features-differences-etc.)
 
 
-上述网址归档：(https://quqi.com/516996/7604) (https://quqi.com/516996/7607)
+上述网址归档：
+(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/an4861-lcdtft-display-controller-ltdc-on-stm32-mcus-stmicroelectronics_zh.pdf)
 
-了解FMC：(https://www.jianshu.com/p/62d1ef042d0c) (https://quqi.com/516996/7610)
+(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/an4861-lcdtft-display-controller-ltdc-on-stm32-mcus-stmicroelectronics.pdf) 
+
+
+了解FMC：
+(https://www.jianshu.com/p/62d1ef042d0c) 
+
+(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/an2790-tft-lcd-interfacing-with-the-highdensity-stm32f10xxx-fsmc-stmicroelectronics.pdf)
 
 ```
 
@@ -2217,7 +2298,7 @@ https://d1.amobbs.com/bbs_upload782111/files_17/ourdev_468849.doc
 
 增加一块独立的SDRAM应该理解为LCD控制器增加内存控制器，单独访问SDRAM，减少与系统DRAM的争用。
 
-归档：(https://quqi.com/516996/7605)
+归档：(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/基于Avalon总线的TFT LCD 控制器的设计.doc)
 
 ```
 
@@ -2233,7 +2314,7 @@ As expected, the TM4C129 internal SRAM is not sufficient in this scenario.
 
 In this case, an external memory dedicated for the frame buffer and accessed through the EPI interface is required.
 
-归档：(https://quqi.com/516996/7608)
+归档：(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/Developing LCD Applications for TM4C12x MCU.pdf)
 
 ```
 
@@ -2323,6 +2404,15 @@ https://groups.google.com/g/icvideo/c/2iHQV4xTNgs
 https://www.zhihu.com/question/29250067
 
 https://www.zhihu.com/question/30635966
+
+
+
+<div align=center>
+	<img src="images/drm_arch.jpg" />
+</div>
+<div align=center><b>图 1</b> DRM框架示意图</div>
+
+
 
 * plane
 
@@ -2438,7 +2528,7 @@ https://blog.csdn.net/qq_42384937/article/details/82970224
 引脚控制：(https://elinux.org/images/b/b6/Pin_Control_Subsystem_Overview.pdf)
 
 (https://imgtec.eetrend.com/sites/imgtec.eetrend.com/files/201403/forum/1763-3052-di12zhangioduankou.pdf)
-(https://quqi.com/516996/7603)
+(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/第12章 IO 端口.pdf)
 
 ```
 
@@ -3058,6 +3148,11 @@ https://stackoverflow.com/questions/44744804/how-can-you-use-a-mutex-between-c-s
 
 
 ### 3 编译问题
+
+
+**Android.mk编译系统参考手册**
+
+http://android.cloudchou.com/build/core/clear_vars.html
 
 
 **AOSP平台如何使用aar库**
