@@ -186,14 +186,32 @@ https://www.zhihu.com/question/348712213
 
 澄清软解和硬解的概念
 
+有一种观点认为只有完全的硬件电路才属于硬解
+
+(https://www.zhihu.com/question/588466210)
+
+(https://www.zhihu.com/question/269403107)
+
 (https://www.zhihu.com/question/61180565/answer/598520764) 评论区可参考
+
+```
+
+https://www.cnblogs.com/tonybright/archive/2012/05/14/2500762.html
+```
+
+实际上三方协处理器芯片也是可以通过编程实现相关算法，解放CPU算力
+
+一般这种专用处理器芯片用来解码也可以称作硬解，但实际上不属于传统意义的软/硬解码器
+
+(https://www.expreview.com/7657.html) 手机网页打开
+
+CUDA解码H.264，折中的选择 - 2009年
+
+(https://www.zhihu.com/question/22501094/answer/411456303)
 
 (https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/Development of an MP3 player using an MP3 hardware decoder_IJEEE.47.3.8.pdf)
 
 ```
-
-
-
 
 
 ### 3 中断与调度
@@ -610,7 +628,6 @@ https://books.google.com.hk/books?id=Ki7zs-Ex2d0C
 
 ```
 
-
 https://community.osr.com/discussion/132833
 
 https://d1.amobbs.com/bbs_upload782111/files_39/ourdev_634262EB839K.pdf
@@ -709,6 +726,56 @@ This presentation will not discuss the DMA engine API,
 nor will it address how to control DMA operations from a device point of view.
 
 ```
+
+
+**发起DMA的方式**
+
+https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/90003242A.pdf
+> DMA transfers can be triggered by software and a variety of CIP trigger signals including clocks, timers outputs, comparators, communication peripherals, as well as CLCs. 
+> 
+> DMA transfers can operate as one-shot transfers or be configured to run continuously until stopped by either software intervention or a hardware CIP-based abort trigger. 
+>
+> If the transfer is to be initiated by hardware, the DMA peripheral will sit dormant until the hardware trigger is detected. 
+> 
+> If the DMA peripheral is configured for a software trigger, then set the DGO bit in the DMAnCON0 register to initiate the first DMA transfer.
+>
+```
+
+关于DMA的触发方式是硬件还是软件，该问题是可以确认的，实际上具体取决于硬件设计，但是DMA操作一般是既可以硬件发起也可以软件主动发起
+
+(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/gpdma.pdf)
+
+```
+
+https://www.cnblogs.com/Fireflycjd/p/14364325.html
+
+https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/an4031-using-the-stm32f2-stm32f4-and-stm32f7-series-dma-controller-stmicroelectronics.pdf
+```
+
+存储器到存储器的传输是没有外设请求的，这个时候仅支持 software trigger
+
+```
+
+https://core.ac.uk/download/pdf/41359185.pdf
+
+https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/TB3242 DMA.pdf
+```
+
+DMA 支持硬件触发和软件触发
+
+```
+
+* STM32 DMA 的一些资料
+	
+	https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/PIC32系列DMA.pdf
+
+	https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/PIC24H DMA.pdf
+
+	https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/dsPIC33F DMA.pdf
+
+	https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/rm0033-stm32f205xx-stm32f207xx-stm32f215xx-and-stm32f217xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf
+
+
 
 ### 6 中断控制器总结
 

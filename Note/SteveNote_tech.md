@@ -239,33 +239,6 @@ https://www.jianshu.com/p/80013a768a45
 https://wzhengo.github.io/15789733843338.html
 
 
-### Feb 22 2023
-
-**1 DMA发起方式**
-
-https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/PIC32系列DMA.pdf
-
-https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/PIC24H DMA.pdf
-
-https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/dsPIC33F DMA.pdf
-
-https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/rm0033-stm32f205xx-stm32f207xx-stm32f215xx-and-stm32f217xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf
-```
-stm32 DMA 概述
-```
-
-https://www.cnblogs.com/Fireflycjd/p/14364325.html
-https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/an4031-using-the-stm32f2-stm32f4-and-stm32f7-series-dma-controller-stmicroelectronics.pdf
-```
-mem to mem 传输支持 software trigger
-```
-
-https://core.ac.uk/download/pdf/41359185.pdf
-https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/TB3242 DMA.pdf
-```
-DMA支持硬件触发和软件触发
-```
-
 
 ### Feb 25 2023
 
@@ -481,32 +454,14 @@ so therefore struct b becomes useful because it now declares b, so you will s
 
 ```
 
-**2 关于硬件发起DMA的情景**
+**2 DMA知识点补充内容**
 
-https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/90003242A.pdf
-```
-该问题是可以确认的，具体取决于硬件设计，但是DMA操作一般是既可以硬件发起也可以软件主动发起
+https://gaoyichao.com/Xiaotu/?book=stm32&title=直接内存访问DMA
 
-DMA transfers can be triggered by software and a variety of CIP trigger signals including clocks, timers outputs, comparators, communication peripherals, as well as CLCs. 
+https://learn.lianglianglee.com/专栏/深入浅出计算机组成原理/48  DMA：为什么Kafka这么快？.md
 
-DMA transfers can operate as one-shot transfers or be configured to run continuously until stopped by either software intervention or a hardware CIP-based abort trigger. 
+https://zhuanlan.zhihu.com/p/618143764
 
-If the transfer is to be initiated by hardware, the DMA peripheral will sit dormant until the hardware trigger is detected. 
-
-If the DMA peripheral is configured for a software trigger, then set the DGO bit in the DMAnCON0 register to initiate the first DMA transfer.
-
-```
-
-* DMA知识点补充内容
-
-	https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/gpdma.pdf
-	
-	https://gaoyichao.com/Xiaotu/?book=stm32&title=直接内存访问DMA
-	
-	https://learn.lianglianglee.com/专栏/深入浅出计算机组成原理/48  DMA：为什么Kafka这么快？.md
-	
-	https://zhuanlan.zhihu.com/p/618143764
-	
-	https://www.huangrongzhen.ink/?p=381
+https://www.huangrongzhen.ink/?p=381
 
 
