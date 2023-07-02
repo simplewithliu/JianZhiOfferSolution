@@ -353,6 +353,13 @@ C
 
 ```
 
+https://dilidonglong.com/2019/06/12/并行-串行-异步传输/
+```
+
+与串行传输相比，总结了并行传输的一些缺点
+
+```
+
 https://www.jianshu.com/p/65281e71753f
 ```
 
@@ -396,6 +403,7 @@ The first frame's ACK bit will be asserted by all peripherals which match the fi
 (https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/调试嵌入式系统设计中的低速串行总线.pdf)
 
 ```
+
 
 **总线地址与IOMMU**
 
@@ -537,6 +545,42 @@ https://books.google.com.hk/books?id=hyVW6BNNtwQC
 ```
 
 https://blog.csdn.net/weixin_43715360/article/details/120636553
+
+
+**USB总线PHY层**
+
+https://www.synopsys.com/dw/ipdir.php?ds=dwc_usb_lpm_hsic
+
+https://www.arasan.com/products/usb/usb-2-0/usb-2-0-phy/
+
+https://www.docin.com/p-202307714.html
+```
+
+上述 3 个网址描述了不同的USB PHY的架构设计
+
+```
+
+https://mbb.eet-china.com/blog/3882007-405291.html
+```
+
+USB Type-C 架构设计
+
+```
+
+
+http://ee.mweda.com/ask/150755.html
+```
+
+关于USB PHY中传输数据是模拟信号和数字信号的讨论
+
+```
+
+
+
+**调制解调与信号的通信传输**
+
+https://www.zhihu.com/question/565216443/answer/2749159740
+
 
 
 
@@ -1220,6 +1264,26 @@ https://www.cnblogs.com/dongxb/p/17364995.html
 上述 3 个网址介绍了如何分析crash栈回溯
 
 ```
+
+https://bbs.kanxue.com/thread-270739.htm
+
+https://blog.csdn.net/rlk8888/article/details/122514344
+```
+
+上述 2 个网址描述了aarch64架构中的函数栈帧
+
+另外可参考 "操作系统 原理与实现" 书中的 3.1 节
+
+```
+
+https://www.jianshu.com/p/a51076c33108
+> ARM64位下：PC不能直接访问，但可以通过伪指令间接使用。
+> 需要注意的是：与32位不同的是，64位下当通过指令读取PC相对地址时，其值即为当前指令的地址。
+
+
+https://softool.cn/read/arm_assembly_basic_aye/21010203.html
+> 在AARCH64状态下，当前执行指令的地址通常是PC
+
 
 
 ### 4 Linux系统调用知识点
