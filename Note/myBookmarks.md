@@ -594,11 +594,15 @@ https://hackaday.com/2021/03/31/direct-memory-access-data-transfer-without-micro
 
 **first-party DMA 总线主控**
 
-https://stackoverflow.com/questions/57009233/what-are-the-most-common-busmaster-operations-and-how-are-they-better-than-regu
+
 
 <div align=center>
 	<img src="images/third-party and first-party DMA.jpg" />
 </div>
+<div align=center><b>图 1 </b>third-party and first-party DMA</div>
+
+
+https://stackoverflow.com/questions/57009233/what-are-the-most-common-busmaster-operations-and-how-are-they-better-than-regu
 
 https://stackoverflow.com/questions/48659470/why-driver-need-to-map-dma-buffers-when-dma-engine-is-in-device
 
