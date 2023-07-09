@@ -8,7 +8,7 @@
 
 ARM产品在应用层与硬件之间有一层隔离，成为 BSP(板级支持包)，与 X86 构架里的 BIOS 概念类似，BSP 就是设计开发 ARM 产品的要点。
 
-X86 体系里，BIOS 是支持芯片组（如 945GM)，只要是用同一套芯片组的主板，BIOS 基本上是通用的。
+X86 体系里，BIOS 是支持芯片组（如945GM），只要是用同一套芯片组的主板，BIOS 基本上是通用的。
 
 但是ARM产品的BSP是支持底层硬件的，不同的CPU需要不同的BSP，相同的CPU不同的外围芯片也是不同的BSP。
 
@@ -579,10 +579,56 @@ http://ee.mweda.com/ask/150755.html
 
 **调制解调与信号的通信传输**
 
-https://www.zhihu.com/question/565216443/answer/2749159740
+* 认识基带信号和基带传输
+
+	https://zhuanlan.zhihu.com/p/594826583
+	> 先讲一下历史，射频（Radio Frenquency）和基带（Base Band）皆来自英文直译。其中射频最早的应用就是Radio——无线广播（FM/AM），迄今为止这仍是射频技术乃至无线电领域最经典的应用。
+	> 基带则是band中心点在0Hz的信号，所以基带就是最基础的信号。有人也把基带叫做“未调制信号”，曾经这个概念是对的，例如AM为调制信号（无需调制，接收后即可通过发声元器件读取内容）。
+	> 但对于现代通信领域而言，基带信号通常都是指经过数字调制的，频谱中心点在0Hz的信号。而且没有明确的概念表明基带必须是模拟或者数字的，这完全看具体的实现机制。
+
+	https://www.zhihu.com/question/423663157/answer/1505578892
+	> 基带和带通这两种调制方式都属于调制这一过程，整合起来才是完全体“调制”。
+	> 他俩顺序是先后的，并不互相冲突，也不存在相互替代。目前所有的通信系统都有基带调制，
+	> 但是目前大多数追求带宽的通信系统（特别是无线通信）会在基带调制后继续采用带通调制。
+
+	https://www.zhihu.com/question/587077761/answer/3004979384
+
+	https://www.zhihu.com/question/565216443/answer/2749159740
+	```
+
+	参考评论区：
+	
+	所以基带传输频率低，准确一点来说是，远距离的基带传输频率低，还是信道的低通特性造成的。
+	
+	距离越远，信道模拟带宽越低，高频衰减越多，频率延迟也越大，波形失真越严重。
+
+	模拟传输则不一样，因为可以用带通信道，即使载波频率很高，但由于相对带宽小，用带通信道也能传送很远。
+
+	```
+	
+	https://zhuanlan.zhihu.com/p/37535928
+	```
+
+	这里强调了基带调制是指信号没有进行频谱搬移，但是可以为更好的传输作一些变换
+
+	(https://zhuanlan.zhihu.com/p/593517290)
+
+	补充介绍频谱的概念
+
+	```
+
+	https://zhuanlan.zhihu.com/p/365072779
+
+	https://blog.csdn.net/qq_43134477/article/details/123905776
 
 
+* 电子设备的通信模型
 
+	https://www.cnblogs.com/kun-embedded/p/10950508.html
+
+	https://www.zhihu.com/question/50459030/answer/121061802
+
+	https://www.zhihu.com/question/63315051
 
 
 ### 5 DMA
@@ -590,6 +636,7 @@ https://www.zhihu.com/question/565216443/answer/2749159740
 **认识DMA**
 
 https://hackaday.com/2021/03/31/direct-memory-access-data-transfer-without-micro-management/
+
 
 
 **first-party DMA 总线主控**
