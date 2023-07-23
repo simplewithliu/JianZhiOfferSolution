@@ -2832,8 +2832,6 @@ According to POSIX.1, a process-directed signal (sent using kill(2), for example
 ```
 
 
-
-
 **32位平台的64位除法运算**
 
 https://stackoverflow.com/questions/68063150/warning-aeabi-uldivmod-undefined-symbol-in-opendla-ko
@@ -2869,7 +2867,21 @@ http://c.biancheng.net/view/2382.html
 
 https://www.zhihu.com/question/492983429
 
+
+**为什么kernel不实现C标准中的库方法**
+
+https://stackoverflow.com/questions/40781428/linux-kernel-what-kind-of-c-linux-kernel-is-using
+
+https://unix.stackexchange.com/questions/590108/is-the-standard-c-library-loaded-by-default-in-main-memory-in-linux
+```
+
+上述 2 个网址主要阐述了C标准中的freestanding，kernel实现采用了C标准这一部分 
+
+```
+
+
 ***
+
 
 
 ## 并发问题
@@ -3810,6 +3822,26 @@ https://stackoverflow.com/questions/55867320/is-the-address-of-malloc-size-t-3-a
 上述 2 个网址介绍了 fundamental alignment，并不是所有情况下都保证内存对齐
 
 ```
+
+**undefined behavior 与 offsetof 函数**
+
+https://stackoverflow.com/questions/35135719/what-does-struct-name-0-member-do-in-c
+> It is actually undefined behavior, and as Andrew points out, that's one very good reason to use offsetof instead, which is the standard way to do it. 
+> If we take one step away from the spec, and explore compiler specific behavior, many compilers will implement this undefined behavior in a way that does what you intended.
+
+https://stackoverflow.com/questions/6700114/portability-of-using-stddef-hs-offsetof-rather-than-rolling-your-own
+> It is not undefined behavior when the compiler vendor provided you with the header file. 
+> They know what defined undefined behavior looks like on their product. 
+
+
+https://stackoverflow.com/questions/26906621/does-struct-name-null-b-cause-undefined-behaviour-in-c11
+> offsetof is an implementation-specific macro. Whatever it does is specific to the compiler that provides it. 
+> You cannot generalize from its definition for one or many compilers to a language requirement. 
+> There are many things that standard headers do that do not have well-defined behavior in general; 
+> these things rely on knowledge of the particular compiler, which is why they ship with the compiler. 
+
+https://stackoverflow.com/questions/6433339/does-the-offsetof-macro-from-stddef-h-invoke-undefined-behaviour
+
 
 
 
