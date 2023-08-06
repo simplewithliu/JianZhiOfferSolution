@@ -3377,10 +3377,10 @@ http://blog.chinaunix.net/uid-22028680-id-3389239.html
 >
 > e.将来的实现模式中，如果service端在需要时主动callback回来，估计client端就需要启动startThreadPool函数了。
 > 至于joinThreadPool我目前的看法是没必要启动的，因为只要有了threadpool客户端就可以实现服务了。
-> 当然，client端可不能随便退出来，至少退出来前要通知service端自己已经退出，要不service端回调回来可就找不到北了.
+> 当然，client端可不能随便退出来，至少退出来前要通知service端自己已经退出，要不service端回调回来可就找不到北了。
 ```
 
-针对e，startThreadPool中已经隐含了joinThreadPool
+针对e项，实际上startThreadPool中已经隐含了joinThreadPool
 
 ```
 
