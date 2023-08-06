@@ -471,8 +471,3 @@ https://www.huangrongzhen.ink/?p=381
 
 https://blog.csdn.net/zdy0_2004/article/details/51712140
 
-
-**2 Binder Client Callback**
-
-http://blog.chinaunix.net/uid-22028680-id-3389239.html
-

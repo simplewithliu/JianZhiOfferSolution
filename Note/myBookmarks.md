@@ -194,6 +194,7 @@ https://www.zhihu.com/question/348712213
 
 (https://www.zhihu.com/question/61180565/answer/598520764) 评论区可参考
 
+
 ```
 
 https://www.cnblogs.com/tonybright/archive/2012/05/14/2500762.html
@@ -212,6 +213,21 @@ CUDA解码H.264，折中的选择 - 2009年
 (https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/Development of an MP3 player using an MP3 hardware decoder_IJEEE.47.3.8.pdf)
 
 ```
+
+* 硬件实现与软件实现
+
+	https://www.zhihu.com/question/466254863
+
+	https://www.zhihu.com/question/66592992
+
+	https://www.zhihu.com/question/46258067
+	```
+
+	终端接入互联网，在其特定操作系统（windows/类linux）中编码实现了TCP/IP协议栈，即通过软件实现。
+	
+	为什么不通过硬件实现呢？
+
+	```
 
 
 ### 3 中断与调度
@@ -3338,6 +3354,35 @@ https://stackoverflow.com/questions/20073051/synchronization-between-a-java-app-
 https://stackoverflow.com/questions/15771763/can-java-and-c-c-applications-share-semaphores
 
 https://stackoverflow.com/questions/44744804/how-can-you-use-a-mutex-between-c-sharp-and-java-processes
+
+
+**binder线程池管理**
+
+https://juejin.cn/post/6844903449232490510
+
+https://www.weigao.cc/java/android/binder.html
+
+https://github.com/wbo4958/jianshu/blob/master/docs/android-binder/四问binder/四问binder.md
+
+http://blog.chinaunix.net/uid-22028680-id-3389239.html
+> 关于callback接口的一些想法
+>
+> a.现有测试程序中的client端并没有启动IPCThreadState的joinThreadPool函数
+>
+> b.现有测试程序中的client端并没有启动ProcessState的startThreadPool函数
+>
+> c.现有测试程序中的client端的callback触发，是通过client主动调用service端的一个函数。然后在这个函数内回调之前注册的callback。
+>
+> d.现在这种模式的测试通过，说明了service和client是可以双向沟通的。
+>
+> e.将来的实现模式中，如果service端在需要时主动callback回来，估计client端就需要启动startThreadPool函数了。
+> 至于joinThreadPool我目前的看法是没必要启动的，因为只要有了threadpool客户端就可以实现服务了。
+> 当然，client端可不能随便退出来，至少退出来前要通知service端自己已经退出，要不service端回调回来可就找不到北了.
+```
+
+针对e，startThreadPool中已经隐含了joinThreadPool
+
+```
 
 
 
