@@ -1516,6 +1516,16 @@ The file is composed of thousands of #define macros that describe the state for 
 https://www.makelinux.net/ldd3/chp-2-sect-4.shtml
 
 
+http://www.wowotech.net/linux_kernel/kernel_config_boot_option.html
+> 注3：如果Kconfig没有通过“default”关键字为某个配置项指定默认值，
+> 那么生成的.config文件中就不会出现该配置项，也就是变相的“禁止”了
+
+
+https://www.cnblogs.com/lifexy/p/10292742.html
+> 如果XX_defconfig板卡配置文件中定义新的宏=y时,而在Kconfig并没有声明它,
+> 则内核编译出来的autoconf.h里也不会定义它
+
+
 
 **Linux内核编译的流程**
 
