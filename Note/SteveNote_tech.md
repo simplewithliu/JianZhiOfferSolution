@@ -438,7 +438,7 @@ https://zhuanlan.zhihu.com/p/581990743
 
 ### June 12 2023
 
-**1 C语言中使用Struct的位置本身就可以作为前向声明**
+**1 C语言中使用struct的位置本身就可以作为前向声明**
 
 https://stackoverflow.com/questions/9999512/forward-declaration-of-a-struct-in-c
 ```
@@ -451,6 +451,8 @@ The only benefit of this type of forward declaration is it can be used with a ty
 In C++, you don't need the typedef because struct and typedefs are in the same identifier namespace, 
 
 so therefore struct b becomes useful because it now declares b, so you will see it in C++.
+
+也可以参考：(https://en.cppreference.com/w/c)
 
 ```
 
@@ -470,4 +472,49 @@ https://www.huangrongzhen.ink/?p=381
 **1 sysfs的分析**
 
 https://blog.csdn.net/zdy0_2004/article/details/51712140
+
+**2 Git常用操作**
+
+https://zhuanlan.zhihu.com/p/534492797
+```
+盘点Linux内核下Git基本原理及各种骚操作
+```
+
+**3 Android 的 so 文件加载机制**
+
+https://www.ucloud.cn/yun/2678.html
+
+https://stackoverflow.com/questions/37246792/forcing-cpu-abi-to-armeabi-v7a-on-android
+
+### Aug 13 2023
+
+**1 LCD知识点总结**
+
+http://www.xhhtech.com.cn/9505/全球显示驱动芯片ic厂商一览，华为海思入局
+
+https://blog.csdn.net/qq_45475007/article/details/125370696
+
+https://juejin.cn/post/7135631218787221541
+```
+结合文档：
+https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/an2790-tft-lcd-interfacing-with-the-highdensity-stm32f10xxx-fsmc-stmicroelectronics.pdf
+```
+
+https://blog.csdn.net/qq_695538007/article/details/9318705
+```
+了解LCD模组中的驱动IC与控制IC，实际上有时候并不明确区分
+
+结合文档：TFT-LCD时序控制器（T-CON）的研究
+
+参考：(https://zhuanlan.zhihu.com/p/430134493)
+```
+
+https://www.cnblogs.com/juwan/p/13069102.html
+
+
+**2 傅里叶变换**
+
+https://iot-book.github.io/3_傅里叶分析/S4_离散傅里叶分析/
+
+https://www.toutiao.com/article/6704447250900189703/
 
