@@ -229,6 +229,10 @@ CUDA解码H.264，折中的选择 - 2009年
 
 	```
 
+	https://www.usenix.org/legacy/event/nsdi09/tech/full_papers/nychis/nychis_html/index.html
+	> Enabling MAC Protocol Implementations on Software-Defined Radios
+	>
+
 
 ### 3 中断与调度
 
@@ -595,6 +599,13 @@ http://ee.mweda.com/ask/150755.html
 
 **调制解调与信号的通信传输**
 
+* 认识数字信号与模拟信号
+
+	https://www.zhihu.com/question/28987989
+
+	https://www.zhihu.com/question/54549559/answer/224131858
+
+
 * 认识基带信号和基带传输
 
 	https://zhuanlan.zhihu.com/p/594826583
@@ -638,6 +649,8 @@ http://ee.mweda.com/ask/150755.html
 	https://blog.csdn.net/qq_43134477/article/details/123905776
 
 
+
+
 * 电子设备的通信模型
 
 	https://www.cnblogs.com/kun-embedded/p/10950508.html
@@ -645,6 +658,64 @@ http://ee.mweda.com/ask/150755.html
 	https://www.zhihu.com/question/50459030/answer/121061802
 
 	https://www.zhihu.com/question/63315051
+
+
+* 数字通信信道
+
+	https://www.zhihu.com/question/557798288/answer/2977794251
+
+	https://www.zhihu.com/question/393882189/answer/1216363615
+
+	https://www.zhihu.com/question/442532953/answer/1712593284
+	```
+
+	上述 3 个网址介绍关于电磁波的基本概念
+
+	```
+
+
+	https://www.zhihu.com/question/35502172/answer/1793904542
+
+	https://www.zhihu.com/question/521345590/answer/2386187994
+
+	https://www.zhihu.com/question/30491270/answer/49347578
+	```
+
+	上述 3 个网址介绍了电磁波如何携带信息
+
+	(https://www.zhihu.com/question/456964070)
+
+	注意实际的电磁波在传输信息时是随机信号
+
+	```
+
+	https://zhidao.baidu.com/question/201745547/answer/567591717.html
+
+	https://www.zhihu.com/question/486885340
+
+	https://www.zhihu.com/question/34566597/answer/146255189
+	```
+
+	上述 3 个网址介绍了数字基带信号的特点
+
+	数字通信的原始信号高低电平比较多，比如说类似方波，具有低通特性，不适合无线传输，往往需要进行基带调制，进行有线传输。
+
+	数字信号表现在频域上是全频段的信号。信号频率越高随着距离增加，衰减越大。方波信号会劣化为幅值变化很小的低频正弦波叠加信号。
+
+	(https://zhuanlan.zhihu.com/p/493951684)
+
+	(https://blog.csdn.net/Dallin0408/article/details/83109834)
+
+	```
+
+	https://www.zhihu.com/question/522993469/answer/2398037011
+	```
+
+	数字基带信号不适合远距离传输
+
+	(https://www.zhihu.com/question/550062007/answer/2646234139)
+
+	```
 
 
 ### 5 DMA

@@ -518,3 +518,22 @@ https://iot-book.github.io/3_傅里叶分析/S4_离散傅里叶分析/
 
 https://www.toutiao.com/article/6704447250900189703/
 
+https://www.zhihu.com/question/484749484
+```
+为什么持续时间短的信号，频谱较宽？
+```
+
+
+### Aug 16 2023
+
+1 内存控制器
+
+https://stackoverflow.com/questions/70300977/why-static-random-access-memory-sram-does-not-require-a-memory-controller
+
+https://www.edaboard.com/threads/what-is-the-diff-between-dual-port-single-port-ram.38651/
+```
+Still usage of 1-port memory is the best whenever it is possible, 
+because small arbitration logic is much less costly that memory area increase (it is up to 50% for memories with 1R, 1W port, single clock).
+(https://www.zhihu.com/question/28280133)
+(https://blog.csdn.net/NETSOL/article/details/106899018)
+```
