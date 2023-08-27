@@ -91,6 +91,44 @@ https://www.zhihu.com/question/430677975/answer/2308439064
 
 ```
 
+
+**内存控制器**
+
+https://www.edaboard.com/threads/what-is-the-diff-between-dual-port-single-port-ram.38651/
+> Still usage of 1-port memory is the best whenever it is possible, 
+> because small arbitration logic is much less costly that memory area increase (it is up to 50% for memories with 1R, 1W port, single clock).
+
+https://www.zhihu.com/question/28280133
+> 当然为了ip的强壮，不能被轻易搞死，
+> 绝大部分时候slave还是会做非对齐转对齐操作的拆分合并的逻辑
+> 多浪费钱啊，芯片制造成本是按面积收费的，面积跟逻辑多少成正比
+>
+
+https://blog.csdn.net/NETSOL/article/details/106899018
+```
+
+以上三个网址介绍了单端口和双端口内存的应用
+
+大部分都是单端口的，有些片内SRAM为了性能会使用双端口
+
+https://lrita.github.io/2018/06/10/programmer-should-know-about-memory-0/
+RAM只有一个端口。本文不会介绍多端口RAM，因为商用硬件不采用这种内存，至少程序员无法访问到。这种内存一般在路由器等专用硬件中采用。
+
+
+```
+
+https://stackoverflow.com/questions/70300977/why-static-random-access-memory-sram-does-not-require-a-memory-controller
+
+https://picture.iczhiku.com/weixin/message1606700079053.html
+> DRAM、Internal RAM、NAND Flash、SROM Controller 各种存储设备的控制器
+>
+
+https://www.zhihu.com/question/319248072
+
+https://www.zhihu.com/question/399443653
+
+
+
 ### 2 CPU相关概念理解
 
 **CPU指令与芯片组**
@@ -594,6 +632,13 @@ http://ee.mweda.com/ask/150755.html
 关于USB PHY中传输数据是模拟信号和数字信号的讨论
 
 ```
+
+* 为什么主流的显示器没有 USB 接口
+
+	https://www.zhihu.com/question/34346501
+
+	https://zhuanlan.zhihu.com/p/161401556
+
 
 
 

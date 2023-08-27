@@ -500,6 +500,7 @@ https://juejin.cn/post/7135631218787221541
 https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/an2790-tft-lcd-interfacing-with-the-highdensity-stm32f10xxx-fsmc-stmicroelectronics.pdf
 ```
 
+
 https://blog.csdn.net/qq_695538007/article/details/9318705
 ```
 了解LCD模组中的驱动IC与控制IC，实际上有时候并不明确区分
@@ -523,17 +524,3 @@ https://www.zhihu.com/question/484749484
 为什么持续时间短的信号，频谱较宽？
 ```
 
-
-### Aug 16 2023
-
-1 内存控制器
-
-https://stackoverflow.com/questions/70300977/why-static-random-access-memory-sram-does-not-require-a-memory-controller
-
-https://www.edaboard.com/threads/what-is-the-diff-between-dual-port-single-port-ram.38651/
-```
-Still usage of 1-port memory is the best whenever it is possible, 
-because small arbitration logic is much less costly that memory area increase (it is up to 50% for memories with 1R, 1W port, single clock).
-(https://www.zhihu.com/question/28280133)
-(https://blog.csdn.net/NETSOL/article/details/106899018)
-```
