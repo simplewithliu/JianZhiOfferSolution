@@ -1669,7 +1669,7 @@ https://richardweiyang-2.gitbook.io/kernel-exploring/00_index/05_rules_for_singl
 
 
 
-**2 内核调试打印与内核模块名**
+**内核调试打印与内核模块名**
 
 https://github.com/PinoTsao/Makefile/blob/master/01.kbuild_summary.md
 
@@ -3021,6 +3021,24 @@ https://unix.stackexchange.com/questions/590108/is-the-standard-c-library-loaded
 
 ```
 
+**kthread_worker建立工作线程**
+
+https://mirrors.cloud.tencent.com/loongson/loongson1c_bsp/openloongson_Linux_V1.0.1.pdf
+> SPI 数据传输的队列化
+> 
+> SPI 数据传输可以有两种方式：同步方式和异步方式
+>
+```
+
+归档：(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/openloongson_Linux_V1.0.1.pdf)
+
+```
+
+https://blog.csdn.net/engineer0/article/details/121055199
+
+
+
+
 
 ***
 
@@ -3822,6 +3840,23 @@ ashmem在设计层面上和ion十分相似，也是先通过ashmem访问获取�
 
 ***
 
+
+## 网络编程
+
+### 1 MAC层
+
+**MAC地址**
+
+https://draveness.me/whys-the-design-non-unique-mac-address
+
+
+
+
+
+***
+
+
+
 ## C/C++
 
 ### 1 内联方法
@@ -4013,6 +4048,18 @@ https://stackoverflow.com/questions/26906621/does-struct-name-null-b-cause-undef
 
 https://stackoverflow.com/questions/6433339/does-the-offsetof-macro-from-stddef-h-invoke-undefined-behaviour
 
+***
+
+
+
+## 数据结构与算法
+
+
+### 1 字符串算法
+
+**KMP算法**
+
+https://www.ruanyifeng.com/blog/2013/05/Knuth–Morris–Pratt_algorithm.html
 
 
 
@@ -4021,7 +4068,7 @@ https://stackoverflow.com/questions/6433339/does-the-offsetof-macro-from-stddef-
 ## CMake
 
 
-### 1  概览
+### 1 概览
 
 **cmake使用指南**
 

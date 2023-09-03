@@ -170,6 +170,7 @@
     <ClCompile Include="II 107.矩阵中的距离.cpp" />
     <ClCompile Include="II 108.单词演变.cpp" />
     <ClCompile Include="II 109.开密码锁.cpp" />
+    <ClCompile Include="II 117.相似字符串组.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="65.不用加减乘除做加法.cpp" />
     <ClCompile Include="49.丑数.cpp" />

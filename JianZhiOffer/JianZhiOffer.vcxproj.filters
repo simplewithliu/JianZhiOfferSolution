@@ -467,5 +467,8 @@
     <ClCompile Include="II 109.开密码锁.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 117.相似字符串组.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
