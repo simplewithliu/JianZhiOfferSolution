@@ -76,3 +76,102 @@ public:
 };
 // https://leetcode.com/problems/similar-string-groups/editorial/
 
+
+// BFS
+class Solution2 {
+private:
+	bool isSimilar(const string &str1, const string &str2) {
+		// 输入数组中都是异位词
+		int diff = 0;
+		for (int i = 0; i < str1.size(); ++i) {
+			if (str1[i] != str2[i]) ++diff;
+		}
+		return diff == 0 || diff == 2;
+	}
+
+public:
+	int numSimilarGroups(vector<string> &strs) {
+		int len = strs.size();
+		vector<vector<int>> adj(len);
+		for (int i = 0; i < len; ++i) {
+			for (int j = i + 1; j < len; ++j) {
+				if (isSimilar(strs[i], strs[j])) {
+					adj[i].push_back(j);
+					adj[j].push_back(i);
+				}
+			}
+		}
+
+		queue<int> q;
+		vector<char> visited(len);
+		int count = 0;
+		for (int i = 0; i < len; ++i) {
+			if (visited[i]) continue;
+			q.push(i);
+			visited[i] = true;
+			while (!q.empty()) {
+				int u = q.front();
+				q.pop();
+				for (const auto &v : adj[u]) {
+					if (visited[v]) continue;
+					visited[v] = true;
+					q.push(v);
+				}
+			}
+			++count;
+		}
+		return count;
+	}
+};
+
+
+// 并查集
+class UF {
+private:
+	vector<int> id;
+
+public:
+	int count = 0;
+	UF(int n) {
+		for (int i = 0; i < n; ++i) id.push_back(i);
+		count = n;
+	}
+	int find(int x) {
+		if (id[x] != x) id[x] = find(id[x]);
+		return id[x];
+	}
+	bool isConnected(int p, int q) { return find(p) == find(q); }
+	void unionpq(int p, int q) {
+		int pRoot = find(p);
+		int qRoot = find(q);
+		if (pRoot == qRoot) return;
+		id[pRoot] = qRoot;
+		--count;
+	}
+};
+
+class Solution3 {
+private:
+	bool isSimilar(const string &str1, const string &str2) {
+		// 输入数组中都是异位词
+		int diff = 0;
+		for (int i = 0; i < str1.size(); ++i) {
+			if (str1[i] != str2[i]) ++diff;
+		}
+		return diff == 0 || diff == 2;
+	}
+
+public:
+	int numSimilarGroups(vector<string> &strs) {
+		int len = strs.size();
+		UF uf(len);
+		for (int i = 0; i < len; ++i) {
+			for (int j = i + 1; j < len; ++j) {
+				if (uf.isConnected(i, j)) continue;
+				if (isSimilar(strs[i], strs[j])) uf.unionpq(i, j);
+			}
+		}
+		return uf.count;
+	}
+};
+
