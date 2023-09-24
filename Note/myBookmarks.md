@@ -1726,6 +1726,14 @@ https://www.cnblogs.com/lifexy/p/10292742.html
 > 则内核编译出来的autoconf.h里也不会定义它
 
 
+https://kernelnewbies.kernelnewbies.narkive.com/trfXm1bR/kconfig-in-external-modules
+```
+
+树外模块编译时，不需要设置Kconfig
+
+(归档至印象笔记)
+
+```
 
 **Linux内核编译的流程**
 
@@ -2284,6 +2292,8 @@ http://www.wilson-blog.cn/post/2022/06/07/zephyr.dtree.html
 ```
 
 上述 2 个网址，对于phandle有详细描述
+
+补充：(https://elinux.org/Device_Tree_Mysteries)
 
 ```
 
@@ -2955,6 +2965,25 @@ https://electronics.stackexchange.com/questions/97085/gpio-pcie-programing
 
 
 
+**延迟driver probe机制**
+
+https://bootlin.com/blog/dts-phandle-c-code/
+```
+
+驱动的依赖可能不仅会在其他设备完成注册时，也会发生在其他驱动probe之后
+
+这里可以作为一个具体的例子
+
+```
+
+https://lwn.net/Articles/485194/
+
+https://lwn.net/Articles/662820/
+
+https://blog.csdn.net/liaojunwu/article/details/131796409
+
+
+
 ### 8 Linux系统特性与机制
 
 **初识boot**
@@ -3289,6 +3318,14 @@ https://stackoverflow.com/questions/7842511/safe-to-have-multiple-processes-writ
 
 **多核重排序问题**
 
+https://community.arm.com/arm-community-blogs/b/architectures-and-processors-blog/posts/memory-access-ordering---an-introduction
+> The reality, however, is that in order to improve performance (both with regards to speed and power) 
+> a lot of optimizations are being performed at many different levels of your system
+> 
+> Mandatory barriers are used to enforce memory consistency on a full system level. 
+> The most common example of this is when communicating with external memory mapped peripherals. 
+> All mandatory barriers are guaranteed to expand to at least a compiler barrier, regardless of target architecture.     
+
 
 https://stackoverflow.com/questions/71768672/can-cpu-out-of-order-execution-cause-memory-reordering
 
@@ -3306,7 +3343,9 @@ https://www.zhihu.com/question/296949412/answer/747494794
 ```
 
 
+
 **acquire and release语义**
+
 
 https://preshing.com/20120930/weak-vs-strong-memory-models/
 > In a sequentially consistent memory model, there is no memory reordering.
@@ -3330,9 +3369,25 @@ https://preshing.com/20130922/acquire-and-release-fences/
 
 在某些场景下，不需要顺序一致性，只要保证Synchronizes-With Relationships
 
+
+(https://preshing.com/20131125/acquire-and-release-fences-dont-work-the-way-youd-expect/)
+Acquire & release semantics map quite nicely to native instructions on ARM, x86 and POWER. 
+I haven't encountered a real-world programming problem in which StoreLoad was absolutely necessary 
+(implementing queues, maps and various things), but that's just my personal experience so far
+
+
 (https://chonghw.github.io/)
 
 preshing并发编程系列文章的翻译
+
+```
+
+
+
+https://stackoverflow.com/questions/76349024/sequentially-consistent-fence
+```
+
+顺序一致性的硬件实现
 
 ```
 
@@ -3361,6 +3416,17 @@ Atomic operations other than qatomic_set() and qatomic_read() have either acquir
 
 
 **锁的实现需要内存屏障支持**
+
+
+https://quant67.com/post/linux/memory-barriers/memory-barriers.html
+```
+
+内存屏障介绍
+
+文章翻译自：(https://www.kernel.org/doc/Documentation/memory-barriers.txt)
+
+```
+
 
 https://www.hitzhangjie.pro/blog/locks实现背后不为人知的故事
 

@@ -473,5 +473,11 @@
     <ClCompile Include="II 114.火星词典.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 039.柱状图中最大的矩形.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 040.最大矩形.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
