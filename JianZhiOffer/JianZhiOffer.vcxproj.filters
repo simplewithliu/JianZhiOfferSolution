@@ -479,5 +479,8 @@
     <ClCompile Include="II 040.最大矩形.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 038.每日温度.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

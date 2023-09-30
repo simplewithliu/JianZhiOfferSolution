@@ -81,6 +81,7 @@
     <ClInclude Include="header.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="II 038.每日温度.cpp" />
     <ClCompile Include="II 039.柱状图中最大的矩形.cpp" />
     <ClCompile Include="II 040.最大矩形.cpp" />
     <ClCompile Include="II 095.最长公共子序列.cpp" />

@@ -51,6 +51,11 @@ https://www.zhihu.com/question/326205733
 
 ```
 
+http://ee.mweda.com/ask/265407.html
+> 可以认为组合逻辑是实现电路功能的，时序电路中必须包含组合电路，其实就相当于在组合逻辑里面插入了触发器而已
+>
+
+
 **Linux BSP层实现**
 
 https://www.zhihu.com/question/21381796
@@ -3540,7 +3545,44 @@ The bus lock prefix lock inhibits interrupts during execution of the instruction
 
 (This is only valid with certain instructions; see a 80386 manual for details).
 
+
+(https://blog.csdn.net/D_Guco/article/details/86707000)
+
+x86 lock指令用来修饰当前指令操作的内存只能由当前CPU使用，若指令不操作内存仍然有用，因为这个修饰会让指令操作本身原子化，而且自带 Full Barrior 效果
+
 ```
+
+http://bbs.chinaunix.net/thread-804826-5-1.html
+```
+
+chinaunix论坛的讨论：对int变量的赋值是原子操作吗? 
+
+48楼回答合理：对int变量的赋值是否是原子操作与使用的计算机的结构体系有关，同时也与此变量的内存对齐情况有关
+
+(https://preshing.com/20130618/atomic-vs-non-atomic-operations/)
+it’s common knowledge that on all modern x86, x64, Itanium, SPARC, ARM and PowerPC processors, 
+plain 32-bit integer assignment is atomic as long as the target variable is naturally aligned.
+
+
+(https://stackoverflow.com/questions/6555462/memory-barrier-and-atomic-t-on-linux)
+On 64-bit x86_64 processors, aligned reads of 64-bit types are atomic, and can be done with a MOV instruction, 
+so only a plain read is required --- the use of volatile is just to ensure that the compiler actually does a read, 
+and doesn't cache a previous value.
+As for the read ordering, the inline assembler you quote ensures that the compiler emits the instructions in the right order, 
+and this is all that is required on x86/x86_64 CPUs, 
+provided the writes are correctly sequenced. LOCKed writes on x86 have a total ordering;
+
+
+(https://crab2313.github.io/post/riscv-atomic-barrier-bitops/)
+这个原子性由硬件保证，一般来说，一个架构的word大小数据在对齐访问的情况下是可以保证原子性的，具体需要翻看手册
+还是那句话，硬件保证原子性，内核只要保证生成的指令不走样就行了，这也是使用READ_ONCE和WRITE_ONCE的原因
+
+
+(https://www.v2ex.com/t/968964)
+
+
+```
+
 
 https://stackoverflow.com/questions/55180452/interrupting-an-assembly-instruction-while-it-is-operating
 
@@ -3554,6 +3596,14 @@ On a single-CPU system, cmpxchg is atomic with respect to other threads, or any 
 so lock cmpxchg was relevant even on uniprocessor CPU designs).
 
 ```
+
+
+**Linux READ_ONCE**
+
+https://stackoverflow.com/questions/69066789/read-once-and-write-once-in-parallel-programming
+
+https://stackoverflow.com/questions/9289243/read-and-write-atomic-operation-implementation-in-the-linux-kernel
+
 
 **spin_lock使用场景**
 
