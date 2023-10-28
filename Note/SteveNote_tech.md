@@ -517,10 +517,22 @@ https://www.cnblogs.com/juwan/p/13069102.html
 
 https://iot-book.github.io/3_傅里叶分析/S4_离散傅里叶分析/
 
+
 https://www.toutiao.com/article/6704447250900189703/
+
 
 https://www.zhihu.com/question/484749484
 ```
 为什么持续时间短的信号，频谱较宽？
+```
+
+https://www.zhihu.com/question/30491270/answer/49347578
+```
+为啥带宽越大，能提供的传输速率越大？
+```
+
+https://zhuanlan.zhihu.com/p/190950643
+```
+正确认识声音的频谱
 ```
 

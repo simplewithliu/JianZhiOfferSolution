@@ -1399,6 +1399,33 @@ http://www.ruanyifeng.com/blog/2010/02/open_android_or_not.html
 总之并入主线对双方都有利，这个问题反应这次 Google 的并入主线积极性不高（不代表不开源），社区打它屁屁了......
 ```
 
+
+https://www.linuxidc.com/Linux/2020-01/161974.htm
+> 当然，Linus Torvalds对out-of-tree模块的行为几乎没有控制，
+> 他的立场一直是不维护稳定的驱动程序API/ABI，
+> 而且他们不会对 闭源/out-of-tree 代码做出任何努力。
+> 树外模块基本上被视为不存在。
+>
+
+**GPL问题**
+
+https://linux.cn/article-8691-1.html
+> Android, 在争议中逃离 Linux 内核的 GPL 约束
+```
+
+注意文章背景，现在Android已经在积极回归Linux上游主线
+
+```
+
+https://tinylab.org/embedded-linux-legal-issues/
+
+https://github.com/LCTT/TranslateProject/blob/master/published/201406/20140603 Write your first Linux Kernel module.md
+
+https://www.zhihu.com/question/19703551/answer/12703850
+> 严格遵守 GPL 的代码如何商用？
+> 
+
+
 **如何参与到 Linux 社区中来**
 
 https://opensourceway.community/posts/contribute_to_community/how_to_participate_in_the_linux_community/
@@ -2057,7 +2084,7 @@ https://blog.csdn.net/xiaoqiaoq0/article/details/108088787
 
 http://www.wowotech.net/?post=357
 > 对系统中所有的memory type的region建立对应的地址映射。
-> 由于reserved type的memory region是memory type的region的真子集，因此reserved memory 的地址映射也就一并建立了。
+> 由于reserved type的memory region是memory type的region的真子集，因此 reserved memory 的地址映射也就一并建立了。
 ```
 
 可以理解为能够被kernel管理的系统物理内存包括常规内存，标记reserved的内存，但不包括标记了no-map的。
@@ -2068,6 +2095,65 @@ http://www.wowotech.net/?post=357
 在分析启动代码的时候会有一些关于内存管理初始化相关的内容，在此专门将其提取出来，做一个简单的总结。
 
 ```
+
+* 从memblock到buddy子系统
+
+	https://zhuanlan.zhihu.com/p/363923438
+
+	https://zhuanlan.zhihu.com/p/363925295
+	```
+
+	上述 2 个网址介绍了从memblock迁移到buddy子系统的内存管理过程
+	
+	Linux启动时，首先由memblock来管理物理内存以及记录物理内存信息，然后在buddy子系统建立后，将内存管理的任务移交给buddy
+
+	在 buddy子系统 2 这一篇中，介绍了平坦内存模型中会释放无用的page，
+	
+	但是一般介绍平坦内存的文章中，会说平坦内存的一个缺点是针对所有空洞都会建立page从而浪费内存，这与前面提到的释放无用page相矛盾，如何理解呢？
+
+	首先可以了解下Linux物理内存模型的概念：
+
+	1 (https://zhuanlan.zhihu.com/p/524101403)
+	
+	2 (https://lwn.net/Articles/789304/)
+
+	在lwn的这篇文章中，提到了这样一句话：
+
+	but it had a major drawback: it couldn't deal well with large holes in the physical address space. 
+	
+	Either the part of the memory map corresponding to a hole would be wasted or, as was done on ARM, the memory map would also have holes.
+
+	其实联系上下文可以理解为，这里说的arm中memory map存在holes，应该是指mem_map这个数组的，也就是记录pfn to page的数组
+	
+	这里所说的arm体系定义了 CONFIG_HAVE_ARCH_PFN_VALID，自己实现了一套处理page的方法，所以在mem_map数组释放了hole page，留下了空洞
+
+	这也就对应了上文中释放无用page的说法，而上文的背景正是arm Linux, 可能其他体系不会释放，也就是会存在浪费
+
+	实际上对于pfn_valid的这个方法，平台是可以实现自己的规则，这个方法的目的就是检测配符pfn是否对应有效的page结构，参考如下网址：
+
+	(https://docs.kernel.org/mm/memory-model.html)
+
+	CONFIG_ARCH_HAS_HOLES_MEMORYMODEL 已经废弃，只使用 CONFIG_HAVE_ARCH_PFN_VALID
+
+	以下两个代码就是Linux内核根据不同物理内存模型对于pfn_valid的不同定义：
+
+	(https://elixir.bootlin.com/linux/latest/source/include/linux/mmzone.h)
+
+	(https://elixir.bootlin.com/linux/latest/source/include/asm-generic/memory_model.h)
+
+	对于arm64体系使用稀疏内存模型以及其他一些设计，所以不再需要自定义的pfn_valid，直接取消了pfn_valid方法，可以搜索提交："arm64/mm: drop HAVE_ARCH_PFN_VALID" 
+
+
+	(https://blog.csdn.net/u011011827/article/details/116938297)
+
+	(http://blog.chinaunix.net/uid-29955651-id-5165118.html)
+
+	arm体系中对无用free的释放更多的介绍
+
+	
+	(https://lpc.events/event/11/contributions/987/attachments/815/1536/LPC21 Consolidating representations of the physical memory.pdf)
+
+	```
 
 
 
@@ -2920,6 +3006,33 @@ https://www.zhihu.com/question/30635966
 	https://blog.csdn.net/Naiva/article/details/90045788
 
 
+* 开漏输出与推挽输出
+
+	https://www.learningaboutelectronics.com/Articles/Push-pull-vs-open-drain-output-configuration-STM32-board.php
+	> Push-pull configuration is the a configuration that most imagine an output to behave in. 
+	> The configuration has an output value of either ON or OFF, as a digital device behaves. 
+	> With push-pull state, the output is either ON (a HIGH logic state) or OFF (a LOW logic state).
+	> Using a push-pull configuration is then ideal when you have a device as a load 
+	> that has 2 states of either ON or OFF, such as LEDs, electric motors, fans, etc.
+	>
+	
+
+	https://www.elecfans.com/d/2231272.html
+	> 推挽输出和开漏输出除了硬件电路差异外，它们在应用中所属范畴也不相同。
+	> 推挽输出常用于数字电路中，一般实现电子设备的开关功能。
+	> 而开漏输出常用于接口电路中，如I2C、SPI、OneWire等，主要是为了方便通讯协议的实现和跨模块通讯。
+	>
+
+	https://durant35.github.io/2017/11/30/TACouses_ES2017_MCU_GPIO/
+
+	https://www.cnblogs.com/blogernice/articles/13037499.html
+
+	https://bbs.huaweicloud.com/blogs/406974
+
+
+
+https://www.zhihu.com/question/50408483/answer/120899969
+> 芯片IOPAD的结构有哪些种类，分别有什么特性？
 
 
 https://wiki.t-firefly.com/zh_CN/Core-3588J/usage_gpio.html
@@ -2940,6 +3053,7 @@ https://wiki.t-firefly.com/zh_CN/Core-3588J/usage_gpio.html
 这个是文字的锅，跟上拉没有关系，这个电阻就是保护作用，
 
 IO口输出高电平的时候，这个电阻用来保护负载，防止烧毁负载，IO口输出低电平的时候，用来保护IC，防止IC烧毁
+
 
 ```
 
@@ -3278,11 +3392,25 @@ https://zhuanlan.zhihu.com/p/43526907
 
 ### 2 进程间同步机制
 
+
+**进程间的锁**
+
 https://zhuanlan.zhihu.com/p/49214500
 
 https://stackoverflow.com/questions/5297813/cross-process-synchronization-in-java
 
 https://bbs.csdn.net/topics/391942429
+
+
+**packed attribute in GCC**
+
+https://stackoverflow.com/questions/8568432/is-gccs-attribute-packed-pragma-pack-unsafe
+
+https://stackoverflow.com/questions/38635235/explanation-of-packed-attribute-in-c
+
+https://www.eevblog.com/forum/microcontrollers/how-to-prevent-the-compiler-messing-with-a-structures-allignment/50/
+
+https://blog.csdn.net/zuiyinian/article/details/81174031
 
 
 
@@ -3578,8 +3706,12 @@ provided the writes are correctly sequenced. LOCKed writes on x86 have a total o
 还是那句话，硬件保证原子性，内核只要保证生成的指令不走样就行了，这也是使用READ_ONCE和WRITE_ONCE的原因
 
 
-(https://www.v2ex.com/t/968964)
+(https://stackoverflow.com/questions/45729756/do-atomic-store-load-from-stdatomic-h-work-for-unaligned-cross-cache-line-dat)
+A correctly written program can not get an object that isn't correctly aligned. 
+A correctly aligned int64 can't cross cache lines.
 
+
+(https://www.v2ex.com/t/968964)
 
 ```
 
@@ -3598,11 +3730,20 @@ so lock cmpxchg was relevant even on uniprocessor CPU designs).
 ```
 
 
-**Linux READ_ONCE**
+**Linux READ_ONCE and WRITE_ONCE**
 
 https://stackoverflow.com/questions/69066789/read-once-and-write-once-in-parallel-programming
 
 https://stackoverflow.com/questions/9289243/read-and-write-atomic-operation-implementation-in-the-linux-kernel
+
+https://www.reddit.com/r/C_Programming/comments/t10mqw/linux_write_once/
+```
+
+(https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4444.html)
+Linux-Kernel Memory Model
+A READ_ONCE(), WRITE_ONCE(), and ACCESS_ONCE() accesses may be modeled as a volatile memory_order_relaxed access
+
+```
 
 
 **spin_lock使用场景**
@@ -4064,7 +4205,6 @@ https://draveness.me/whys-the-design-non-unique-mac-address
 **C++ inline**
 
 https://stackoverflow.com/questions/1760291/is-compiler-allowed-to-ignore-inline-in-case-of-template-specialization
-
 ```
 
 In any case, even if the compiler decided to always generate ordinary calls to an inline function (i.e. to always "ignore inline"), 
@@ -4080,6 +4220,11 @@ In ISO C++ it does provide an external definition; however C++ has an additional
 that if there are multiple external definitions of an inline function, then the compiler sorts it out and picks one of them.
 
 ```
+
+
+https://www.zhihu.com/question/592123672/answer/2955784254
+
+
 
 **C99 inline**
 
@@ -4115,11 +4260,19 @@ https://blog.popkx.com/c-language-traps-and-skills-section-15-error-handling-is-
 
 https://www.thegeekstuff.com/2010/10/linux-error-codes
 
-### 3 C语言typedef redefinition
+
+### 3 C语言特性讨论
+
+**typedef redefinition**
 
 https://stackoverflow.com/questions/26955590/forward-declaration-throws-redefinition-error
 
 https://stackoverflow.com/questions/26240370/why-are-typedef-identifiers-allowed-to-be-declared-multiple-times
+
+
+**printf中转换说明符类型的坑**
+
+https://blog.csdn.net/baidu_24694009/article/details/107851701
 
 
 ### 4 C++ 特性讨论
@@ -4228,6 +4381,23 @@ https://stackoverflow.com/questions/55867320/is-the-address-of-malloc-size-t-3-a
 上述 2 个网址介绍了 fundamental alignment，并不是所有情况下都保证内存对齐
 
 ```
+
+https://docs.kernel.org/translations/zh_CN/core-api/unaligned-memory-access.html
+> 非对齐内存访问
+>
+
+https://www.cnblogs.com/justin-y-lin/p/10100370.html
+> ARM非对齐访问和Alignment Fault
+>
+```
+
+(https://www.zhihu.com/question/27862634/answer/2234364839)
+
+为什么访问某个地址需要对齐，需要从内存硬件角度上来理解
+
+```
+
+
 
 **undefined behavior 与 offsetof 函数**
 

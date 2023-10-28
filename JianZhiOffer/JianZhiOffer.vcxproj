@@ -81,6 +81,11 @@
     <ClInclude Include="header.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="II 017.最小覆盖子串.cpp" />
+    <ClCompile Include="II 018.验证回文串.cpp" />
+    <ClCompile Include="II 019. 验证回文串2.cpp" />
+    <ClCompile Include="II 036.逆波兰表达式求值.cpp" />
+    <ClCompile Include="II 037.行星碰撞.cpp" />
     <ClCompile Include="II 038.每日温度.cpp" />
     <ClCompile Include="II 039.柱状图中最大的矩形.cpp" />
     <ClCompile Include="II 040.最大矩形.cpp" />
