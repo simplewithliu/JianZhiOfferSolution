@@ -783,7 +783,7 @@ https://hackaday.com/2021/03/31/direct-memory-access-data-transfer-without-micro
 <div align=center>
 	<img src="images/third-party and first-party DMA.jpg" />
 </div>
-<div align=center><b>图 1 </b>third-party and first-party DMA</div>
+<div align=center><b>图 5.1 </b>third-party and first-party DMA</div>
 
 
 https://stackoverflow.com/questions/57009233/what-are-the-most-common-busmaster-operations-and-how-are-they-better-than-regu
@@ -997,7 +997,15 @@ DMA 支持硬件触发和软件触发
 
 ```
 
-* STM32 DMA 的一些资料
+
+<div align=center>
+<img src="images/DMA_Timing.jpg" />
+</div>
+<div align=center><b>图 5.2 一种典型的DMA时序</b></div>
+<div align=center>https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/Direct Memory Access (DMA) Operation and DMA Controller.pptx</div>
+
+
+* 其他原厂 DMA 芯片的一些资料
 	
 	https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/PIC32系列DMA.pdf
 
@@ -1185,6 +1193,7 @@ https://www.zhihu.com/question/40563242
 
 ```
 
+
 http://www.techweb.com.cn/it/2007-02-08/152365.shtml
 ```
 
@@ -1194,6 +1203,15 @@ http://www.techweb.com.cn/it/2007-02-08/152365.shtml
 
 ```
 
+
+https://dreamsourcelab.cn/logic-analyzer/uart/
+```
+
+UART协议具有不同的物理层实现，根据具体使用场景决定是否增加模拟IC来支持
+
+归档：(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/UART协议分析.pdf)
+
+```
 
 
 
@@ -1247,6 +1265,11 @@ https://www.cnblogs.com/zengkefu/p/5647046.html
 https://stackoverflow.com/questions/68834671/why-do-we-need-to-write-dirty-pages-back-to-disk-to-evict-it
 
 https://www.kernel.org/doc/gorman/html/understand/understand014.html
+```
+
+Gorman memory management
+
+```
 
 https://lwn.net/Articles/690079/
 
@@ -1791,6 +1814,18 @@ https://linux.cn/article-6197-1.html
 
 https://richardweiyang-2.gitbook.io/kernel-exploring/00_index/05_rules_for_single_object
 
+* 内核模块静态加载顺序与编译的联系
+
+	https://www.cnblogs.com/linhaostudy/p/9112264.html
+	```
+	
+	可以通过调整编译的顺序来调整模块的静态加载顺序，但是这样不太优雅，维护性也不好。可以通过内核模块deferred机制来处理依赖情况。
+
+	ko静态加载与动态加载方法的解释：(https://zhuanlan.zhihu.com/p/644895138)
+	
+	```
+
+
 
 
 **内核调试打印与内核模块名**
@@ -1873,9 +1908,30 @@ https://www.zhihu.com/question/61974351/answer/205736146
 
 https://www.zhihu.com/question/20536161/answer/1672310610
 
+
 https://stackoverflow.com/questions/11472484/word-size-and-data-bus
+> Data bus with is completely unrelated to this. 
+> The word size (which has never really been a precise term) of a processor is best loosely defined 
+> as the largest natural size for arithmetic which is generally the size of the registers in the machine
+>
+```
+
+(https://stackoverflow.com/questions/47818287/data-bus-width-and-word-size)
+the ratio is flexible. You could built a 64-bit x86 CPU with only 64-bit internal/external data paths, 
+and in fact that's what AMD did with K8. 
+(It has to split 128-bit vector load/store into two 64-bit halves, 
+just like Pentium III / Pentium-M which are 32-bit only but support 128-bit SSE registers). 
+The actual x86-64 ISA still doesn't guarantee atomicity for anything wider than 64 bits.
+
+
+(https://superuser.com/questions/1588358/how-can-i-find-my-computers-address-bus-width-and-data-bus-size)
+The logical width of the data-bus, of an x86-64 is 64 bits. However the physical size is what ever the manufacturer chooses
+
+```
+
 
 https://softwareengineering.stackexchange.com/questions/267218/how-does-word-size-affect-the-amount-of-virtual-address-space-available
+
 
 https://www.zhihu.com/question/377628211/answer/1500681380
 ```
@@ -2832,7 +2888,11 @@ https://www.cnblogs.com/locean/p/5110371.html
 https://www.intechopen.com/chapters/80636
 ```
 
-上述 2 个网址 LCD控制器设计的内容介绍
+上述 2 个网址 LCD 控制器设计的内容介绍
+
+(https://blog.csdn.net/vrk731/article/details/85221189)
+
+对比介绍LCD屏内置控制器和主机LCD控制器
 
 ```
 
@@ -3706,6 +3766,9 @@ provided the writes are correctly sequenced. LOCKed writes on x86 have a total o
 还是那句话，硬件保证原子性，内核只要保证生成的指令不走样就行了，这也是使用READ_ONCE和WRITE_ONCE的原因
 
 
+(https://stackoverflow.com/questions/36624881/why-is-integer-assignment-on-a-naturally-aligned-variable-atomic-on-x86)
+
+
 (https://stackoverflow.com/questions/45729756/do-atomic-store-load-from-stdatomic-h-work-for-unaligned-cross-cache-line-dat)
 A correctly written program can not get an object that isn't correctly aligned. 
 A correctly aligned int64 can't cross cache lines.
@@ -4254,6 +4317,14 @@ https://en.cppreference.com/w/c/language/inline
 https://www.zhihu.com/question/270847649
 
 
+https://stackoverflow.com/questions/2722276/multiple-definition-of-inline-function
+```
+
+GNU89 inline 与 C99 inline 区别的一个实例
+
+```
+
+
 ### 2 C语言的错误处理
 
 https://blog.popkx.com/c-language-traps-and-skills-section-15-error-handling-is-too-cumbersome-cant-you-write-without-it/
@@ -4273,6 +4344,39 @@ https://stackoverflow.com/questions/26240370/why-are-typedef-identifiers-allowed
 **printf中转换说明符类型的坑**
 
 https://blog.csdn.net/baidu_24694009/article/details/107851701
+```
+
+1 使用%llu打印unsigned long时数据错误
+
+在32位平台上，unsigned long的长度是32位，%llu目的是打印64位无符号整型，正常来说数据长度是够用的，但是需要做一下类型转换。
+
+可能有些printf的实现没考虑这种情况，所以打印出来是错误的，也不能算Bug，就是方法的实现上鲁棒性差点。
+
+所以使用printf最好还是类型一致，修饰符如果是64位的，那么实际变量类型也保证是64位。
+
+这个人用的版本就是打印出错：(https://blog.csdn.net/baidu_24694009/article/details/107851701)
+
+但是我自己后来测试，用Android Studio的NDK以及Linux服务器的gcc进行同样的打印都没有出错，VS2015是错的，所以就是printf实现的问题。
+
+
+2 指针运算结果转为uint64_t时打印数据出错
+
+在32位平台上，指针大小长度32位，强转为64位数据需要补高位，如果得到的运算结果是0xFC000000，高位是个1，编译器补成64位，高位全补成1了。
+
+这个估计看编译器实现，将高位当作符号位，所以补1了，这样转成uint64_t后就是0xFFFFFFFFFC000000
+
+然后当时用%ld打印的，数据长度不对，就出错了。
+
+32位上最好在运算后先转成uint32_t，再转成uint64_t，最后结果就对了。
+
+如何解释指针类型转换整型可以参考：(https://stackoverflow.com/questions/3304795/can-a-pointer-address-ever-be-negative)
+
+```
+
+**GCC内联汇编的使用**
+
+https://blog.csdn.net/zyllong/article/details/42869577
+
 
 
 ### 4 C++ 特性讨论
