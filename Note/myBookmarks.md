@@ -533,6 +533,11 @@ https://events.static.linuxfound.org/sites/events/files/slides/main.pdf
 
 上述 2 个网址介绍了 DMA API and IOMMU API
 
+
+(https://lwn.net/Articles/144100)
+
+IOMMU可以帮助实现 scatter-gather 分散/聚集IO
+
 ```
 
 * IOMMU 与 DMA 相关联的图片
@@ -1465,7 +1470,25 @@ https://unix.stackexchange.com/questions/467010/is-linux-considered-xsi-complian
 https://www.cnblogs.com/wangkeqin/p/12382639.html
 
 
+**开源与闭源驱动**
 
+https://lwn.net/Articles/186854/
+```
+
+关于树外驱动与主线驱动的一些讨论
+
+实际上很多情况下我们也需要树外驱动
+
+参考：(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/ols2010-pages-35-40.pdf)
+
+
+```
+
+https://www.ifanr.com/minapp/1488982
+> 而有实力的下游在分叉很久之后，「迷途知返」重新与上游加强联系的例子也不是没有。其中，最有名的要数谷歌的 Android 开发社区。
+> Android 的最底层是 Linux 内核，而从最上游的 Linux 内核到各种五花八门的 Android 设备终端这个链条中，利益相关者众多，往往会经历多次分叉，而且还会加上一堆特定的更改。
+> 高通、三星等等 SoC 供应商们基本会为每个主要芯片版本制作一个特定于 SoC 的内核，然后每个内核都会获得特定设备的硬件支持。
+> 这导致 Android 的内核碎片非常混乱。
 
 
 ### 3 Linux系统问题分析与调试
@@ -1810,29 +1833,74 @@ https://zhuanlan.zhihu.com/p/362958145
 
 ```
 
+https://github.com/PinoTsao/Makefile/blob/master/01.kbuild_summary.md
+> 内核编译系统概述
+
+
 https://linux.cn/article-6197-1.html
+
 
 https://richardweiyang-2.gitbook.io/kernel-exploring/00_index/05_rules_for_single_object
 
-* 内核模块静态加载顺序与编译的联系
-
-	https://www.cnblogs.com/linhaostudy/p/9112264.html
-	```
-	
-	可以通过调整编译的顺序来调整模块的静态加载顺序，但是这样不太优雅，维护性也不好。可以通过内核模块deferred机制来处理依赖情况。
-
-	ko静态加载与动态加载方法的解释：(https://zhuanlan.zhihu.com/p/644895138)
-	
-	```
 
 
+**内核模块的编译与加载**
 
 
-**内核调试打印与内核模块名**
+https://www.cnblogs.com/linhaostudy/p/9112264.html
+```
 
-https://github.com/PinoTsao/Makefile/blob/master/01.kbuild_summary.md
+内核模块静态加载顺序与编译顺序存在联系
 
-https://www.cnblogs.com/pengdonglin137/p/5808373.html
+可以通过调整编译的顺序来调整模块的静态加载顺序，但是这样不太优雅，维护性也不好。可以通过内核模块deferred机制来处理依赖情况。
+
+参考：
+(https://blog.csdn.net/u014485786/article/details/122083944)
+(https://blog.csdn.net/qq_44710568/article/details/124356552)
+
+ko静态加载与动态加载方法的解释：(https://zhuanlan.zhihu.com/p/644895138)
+
+```
+
+
+https://blog.csdn.net/qq_41929943/article/details/130852232
+```
+
+内核模块加载过程中的重定位详解，这里会涉及到符号地址的修改
+
+通常链接器会负责进行这个操作
+
+```
+
+* 链接器可能会修改代码段符号地址的一些原理
+
+	https://www.zhihu.com/question/21249496/answer/2649413878
+	> 现在我们已经明确做到了题主想要的结果，既不使用.plt，也不使用.got，就跟静态链接一样目标地址在装载时直接修改代码段
+	> 但是这样真的好么，上面的代码我们最终在实现第二个目标时使用到了-fno-pie参数,，这个其实是一个逆优化 就是为了产生地址依赖的代码
+	> 好处是在调用目标函数时不用再七拐八弯的去间接确定地址，但是坏处嘛，其一是不能共享代码段，(似乎liunx非常看重这个)
+	> 其二是其加载阶段的任务会重一些，甚至有些地方可能是做的无用功，比如一些可能永远也不会走到的代码片段的链接
+
+	https://stackoverflow.com/questions/63708380/how-does-dynamic-linker-resolve-references-while-the-application-is-running
+
+	https://unix.stackexchange.com/questions/607551/how-does-dynamic-linker-resolve-references-in-run-time
+
+	https://jiansoft.net/2023/03/13/understand_compiling_and_linking.html
+	> 重定位节中的符号引用。 
+	> 在这一步中，链接器修改代码节和数据节中对每个符号的引用，使得它们指向正确的运行时地址。
+	> 要执行这一步，链接器依赖于可重定位目标模块中称为重定位条目的数据结构。
+	>
+	> 正常的方法是为该引用生成一个重定位记录，然后动态链接器在程序加载的时候再解析它。
+	> 不过这种方法不是PIC，因为它需要链接器修改调用模块的代码段。
+
+	https://stackoverflow.com/questions/37839865/how-does-dynamic-linker-changes-text-segment-of-process
+	> How does dynamic linker changes text segment of process?
+
+
+
+* 内核模块名与内核调试打印
+
+	https://www.cnblogs.com/pengdonglin137/p/5808373.html
+
 
 
 
@@ -2956,6 +3024,23 @@ https://superuser.com/questions/1193999/do-monitors-not-atomically-instantaneous
 https://focuslcds.com/mipi-display-serial-interface-dsi/
 
 
+* 了解LVDS信号
+```
+
+具体定义可以参考wiki百科的词条
+
+```
+
+	https://blog.csdn.net/lxm920714/article/details/107955275
+	
+	https://electronics.stackexchange.com/questions/118185/lvds-vs-mipi-whats-the-difference
+	
+	https://focuslcds.com/lcd-resources/the-mipi-and-lvds-interfaces/
+	
+	https://electronics.stackexchange.com/questions/577008/difference-between-lvds-mipi-dpi-and-dsi
+
+
+
 **framebuffer驱动与DRM驱动框架**
 
 https://doc.embedfire.com/linux/stm32mp1/driver/zh/latest/linux_driver/framework_drm.html
@@ -4045,7 +4130,7 @@ https://www.infoq.cn/article/akthyldshhvho*ea0m1f
 
 这些版本结合 Android 核心的专有代码构成了Android公共内核版本。
 
-供应商选择一个公共内核，然后添加更多的树外代码，从而创建一个特定于片上系统（SoC ）的内核，并提供给设备制造商。
+供应商选择一个公共内核，然后添加更多的树外代码，从而创建一个特定于片上系统（SoC）的内核，并提供给设备制造商。
 
 ```
 
@@ -4083,6 +4168,18 @@ https://tinylab.org/android-signature/
 
 https://blog.csdn.net/tkwxty/article/details/109892763
 
+
+
+**Android media_rw 权限**
+```
+
+可以通过这个示例了解Android权限系统的一些定义和检查方式
+
+```
+
+https://blog.csdn.net/u010164190/article/details/51153866
+
+https://wossoneri.github.io/2019/01/11/[Android][Framework]Android-permission-1/
 
 
 ### 6 调试方法

@@ -497,5 +497,26 @@
     <ClCompile Include="II 019. 验证回文串2.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 020.回文子串.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 062.实现Trie(前缀树).cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 063.单词替换.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 064.实现一个魔法字典.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 065.单词的压缩编码源.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 066.键值映射.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 067.数组中两个数的最大异或值.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
