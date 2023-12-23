@@ -2201,6 +2201,101 @@ Note that this one is deprecated on the recent kernel.
 
 
 
+* 为什么 ioremap 不能映射 System mem
+
+	https://stackoverflow.com/questions/43127794/why-shouldnt-i-use-ioremap-on-system-memory-for-armv6
+
+	https://lwn.net/Articles/409689/
+
+	https://lwn.net/Articles/653585/
+	```
+	
+	补充：(https://blog.csdn.net/u014470361/article/details/80682101)
+	
+	关于对于ioremap中__iomem属性的保护作用
+
+	```
+
+	https://lwn.net/Articles/450286/
+	```
+	
+	上述 4 个网址描述了Arm对于同一个物理地址不建议同时存在多个映射
+
+	本质上是 armv6+ 定义了不同的内存类型和属性，使用不同属性的虚拟地址访问同一个物理地址会出现问题，应该极力避免这种情况；
+	
+	针对ioremap，只将其用作io内存使用即可。
+	
+	具体的内容可以参考arm文档 Arm Architecture Reference Manual for A-profile architecture
+
+	实际上简单理解，arm定义不同的内存类型后，可能会通过各种硬件机制来优化arm核对内存的访问，而如果使用不同的内存属性，就可能破坏硬件行为的一致性。
+
+	如下是针对不同Cache属性的简单示例：
+
+	(https://community.arm.com/support-forums/f/architectures-and-processors-forum/4274/regarding-mismatched-memory-attributes-and-cacheability)
+
+	(https://community.arm.com/support-forums/f/architectures-and-processors-forum/3731/clean-and-invalidate-cache-memory)
+
+	或者说就以最简单的情景，同一个物理地址，一个VA地址X不带Cache，另一个VA地址Y带Cache；
+	
+	X访问内存后，Y来访问并写值，但这会写入Cache。随后X再写值，则可能会出现Cache刷新Y的旧值覆盖X新值。
+
+	另外Cache可能会存在预取行为（一般在4KB边界内），可能某些地址虽然没有显式访问，但也不再安全，因为内核各类场景复杂，很难注意到这类情况。
+
+	也许一致性问题通过复杂的一致性维护指令可以避免数据损坏的问题，但是硬件也可能会对不同的内存区域可见性维护一套机制；
+
+	如果同一个PA被不同的可见性VA访问，也许会造成混乱。
+
+	(https://lore.kernel.org/all/20100423144058.GA11637@ZenIV.linux.org.uk/)
+
+	(https://lore.kernel.org/all/20101008175308.GA10975@n2100.arm.linux.org.uk/)
+
+	kernel邮件背景补充, 可以搜索 f:Russell King d:..10.years.ago
+
+	(https://wiki.osdev.org/ARM_Paging)
+
+	了解Arm架构中页表的常用设置，有关于内存属性的设置，这可能会影响硬件行为
+
+	```
+
+	https://medium.com/@om.nara/arm64-normal-memory-attributes-6086012fa0e3
+
+
+* 了解Cache
+
+	https://zhuanlan.zhihu.com/p/658395872
+	```
+
+	了解Arm架构中Cache的基本机制
+
+	参考：(https://zhuanlan.zhihu.com/p/652795662)
+
+	```
+
+	https://docs.kernel.org/translations/zh_CN/core-api/cachetlb.html
+	```
+
+	如果创建了新的VA:PA映射，是否刷Cache取决于Cache的设计，但是需要了解这一情景，并考虑实际的设计也许会更复杂。
+
+	参考：(https://www.kernel.org/doc/gorman/html/understand/understand006.html)
+	3.9  Level 1 CPU Cache Management
+	
+	```
+
+	https://community.arm.com/support-forums/f/architectures-and-processors-forum/7271/is-it-necessary-for-arm-v8-soc-to-flush-l2-cache-to-dram
+	> Remember that the processor is allowed to perform speculative cache line fills for any or no reason; 
+	> if the cache is still enabled then as you're cleaning and invalidating each line the processor would be permitted to immediately reallocate that line again.
+
+    https://stackoverflow.com/questions/72639190/flush-the-write-combining-buffer
+	```
+	
+	Arm中也存在write buffer，用于优化写操作，与Cache共存；
+
+	Arm中并未定义write buffer的软件刷新用法，说明手册上Cache一节描述了write buffer的可见性问题
+	
+	```
+
+
+
 **Linux kernel 内存初始化**
 
 
@@ -2217,6 +2312,11 @@ http://www.wowotech.net/?post=357
 
 (https://blog.csdn.net/jasonactions/article/details/114122304)
 在分析启动代码的时候会有一些关于内存管理初始化相关的内容，在此专门将其提取出来，做一个简单的总结。
+
+
+(https://blog.csdn.net/weixin_42262944/article/details/107135148)
+
+ARM架构下内存初始化时页表的建立
 
 ```
 
@@ -2279,6 +2379,19 @@ http://www.wowotech.net/?post=357
 
 	```
 
+
+* uboot传递内存参数给kernel
+
+	https://blog.csdn.net/weixin_42031299/article/details/126131870
+
+	https://blog.csdn.net/u011011827/article/details/108072568
+	```
+	
+	(https://www.nxp.com/docs/en/application-note/AN3980.pdf)
+
+	了解 ATAG_MEM 类型的tag，可以传递内存初始化的信息
+
+	```
 
 
 **页表项的构成**
@@ -2473,6 +2586,8 @@ https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/commit/arch/arm
 > We have the capability to map 1GB level 1 blocks when using a 4K granule.
 
 https://zhuanlan.zhihu.com/p/363856783
+
+https://mp.weixin.qq.com/s/NZzxkjBhH-dbQZoT3ltuXw
 
 https://blog.csdn.net/yhb1047818384/article/details/109169979
 
@@ -2848,6 +2963,16 @@ https://unix.stackexchange.com/questions/4884/what-is-the-difference-between-pro
 	https://bootlin.com/doc/legacy/audio/embedded_linux_audio.pdf
 
 	https://alsa.opensrc.org/Udev
+
+
+**Linux VFS**
+
+https://zhuanlan.zhihu.com/p/482603591
+> 一个 inode 上可以挂多个dentry, 一个dentry只能属于一个inode;
+> 硬链接的场景就是一个inode对应了多个dentry节点
+
+https://vzhougm.gitee.io/2021/06/29/computer/linux/linux进程退出后操作系统是如何删除这个进程对应的内核资源的/
+
 
 
 
@@ -3414,7 +3539,9 @@ https://mirrors.cloud.tencent.com/loongson/loongson1c_bsp/openloongson_Linux_V1.
 https://blog.csdn.net/engineer0/article/details/121055199
 
 
-
+https://www.cnblogs.com/w-smile/p/14403647.html
+> 内核线程工作队列和普通工作队列相比没有线程池的概念因此内核线程工作队列中的work是不支持并发，
+> 因此设计work 函数时不用考虑重入的场景
 
 
 ***
@@ -4495,6 +4622,11 @@ https://wenfh2020.com/2017/10/28/cpp-log-format/
 https://stackoverflow.com/questions/37649236/why-not-always-assign-return-values-to-const-reference
 
 
+**静态与动态初始化**
+
+https://www.jianshu.com/p/42f6016e743b
+
+
 
 ### 5 异常处理机制
 
@@ -4618,6 +4750,13 @@ https://stackoverflow.com/questions/26906621/does-struct-name-null-b-cause-undef
 > these things rely on knowledge of the particular compiler, which is why they ship with the compiler. 
 
 https://stackoverflow.com/questions/6433339/does-the-offsetof-macro-from-stddef-h-invoke-undefined-behaviour
+
+
+**NULL指针解引用**
+
+https://stackoverflow.com/questions/1334929/how-can-dereferencing-a-null-pointer-in-c-not-crash-a-program
+> The act of dereferencing a NULL pointer is undefined by the standard. 
+> It is not guaranteed to crash and often times won't unless you actually try and write to the memory.
 
 ***
 

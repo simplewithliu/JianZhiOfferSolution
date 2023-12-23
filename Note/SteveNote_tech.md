@@ -424,6 +424,8 @@ https://juejin.cn/post/6844903554575155207
 https://www.zhihu.com/column/c_1273723917820215296
 
 
+
+
 ### June 04 2023
 
 **1 神奇，C代码竟然能当成shell脚本一样“直接”执行**
@@ -467,6 +469,7 @@ https://zhuanlan.zhihu.com/p/618143764
 https://www.huangrongzhen.ink/?p=381
 
 
+
 ### July 19 2023
 
 **1 sysfs的分析**
@@ -485,6 +488,8 @@ https://zhuanlan.zhihu.com/p/534492797
 https://www.ucloud.cn/yun/2678.html
 
 https://stackoverflow.com/questions/37246792/forcing-cpu-abi-to-armeabi-v7a-on-android
+
+
 
 ### Aug 13 2023
 
@@ -534,5 +539,85 @@ https://www.zhihu.com/question/30491270/answer/49347578
 https://zhuanlan.zhihu.com/p/190950643
 ```
 正确认识声音的频谱
+```
+
+
+
+### Sept 29 2023
+
+**1 搭建kernel源码阅读环境**
+
+https://bbs.kanxue.com/thread-275365.htm
+
+**2 深入理解CMake PUBLIC, PRIVATE, INTERFACE关键字**
+
+https://leimao.github.io/blog/CMake-Public-Private-Interface/
+
+
+**3 cache line对齐问题**
+
+http://blog.kongfy.com/2017/01/多核并发编程中的cache-line对齐问题/
+
+
+
+### Nov 11 2023
+
+
+**1 图解通信原理**
+
+https://blog.51cto.com/u_11299290/3196233
+```
+图解通信原理与案例分析-2：如何用电信号来表示和传输0和1，远远比我们想象的要复杂得多
+```
+
+**2 Linux 写时复制原理**
+
+https://hackmd.io/@linD026/Linux-kernel-COW-content/
+
+
+
+### Nov 26 2023
+
+**1 Linux进程调度器-进程切换 **
+
+https://www.cnblogs.com/LoyenWang/p/12386281.html
+
+
+
+
+### Dec 02 2023
+
+**1 ftrace进阶**
+
+https://tinylab.org/ftrace-2/
+
+**2 Android添加bootclasspath**
+
+https://qiushao.net/2020/05/23/Android系统开发入门/16-Android-add-bootjar/
+
+
+
+### Dec 03 2023
+
+**1 内核日志级别与dmesg**
+
+https://blog.csdn.net/wangdapao12138/article/details/82194328
+
+http://kb.microembedded.com/microandroidmtk-e
+
+
+### Dec 10 2023
+
+**1 早期的ISA总线**
+
+https://docs.freebsd.org/zh-cn/books/arch-handbook/isa/
+
+**2 应用内存统计**
+
+https://zhuanlan.zhihu.com/p/601408248
+```
+但ion由于在mapped到用户态时，带了VM_PFNMAP flag，
+是raw pfn映射，所以虽然在用户态有虚拟地址空间和它对应，
+但是其大小并未算到进程pss统计里面。
 ```
 
