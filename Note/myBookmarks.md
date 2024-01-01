@@ -2259,6 +2259,23 @@ Note that this one is deprecated on the recent kernel.
 
 	https://medium.com/@om.nara/arm64-normal-memory-attributes-6086012fa0e3
 
+	https://developer.arm.com/documentation/102376/0200/Memory-aliasing-and-mismatched-memory-types
+
+	https://developer.arm.com/documentation/100941/0101/Memory-attributes
+
+	https://mp.weixin.qq.com/s/-nCZaUNt9N3eW6aRffzvgg
+	```
+	
+	上述 4 个网址描述了arm架构的内存属性的相关内容
+
+	文档中只是针对Arm用户的开发者文档，介绍了Arm架构对内存的访问特性，接口使用者不应该作任何假定
+
+	在Arm架构下开发时需要遵循文档中的建议，但Arm芯片中实际的微架构实现对用户透明
+
+	具体如何访存的，对不同的属性的内存也许有不同的访问机制和总线优化方式，这些不能通过主观认为的总线行为来使用某些接口
+	
+	```
+
 
 * 了解Cache
 
@@ -2267,7 +2284,9 @@ Note that this one is deprecated on the recent kernel.
 
 	了解Arm架构中Cache的基本机制
 
-	参考：(https://zhuanlan.zhihu.com/p/652795662)
+	参考：
+	(https://zhuanlan.zhihu.com/p/652795662)
+	(https://blog.csdn.net/weixin_42135087/article/details/122340867)
 
 	```
 
@@ -2285,6 +2304,9 @@ Note that this one is deprecated on the recent kernel.
 	> Remember that the processor is allowed to perform speculative cache line fills for any or no reason; 
 	> if the cache is still enabled then as you're cleaning and invalidating each line the processor would be permitted to immediately reallocate that line again.
 
+	https://zhuanlan.zhihu.com/p/608663298
+	> 一个物理页通常是4KB，在物理页边界时无法预取，因为PageFault需要操作系统来调度，CPU做不了
+
     https://stackoverflow.com/questions/72639190/flush-the-write-combining-buffer
 	```
 	
@@ -2293,6 +2315,7 @@ Note that this one is deprecated on the recent kernel.
 	Arm中并未定义write buffer的软件刷新用法，说明手册上Cache一节描述了write buffer的可见性问题
 	
 	```
+
 
 
 

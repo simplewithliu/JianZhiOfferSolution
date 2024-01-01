@@ -494,9 +494,6 @@
     <ClCompile Include="II 018.验证回文串.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="II 019. 验证回文串2.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="II 020.回文子串.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -516,6 +513,18 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="II 067.数组中两个数的最大异或值.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 059.数据流中的第K大元素.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 060.前K个高频元素.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 061.查找和最小的K对数字.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 019.验证回文串2.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

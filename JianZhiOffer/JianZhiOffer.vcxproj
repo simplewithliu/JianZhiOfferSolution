@@ -83,13 +83,16 @@
   <ItemGroup>
     <ClCompile Include="II 017.最小覆盖子串.cpp" />
     <ClCompile Include="II 018.验证回文串.cpp" />
-    <ClCompile Include="II 019. 验证回文串2.cpp" />
+    <ClCompile Include="II 019.验证回文串2.cpp" />
     <ClCompile Include="II 020.回文子串.cpp" />
     <ClCompile Include="II 036.逆波兰表达式求值.cpp" />
     <ClCompile Include="II 037.行星碰撞.cpp" />
     <ClCompile Include="II 038.每日温度.cpp" />
     <ClCompile Include="II 039.柱状图中最大的矩形.cpp" />
     <ClCompile Include="II 040.最大矩形.cpp" />
+    <ClCompile Include="II 059.数据流中的第K大元素.cpp" />
+    <ClCompile Include="II 060.前K个高频元素.cpp" />
+    <ClCompile Include="II 061.查找和最小的K对数字.cpp" />
     <ClCompile Include="II 062.实现Trie(前缀树).cpp" />
     <ClCompile Include="II 063.单词替换.cpp" />
     <ClCompile Include="II 064.实现一个魔法字典.cpp" />
