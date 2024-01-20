@@ -779,10 +779,13 @@ http://ee.mweda.com/ask/150755.html
 
 https://hackaday.com/2021/03/31/direct-memory-access-data-transfer-without-micro-management/
 
+* DMA硬件内部结构的示例
 
+	https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/an5224-stm32-dmamux-the-dma-request-router-stmicroelectronics.pdf
+
+	https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/AN12351.pdf
 
 **first-party DMA 总线主控**
-
 
 
 <div align=center>
@@ -1125,6 +1128,8 @@ https://cloud.tencent.com/developer/article/1894161
 注：原文没找到，第一大段中的软实时补丁可能是笔误，应该是硬实时
 
 ```
+
+
 
 ### 8 模拟IC与数字IC
 
@@ -2252,7 +2257,7 @@ Note that this one is deprecated on the recent kernel.
 	kernel邮件背景补充, 可以搜索 f:Russell King d:..10.years.ago
 
 	(https://wiki.osdev.org/ARM_Paging)
-
+ 
 	了解Arm架构中页表的常用设置，有关于内存属性的设置，这可能会影响硬件行为
 
 	```
@@ -2274,6 +2279,55 @@ Note that this one is deprecated on the recent kernel.
 
 	具体如何访存的，对不同的属性的内存也许有不同的访问机制和总线优化方式，这些不能通过主观认为的总线行为来使用某些接口
 	
+	```
+
+
+* 再叙Arm memory multimap
+	
+	Arm在Armv6上定义了对同一个物理地址的不同属性的虚拟地址映射可能会导致未定义行为，在kernel邮件中 Russell King 也在极力避免这种行为出现。
+	但是太多的场景需要这种映射，比如映射到用户空间的虚拟地址，或者说对离散的物理地址的连续重映射，都需要这种多映射。
+	当然这种多映射如果不修改内存类型和内存属性也是可以的，但是在DMA的场景下，需要修改内存属性为no-Cache，才能保证缓存一致性。
+	如果不允许此类修改缓存Cache属性的多重映射情景，那么DMA的使用将会受到极大限制，缓存一致性问题将难以解决。
+	但是目前看最新的Armv7的技术手册，不再提及这种修改Cache属性的未定义行为，更多的是说不能用多个带不同内存属性的虚拟地址来访问同一个物理地址。
+	另外在关于Armv6的邮件讨论中 Catalin Marinas 也多次提及只是no-Cache的要求，可以通过软硬件手段来维护，只要方式正确，也许预取也不会造成问题。
+
+	https://www.riscosopen.org/forum/forums/9/topics/3979
+	> In ARMv7 and above, cache maintenance operations are guaranteed to affect disabled caches, 
+	> and address-based operations are guaranteed to affect all memory types (i.e. you can make something non-cacheable and then flush it). 
+	> Prior to ARMv7 this behaviour was implementation defined, and at least one CPU (ARM11) ignores address-based maintenance ops which target non-cacheable memory.
+	>
+	> It’s implementation defined whether unexpected cache hits are ignored or not (i.e. when a page is marked noncacheable but hits a cache entry). 
+	> In particular, all the ARMv7+ TRMs that I’ve looked at when looking at this issue suggest that they all ignore the unexpected hit, 
+	> and I have a test app which suggests that XScale ignores unexpected hits as well (interrupt hole in OS_Memory 0 “make temporarily uncacheable” operation)
+	>
+	```
+	
+	(https://linux-arm-kernel.infradead.narkive.com/j0ExZpPd/rfc-arm-dma-mapping-outer-cache-is-invalidated-twice)
+
+	(https://lore.kernel.org/lkml/20090807202829.GF31543@n2100.arm.linux.org.uk/)
+
+	```
+
+	https://developer.arm.com/documentation/ddi0489/f/memory-system/speculative-accesses
+
+	https://developer.arm.com/documentation/ddi0246/h/functional-overview/implementation-details/prefetching-operation
+	```
+	
+	上述 2 个网址介绍了Arm架构中关于预取的一些基本概念
+	
+	```
+
+	https://aelseb.wordpress.com/2015/04/11/contiguous-memory-on-arm-and-cache-coherency/
+	> Actually, if you don’t use the kernel virtual address to access data, 
+	> I don’t see any problem in using this approach.
+	```
+
+	关于多映射的问题，这里作者也提到了个人一些见解，他认为虽然存在多重映射（这个是使用内存不可避免的），
+
+	如果修改了内存页表项中的Cache属性标志位，只要不同时使用它们就没问题。
+
+	(https://www.cnblogs.com/dream397/p/15660063.html)
+
 	```
 
 
@@ -3774,6 +3828,11 @@ https://www.zhihu.com/question/296949412/answer/747494794
 
 **acquire and release语义**
 
+https://preshing.com/20120913/acquire-and-release-semantics/
+
+https://www.parallellabs.com/tag/atomic-operation/
+> acquire语义的隐义是当前线程在对sentinel的这个读操作之后的所有的对全局变量的访问都必须在该操作之后执行
+
 
 https://preshing.com/20120930/weak-vs-strong-memory-models/
 > In a sequentially consistent memory model, there is no memory reordering.
@@ -3787,8 +3846,6 @@ https://preshing.com/20120930/weak-vs-strong-memory-models/
 (http://mintomic.github.io/lock-free/memory-fences/)
 
 ```
-
-https://preshing.com/20120913/acquire-and-release-semantics/
 
 https://preshing.com/20130922/acquire-and-release-fences/
 > What’s cool is that neither acquire nor release semantics requires the use of a #StoreLoad barrier, 
@@ -3809,7 +3866,6 @@ I haven't encountered a real-world programming problem in which StoreLoad was ab
 preshing并发编程系列文章的翻译
 
 ```
-
 
 
 https://stackoverflow.com/questions/76349024/sequentially-consistent-fence
@@ -3838,6 +3894,13 @@ Atomic operations other than qatomic_set() and qatomic_read() have either acquir
 (https://tinylab.org/memory-ordering-part2/)
 
 ```
+
+* 双检锁单例
+
+	https://luyuhuang.tech/2022/06/25/cpp-memory-order.html
+	> 获取到锁后，还需要再判断一下 instance 是否为空，以免在判断 (1) 之后，锁获取到之前，有其他线程创建了对象。
+	> 但是这种做法是有问题的：(1) 并没有在锁的保护下，它有可能与 (2) 并发，导致数据竞争。
+
 
 
 
