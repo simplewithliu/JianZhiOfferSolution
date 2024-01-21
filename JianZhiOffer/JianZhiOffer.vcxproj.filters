@@ -527,5 +527,17 @@
     <ClCompile Include="II 019.验证回文串2.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 069.山脉数组的峰顶索引.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 068.搜索插入位置.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 070.有序数组中的单一元素.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 071.按权重随机选择.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -99,6 +99,9 @@
     <ClCompile Include="II 065.单词的压缩编码源.cpp" />
     <ClCompile Include="II 066.键值映射.cpp" />
     <ClCompile Include="II 067.数组中两个数的最大异或值.cpp" />
+    <ClCompile Include="II 068.搜索插入位置.cpp" />
+    <ClCompile Include="II 070.有序数组中的单一元素.cpp" />
+    <ClCompile Include="II 071.按权重随机选择.cpp" />
     <ClCompile Include="II 095.最长公共子序列.cpp" />
     <ClCompile Include="II 096.字符串交织.cpp" />
     <ClCompile Include="43.统计1 ~ n整数中1出现的次数.cpp" />
@@ -190,6 +193,7 @@
     <ClCompile Include="II 109.开密码锁.cpp" />
     <ClCompile Include="II 117.相似字符串组.cpp" />
     <ClCompile Include="II 114.火星词典.cpp" />
+    <ClCompile Include="II 069.山脉数组的峰顶索引.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="65.不用加减乘除做加法.cpp" />
     <ClCompile Include="49.丑数.cpp" />

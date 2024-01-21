@@ -785,6 +785,9 @@ https://hackaday.com/2021/03/31/direct-memory-access-data-transfer-without-micro
 
 	https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/AN12351.pdf
 
+	https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/AN4978.pdf
+
+
 **first-party DMA 总线主控**
 
 
@@ -2257,7 +2260,7 @@ Note that this one is deprecated on the recent kernel.
 	kernel邮件背景补充, 可以搜索 f:Russell King d:..10.years.ago
 
 	(https://wiki.osdev.org/ARM_Paging)
- 
+
 	了解Arm架构中页表的常用设置，有关于内存属性的设置，这可能会影响硬件行为
 
 	```
@@ -2314,6 +2317,8 @@ Note that this one is deprecated on the recent kernel.
 	```
 	
 	上述 2 个网址介绍了Arm架构中关于预取的一些基本概念
+
+	(https://lore.kernel.org/all/20110321190335.GG4340@n2100.arm.linux.org.uk/)
 	
 	```
 
@@ -2328,6 +2333,20 @@ Note that this one is deprecated on the recent kernel.
 
 	(https://www.cnblogs.com/dream397/p/15660063.html)
 
+	```
+
+	https://lore.kernel.org/all/866a698a-aa61-6c48-0258-f2dd97973e87@arm.com/
+	> side note: we don't unmap the Cacheable linear map alias, 
+	> so have to be very careful to *not* touch that while both mappings exist, 
+	> because there be dragons.
+	```
+	
+	Arm专家在邮件中的回复，表示可以使用带有不同Cache属性的映射，但需要非常小心
+
+	(https://lore.kernel.org/all/CAK8P3a2MkyaJktcFvgq-3qxickE6dbThnQfQ36UStGard3GE2Q@mail.gmail.com/)
+	The normal linear map of all memory into the kernel address space is cacheable, 
+	so this device can't use it, and you instead get a new mapping into kernel space at a different virtual address.
+	
 	```
 
 
@@ -3270,6 +3289,19 @@ https://www.zhihu.com/question/30635966
 
 
 
+https://crab2313.github.io/post/drm-legacy-kms/
+> 一般人对mode的理解仅仅是分辨率，这种理解在DRM中是不够的，不足以理解drm_display_mode是干什么的；
+> 简单来说，mode是一组信号时序，用以驱动显示器正确显示一帧图像
+
+
+https://blog.csdn.net/fengchaochao123/article/details/119987960
+```
+
+Linux DRM框架使用Component组件管理各个子模块
+
+```
+
+
 * plane
 
 	https://blog.csdn.net/qq_30599505/article/details/126206374
@@ -3900,6 +3932,10 @@ Atomic operations other than qatomic_set() and qatomic_read() have either acquir
 	https://luyuhuang.tech/2022/06/25/cpp-memory-order.html
 	> 获取到锁后，还需要再判断一下 instance 是否为空，以免在判断 (1) 之后，锁获取到之前，有其他线程创建了对象。
 	> 但是这种做法是有问题的：(1) 并没有在锁的保护下，它有可能与 (2) 并发，导致数据竞争。
+
+	https://blog.csdn.net/moter/article/details/120951537
+	> 而由于(1)处的instance访问不在被锁保护的临界区之内，没有任何互斥性及顺序性保证；
+	> 也就是代码在(1)处执行时它被“破防”了，突破了mutex互斥锁保护，不管临界区里面的代码执行顺序如何，可以直接读取临界资源
 
 
 
@@ -4998,6 +5034,8 @@ https://www.ithome.com/0/583/749.htm
 **网络博主的技术总结**
 
 https://dreamgoing.github.io/
+
+https://docs.huihoo.com/joyfire.net/index.html
 
 
 **霜神的博客**
