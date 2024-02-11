@@ -2222,6 +2222,10 @@ Note that this one is deprecated on the recent kernel.
 	
 	关于对于ioremap中__iomem属性的保护作用
 
+	(https://lore.kernel.org/linux-arm-kernel/1457084928-21179-1-git-send-email-ard.biesheuvel@linaro.org/)
+
+	Arm恢复了 ioremap_cached 接口的原因
+
 	```
 
 	https://lwn.net/Articles/450286/
@@ -4874,6 +4878,13 @@ https://stackoverflow.com/questions/26906621/does-struct-name-null-b-cause-undef
 https://stackoverflow.com/questions/6433339/does-the-offsetof-macro-from-stddef-h-invoke-undefined-behaviour
 
 
+https://tinylab.org/c-faq2-14-2-15-offsetof-and-struct-members-heterogeneous-access/
+> 但是，这个并不是一个通用的实现方法。你可能会说，它引用了空指针，肯定运行不了。
+> 其实这并不算引用空指针问题，尽管表面上看上去是，因为这个偏移量是在编译时确定的，并不是在运行时。
+> 但是还是会有一些编译器拒绝接受这种写法，这要看具体的编译器的实现了。
+>
+
+
 **NULL指针解引用**
 
 https://stackoverflow.com/questions/1334929/how-can-dereferencing-a-null-pointer-in-c-not-crash-a-program
@@ -4980,6 +4991,26 @@ Using target names containing :: in a target_link_libraries(…) call
 will ensure that CMake resolves this only to so-called IMPORTED targets that are found via find_package(…). 
 
 ```
+
+https://www.jianshu.com/p/07761ff7838e
+```
+
+如何理解 INTERFACE 关键字
+
+如果A是一个共享库，且使用INTERFACE依赖B，则A在其实现中不会使用B，但是A的public API中会使用B
+
+如果C依赖A，因为A与B是INTERFACE关系，此时C也会去链接B作为其实现
+
+(https://cmake.org/pipermail/cmake/2016-May/063400.html)
+
+
+另外如果不使用链接行为的关键字，默认情况类似于PUBLIC；
+
+但是却可以通过重写 INTERFACE_LINK_LIBRARIES 变量来改变。
+
+```
+
+
 
 ### 4  make install 命令
 

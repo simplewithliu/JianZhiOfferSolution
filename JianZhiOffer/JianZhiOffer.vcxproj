@@ -102,6 +102,8 @@
     <ClCompile Include="II 068.搜索插入位置.cpp" />
     <ClCompile Include="II 070.有序数组中的单一元素.cpp" />
     <ClCompile Include="II 071.按权重随机选择.cpp" />
+    <ClCompile Include="II 072.x的平方根.cpp" />
+    <ClCompile Include="II 073.爱吃香蕉的狒狒.cpp" />
     <ClCompile Include="II 095.最长公共子序列.cpp" />
     <ClCompile Include="II 096.字符串交织.cpp" />
     <ClCompile Include="43.统计1 ~ n整数中1出现的次数.cpp" />

@@ -539,5 +539,11 @@
     <ClCompile Include="II 071.按权重随机选择.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 072.x的平方根.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 073.爱吃香蕉的狒狒.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
