@@ -104,6 +104,12 @@
     <ClCompile Include="II 071.按权重随机选择.cpp" />
     <ClCompile Include="II 072.x的平方根.cpp" />
     <ClCompile Include="II 073.爱吃香蕉的狒狒.cpp" />
+    <ClCompile Include="II 079.子集.cpp" />
+    <ClCompile Include="II 080.组合.cpp" />
+    <ClCompile Include="II 081.组合总和.cpp" />
+    <ClCompile Include="II 082.组合总和2.cpp" />
+    <ClCompile Include="II 083.全排列.cpp" />
+    <ClCompile Include="II 084.全排列2.cpp" />
     <ClCompile Include="II 095.最长公共子序列.cpp" />
     <ClCompile Include="II 096.字符串交织.cpp" />
     <ClCompile Include="43.统计1 ~ n整数中1出现的次数.cpp" />
