@@ -559,8 +559,8 @@ IOMMU可以帮助实现 scatter-gather 分散/聚集IO
 	<div align=center>
 	<img src="images/iommu and dma 3.png" />
 	</div>
-	<div align=center><b>图 3 来源：</b>https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/SmartIO Zero-overhead Device Sharing through.pdf</div>
-
+	<div align=center><b>图 3 </b></div>
+	<div align=center>https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/SmartIO Zero-overhead Device Sharing through.pdf</div>
 
 
 	<div align=center>
@@ -772,6 +772,11 @@ http://ee.mweda.com/ask/150755.html
 
 	```
 
+* 数字通信与时钟信号
+
+	https://zhuanlan.zhihu.com/p/470118422
+
+
 
 ### 5 DMA
 
@@ -918,7 +923,7 @@ https://stackoverflow.com/questions/28068525/explaination-of-arm-especifically-m
 ```
 
 
-http://archive.lwn.net:8080/linux-kernel/75d578c2-a98c-d1ef-1633-6dc5dc3b0913@ti.com/
+https://lore.kernel.org/all/75d578c2-a98c-d1ef-1633-6dc5dc3b0913@ti.com/
 ```
 
 PCI Controller 中提供 DMA，使用 DMAEngine API 的的讨论
@@ -1214,6 +1219,15 @@ http://www.techweb.com.cn/it/2007-02-08/152365.shtml
 
 模拟IC集成到SOC内部会有性能损失，独立高性能模拟IC器件设计是主流
 
+
+(https://www.mcu.com.cn/about-media/135.html)
+混合信号IC或SoC要比单纯的模拟电路或数字电路更难设计和制造，
+就拿供电电源来说，模拟电路和数字电路有着完全不同的电压要求和功耗特性，要同时兼顾对设计工程师来说可不是小事。
+此外，混合信号SoC一般都是针对某个特定的应用而集成专门的功能模块，因此需要更为专业的知识、经验、技能、设计工具，以及测试和验证工具。
+
+(归档至印象笔记)
+
+
 ```
 
 
@@ -1223,6 +1237,20 @@ https://dreamsourcelab.cn/logic-analyzer/uart/
 UART协议具有不同的物理层实现，根据具体使用场景决定是否增加模拟IC来支持
 
 归档：(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/UART协议分析.pdf)
+
+```
+
+
+**电路设计**
+
+https://www.zhihu.com/question/461800910/answer/1925999249
+```
+
+电路中的GND通常表示的具体含义
+
+(https://www.zhihu.com/question/320924048/answer/2544769642)
+
+了解电路中的回路
 
 ```
 
@@ -2476,6 +2504,19 @@ ARM架构下内存初始化时页表的建立
 
 	
 	(https://lpc.events/event/11/contributions/987/attachments/815/1536/LPC21 Consolidating representations of the physical memory.pdf)
+
+	```
+
+	https://blog.csdn.net/qq_40036519/article/details/126087465
+
+	https://blog.csdn.net/gatieme/article/details/52403238
+	```
+
+	上述两个网址介绍了在使用通用的memblock_alloc方法时，分配的内存是在线性区；
+
+	memblock设置了通用的内存分配上限为线性区，猜测目的是为了在页表映射建立后，方便直接使用这块内存；
+
+	另外在页表映射建立前，可以使用临时页表访问内存。	
 
 	```
 
