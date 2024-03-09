@@ -81,6 +81,7 @@
     <ClInclude Include="header.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="II 011.连续数组.cpp" />
     <ClCompile Include="II 017.最小覆盖子串.cpp" />
     <ClCompile Include="II 018.验证回文串.cpp" />
     <ClCompile Include="II 019.验证回文串2.cpp" />
@@ -110,6 +111,9 @@
     <ClCompile Include="II 082.组合总和2.cpp" />
     <ClCompile Include="II 083.全排列.cpp" />
     <ClCompile Include="II 084.全排列2.cpp" />
+    <ClCompile Include="II 085.括号生成.cpp" />
+    <ClCompile Include="II 086.分割回文串.cpp" />
+    <ClCompile Include="II 087.复原IP地址.cpp" />
     <ClCompile Include="II 095.最长公共子序列.cpp" />
     <ClCompile Include="II 096.字符串交织.cpp" />
     <ClCompile Include="43.统计1 ~ n整数中1出现的次数.cpp" />

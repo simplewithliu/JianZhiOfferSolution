@@ -563,5 +563,17 @@
     <ClCompile Include="II 084.全排列2.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 085.括号生成.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 086.分割回文串.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 087.复原IP地址.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 011.连续数组.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
