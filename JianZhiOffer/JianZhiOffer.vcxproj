@@ -82,6 +82,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="II 011.连续数组.cpp" />
+    <ClCompile Include="II 012.寻找数组的中心下标.cpp" />
+    <ClCompile Include="II 013.二维区域和检索-矩阵不可变.cpp" />
     <ClCompile Include="II 017.最小覆盖子串.cpp" />
     <ClCompile Include="II 018.验证回文串.cpp" />
     <ClCompile Include="II 019.验证回文串2.cpp" />
@@ -198,11 +200,14 @@
     <ClCompile Include="II 100.三角形中最小路径之和.cpp" />
     <ClCompile Include="II 101.分割等和子集.cpp" />
     <ClCompile Include="II 102.加减的目标值.cpp" />
+    <ClCompile Include="II 104.组合总和4.cpp" />
     <ClCompile Include="II 105.岛屿的最大面积.cpp" />
     <ClCompile Include="II 106.二分图.cpp" />
     <ClCompile Include="II 107.矩阵中的距离.cpp" />
     <ClCompile Include="II 108.单词演变.cpp" />
     <ClCompile Include="II 109.开密码锁.cpp" />
+    <ClCompile Include="II 110.所有可能的路径.cpp" />
+    <ClCompile Include="II 111.除法求值.cpp" />
     <ClCompile Include="II 117.相似字符串组.cpp" />
     <ClCompile Include="II 114.火星词典.cpp" />
     <ClCompile Include="II 069.山脉数组的峰顶索引.cpp" />

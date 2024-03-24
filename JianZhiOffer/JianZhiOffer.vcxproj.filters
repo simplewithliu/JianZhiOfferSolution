@@ -575,5 +575,20 @@
     <ClCompile Include="II 011.连续数组.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 012.寻找数组的中心下标.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 013.二维区域和检索-矩阵不可变.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 104.组合总和4.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 110.所有可能的路径.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 111.除法求值.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

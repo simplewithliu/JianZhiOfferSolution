@@ -257,7 +257,7 @@ CUDA解码H.264，折中的选择 - 2009年
 
 ```
 
-* 硬件实现与软件实现
+* 协议的硬件实现与软件实现
 
 	https://www.zhihu.com/question/466254863
 
@@ -275,6 +275,12 @@ CUDA解码H.264，折中的选择 - 2009年
 	https://www.usenix.org/legacy/event/nsdi09/tech/full_papers/nychis/nychis_html/index.html
 	> Enabling MAC Protocol Implementations on Software-Defined Radios
 	>
+
+* DSP子系统的boot流程
+
+	https://www.cnblogs.com/zzb-Dream-90Time/p/9999134.html
+
+
 
 
 ### 3 中断与调度
@@ -2777,6 +2783,7 @@ https://opengrok.net/xref/linux-6.0/drivers/phy/samsung/phy-exynos5250-sata.c
 
 一个platform_driver的实现关联了一个i2c_client
 
+
 ```
 
 https://www.cnblogs.com/schips/p/linux_driver_dts_the_format_of_dtb.html
@@ -2785,6 +2792,8 @@ https://www.cnblogs.com/downey-blog/p/10486568.html
 ```
 
 上述 2 个网址 device_node转换成platform_device
+
+(https://www.cnblogs.com/schips/p/linux_driver_device_node_about_parent_node.html)
 
 ```
 
@@ -2796,6 +2805,23 @@ https://www.cnblogs.com/pengdonglin137/p/5248114.html
 基于tiny4412的Linux内核移植 -- 设备树的展开 
 
 作者: 彭东林
+
+```
+
+<div align=center>
+	<img src="images/of_link_to_phandle.jpg" />
+</div>
+<div align=center><b>图 1</b> of_link_to_phandle</div>
+
+```
+
+设备树在展开和解析时，内核会根据phandle属性来添加一个设备的依赖情况，从而在驱动probe时会按照特定的顺序进行
+
+注意在查找phandle作为依赖项时，会检查该设备是否会创建有效的设备实例，这个是probe能执行的前提
+
+该过程如 图 1 of_link_to_phandle 的代码段所示，会根据检查compatible属性来作判断，如果该节点不可用，则继续查找其父节点
+
+注意新内核的实现有变更
 
 ```
 
@@ -3344,6 +3370,9 @@ https://blog.csdn.net/fengchaochao123/article/details/119987960
 
 Linux DRM框架使用Component组件管理各个子模块
 
+(https://blog.csdn.net/bulinsheng/article/details/108680019)
+我们之前说过组件系统的两方面作用,即保证系统安装了所有组件和保证组件的初始化顺序。compnent_match是实现这两个作用的核心数据结构
+
 ```
 
 
@@ -3697,6 +3726,14 @@ https://www.cnblogs.com/w-smile/p/14403647.html
 > 内核线程工作队列和普通工作队列相比没有线程池的概念因此内核线程工作队列中的work是不支持并发，
 > 因此设计work 函数时不用考虑重入的场景
 
+
+https://www.modb.pro/db/236435
+```
+
+内核工作队列相关内容的详细介绍
+(归档至印象笔记)
+
+```
 
 ***
 
