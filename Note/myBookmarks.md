@@ -3254,6 +3254,8 @@ https://www.intechopen.com/chapters/80636
 
 对比介绍LCD屏内置控制器和主机LCD控制器
 
+(https://www.ifanr.com/65002)
+
 ```
 
 
@@ -3314,6 +3316,46 @@ https://electronics.stackexchange.com/questions/523972/are-all-pixels-addressed-
 https://superuser.com/questions/1193999/do-monitors-not-atomically-instantaneously-refresh-their-pixels
 
 https://focuslcds.com/mipi-display-serial-interface-dsi/
+
+
+* LCD液晶技术
+
+	https://www.zhihu.com/question/54890643/answer/517141145
+	```
+
+	液晶屏的电容可能无法一直保持电，所以需要不断刷新充电
+
+	(https://www.zhihu.com/question/455538299/answer/1844281259)
+
+	(https://www.zhihu.com/question/27947570/answer/38778564)
+	
+	```
+
+	https://www.zhihu.com/question/50036488
+	> 理论上还是有必要进行持续的扫描来更新图像，如果是TFT漏电性能优越的产品，可以做到超低频率驱动，
+	> 但是仍然做不到静态图像不扫描，静态画面也需要不断的打开TFT，刷新相同的数据。
+	> 
+
+	https://zhuanlan.zhihu.com/p/410164928
+	> 考虑到OLED的显示原理，以60Hz为例，在data写入之后，在接下来16.7ms内，依赖电容保持住DTFT栅极的电位，这时候绿圈中的两个STFT漏电不会影响到显示，
+	> 因为刷新足够频繁，漏电不足以影响DTFT栅极的电压，也就不足以影响DTFT的电流大小，所以OLED发光亮度不变。
+	> 
+	> 考虑1Hz情况，因为在data写入之后的一秒以内都不会刷新，只能靠电容来保证DTFT的栅极电压不变，
+	> 但是由于绿圈中STFT有漏电，导致DTFT栅极电压越来越低，从而使DTFT的电流越来越大，OLED越来越亮，
+	> 也就是说强行用LTPS实现1Hz，在一秒以内屏幕亮度越来越亮，直到下一次data写入，OLED无法保持稳定的亮度，这不是我们想要的，所以无法使用LTPS完成1Hz显示。
+	>
+	> 我们把绿框中的两个LTPS STFT换成IGZO，由于IGZO漏电特别小，所以即使是1Hz内DTFT栅极电压也不会有任何变化，可以完成1Hz甚至0.5Hz的显示。
+	> 
+
+	https://sspai.com/post/68831
+	> 但不得不说的是，LTPS 的弊端也是比较明显的。
+	> 首先，这种器件结构的漏电比较大。前面我们也说了 OLED 的基本要素是电流驱动，电流驱动的稳定性会直接影响画面。
+	> 为了避免漏电的影响，LTPS 会不断的进行刷新供电，以维持稳定的电位情况。
+	>
+	> LTPS TFT 负责高分辨率以及高刷新率，IGZO TFT 负责稳定的低频显示，两者各司其职，但又在背板电路中相辅相成，一同实现了 LTPO TFT 技术。
+	> 这样以来，在用户使用静态画面或低频需求时，OLED 可以通过驱动来调整部分像素进入低频工作状态，减少了 OLED 对设备电能的损耗。
+	>
+
 
 
 * 了解LVDS信号

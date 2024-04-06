@@ -590,5 +590,23 @@
     <ClCompile Include="II 111.除法求值.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 119.最长连续序列.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 118.冗余连接.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 116.省份数量.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 115.序列重建.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 113.课程表2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 112.矩阵中的最长递增路径.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

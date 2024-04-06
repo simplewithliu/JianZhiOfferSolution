@@ -208,9 +208,15 @@
     <ClCompile Include="II 109.开密码锁.cpp" />
     <ClCompile Include="II 110.所有可能的路径.cpp" />
     <ClCompile Include="II 111.除法求值.cpp" />
+    <ClCompile Include="II 112.矩阵中的最长递增路径.cpp" />
+    <ClCompile Include="II 113.课程表2.cpp" />
+    <ClCompile Include="II 115.序列重建.cpp" />
+    <ClCompile Include="II 116.省份数量.cpp" />
     <ClCompile Include="II 117.相似字符串组.cpp" />
     <ClCompile Include="II 114.火星词典.cpp" />
     <ClCompile Include="II 069.山脉数组的峰顶索引.cpp" />
+    <ClCompile Include="II 118.冗余连接.cpp" />
+    <ClCompile Include="II 119.最长连续序列.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="65.不用加减乘除做加法.cpp" />
     <ClCompile Include="49.丑数.cpp" />
