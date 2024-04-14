@@ -116,6 +116,8 @@
     <ClCompile Include="II 085.括号生成.cpp" />
     <ClCompile Include="II 086.分割回文串.cpp" />
     <ClCompile Include="II 087.复原IP地址.cpp" />
+    <ClCompile Include="II 089.打家劫舍1.cpp" />
+    <ClCompile Include="II 090.打家劫舍2.cpp" />
     <ClCompile Include="II 095.最长公共子序列.cpp" />
     <ClCompile Include="II 096.字符串交织.cpp" />
     <ClCompile Include="43.统计1 ~ n整数中1出现的次数.cpp" />
@@ -200,6 +202,7 @@
     <ClCompile Include="II 100.三角形中最小路径之和.cpp" />
     <ClCompile Include="II 101.分割等和子集.cpp" />
     <ClCompile Include="II 102.加减的目标值.cpp" />
+    <ClCompile Include="II 103.零钱兑换.cpp" />
     <ClCompile Include="II 104.组合总和4.cpp" />
     <ClCompile Include="II 105.岛屿的最大面积.cpp" />
     <ClCompile Include="II 106.二分图.cpp" />

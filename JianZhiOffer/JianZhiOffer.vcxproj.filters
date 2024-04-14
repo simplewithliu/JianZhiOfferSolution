@@ -608,5 +608,14 @@
     <ClCompile Include="II 112.矩阵中的最长递增路径.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="II 103.零钱兑换.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 089.打家劫舍1.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="II 090.打家劫舍2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

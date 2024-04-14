@@ -286,6 +286,13 @@ CUDA解码H.264，折中的选择 - 2009年
 ### 3 中断与调度
 
 
+**中断的基本处理流程**
+
+https://www.binss.me/blog/interrupt-and-exception/
+
+https://zhuanlan.zhihu.com/p/647938553
+
+
 
 **中断处理程序上下文**
 
@@ -1661,7 +1668,13 @@ https://blog.csdn.net/rlk8888/article/details/122514344
 
 另外可参考 "操作系统 原理与实现" 书中的 3.1 节
 
+(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/armv8-doc-readthedocs-io-en-latest.pdf)
+Callee-saved registers (X19-X29)（被调用）
+这些寄存器保存在被调用者内部。只要在返回前保存并恢复，就可以在被调用的子程序中修改。
+图 9-2 说明了一个使用两个被调用者保存的寄存器（X19 和 X20）和一个临时变量的帧
+
 ```
+
 
 https://www.jianshu.com/p/a51076c33108
 > ARM64位下：PC不能直接访问，但可以通过伪指令间接使用。
