@@ -797,6 +797,7 @@ http://ee.mweda.com/ask/150755.html
 
 https://hackaday.com/2021/03/31/direct-memory-access-data-transfer-without-micro-management/
 
+
 * DMA硬件内部结构的示例
 
 	https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/an5224-stm32-dmamux-the-dma-request-router-stmicroelectronics.pdf
@@ -804,6 +805,7 @@ https://hackaday.com/2021/03/31/direct-memory-access-data-transfer-without-micro
 	https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/AN12351.pdf
 
 	https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/AN4978.pdf
+
 
 
 **first-party DMA 总线主控**
@@ -953,6 +955,7 @@ https://books.google.com.hk/books?id=QFe5BQAAQBAJ
 
 ```
 
+
 **DMA技术的拓展讨论**
 
 https://cwshu.github.io/arm_virt_notes/notes/dma/DMA.html
@@ -964,7 +967,9 @@ https://docs.nvidia.com/cuda/gpudirect-rdma/index.html
 https://lwn.net/Articles/767281/
 
 
+
 **DMA mapping API区别于DMA engine API**
+
 
 https://stackoverflow.com/questions/13720474/dma-engine-api-vs-dma-api
 ```
@@ -972,6 +977,7 @@ https://stackoverflow.com/questions/13720474/dma-engine-api-vs-dma-api
 @sawdust comment
 
 ```
+
 
 https://stackoverflow.com/questions/35219926/how-to-do-a-single-dma-transaction-in-kernel
 
@@ -987,6 +993,7 @@ This presentation will not discuss the DMA engine API,
 nor will it address how to control DMA operations from a device point of view.
 
 ```
+
 
 
 **发起DMA的方式**
@@ -1016,6 +1023,18 @@ https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/an4031-using
 存储器到存储器的传输是没有外设请求的，这个时候仅支持 software trigger
 
 ```
+
+
+https://zhuanlan.zhihu.com/p/610129118
+>
+> maengine_submit提交一次传输
+> 
+> dma_async_issue_pending设置dma寄存器开始等待其他模块的request信号(一般request和他的中断信号一起发生)，然后开始传输
+> 
+> 传输完成后会产生dma的中断，在dma的中断中回调传输描述符的callback(dma框架上用tasklet来调用callback当我们调用vchan_cookie_complete)
+> 
+
+
 
 https://core.ac.uk/download/pdf/41359185.pdf
 
@@ -1672,6 +1691,18 @@ https://blog.csdn.net/rlk8888/article/details/122514344
 Callee-saved registers (X19-X29)（被调用）
 这些寄存器保存在被调用者内部。只要在返回前保存并恢复，就可以在被调用的子程序中修改。
 图 9-2 说明了一个使用两个被调用者保存的寄存器（X19 和 X20）和一个临时变量的帧
+
+```
+
+
+https://blog.csdn.net/heshuangzong/article/details/126911474
+
+https://leylfl.github.io/2018/05/15/浅谈ARM64汇编/
+
+https://www.jianshu.com/p/9ee805a04ac7
+```
+
+上述 3 个网址较为详细介绍了arm64栈帧，参数传递与保存的过程
 
 ```
 
@@ -4982,6 +5013,12 @@ https://www.cnblogs.com/justin-y-lin/p/10100370.html
 > ARM非对齐访问和Alignment Fault
 >
 ```
+
+(https://wmf.im/p/内存对齐)
+真正导致需要内存对齐的原因是，内存条的编址方式导致了 CPU 无法从指定位置开始访问
+因为内存条的 IO 采用了多个颗粒并行执行，逻辑上连续的 8 个字节其实是分布在 8 个不同的 bank 上，并行读取可以为内存的访问加速
+内存条寻址的规则就是以 8 个字节为单位的，这就导致了 CPU 也只能以 8 个字节为粒度进行读取，且起始地址也要是 8 的倍数
+
 
 (https://www.zhihu.com/question/27862634/answer/2234364839)
 
