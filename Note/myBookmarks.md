@@ -2078,6 +2078,18 @@ just like Pentium III / Pentium-M which are 32-bit only but support 128-bit SSE 
 The actual x86-64 ISA still doesn't guarantee atomicity for anything wider than 64 bits.
 
 
+(https://stackoverflow.com/questions/39182060/why-isnt-there-a-data-bus-which-is-as-wide-as-the-cache-line-size)
+I think DRAM bus width expanded to the current 64 bits before AMD64.
+P5 Pentium already guaranteed atomicity of 64-bit aligned transfers, because it could do so easily with its 64-bit data bus. 
+Of course that only applied to x87 (and later MMX) loads/stores on that 32-bit microarchitecture.
+
+
+(https://superuser.com/questions/446395/is-it-the-address-bus-size-or-the-data-bus-size-that-determines-8-bit-16-bit)
+The Original Pentium from 1992 has a 64-bit data bus but is a 32-bit design.
+The larger data bus allows the CPU to transfer more data in and out with caches,
+but still only access 32-bits at a time internally with its CPU registers.
+
+
 (https://superuser.com/questions/1588358/how-can-i-find-my-computers-address-bus-width-and-data-bus-size)
 The logical width of the data-bus, of an x86-64 is 64 bits. However the physical size is what ever the manufacturer chooses
 
@@ -4249,6 +4261,7 @@ chinaunix论坛的讨论：对int变量的赋值是原子操作吗?
 
 48楼回答合理：对int变量的赋值是否是原子操作与使用的计算机的结构体系有关，同时也与此变量的内存对齐情况有关
 
+
 (https://preshing.com/20130618/atomic-vs-non-atomic-operations/)
 it’s common knowledge that on all modern x86, x64, Itanium, SPARC, ARM and PowerPC processors, 
 plain 32-bit integer assignment is atomic as long as the target variable is naturally aligned.
@@ -4274,6 +4287,13 @@ provided the writes are correctly sequenced. LOCKed writes on x86 have a total o
 (https://stackoverflow.com/questions/45729756/do-atomic-store-load-from-stdatomic-h-work-for-unaligned-cross-cache-line-dat)
 A correctly written program can not get an object that isn't correctly aligned. 
 A correctly aligned int64 can't cross cache lines.
+
+
+(https://stackoverflow.com/questions/50532716/is-a-128-bit-int-written-or-loaded-in-two-instructions-in-c-c)
+The question was asking about atomicity. 
+The relevant bus is the path between L1d cache and load execution units, and commit from store buffer to L1d. 
+And the protocol for transferring cache lines between cores; that can introduce tearing,
+e.g. at 8-byte boundaries between sockets in AMD K10, but within a socket 16-byte SSE loads/stores were atomic if aligned.
 
 
 (https://www.v2ex.com/t/968964)
