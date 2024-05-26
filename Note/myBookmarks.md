@@ -790,6 +790,33 @@ http://ee.mweda.com/ask/150755.html
 	https://zhuanlan.zhihu.com/p/470118422
 
 
+* 通信的差错处理
+
+	https://blog.csdn.net/HiWangWenBing/article/details/108071241
+	> 图解通信原理6 检错与纠错
+	>
+	> Uart串口通信中，采用了检错编码，并没有纠错编码。
+	> 如果发现传输的8比特的二进制数据发生错误，则直接丢弃，防止错误数据造成的干扰。
+	```
+
+	(https://electronics.stackexchange.com/questions/447374/forward-error-correction-over-unidirectional-serial-link)
+
+	(https://electronics.stackexchange.com/questions/688866/are-there-any-forward-error-correcting-code-algorithms-for-a-partially-reliable)
+	
+	上述 2 网址介绍了FCC前向纠错，可以参考了解
+
+	```
+
+	https://www.zhihu.com/question/22241133/answer/91217980
+	```
+
+	通信差错与传输线质量问题相关的内容
+
+	```
+
+
+
+
 
 ### 5 DMA
 
@@ -1888,6 +1915,9 @@ http://www.wowotech.net/linux_kernel/kernel_config_boot_option.html
 https://www.cnblogs.com/lifexy/p/10292742.html
 > 如果XX_defconfig板卡配置文件中定义新的宏=y时,而在Kconfig并没有声明它,
 > 则内核编译出来的autoconf.h里也不会定义它
+>
+> select: 反依赖项, 和depends on刚好相反, 
+> 比如 select XXX 表示当前宏如果是y或者m, 则会自动设置XXX=y或者m
 
 
 https://kernelnewbies.kernelnewbies.narkive.com/trfXm1bR/kconfig-in-external-modules
@@ -1931,6 +1961,11 @@ https://richardweiyang-2.gitbook.io/kernel-exploring/00_index/05_rules_for_singl
 
 
 **内核模块的编译与加载**
+
+
+http://m.blog.chinaunix.net/uid-26246153-id-3536347.html
+> Linux内核模块的编译和静态库的使用
+>
 
 
 https://www.cnblogs.com/linhaostudy/p/9112264.html
@@ -3412,6 +3447,14 @@ https://focuslcds.com/mipi-display-serial-interface-dsi/
 	> 这样以来，在用户使用静态画面或低频需求时，OLED 可以通过驱动来调整部分像素进入低频工作状态，减少了 OLED 对设备电能的损耗。
 	>
 
+	https://zhuanlan.zhihu.com/p/355187317
+	> 回看前面的工作原理，电容C的电压相当于存储的DATA信号。当屏幕显示不刷新的时候，电容会通过T1慢慢漏电，C的电压慢慢下降。
+	> 如果不通过刷新重新充电的话，OLED的亮度就会变，宏观上看就是屏幕画面变脏或是偏色了，甚至电漏光了OLED直接灭了。
+	> IGZO晶体管具有漏电低的特点，所以把T1替换成IGZO就能减轻上述问题。也就是说我们可以把刷新频率降到更低而不用担心漏电可能产生的显示问题。
+	> 
+	> 功耗方面，OLED屏幕主要有两部分耗电：OLED点亮本身要耗电，而且占了大多数功耗；给电容反复充电要耗电。
+	>
+
 
 
 * 了解LVDS信号
@@ -3600,13 +3643,17 @@ https://wiki.t-firefly.com/zh_CN/Core-3588J/usage_gpio.html
 (https://www.zhihu.com/question/23167435/answer/167825884) 评论区可参考 
 
 (https://zhuanlan.zhihu.com/p/84538293)
-
 这个是文字的锅，跟上拉没有关系，这个电阻就是保护作用，
-
 IO口输出高电平的时候，这个电阻用来保护负载，防止烧毁负载，IO口输出低电平的时候，用来保护IC，防止IC烧毁
 
 
+(https://m.eeworld.com.cn/bbs_thread-121988-4-1.html)
+至于上拉电阻当然是必须有的，因为I/O的信号顾名思义是由软体定义的信号准位，
+IC内部会有PULL HIGH /PULL LOW 设置，如果没有上拉或者下拉电阻分压就就会烧毁IC
+
+
 ```
+
 
 https://zhuanlan.zhihu.com/p/67412073
 
@@ -3654,6 +3701,23 @@ https://blog.csdn.net/liaojunwu/article/details/131796409
 
 
 
+**内核模块**
+
+https://www.eet-china.com/mp/a233679.html
+> 内核模块参数传递与sysfs
+>
+```
+
+内核模块传参的的实现可以与sysfs机制相结合
+
+(归档至印象笔记)
+
+```
+
+
+
+
+
 ### 8 Linux系统特性与机制
 
 **初识boot**
@@ -3668,10 +3732,6 @@ https://www.zhihu.com/question/534378582
 等Linux打跑了uboot（Linux接管cpu运行），硬件必须要重新和Linux系统认识认识，否则怎么能愉快的一起玩耍呢？
 
 ```
-
-**Linux内核模块的编译和静态库的使用**
-
-http://m.blog.chinaunix.net/uid-26246153-id-3536347.html
 
 
 **ls使用通配符**
@@ -3832,6 +3892,7 @@ https://www.modb.pro/db/236435
 (归档至印象笔记)
 
 ```
+
 
 ***
 
@@ -5014,6 +5075,8 @@ https://www.cnblogs.com/kn-zheng/p/17074479.html
 
 编译器自身帮我们保证，会给它分配一个对齐的地址
 
+(https://www.zhihu.com/question/540639508/answer/2554201811)
+
 ```
 
 https://blogs.oracle.com/solaris/post/where-does-misaligned-data-come-from
@@ -5042,10 +5105,22 @@ https://www.cnblogs.com/justin-y-lin/p/10100370.html
 
 (https://www.zhihu.com/question/27862634/answer/2234364839)
 
+(https://zhuanlan.zhihu.com/p/83449008)
+
 为什么访问某个地址需要对齐，需要从内存硬件角度上来理解
+
+通俗理解就是方便设计和简化内存接口
 
 ```
 
+https://mp.weixin.qq.com/s/WEBx5NrQx3dr5lrI9jxgIA
+
+https://www.zhihu.com/question/611856566/answer/3121087107
+```
+
+上述 2 个网址介绍了在访问外设寄存器时，地址对齐的一些注意事项
+
+```
 
 
 **undefined behavior 与 offsetof 函数**

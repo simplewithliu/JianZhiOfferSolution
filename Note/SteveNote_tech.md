@@ -621,18 +621,6 @@ https://zhuanlan.zhihu.com/p/601408248
 但是其大小并未算到进程pss统计里面。
 ```
 
-### Mar 03 2024
 
-**1 图解通信原理6 检错与纠错**
-
-https://blog.csdn.net/HiWangWenBing/article/details/108071241
-```
-Uart串口通信中，采用了检错编码，并没有纠错编码。
-如果发现传输的8比特的二进制数据发生错误，则直接丢弃，防止错误数据造成的干扰。
-
-(https://electronics.stackexchange.com/questions/447374/forward-error-correction-over-unidirectional-serial-link)
-(https://electronics.stackexchange.com/questions/688866/are-there-any-forward-error-correcting-code-algorithms-for-a-partially-reliable)
-FCC前向纠错
-```
 
 
