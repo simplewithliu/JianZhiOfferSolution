@@ -349,6 +349,21 @@ https://www.cnblogs.com/jack204/archive/2012/03/26/2417678.html
 **中断上下文禁止调度**
 
 https://www.cnblogs.com/wuchanming/p/4756756.html
+```
+
+(http://bbs.chinaunix.net/thread-2115820-1-1.html)
+
+该帖子中关于中断栈的问题，在Arm64上测试，目前通过打印堆栈的情况看，
+
+Arm64上的中断栈并不是独立的，推测这个是否独立的中断栈，在Arm64上应该是可配置的。
+
+(https://zhuanlan.zhihu.com/p/185851980)
+ARM64的linux内核在2015年之前中断没有自己独立的栈，都是借用线程的内核栈。
+公用一个栈的情况下，为了防止内核栈的溢出，内核栈只能强制使用16kB的，不能使用8kB的；
+这样就存在一个问题，当系统有大量线程的时候，16kB的内核栈对系统内存会是一个很大的浪费。
+于是后来社区人员为ARM64添加了中断栈的feature，用来保存中断的上下文。
+
+```
 
 http://bbs.chinaunix.net/thread-1618430-1-1.html
 
@@ -1150,6 +1165,13 @@ https://blog.51cto.com/u_15069485/4324959
 https://www.zynqnotes.com/pl-ps-interrupt-2
 
 
+* 设备树提供gpio中断的两种方式
+
+	https://blog.csdn.net/qq_26911733/article/details/105681318
+
+	https://blog.csdn.net/jklinux/article/details/78707537
+
+
 
 
 
@@ -1741,6 +1763,20 @@ https://www.jianshu.com/p/a51076c33108
 
 https://softool.cn/read/arm_assembly_basic_aye/21010203.html
 > 在AARCH64状态下，当前执行指令的地址通常是PC
+
+
+* Linux kernel 中常见的异常
+
+	https://happyseeker.github.io/kernel/2016/03/04/exception-mechanism-in-AArach64.html
+
+	https://happyseeker.github.io/kernel/2016/03/03/about-system-error-in-AArach64.html
+	```
+
+	命令行中直接使用 lookat 工具访问下电的寄存器时，通常会报出该异常
+
+	```
+
+	https://happyseeker.github.io/kernel/2016/03/01/about-external-abort.html
 
 
 
