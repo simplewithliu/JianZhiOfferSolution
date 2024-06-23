@@ -1780,6 +1780,27 @@ https://softool.cn/read/arm_assembly_basic_aye/21010203.html
 
 
 
+**watchdog机制**
+
+https://www.cnblogs.com/dongxb/p/17365048.html
+```
+
+watchdog使用NMI中断通知AP完成错误处理和重启
+
+```
+
+https://blog.csdn.net/ffmxnjm/article/details/71679262
+
+https://blog.csdn.net/qazw9600/article/details/134384579
+```
+
+上述 2 个网址介绍了多核场景下，如何实现每个核都能被watchdog监控
+
+```
+
+
+
+
 ### 4 Linux系统调用知识点
 
 http://nicephil.blinkenshell.org/my_book/ch08s03.html
