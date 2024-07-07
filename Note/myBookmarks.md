@@ -2,6 +2,7 @@
 
 ### 1 如何理解BSP
 
+
 **BSP基本概念**
 ```
 讲到定制 ARM 就涉及到 BSP 的概念和 ARM 构架的特点，其实定制 ARM 嵌入式应用一点儿都不简单。
@@ -56,6 +57,12 @@ http://ee.mweda.com/ask/265407.html
 >
 
 
+https://zhuanlan.zhihu.com/p/519995589
+> armv8启动总体流程
+>
+
+
+
 **Linux BSP层实现**
 
 https://www.zhihu.com/question/21381796
@@ -68,6 +75,7 @@ https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/arch
 	https://blog.csdn.net/RichardYSteven/article/details/72566891
 
 	https://richardweiyang-2.gitbook.io/kernel-exploring/00-memory_a_bottom_up_view
+
 
 
 **UMA统一内存访问架构**
@@ -1171,7 +1179,28 @@ https://www.zynqnotes.com/pl-ps-interrupt-2
 
 	https://blog.csdn.net/jklinux/article/details/78707537
 
+****
 
+
+**了解FIQ中断**
+
+https://blog.csdn.net/weixin_42135087/article/details/120232824
+> 先说答案：NO，或者说定义了FIQ向量，但底层实现就是调用了panic；
+> 也就是说在Linux Kernel是无法注册和处理FIQ中断的
+```
+
+补充：
+(https://blog.csdn.net/weixin_42135087/article/details/120232101)
+Linux Kernel 5.14 arm64异常向量表解读-中断处理解读
+
+(https://blog.csdn.net/weixin_42135087/article/details/109025760)
+[ARM异常]-ARMV8-aarch64异常和中断处理概念详细介绍
+
+介绍了Arm架构中的典型异常向量表的设计
+
+```
+
+https://zhuanlan.zhihu.com/p/29553279
 
 
 
@@ -1222,11 +1251,13 @@ https://cloud.tencent.com/developer/article/1894161
 
 ### 8 模拟IC与数字IC
 
+
 **模拟IC的作用**
 
 https://www.zhihu.com/question/374475362
 
 https://www.zhihu.com/question/328204931
+
 
 
 **模拟IC作外围接口**
@@ -1334,6 +1365,28 @@ https://www.zhihu.com/question/461800910/answer/1925999249
 了解电路中的回路
 
 ```
+
+
+**时钟信号**
+
+https://blog.csdn.net/qwer012345678/article/details/79864585
+> 外设工作时钟和控制时钟的理解
+
+
+
+**FIFO的设计**
+
+https://bbs.eetop.cn/thread-881507-1-1.html
+
+https://blog.csdn.net/qq_40807206/article/details/109555162
+> 其中 WIDTH 是RAM数据总线的位宽，DEPTH 是RAM的存储深度（即RAM中可以存下 DEPTH 个宽度为 WIDTH 的数据），ADDR 是地址总线的宽度（即DEPTH = 2^ADDR ，异步FIFO中深度必须是2^n，原因在后面阐述）
+>
+> 接下来需要解决的是如何控制这个RAM来实现异步FIFO的功能，在实现这部分功能前先来捋一捋异步FIFO的一些重要概念：
+>
+> 1、FIFO数据宽度：FIFO一次读写的数据位宽。（与RAM数据位宽相同）
+>
+> 2、FIFO存储深度：FIFO可存储的固定位宽数据的个数。（与RAM存储深度相同）
+>
 
 
 
@@ -1702,6 +1755,12 @@ For each symbol, the corresponding CRC value is also stored.
 
 ```
 
+**ftrace分析工具**
+
+https://www.cnblogs.com/hellokitty2/p/13978805.html
+
+https://xie.infoq.cn/article/066ee9d504bd54f212d4883af
+
 
 **arm64 kernel crash 调试方法**
 
@@ -1787,6 +1846,11 @@ https://www.cnblogs.com/dongxb/p/17365048.html
 
 watchdog使用NMI中断通知AP完成错误处理和重启
 
+(https://aijishu.com/a/1060000000372528)
+Linux Kernel支持NMI的三种方式
+
+(归档至印象笔记)
+
 ```
 
 https://blog.csdn.net/ffmxnjm/article/details/71679262
@@ -1798,6 +1862,28 @@ https://blog.csdn.net/qazw9600/article/details/134384579
 
 ```
 
+* Arm32架构的watchdog实现与中断
+
+	https://lizhiduo.github.io/2019/02/17/linux_lock/
+	> 如果发生了hard lockup，比较难debug，只有CPU支持NMI（不可屏蔽的中断，一般由性能检测单元PMU来实现），才能进行debug；
+	> X86是支持NMI的。但是ARM不支持NMI，所以Linux官方内核是不支持ARM的 hard lockup detector；
+	> 有两种补丁可以实现ARM上的hard lockup detector：
+	> 1 使用FIQ来模拟NMI：由Linaro开发。注意在Linux内核里，FIQ只作为特殊的debug用途，常规代码里基本不会用到FIQ
+	> 2 使用另一个CPU核来检测：缺点是这个CPU无法访问hang死的CPU的栈（因为一个CPU无法访问别的 CPU的SP寄存器），因此无法进行栈回溯
+	>
+	```
+
+	内容补充参考：(https://blog.acean.vip/post/linux-kernel/gai-shu-linuxnei-he-tong-bu-nei-he-suo)
+	
+	(归档至印象笔记)
+
+	(http://bbs.chinaunix.net/thread-4157159-1-1.html)
+	armv7的FIQ可以在non-secure world使用吧，gic的ID28就是FIQ啊；
+	在上一家公司的时候，经常有芯片公司的人来给我们培训，有一次某公司就讲到他们把FIQ用起来了（作为nmi-watchdog）；
+	他们的cpu是cortex-a7的，linux是跑在non secure world的；
+	我只记得只有monitor模式下才对fiq有限制，必须打开SCR，FIQ才能够在monitor模式时收到fiq中断
+
+	```
 
 
 
@@ -2931,7 +3017,6 @@ https://opengrok.net/xref/linux-6.0/drivers/phy/samsung/phy-exynos5250-sata.c
 
 一个platform_driver的实现关联了一个i2c_client
 
-
 ```
 
 https://www.cnblogs.com/schips/p/linux_driver_dts_the_format_of_dtb.html
@@ -2961,6 +3046,13 @@ https://www.cnblogs.com/pengdonglin137/p/5248114.html
 </div>
 <div align=center><b>图 1</b> of_link_to_phandle</div>
 
+
+
+<div align=center>
+	<img src="images/of_supplier_bindings.jpg" />
+</div>
+<div align=center><b>图 2</b> of_supplier_bindings</div>
+
 ```
 
 设备树在展开和解析时，内核会根据phandle属性来添加一个设备的依赖情况，从而在驱动probe时会按照特定的顺序进行
@@ -2969,7 +3061,22 @@ https://www.cnblogs.com/pengdonglin137/p/5248114.html
 
 该过程如 图 1 of_link_to_phandle 的代码段所示，会根据检查compatible属性来作判断，如果该节点不可用，则继续查找其父节点
 
-注意新内核的实现有变更
+(注意新内核的实现有变更)
+
+但并不是所有的依赖都会添加到suppliers，前提是在of_supplier_bindings列表中支持这些设备的属性类型
+
+```
+
+<div align=center>
+	<img src="images/device_links_check_suppliers.jpg" />
+</div>
+<div align=center><b>图 3</b> device_links_check_suppliers</div>
+
+```
+
+关于不同设备节点互相依赖的问题，可以在device_links_check_suppliers方法中添加log打印，
+
+查看某个设备在设备树中有哪些依赖
 
 ```
 
@@ -3889,6 +3996,7 @@ https://www.cnblogs.com/AANA/p/16373834.html
 https://stackoverflow.com/questions/42559378/division-operation-with-64-bits-on-32-bits-embedded-system
 
 
+
 **关于动态链接器 ld.so**
 
 https://unix.stackexchange.com/questions/448937/is-ld-so-an-executable
@@ -3898,6 +4006,7 @@ https://stackoverflow.com/questions/44224327/loading-the-dynamic-linker
 https://stackoverflow.com/questions/37026193/how-is-ld-linux-so-itself-linked-and-loaded
 
 
+
 **标准库的链接**
 
 https://senlinzhan.github.io/2017/03/20/动态库/
@@ -3905,9 +4014,11 @@ https://senlinzhan.github.io/2017/03/20/动态库/
 http://c.biancheng.net/view/2382.html
 
 
+
 **进程阻塞后操作系统的工作**
 
 https://www.zhihu.com/question/492983429
+
 
 
 **为什么kernel不实现C标准中的库方法**
@@ -3920,6 +4031,7 @@ https://unix.stackexchange.com/questions/590108/is-the-standard-c-library-loaded
 上述 2 个网址主要阐述了C标准中的freestanding，kernel实现采用了C标准这一部分 
 
 ```
+
 
 **kthread_worker建立工作线程**
 
@@ -3951,8 +4063,25 @@ https://www.modb.pro/db/236435
 ```
 
 
-***
+**Linux功耗管理**
 
+https://community.arm.com/support-forums/f/cn-discussions/9617/1-mts-arm-2-ram-ram
+> 1 CPU软件驱动可按需设置DRAM的reset初始化、DRAM的dram controler刷新模式、和软件设置DRAM自己的self refresh模式
+> 
+> 2 CPU在进入suspend节电模式前，CPU先要设置DRAM进入自己的self refresh模式；而后CPU再断电, 进入suspend节电模式，
+> 此时DRAM内的数据是保持不变的；当CPU恢复正常模式时，DRAM内未被覆盖区域的数据是保持不变的，并可被正常调用
+> 
+> 3 按上面SOC的设计功能，则可设计实现“热复位后不对DRAM初始化、并在热复位后保持DRAM内未被覆盖区域的数据是不变的，并可被正常调用”，
+> 即在热复位前CPU先要设置DRAM进入自己的self refresh模式；而后热复位，跳过DRAM初始化步骤完成重启流程；
+> 此时，DRAM内未被覆盖区域的数据是保持不变的，并可被正常调用
+> 
+> 4 CPU的suspend节电模式是目前系统常用的节电模式，其硬件软件都经过长期验证、成熟可靠，
+> 所以“热复位后不对DRAM初始化、并在热复位后保持DRAM内未被覆盖区域的数据是不变的，并可被正常调用”功能设计也是可实现稳定可靠的
+>
+> 
+
+
+***
 
 
 ## 并发问题
