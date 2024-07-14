@@ -300,6 +300,10 @@ https://www.binss.me/blog/interrupt-and-exception/
 
 https://zhuanlan.zhihu.com/p/647938553
 
+https://blog.csdn.net/JiMoKuangXiangQu/article/details/129298903
+> Linux：ARM GIC仅中断 CPU 0 问题分析
+> 
+
 
 
 **中断处理程序上下文**
@@ -3141,6 +3145,11 @@ https://www.cnblogs.com/chengqi521/p/7126758.html
 ```
 
 burst传输基本概念
+
+(https://zhuanlan.zhihu.com/p/348878306)
+选择突发配置必须要遵守 AHB 协议，即突发传输不得越过 1 KB 地址边界，因为可以分配给单个从设备的最小地址空间是 1 KB
+
+针对某些DMA中配置突发传输，实际上是依赖总线接口完成的
 
 ```
 
