@@ -2475,6 +2475,13 @@ Note that this one is deprecated on the recent kernel.
 
 	http://www.wowotech.net/memory_management/cma.html
 
+	https://blog.csdn.net/u012489236/article/details/105348579
+	> 可以通过内核参数或配置宏，来进行CMA区域的创建，例如cma=64M，在初始化过程中，内核会解析这些命令行参数，获取CMA area的位置（起始地址，大小），
+	> 并调用cma_declare_contiguous接口函数向CMA模块进行注册（当然，和device tree传参类似，最终也是调用cma_init_reserved_mem接口函数）
+	>
+	> 除了命令行参数，通过内核配置（CMA_SIZE_MBYTES和CMA_SIZE_PERCENTAGE）也可以确定CMA area的参数
+	>
+
 	https://blog.csdn.net/Rong_Toa/article/details/109558234
 
 	https://community.nxp.com/t5/i-MX-Processors-Knowledge-Base/How-to-get-rid-of-CMA/ta-p/1123287
@@ -3154,7 +3161,7 @@ burst传输基本概念
 ```
 
 
-**设备IO方式**
+**设备IO访问方式**
 
 https://www.cnblogs.com/armlinux/archive/2010/11/26/2396888.html
 
@@ -3888,6 +3895,16 @@ https://www.eet-china.com/mp/a233679.html
 ```
 
 
+**电源管理框架**
+
+https://cloud.tencent.com/developer/article/2204750
+> 从抓到的 trace 分析，中断处理慢并不是由于 CPU loading 重导致的处理不及时，而是中断来的时候，CPU0 处于 idle 状态，
+> 而 kernel-5.10 以后除了特定的 feature，所有的中断都默认发到 CPU0，这样即便设置了中断可以唤醒系统，把 CPU0 从 idle 转为 active 也要 1ms。
+> 问题确定后，就是如何处理的问题了。找了低功耗的同事，确认 CPU 在没事情做的时候就是会进入 idle，即便在游戏场景，也不会禁止 CPU 进入 idle。
+>
+> 研究了一下 Linux 电源管理子系统，发现 Qos 有接口可以使用：
+> 在某一段时间内拉 Qos，可以让 CPU 在这段时间不进入 idle，使用完毕再去掉 Qos，让 CPU 可以进入 idle，这样满足了性能需求，带来的功耗也不是特别高。
+>
 
 
 
@@ -4061,6 +4078,22 @@ https://blog.csdn.net/engineer0/article/details/121055199
 https://www.cnblogs.com/w-smile/p/14403647.html
 > 内核线程工作队列和普通工作队列相比没有线程池的概念因此内核线程工作队列中的work是不支持并发，
 > 因此设计work 函数时不用考虑重入的场景
+>
+
+http://www.wowotech.net/irq_subsystem/queue_and_handle_work.html
+> 对于新的内核，例如4.4.6的内核，不论是bound（per cpu）或者unbounded workqueue，其work的处理都遵守下面的处理原则：
+> 
+> 在给定的时间点，同一个work只能被系统中的一个worker线程处理，也就是说任何的work都是non-reentrant的
+>
+
+https://blog.csdn.net/zhuyong006/article/details/83024889
+> 首先对于Ordered的工作队列(create_singlethread_workqueue，其他自定义的API则不一定了)这是严格顺序执行的，绝对不可能出现并发(无论提交给wq的是否是同一个work)
+> 但是对于PerCpu的工作队列(create_workqueue)，其中对于提交给wq的如果是同一个work，那么也不会并发，会顺序执行
+> 
+> 但是如果提交给wq的不是同一个work，则会在不同的cpu间并发
+> 需要特别留意的是，其并不会在同一个CPU的不同线程间并发，
+> 这是因为create_workqueue这个API定义的max_active为1，也就意味者当前wq只能最多在每个cpu上并发1个线程
+> 
 
 
 https://www.modb.pro/db/236435
@@ -4569,6 +4602,11 @@ On a single-CPU system, cmpxchg is atomic with respect to other threads, or any 
 so lock cmpxchg was relevant even on uniprocessor CPU designs).
 
 ```
+
+* word字长的几种含义解读
+
+	https://stackoverflow.com/questions/5295903/how-many-bits-does-a-word-contain-in-32-64-bit-os-respectively
+
 
 
 **Linux READ_ONCE and WRITE_ONCE**
