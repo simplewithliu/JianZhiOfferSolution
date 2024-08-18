@@ -60,6 +60,15 @@ http://ee.mweda.com/ask/265407.html
 https://zhuanlan.zhihu.com/p/519995589
 > armv8启动总体流程
 >
+```
+
+(https://www.zhihu.com/question/647046689/answer/3418624255)
+现在arm64应该都算是双内核，一个ATF、一个linux内核；linux内核通过 smc 或者 hvc 陷入特权级别执行ATF
+
+(https://zhuanlan.zhihu.com/p/391101179)
+ARM的安全启动 — ATF/TF-A以及它与UEFI的互动
+
+```
 
 
 
@@ -1204,6 +1213,11 @@ Linux Kernel 5.14 arm64异常向量表解读-中断处理解读
 
 ```
 
+https://blog.csdn.net/qq_37619128/article/details/135486364
+> IRQ和FIQ具有独立的路由控制，通常用于实现Secure和Non-secure中断
+> 在旧版本的Arm体系结构中，FIQ被用作更高优先级的快速中断；这与AArch64不同，其中FIQ与IRQ具有相同的优先级
+>
+
 https://zhuanlan.zhihu.com/p/29553279
 
 
@@ -1764,6 +1778,9 @@ For each symbol, the corresponding CRC value is also stored.
 https://www.cnblogs.com/hellokitty2/p/13978805.html
 
 https://xie.infoq.cn/article/066ee9d504bd54f212d4883af
+
+https://blog.csdn.net/JIMoKuangXiangQu/article/details/130202432
+> ftrace 之事件跟踪
 
 
 **arm64 kernel crash 调试方法**
