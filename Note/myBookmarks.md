@@ -3923,6 +3923,28 @@ https://cloud.tencent.com/developer/article/2204750
 > 在某一段时间内拉 Qos，可以让 CPU 在这段时间不进入 idle，使用完毕再去掉 Qos，让 CPU 可以进入 idle，这样满足了性能需求，带来的功耗也不是特别高。
 >
 
+https://zhuanlan.zhihu.com/p/576243151
+> 一文搞懂Linux runtime pm
+>
+
+https://zhuanlan.zhihu.com/p/580754972
+> 一文搞懂Linux电源管理（合集）
+>
+
+
+https://blog.csdn.net/melody157398/article/details/127293324
+> 这也是很好理解的，因为设备一旦属于一个power domain，设备发起suspend和resume必须要让power domain framework感知到，
+> 这样它才能知道每个power domain下的设备当前状态，才能在合适的时机去调用provider的power on和power off函数。
+> 
+> 但是设备具体的suspend和resume肯定还是驱动自己编写，只有驱动对自己的设备最熟悉，
+> 其实可以猜到genpd_runtime_suspend函数只是完成一些power domain framework的一些逻辑，
+> 最终还是要调用到设备自己的suspend函数
+>
+
+https://juejin.cn/post/7289741611809194047
+> 电源管理入门 - 7 DevFreq
+>
+
 
 
 ### 8 Linux系统特性与机制
