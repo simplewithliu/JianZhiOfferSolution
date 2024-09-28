@@ -170,7 +170,7 @@ For example, a particular chipset will only support certain CPUs and memory type
 
 The chipset is like the spinal cord that connects all the other components together, but just like a fruit salad, you have limited choices of what you can use.
 
-(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/motherboard chips.pdf)
+(https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/motherboard chips.pdf)
 
 ```
 
@@ -270,7 +270,7 @@ CUDA解码H.264，折中的选择 - 2009年
 
 (https://www.zhihu.com/question/22501094/answer/411456303)
 
-(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/Development of an MP3 player using an MP3 hardware decoder_IJEEE.47.3.8.pdf)
+(https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/Development of an MP3 player using an MP3 hardware decoder_IJEEE.47.3.8.pdf)
 
 ```
 
@@ -414,7 +414,7 @@ https://www.zhihu.com/question/22471643
 如果说系统总线，那就更不是了，x86的QPI总线，不区分地址和数据的，都是串行的。
 ```
 
-https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/第3章 总线与主板.pdf
+https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/第3章 总线与主板.pdf
 
 https://www.zhihu.com/question/29383757
 ```
@@ -512,7 +512,7 @@ where 'x' is the MSB of the peripheral address, y is bit 8 of the peripheral add
 The first frame's ACK bit will be asserted by all peripherals which match the first two bits of the address.
 
 串行总线会在一根线上传输数据、地址等，所以必须进行正确的转换。
-(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/调试嵌入式系统设计中的低速串行总线.pdf)
+(https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/调试嵌入式系统设计中的低速串行总线.pdf)
 
 ```
 
@@ -575,7 +575,7 @@ context entry中有一个指针指向I/O页表
 ```
 
 
-https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/An Introduction to IOMMU Infrastructure in the Linux Kernel.pdf
+https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/An Introduction to IOMMU Infrastructure in the Linux Kernel.pdf
 
 https://events.static.linuxfound.org/sites/events/files/slides/main.pdf
 ```
@@ -609,7 +609,7 @@ IOMMU可以帮助实现 scatter-gather 分散/聚集IO
 	<img src="images/iommu and dma 3.png" />
 	</div>
 	<div align=center><b>图 3 </b></div>
-	<div align=center>https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/SmartIO Zero-overhead Device Sharing through.pdf</div>
+	<div align=center>https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/SmartIO Zero-overhead Device Sharing through.pdf</div>
 
 
 	<div align=center>
@@ -863,11 +863,11 @@ https://hackaday.com/2021/03/31/direct-memory-access-data-transfer-without-micro
 
 * DMA硬件内部结构的示例
 
-	https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/an5224-stm32-dmamux-the-dma-request-router-stmicroelectronics.pdf
+	https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/an5224-stm32-dmamux-the-dma-request-router-stmicroelectronics.pdf
 
-	https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/AN12351.pdf
+	https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/AN12351.pdf
 
-	https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/AN4978.pdf
+	https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/AN4978.pdf
 
 
 
@@ -960,7 +960,7 @@ https://d1.amobbs.com/bbs_upload782111/files_39/ourdev_634262EB839K.pdf
 ```
 
 讨论了一种从模式传输，使用PCI主机主板的DMA控制器
-(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/主DMA模式下PCI总线数据传输的DSP实现.pdf)
+(https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/主DMA模式下PCI总线数据传输的DSP实现.pdf)
 
 ```
 
@@ -985,9 +985,9 @@ thereby permitting the device to initiate a DMA transfer by itself instead of re
 
 A DMA slave device is typically lower performance, less expensive and requires the assistance of a system DMA controller to perform a DMA transfer.
 
-(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/System direct memory access (DMA) support logic for PCI based computer system.pdf)
+(https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/System direct memory access (DMA) support logic for PCI based computer system.pdf)
 
-(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/Design_Choices_for_FPGA-based_SoCs_slides.pdf)
+(https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/Design_Choices_for_FPGA-based_SoCs_slides.pdf)
 
 ```
 
@@ -1061,7 +1061,7 @@ nor will it address how to control DMA operations from a device point of view.
 
 **发起DMA的方式**
 
-https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/90003242A.pdf
+https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/90003242A.pdf
 > DMA transfers can be triggered by software and a variety of CIP trigger signals including clocks, timers outputs, comparators, communication peripherals, as well as CLCs. 
 > 
 > DMA transfers can operate as one-shot transfers or be configured to run continuously until stopped by either software intervention or a hardware CIP-based abort trigger. 
@@ -1074,13 +1074,13 @@ https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/90003242A.pd
 
 关于DMA的触发方式是硬件还是软件，该问题是可以确认的，实际上具体取决于硬件设计，但是DMA操作一般是既可以硬件发起也可以软件主动发起
 
-(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/gpdma.pdf)
+(https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/gpdma.pdf)
 
 ```
 
 https://www.cnblogs.com/Fireflycjd/p/14364325.html
 
-https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/an4031-using-the-stm32f2-stm32f4-and-stm32f7-series-dma-controller-stmicroelectronics.pdf
+https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/an4031-using-the-stm32f2-stm32f4-and-stm32f7-series-dma-controller-stmicroelectronics.pdf
 ```
 
 存储器到存储器的传输是没有外设请求的，这个时候仅支持 software trigger
@@ -1101,7 +1101,7 @@ https://zhuanlan.zhihu.com/p/610129118
 
 https://core.ac.uk/download/pdf/41359185.pdf
 
-https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/TB3242 DMA.pdf
+https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/TB3242 DMA.pdf
 ```
 
 DMA 支持硬件触发和软件触发
@@ -1113,18 +1113,18 @@ DMA 支持硬件触发和软件触发
 <img src="images/DMA_Timing.jpg" />
 </div>
 <div align=center><b>图 5.2 一种典型的DMA时序</b></div>
-<div align=center>https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/Direct Memory Access (DMA) Operation and DMA Controller.pptx</div>
+<div align=center>https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/Direct Memory Access (DMA) Operation and DMA Controller.pptx</div>
 
 
 * 其他原厂 DMA 芯片的一些资料
 	
-	https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/PIC32系列DMA.pdf
+	https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/PIC32系列DMA.pdf
 
-	https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/PIC24H DMA.pdf
+	https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/PIC24H DMA.pdf
 
-	https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/dsPIC33F DMA.pdf
+	https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/dsPIC33F DMA.pdf
 
-	https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/rm0033-stm32f205xx-stm32f207xx-stm32f215xx-and-stm32f217xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf
+	https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/rm0033-stm32f205xx-stm32f207xx-stm32f215xx-and-stm32f217xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf
 
 
 
@@ -1366,7 +1366,7 @@ https://dreamsourcelab.cn/logic-analyzer/uart/
 
 UART协议具有不同的物理层实现，根据具体使用场景决定是否增加模拟IC来支持
 
-归档：(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/UART协议分析.pdf)
+归档：(https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/UART协议分析.pdf)
 
 ```
 
@@ -1557,7 +1557,7 @@ https://ir.nctu.edu.tw/bitstream/11536/1025/1/A1996VH07500005.pdf
 
 上述 2 个网址提出，可以使用异步写元数据提高文件的IO性能
 
-(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/Using Asynchronous Writes on Metadata to Improve File System Performance.pdf)
+(https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/Using Asynchronous Writes on Metadata to Improve File System Performance.pdf)
 
 ```
 
@@ -1648,7 +1648,7 @@ https://opensourceway.community/posts/contribute_to_community/how_to_participate
 
 http://www.static.linuxfound.org/sites/lfcorp/files/How-Participate-Linux-Community_0.pdf
 
-https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/How-Participate-Linux-Community_0.pdf
+https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/How-Participate-Linux-Community_0.pdf
 
 
 **Linux标准协议**
@@ -1667,7 +1667,7 @@ https://lwn.net/Articles/186854/
 
 实际上很多情况下我们也需要树外驱动
 
-参考：(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/ols2010-pages-35-40.pdf)
+参考：(https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/ols2010-pages-35-40.pdf)
 
 
 ```
@@ -1816,7 +1816,7 @@ https://blog.csdn.net/rlk8888/article/details/122514344
 
 另外可参考 "操作系统 原理与实现" 书中的 3.1 节
 
-(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/armv8-doc-readthedocs-io-en-latest.pdf)
+(https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/armv8-doc-readthedocs-io-en-latest.pdf)
 Callee-saved registers (X19-X29)（被调用）
 这些寄存器保存在被调用者内部。只要在返回前保存并恢复，就可以在被调用的子程序中修改。
 图 9-2 说明了一个使用两个被调用者保存的寄存器（X19 和 X20）和一个临时变量的帧
@@ -3009,7 +3009,7 @@ https://forums.raspberrypi.com/viewtopic.php?t=227139
 
 **设备树**
 
-https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/Petazzoni-device-tree-dummies_0.pdf
+https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/Petazzoni-device-tree-dummies_0.pdf
 ```
 
 设备树入门教程
@@ -3120,7 +3120,7 @@ https://www.analog.com/media/cn/analog-dialogue/volume-44/number-1/articles/free
 这种方法允许一个设备驱动程序（例如触摸屏数字化仪 AD7879 的驱动程序）可以不加修改地用在任何运行 Linux 的处理器平台上，
 Linux 内核之上运行任何图形用户界面 (GUI) 包和适当的应用程序。
 
-(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/free-and-open-source-software_cn.pdf)
+(https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/free-and-open-source-software_cn.pdf)
 
 ```
 
@@ -3158,7 +3158,7 @@ https://blog.csdn.net/zz2633105/article/details/118641075
 
 https://fangkaipeng.com/?p=1439
 
-https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/ARM_Cortex_04_System_Control_v05.pdf
+https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/ARM_Cortex_04_System_Control_v05.pdf
 ```
 
 ARM Cortex Core Microcontrollers Architecture
@@ -3448,15 +3448,15 @@ https://www.st.com/resource/en/application_note/an4861-lcdtft-display-controller
 
 
 上述网址归档：
-(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/an4861-lcdtft-display-controller-ltdc-on-stm32-mcus-stmicroelectronics_zh.pdf)
+(https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/an4861-lcdtft-display-controller-ltdc-on-stm32-mcus-stmicroelectronics_zh.pdf)
 
-(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/an4861-lcdtft-display-controller-ltdc-on-stm32-mcus-stmicroelectronics.pdf) 
+(https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/an4861-lcdtft-display-controller-ltdc-on-stm32-mcus-stmicroelectronics.pdf) 
 
 
 了解FMC：
 (https://www.jianshu.com/p/62d1ef042d0c) 
 
-(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/an2790-tft-lcd-interfacing-with-the-highdensity-stm32f10xxx-fsmc-stmicroelectronics.pdf)
+(https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/an2790-tft-lcd-interfacing-with-the-highdensity-stm32f10xxx-fsmc-stmicroelectronics.pdf)
 
 ```
 
@@ -3511,7 +3511,7 @@ https://d1.amobbs.com/bbs_upload782111/files_17/ourdev_468849.doc
 
 增加一块独立的SDRAM应该理解为LCD控制器增加内存控制器，单独访问SDRAM，减少与系统DRAM的争用。
 
-归档：(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/基于Avalon总线的TFT LCD 控制器的设计.doc)
+归档：(https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/基于Avalon总线的TFT LCD 控制器的设计.doc)
 
 ```
 
@@ -3527,7 +3527,7 @@ As expected, the TM4C129 internal SRAM is not sufficient in this scenario.
 
 In this case, an external memory dedicated for the frame buffer and accessed through the EPI interface is required.
 
-归档：(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/Developing LCD Applications for TM4C12x MCU.pdf)
+归档：(https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/Developing LCD Applications for TM4C12x MCU.pdf)
 
 ```
 
@@ -3860,7 +3860,7 @@ https://blog.csdn.net/qq_42384937/article/details/82970224
 引脚控制：(https://elinux.org/images/b/b6/Pin_Control_Subsystem_Overview.pdf)
 
 (https://imgtec.eetrend.com/sites/imgtec.eetrend.com/files/201403/forum/1763-3052-di12zhangioduankou.pdf)
-(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/第12章 IO 端口.pdf)
+(https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/第12章 IO 端口.pdf)
 
 ```
 
@@ -4107,7 +4107,7 @@ https://mirrors.cloud.tencent.com/loongson/loongson1c_bsp/openloongson_Linux_V1.
 >
 ```
 
-归档：(https://github.com/simplewithliu/MyJZOfferSln/blob/master/Note/docs/openloongson_Linux_V1.0.1.pdf)
+归档：(https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/openloongson_Linux_V1.0.1.pdf)
 
 ```
 
@@ -5375,13 +5375,26 @@ https://www.cnblogs.com/justin-y-lin/p/10100370.html
 内存条寻址的规则就是以 8 个字节为单位的，这就导致了 CPU 也只能以 8 个字节为粒度进行读取，且起始地址也要是 8 的倍数
 
 
+(https://www.zhihu.com/question/61944571/answer/194500744)
+
 (https://www.zhihu.com/question/27862634/answer/2234364839)
 
 (https://zhuanlan.zhihu.com/p/83449008)
 
 为什么访问某个地址需要对齐，需要从内存硬件角度上来理解
 
-通俗理解就是方便设计和简化内存接口
+通俗理解就是方便设计和简化内存接口电路
+
+```
+
+https://stackoverflow.com/questions/13881487/should-i-worry-about-the-alignment-during-pointer-casting
+```
+
+如果有指针类型强转，需要注意对齐问题
+
+(https://stackoverflow.com/questions/69821782/reinterpret-cast-and-explicit-alignment-requirement)
+
+补充：(https://zhuanlan.zhihu.com/p/595286568)
 
 ```
 
