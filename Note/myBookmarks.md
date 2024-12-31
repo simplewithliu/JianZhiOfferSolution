@@ -5363,6 +5363,28 @@ https://stackoverflow.com/questions/55867320/is-the-address-of-malloc-size-t-3-a
 https://docs.kernel.org/translations/zh_CN/core-api/unaligned-memory-access.html
 > 非对齐内存访问
 >
+```
+(https://developer.arm.com/documentation/100748/0623/Alignment-support-in-Arm-Compiler-for-Embedded-6/Unaligned-access-support-in-Arm-Compiler-for-Embedded)
+Similarly, a pointer of type int* is expected to contain a 4-byte aligned address.
+Where this is not the case, or might not be the case, the variable or pointer must be marked with the __unaligned keyword.
+When unaligned accesses are not permitted, because you specified the compiler option -mno-unaligned-access, 
+the compiler accesses __unaligned data by performing a number of aligned accesses. 
+Usually, this access is done by calling a library function such as __aeabi_uread4().
+
+需要注意的是，只有编译器器可以确认当前指令存在非对齐访问时，使用-mno-unaligned-access属性编译的代码，
+编译器才会作读取的拆分以满足对齐的要求。但是像直接使用普通指针这种情况，编译器无法确认该地址是否对齐，
+所以默认认为是对齐的，如果实际地址没有对齐，则可能发生错误。
+
+所以一般对于使用packed属性修饰的结构体，使用结构体变量来访问成员，编译器可以帮助避免非对齐访问。但是如果
+使用成员地址，直接通过普通指针的形式，则不保证正确的访问。
+
+(https://stackoverflow.com/questions/8568432/is-gccs-attribute-packed-pragma-pack-unsafe)
+
+(https://stackoverflow.com/questions/75361065/exact-behaviour-of-mno-unaligned-access#comment132989370_75368631)
+-mno-unaligned-access would also have an effect on memcpy(&my_int, charptr, sizeof(foo)) 
+and similar constructs for expressing an unaligned load other than packed structs.
+
+```
 
 https://www.cnblogs.com/justin-y-lin/p/10100370.html
 > ARM非对齐访问和Alignment Fault
