@@ -578,7 +578,7 @@ https://hackmd.io/@linD026/Linux-kernel-COW-content/
 
 ### Nov 26 2023
 
-**1 Linux进程调度器-进程切换 **
+**1 Linux进程调度器-进程切换**
 
 https://www.cnblogs.com/LoyenWang/p/12386281.html
 

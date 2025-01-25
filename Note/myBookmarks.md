@@ -70,6 +70,13 @@ ARM的安全启动 — ATF/TF-A以及它与UEFI的互动
 
 ```
 
+https://www.zhihu.com/question/27561115
+> 硬件复位是靠复位电路，而这种类型的复位从理论上讲只是起到了软件程序重启的作用，
+> 之前所有保存的数据是依然存在的，当软件重启后有可能会清掉或者不清这些数据。
+> 
+> 上电复位就不同了，一般用到这个词意思是指该系统之前已无任何能量，所有的数据已丢失；
+> 这里的复位是真正意义上的复位，从数据到程序全面重启。
+> 
 
 
 **Linux BSP层实现**
@@ -573,6 +580,13 @@ context entry中有一个指针指向I/O页表
 当然，也可以把该页表当成跳板，让只能寻址32bit地址空间的设备访问到64bit地址空间中去。
 
 ```
+
+
+https://blog.csdn.net/qq_34719392/article/details/114834467
+> Linux x86-64 IOMMU详解
+> 
+> 分别介绍IOMMU的基本概念、软件IOMMU（SWIOTLB）、硬件IOMMU（Intel IOMMU），以及IOMMU的初始化流程
+>
 
 
 https://github.com/simplewithalex/MyJZOfferSln/blob/master/Note/docs/An Introduction to IOMMU Infrastructure in the Linux Kernel.pdf
@@ -1406,6 +1420,13 @@ https://blog.csdn.net/qq_40807206/article/details/109555162
 > 2、FIFO存储深度：FIFO可存储的固定位宽数据的个数。（与RAM存储深度相同）
 >
 
+**DDR设计**
+
+https://mp.weixin.qq.com/s/BXEjbtdry_hqp7Ux1iI7oA
+
+https://www.mouser.com/datasheet/2/671/16Gb_DDR4_SDRAM-1578714.pdf
+
+https://blog.csdn.net/weixin_44101336/article/details/125593570
 
 
 ***
@@ -3178,7 +3199,7 @@ burst传输基本概念
 ```
 
 
-**设备IO访问方式**
+**IO设备的访问方式**
 
 https://www.cnblogs.com/armlinux/archive/2010/11/26/2396888.html
 
@@ -4667,7 +4688,12 @@ A READ_ONCE(), WRITE_ONCE(), and ACCESS_ONCE() accesses may be modeled as a vola
 **spin_lock使用场景**
 
 https://blog.csdn.net/bob_fly1984/article/details/38042763
+```
 
+(https://gist.github.com/weedge/3f94e9c6144e6b3d11fa55f6801d0e1b)
+由上可以看出用mutex_lock(互斥锁，独占式，悲观锁)在这个队列生产消费的操作中比spin_lock(自旋锁，乐观锁)执行效率要低
+
+```
 
 
 ***
@@ -5396,18 +5422,26 @@ https://www.cnblogs.com/justin-y-lin/p/10100370.html
 因为内存条的 IO 采用了多个颗粒并行执行，逻辑上连续的 8 个字节其实是分布在 8 个不同的 bank 上，并行读取可以为内存的访问加速
 内存条寻址的规则就是以 8 个字节为单位的，这就导致了 CPU 也只能以 8 个字节为粒度进行读取，且起始地址也要是 8 的倍数
 
+```
 
-(https://www.zhihu.com/question/61944571/answer/194500744)
 
-(https://www.zhihu.com/question/27862634/answer/2234364839)
+https://www.zhihu.com/question/61944571/answer/194500744
 
-(https://zhuanlan.zhihu.com/p/83449008)
+https://www.zhihu.com/question/27862634/answer/2234364839
 
-为什么访问某个地址需要对齐，需要从内存硬件角度上来理解
+https://zhuanlan.zhihu.com/p/83449008
+
+https://yangwang.hk/?p=773
+
+https://stackoverflow.com/questions/3903164/why-misaligned-address-access-incur-2-or-more-accesses
+```
+
+上述 5 个网址帮助理解：为什么访问某个地址需要对齐，需要从内存硬件角度上来理解
 
 通俗理解就是方便设计和简化内存接口电路
 
 ```
+
 
 https://stackoverflow.com/questions/13881487/should-i-worry-about-the-alignment-during-pointer-casting
 ```
